@@ -14,6 +14,6 @@ public class FamiliarFriends implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		CompanionEntities.registerEntities();
-		LOGGER.info(MOD_ID + " has been loaded successfully");
+		LOGGER.info(MOD_ID + " has loaded successfully");
 	}
 }
