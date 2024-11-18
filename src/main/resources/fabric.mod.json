@@ -1,0 +1,41 @@
+{
+	"schemaVersion": 1,
+	"id": "familiar_friends",
+	"version": "${version}",
+	"name": "Familiar Friends",
+	"description": "Unlockable pets from a magical book",
+	"authors": [
+		"Deadlydiamond98",
+        "cputnam-a11y"
+	],
+	"contact": {
+		"homepage": "https://legacy.curseforge.com/minecraft/mc-mods/billboarding-items",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "All Rights Reserved",
+	"icon": "assets/familiar_friends/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"net.deadlydiamond98.familiar_friends.FamiliarFriends"
+		],
+		"client": [
+			"net.deadlydiamond98.familiar_friends.FamiliarFriendsClient"
+		]
+	},
+	"mixins": [
+		"familiar_friends.mixins.json",
+		{
+			"config": "familiar_friends.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.15.0",
+		"minecraft": "~1.21",
+		"java": ">=21"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
