@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier;
 
 public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandler> {
 
-    private final Identifier TEXTURE = Identifier.of(FamiliarFriends.MOD_ID, "textures/gui/companion_book.png");
+    private final Identifier BOOK_TEXTURE = Identifier.of(FamiliarFriends.MOD_ID, "textures/gui/companion_book.png");
 
     public CompanionBookScreen(CompanionBookScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
@@ -20,8 +20,12 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
     @Override
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
-        RenderSystem.setShaderTexture(0, TEXTURE);
+        RenderSystem.setShaderTexture(0, BOOK_TEXTURE);
 
-        context.drawTexture(TEXTURE, x, y, 0, 0, this.backgroundWidth, this.backgroundHeight);
+        context.drawTexture(BOOK_TEXTURE, (this.width - 320) / 2, 2, 8, 2, 320, 200, 512, 512);
+    }
+
+    @Override
+    protected void drawForeground(DrawContext context, int mouseX, int mouseY) {
     }
 }
