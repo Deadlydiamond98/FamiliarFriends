@@ -32,7 +32,7 @@ public class PlayerCompanion extends Entity implements Ownable {
 
     @Override
     protected void initDataTracker(DataTracker.Builder builder) {
-        this.dataTracker.set(visable, true);
+        builder.add(visable, true);
     }
     static {
         visable = DataTracker.registerData(PlayerCompanion.class, TrackedDataHandlerRegistry.BOOLEAN);
@@ -66,12 +66,6 @@ public class PlayerCompanion extends Entity implements Ownable {
                     this.discard();
                     return;
                 }
-
-//                TrinketComponent trinket = TrinketsApi.getTrinketComponent(player).get();
-//                if (!trinket.isEquipped(ZeldaItems.Fairy_Bell)) {
-//                    this.discard();
-//                    return;
-//                }
 
                 this.moveAround(player);
 

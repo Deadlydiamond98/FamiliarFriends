@@ -12,6 +12,9 @@ public class CompanionItems {
     public static final Item Book_Of_Familiars = registerItem("book_of_familiars", new BookOfFamiliars(new Item.Settings()
             .rarity(Rarity.UNCOMMON)));
 
+    public static final Item Test = registerItem("test", new DebugCompanionEntitySpawner(new Item.Settings()
+            .rarity(Rarity.UNCOMMON)));
+
     //Registration stuff
     private static Item registerItem(String itemName, Item item) {
         return Registry.register(Registries.ITEM, Identifier.of(FamiliarFriends.MOD_ID, itemName), item);

@@ -23,13 +23,13 @@ import net.minecraft.util.math.RotationAxis;
 
 import java.util.List;
 
-public class TestPlayerCompanionEntityRenderer<T extends PlayerCompanion, M extends EntityModel<T>> extends EntityRenderer<T> {
+public class TestPlayerCompanionEntityRenderer<T extends PlayerCompanion> extends EntityRenderer<T> {
     private static final Identifier TEXTURE = Identifier.of("textures/entity/bat.png");
 
-    protected M entityModel;
+    protected TestPlayerCompanionModel entityModel;
     public TestPlayerCompanionEntityRenderer(EntityRendererFactory.Context ctx) {
         super(ctx);
-        this.entityModel = entityModel;
+        this.entityModel = new TestPlayerCompanionModel<>(ctx.getPart(TestPlayerCompanionModel.LAYER_LOCATION));
     }
 
     @Override
