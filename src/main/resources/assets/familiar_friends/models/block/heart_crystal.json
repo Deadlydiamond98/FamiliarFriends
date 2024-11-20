@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "familiar_friends:block/fdhhtht"
+  }
+}

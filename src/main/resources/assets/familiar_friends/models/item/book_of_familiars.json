@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "familiar_friends:item/book_of_familiars"
+  }
+}
