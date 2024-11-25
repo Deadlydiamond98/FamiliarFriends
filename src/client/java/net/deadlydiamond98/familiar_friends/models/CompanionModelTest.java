@@ -3,15 +3,12 @@ package net.deadlydiamond98.familiar_friends.models;
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.minecraft.client.model.*;
-import net.minecraft.client.render.entity.model.BatEntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.passive.BatEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 
-public class TestPlayerCompanionModel<T extends PlayerCompanion> extends SinglePartEntityModel<T> {
+public class CompanionModelTest<T extends PlayerCompanion> extends SinglePartEntityModel<T> {
     public static final EntityModelLayer LAYER_LOCATION = new EntityModelLayer(Identifier.of(FamiliarFriends.MOD_ID, "test_companion"), "main");
     private final ModelPart root;
     private final ModelPart head;
@@ -21,7 +18,7 @@ public class TestPlayerCompanionModel<T extends PlayerCompanion> extends SingleP
     private final ModelPart rightWingTip;
     private final ModelPart leftWingTip;
 
-    public TestPlayerCompanionModel(ModelPart root) {
+    public CompanionModelTest(ModelPart root) {
         this.root = root;
         this.head = root.getChild("head");
         this.body = root.getChild("body");
@@ -62,6 +59,5 @@ public class TestPlayerCompanionModel<T extends PlayerCompanion> extends SingleP
         this.leftWing.yaw = -this.rightWing.yaw;
         this.rightWingTip.yaw = this.rightWing.yaw * 0.5F;
         this.leftWingTip.yaw = -this.rightWing.yaw * 0.5F;
-
     }
 }
