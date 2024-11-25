@@ -44,6 +44,8 @@ public class PlayerCompanion extends Entity implements Ownable {
     protected float lookDirection;
     protected float prevLookDirection;
 
+    protected boolean bookRender;
+
     public PlayerCompanion(EntityType<?> type, World world) {
         super(type, world);
         this.limbAnimator = new LimbAnimator();
@@ -54,7 +56,7 @@ public class PlayerCompanion extends Entity implements Ownable {
 
     }
 
-    public PlayerCompanion(World world, PlayerEntity owner) {
+    public PlayerCompanion(World world, PlayerEntity owner, boolean gui) {
         this(CompanionEntities.Player_Companion, world);
 
         this.idleTime = 0;
@@ -63,6 +65,12 @@ public class PlayerCompanion extends Entity implements Ownable {
         this.prevOwnerPos = owner.getPos();
         this.setPosition(owner.getPos());
         this.noClip = true;
+
+        this.bookRender = gui;
+    }
+
+    public boolean isBookRender() {
+        return this.bookRender;
     }
 
     public void updateLimbs(boolean flutter) {

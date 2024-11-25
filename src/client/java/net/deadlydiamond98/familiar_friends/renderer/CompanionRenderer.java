@@ -145,7 +145,18 @@ public abstract class CompanionRenderer<T extends PlayerCompanion, M extends Ent
 
     protected abstract void setupTransforms(T entity, MatrixStack matrices, float animationProgress, float bodyYaw, float tickDelta, float scale);
 
-    protected abstract void scale(T entity, MatrixStack matrices, float amount);
+    protected void scale(T entity, MatrixStack matrices, float amount) {
+        if (entity.isBookRender()) {
+            bookScale(matrices);
+        }
+        else {
+            worldScale(matrices);
+        }
+    }
+
+    protected abstract void bookScale(MatrixStack matrices);
+
+    protected abstract void worldScale(MatrixStack matrices);
 
     protected float getAnimationProgress(T entity, float tickDelta) {
         return (float)entity.age + tickDelta;

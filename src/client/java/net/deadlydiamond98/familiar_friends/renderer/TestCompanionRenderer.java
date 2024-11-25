@@ -22,9 +22,15 @@ public class TestCompanionRenderer extends CompanionRenderer<PlayerCompanion, Cr
     }
 
     @Override
-    protected void scale(PlayerCompanion entity, MatrixStack matrices, float amount) {
+    protected void bookScale(MatrixStack matrices) {
+        matrices.scale(0.75f, 0.75f, 0.75f);
+    }
+
+    @Override
+    protected void worldScale(MatrixStack matrices) {
         matrices.scale(0.25f, 0.25f, 0.25f);
     }
+
 
     @Override
     public Identifier getTexture(PlayerCompanion entity) {

@@ -16,7 +16,7 @@ public class DebugCompanionEntitySpawner extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
 
-        PlayerCompanion testEntity = new PlayerCompanion(world, user);
+        PlayerCompanion testEntity = new PlayerCompanion(world, user, false);
 
         world.spawnEntity(testEntity);
 
