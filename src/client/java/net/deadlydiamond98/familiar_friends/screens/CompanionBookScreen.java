@@ -1,17 +1,17 @@
 package net.deadlydiamond98.familiar_friends.screens;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.deadlydiamond98.familiar_friends.CompanionBookAdd;
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
+import net.deadlydiamond98.familiar_friends.FamiliarFriendsClient;
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.screen.ingame.BookScreen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.widget.PageTurnWidget;
 import net.minecraft.client.render.DiffuseLighting;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
@@ -35,6 +35,7 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
     }
 
     protected void init() {
+        CompanionBookAdd.addCompanions();
         this.addPageButtons();
     }
 
@@ -67,9 +68,8 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
     }
 
 
-    // This Variable is temporary, change when adding way to figure out # of familiars
     private int getPageCount() {
-        return 100;
+        return CompanionBookAdd.companions.size();
     }
 
     @Override
@@ -90,7 +90,7 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         context.drawTexture(BOOK_TEXTURE, (this.width - 320) / 2, 2, 8, 2, 320, 200, 512, 512);
 
         drawEntity(context, x + 26, y + 8, x + 75, y + 78, 30, 0.0625F, this.mouseX, this.mouseY,
-                new PlayerCompanion(client.player.getWorld(), client.player, true));
+                CompanionBookAdd.companions.get(pageIndex));
     }
 
     @Override
@@ -100,7 +100,6 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
     public static void drawEntity(DrawContext context, int x1, int y1, int x2, int y2, int size, float f, float mouseX, float mouseY, PlayerCompanion entity) {
         float g = (float)(x1 + x2) / 2.0F;
         float h = (float)(y1 + y2) / 2.0F;
-        context.enableScissor(x1, y1, x2, y2);
         float i = (float)Math.atan((double)((g - mouseX) / 40.0F));
         float j = (float)Math.atan((double)((h - mouseY) / 40.0F));
         Quaternionf quaternionf = (new Quaternionf()).rotateZ(3.1415927F);
@@ -123,7 +122,6 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         entity.setPitch(m);
         entity.prevHeadYaw = n;
         entity.headYaw = o;
-        context.disableScissor();
     }
 
     public static void drawEntity(DrawContext context, float x, float y, float size, Vector3f vector3f, Quaternionf quaternionf, @Nullable Quaternionf quaternionf2, PlayerCompanion entity) {

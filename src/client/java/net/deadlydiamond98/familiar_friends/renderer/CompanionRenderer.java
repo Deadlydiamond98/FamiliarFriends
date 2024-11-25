@@ -154,6 +154,10 @@ public abstract class CompanionRenderer<T extends PlayerCompanion, M extends Ent
         }
     }
 
+    protected void scale(MatrixStack matrices, float i) {
+        matrices.scale(i, i, i);
+    }
+
     protected abstract void bookScale(MatrixStack matrices);
 
     protected abstract void worldScale(MatrixStack matrices);

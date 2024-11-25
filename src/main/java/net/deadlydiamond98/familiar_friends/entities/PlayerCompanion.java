@@ -22,7 +22,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Comparator;
 import java.util.List;
 
-public class PlayerCompanion extends Entity implements Ownable {
+public abstract class PlayerCompanion extends Entity implements Ownable {
     private int idleTime;
     private float currentAngle;
     public static final float SPEED = 1.5f;
@@ -56,8 +56,8 @@ public class PlayerCompanion extends Entity implements Ownable {
 
     }
 
-    public PlayerCompanion(World world, PlayerEntity owner, boolean gui) {
-        this(CompanionEntities.Player_Companion, world);
+    public PlayerCompanion(EntityType<?> type, World world, PlayerEntity owner, boolean gui) {
+        this(type, world);
 
         this.idleTime = 0;
         this.currentAngle = 0.0f;
@@ -281,12 +281,18 @@ public class PlayerCompanion extends Entity implements Ownable {
         }
         else if (distanceToTarget > FOLLOW_DISTANCE * 2.5) {
             this.setVelocityTowards(player.getPos().add(0, 2, 0), SPEED * 2);
+            this.idleTime = 0;
         } else if (distanceToTarget > FOLLOW_DISTANCE) {
             this.setVelocityTowards(player.getPos().add(0, 2, 0), SPEED);
+            this.idleTime = 0;
         } else {
             this.handleIdleMovement(player);
         }
+
+        doPassiveAction(player, findNearestHostile(player));
     }
+
+    protected abstract void doPassiveAction(PlayerEntity player, Entity nearestHostile);
 
     private void handleIdleMovement(PlayerEntity player) {
         this.idleTime++;
@@ -307,8 +313,9 @@ public class PlayerCompanion extends Entity implements Ownable {
                     player.getEyeHeight(player.getPose()) + 0.1,
                     offsetZ).add(lookDirection);
 
-            if (this.getPos().subtract(shoulderPos).horizontalLength() > 1) {
+            if (this.getPos().subtract(shoulderPos).horizontalLength() > 0.5) {
                 this.setVelocityTowards(shoulderPos, SPEED * 0.1);
+                this.idleTime = 0;
             }
             else {
                 this.setVelocityTowards(shoulderPos, 0);
