@@ -23,7 +23,7 @@ public class TestCompanionRenderer extends CompanionRenderer<PlayerCompanion, Cr
 
     @Override
     protected void scale(PlayerCompanion entity, MatrixStack matrices, float amount) {
-
+        matrices.scale(0.25f, 0.25f, 0.25f);
     }
 
     @Override

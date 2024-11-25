@@ -272,9 +272,9 @@ public class PlayerCompanion extends Entity implements Ownable {
             this.setPosition(player.getPos());
         }
         else if (distanceToTarget > FOLLOW_DISTANCE * 2.5) {
-            this.setVelocityTowards(player.getPos().add(0, 2, 0), SPEED);
+            this.setVelocityTowards(player.getPos().add(0, 2, 0), SPEED * 2);
         } else if (distanceToTarget > FOLLOW_DISTANCE) {
-            this.setVelocityTowards(player.getPos().add(0, 2, 0), SPEED * 0.5);
+            this.setVelocityTowards(player.getPos().add(0, 2, 0), SPEED);
         } else {
             this.handleIdleMovement(player);
         }
@@ -299,7 +299,7 @@ public class PlayerCompanion extends Entity implements Ownable {
                     player.getEyeHeight(player.getPose()) + 0.1,
                     offsetZ).add(lookDirection);
 
-            if (this.getPos().subtract(shoulderPos).horizontalLength() > 0.5) {
+            if (this.getPos().subtract(shoulderPos).horizontalLength() > 1) {
                 this.setVelocityTowards(shoulderPos, SPEED * 0.1);
             }
             else {
@@ -307,12 +307,8 @@ public class PlayerCompanion extends Entity implements Ownable {
             }
         }
         else {
-            this.circleAround(player, 5.0, 0.1);
+            this.circleAround(player, 2.5, 0.1);
         }
-    }
-
-    public void lookAround() {
-
     }
 
     public void circleAround(Entity entity, double radius, double speed) {
@@ -331,7 +327,7 @@ public class PlayerCompanion extends Entity implements Ownable {
 
         double targetX = entity.getX() + randomRadiusX * Math.cos(this.currentAngle);
         double targetZ = entity.getZ() + randomRadiusZ * Math.sin(this.currentAngle);
-        double targetY = MathHelper.lerp(0.1, this.getY(), entity.getEyeY() + (Math.sin(age) * 0.5));
+        double targetY = MathHelper.lerp(0.1, this.getY(), entity.getEyeY() - 0.75);
         Vec3d targetPosition = new Vec3d(targetX, targetY, targetZ);
 
         this.setVelocityTowards(targetPosition, speed);
