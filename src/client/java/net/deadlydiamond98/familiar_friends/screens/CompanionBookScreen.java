@@ -157,11 +157,11 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
 
         companionY += 25;
 
-        drawResizeableCenteredText(context, matrices, companionX, companionY, name, 1.25f, 0x574436); // Entity Name
+        drawResizeableCenteredText(context, matrices, companionX, companionY, name, 1.25f, 0x574436, false); // Entity Name
 
         companionY += 15;
 
-        drawResizeableCenteredText(context, matrices, companionX, companionY, companion.getAuthor(), 0.55f, 0x95836a); // Entity Author
+        drawResizeableCenteredText(context, matrices, companionX, companionY, companion.getAuthor(), 0.55f, 0x95836a, true); // Entity Author
 
 
         // Description Page
@@ -171,15 +171,14 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
 
         Text descriptionTitle = Text.translatable("gui.familiar_friends.desc").setStyle(Style.EMPTY.withUnderline(true));
 
-        drawResizeableCenteredText(context, matrices, descriptionX, descriptionY, descriptionTitle, 1.0f, 0x574436); // Description Title
+        drawResizeableCenteredText(context, matrices, descriptionX, descriptionY, descriptionTitle, 1.0f, 0x574436, false); // Description Title
 
         descriptionY += 15;
 
-        drawResizeableCenteredText(context, matrices, descriptionX, descriptionY, companion.getDescription(), 0.75f, 0x766450); // Companion Description
+        drawResizeableCenteredText(context, matrices, descriptionX, descriptionY, companion.getDescription(), 0.75f, 0x766450, false); // Companion Description
     }
 
-    private void drawResizeableCenteredText(DrawContext context, MatrixStack matrices, int companionX, int companionY, Text text, float size, int color) {
-
+    private void drawResizeableCenteredText(DrawContext context, MatrixStack matrices, int companionX, int companionY, Text text, float size, int color, boolean commaSplit) {
         float nameLength = ((float) textRenderer.getWidth(text) / 2) * size;
 
         float maxLength = 25 / size;
@@ -187,7 +186,7 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
             String fullText = text.getString();
             Style style = text.getStyle();
 
-            int splitIndex = TextFormatHelper.findCommaSplitIndex(fullText, (int) maxLength);
+            int splitIndex = commaSplit ? TextFormatHelper.findCommaSplitIndex(fullText, (int) maxLength) : -1;
 
             if (splitIndex == -1) {
                 splitIndex = TextFormatHelper.findSplitIndex(fullText, (int) maxLength);
@@ -202,7 +201,7 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
             }
 
             drawResizeableCenteredText(context, matrices, companionX, companionY + 10,
-                    Text.literal(remainingText).setStyle(style), size, color);
+                    Text.literal(remainingText).setStyle(style), size, color, commaSplit);
         }
         matrices.push();
 
@@ -217,7 +216,7 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
     // TODO: add main page for easier navigation!
     private void drawFirstPage(DrawContext context, float delta, int mouseX, int mouseY, int x, int y) {
         MatrixStack martices = context.getMatrices();
-        drawResizeableCenteredText(context, martices, x, y + 90, Text.literal("Put Page Select Here Later!"), 1.0f, 0x000000);
+        drawResizeableCenteredText(context, martices, x, y + 90, Text.literal("Put Page Select Here Later!"), 1.0f, 0x000000, false);
     }
 
     @Override

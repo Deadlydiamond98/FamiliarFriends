@@ -7,16 +7,16 @@
 
 
   "entity.familiar_friends.creeper_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.creeper_companion.description": "test",
+  "entity.familiar_friends.creeper_companion.description": "idk yet :P",
 
   "entity.familiar_friends.chicken_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.chicken_companion.description": "test",
+  "entity.familiar_friends.chicken_companion.description": "Grants the player passive slow falling while the player is on the ground, which lasts for 2 seconds when in the air.",
 
   "entity.familiar_friends.iron_golem_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.iron_golem_companion.description": "test",
+  "entity.familiar_friends.iron_golem_companion.description": "damages attackers or hostile mobs while also sending them flying into the air (causing additional fall damage).",
 
   "entity.familiar_friends.ocelot_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.ocelot_companion.description": "test",
+  "entity.familiar_friends.ocelot_companion.description": "Grants the player passive swiftness",
 
   "entity.familiar_friends.navi_companion": "Navi",
   "entity.familiar_friends.navi_companion.author": "Deadlydiamond98",
