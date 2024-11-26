@@ -20,5 +20,5 @@
 
   "entity.familiar_friends.navi_companion": "Navi",
   "entity.familiar_friends.navi_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.navi_companion.description": "When the Player approaches a vein of xyz (modify later), Navi will alert the player, and will increase their pitch the closer the player gets"
+  "entity.familiar_friends.navi_companion.description": "When the Player approaches a vein of xyz (modify later), Navi will alert the player, and will increase their pitch the closer the player gets to the vein."
 }
