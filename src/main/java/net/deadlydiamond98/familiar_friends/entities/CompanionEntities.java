@@ -41,6 +41,12 @@ public class CompanionEntities {
             OcelotCompanion::new
     );
 
+    public static final EntityType<SquidCompanion> Squid_Companion = registerCompanion(
+            "squid_companion",
+            SquidCompanion::new
+    );
+
+
     public static <T extends Entity> EntityType<T> registerCompanion(
             String name,
             EntityType.EntityFactory<T> factory) {

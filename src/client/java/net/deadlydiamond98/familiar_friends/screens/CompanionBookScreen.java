@@ -314,7 +314,12 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         this.unlockButton.visible = pastFirstPage && companion != null && companion.isLocked(client.player);
         this.equipButton.visible = pastFirstPage && companion != null && !companion.isLocked(client.player);
 
-        this.equipButton.active = companion != ( (CompanionPlayerData) client.player).currentCompanion();
+        boolean bl = true;
+        if (((CompanionPlayerData) client.player).currentCompanion() != null && companion != null) {
+            bl = !companion.getType().getTranslationKey().equals(((CompanionPlayerData) client.player).currentCompanion());
+        }
+
+        this.equipButton.active = bl;
     }
 
     protected void addPageButtons() {

@@ -1,20 +1,14 @@
 package net.deadlydiamond98.familiar_friends.networking.packet;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
-import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.util.CompanionPlayerData;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.codec.PacketCodecs;
 import net.minecraft.network.packet.CustomPayload;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.Uuids;
-
-import java.util.UUID;
 
 public record UnlockCompanionPacket(String companion) implements CustomPayload {
     public static final CustomPayload.Id<UnlockCompanionPacket> ID = new CustomPayload.Id<>(Identifier.of(FamiliarFriends.MOD_ID, "unlock_companion_packet"));

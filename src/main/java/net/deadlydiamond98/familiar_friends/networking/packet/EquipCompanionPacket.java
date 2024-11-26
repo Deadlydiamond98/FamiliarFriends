@@ -34,6 +34,7 @@ public record EquipCompanionPacket(String companion) implements CustomPayload {
 
             for (Class<? extends PlayerCompanion> companionClass : BookCompanionRegistry.COMPANIONS) {
                 try {
+
                     PlayerCompanion companionInstance = companionClass.getConstructor(
                             World.class,
                             PlayerEntity.class,
@@ -47,7 +48,6 @@ public record EquipCompanionPacket(String companion) implements CustomPayload {
                     if (companionInstance.getType().getTranslationKey().equals(companion)) {
 
                         ((CompanionPlayerData) context.player()).grantCompanion(companionInstance);
-                        ((CompanionPlayerData) context.player()).setCompanionStatus(true);
                         context.player().getWorld().spawnEntity(companionInstance);
 
                     }

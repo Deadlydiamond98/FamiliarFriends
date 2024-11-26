@@ -30,6 +30,7 @@ public class FamiliarFriendsClient implements ClientModInitializer {
 		EntityRendererRegistry.register(CompanionEntities.Iron_Golem_Companion, IronGolemCompanionRenderer::new);
 		EntityRendererRegistry.register(CompanionEntities.Navi_Companion, NaviCompanionRenderer::new);
 		EntityRendererRegistry.register(CompanionEntities.Ocelot_Companion, OcelotCompanionRenderer::new);
+		EntityRendererRegistry.register(CompanionEntities.Squid_Companion, SquidCompanionRenderer::new);
 	}
 
 	public void registerModelLayers() {

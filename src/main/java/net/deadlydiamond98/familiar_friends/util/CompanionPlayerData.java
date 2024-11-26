@@ -14,7 +14,7 @@ public interface CompanionPlayerData {
     boolean isCompanionUnlocked(PlayerCompanion companion);
     void removeAllCompanions();
     void syncUnlockedList(List<String> unlockedCompanions);
-
-    PlayerCompanion currentCompanion();
+    void syncCurrentCompanion(String companion);
+    String currentCompanion();
     void grantCompanion(PlayerCompanion companion);
 }

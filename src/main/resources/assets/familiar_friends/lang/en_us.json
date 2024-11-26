@@ -18,7 +18,10 @@
   "entity.familiar_friends.iron_golem_companion.description": "damages attackers or hostile mobs while also sending them flying into the air (causing additional fall damage).",
 
   "entity.familiar_friends.ocelot_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.ocelot_companion.description": "Grants the player passive swiftness",
+  "entity.familiar_friends.ocelot_companion.description": "Grants the player passive swiftness.",
+
+  "entity.familiar_friends.squid_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.squid_companion.description": "not yet",
 
   "entity.familiar_friends.navi_companion": "Navi",
   "entity.familiar_friends.navi_companion.author": "Deadlydiamond98",

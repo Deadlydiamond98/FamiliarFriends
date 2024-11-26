@@ -16,6 +16,7 @@ public class BookCompanionRegistry {
         addCompanion(IronGolemCompanion.class);
         addCompanion(NaviCompanion.class);
         addCompanion(OcelotCompanion.class);
+        addCompanion(SquidCompanion.class);
     }
 
     /**

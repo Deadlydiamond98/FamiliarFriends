@@ -1,14 +1,16 @@
 package net.deadlydiamond98.familiar_friends.mixin;
 
-import net.deadlydiamond98.familiar_friends.FamiliarFriends;
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.networking.CompanionServerPackets;
+import net.deadlydiamond98.familiar_friends.util.BookCompanionRegistry;
 import net.deadlydiamond98.familiar_friends.util.CompanionPlayerData;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.nbt.NbtString;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -32,6 +34,9 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
     @Unique
     private PlayerCompanion currentCompanion;
 
+    @Unique
+    private String backUpCompanionKey;
+
     public PlayerEntity getPlayer() {
         return ((PlayerEntity)(Object)this);
     }
@@ -41,18 +46,47 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
         this.hasCompanion = false;
         this.unlockedCompanions = new ArrayList<>();
         this.currentCompanion = null;
+        this.backUpCompanionKey = "";
     }
 
     @Inject(method = "tick", at = @At("HEAD"))
     public void tick(CallbackInfo ci) {
         if (!getPlayer().getWorld().isClient()) {
-            CompanionServerPackets.updatePlayerUnlockedCompanions((ServerPlayerEntity) getPlayer(), this.unlockedCompanions);
+            CompanionServerPackets.syncCompanionPlayerData((ServerPlayerEntity) getPlayer(), this.unlockedCompanions, this.backUpCompanionKey);
+
+            if (this.hasCompanion && isMyFriendDead()) {
+
+                this.currentCompanion = createCompanion();
+
+                if (this.currentCompanion != null) {
+                    this.getPlayer().getWorld().spawnEntity(this.currentCompanion);
+                }
+
+            }
+            else if (!this.hasCompanion && !isMyFriendDead()) {
+
+                if (this.currentCompanion != null) {
+                    this.currentCompanion.setRemoved(Entity.RemovalReason.DISCARDED);
+                }
+
+                this.currentCompanion = null;
+            }
         }
+    }
+
+    @Unique
+    private boolean isMyFriendDead() {
+        if (this.currentCompanion == null) {
+            return true;
+        }
+
+        return this.currentCompanion.isRemoved();
     }
 
     @Inject(method = "writeCustomDataToNbt", at = @At("HEAD"))
     public void onSave(NbtCompound nbt, CallbackInfo info) {
         nbt.putBoolean("hasCompanion", this.hasCompanion);
+        nbt.putString("backUpCompanionKey", this.backUpCompanionKey);
 
         NbtList companionList = new NbtList();
         for (String companion : this.unlockedCompanions) {
@@ -65,6 +99,9 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
     public void onLoad(NbtCompound nbt, CallbackInfo info) {
         if (nbt.contains("hasCompanion")) {
             this.hasCompanion = nbt.getBoolean("hasCompanion");
+        }
+        if (nbt.contains("backUpCompanionKey")) {
+            this.backUpCompanionKey = nbt.getString("backUpCompanionKey");
         }
 
         if (nbt.contains("unlockedCompanions", 9)) {
@@ -104,27 +141,73 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
     @Override
     public void removeAllCompanions() {
         this.unlockedCompanions.clear();
-    }
 
-    @Override
-    public void revokeCompanion(String companion) {
-        this.unlockedCompanions.remove(companion);
-
-        if (this.currentCompanion.getType().getTranslationKey().equals(companion)) {
-            this.currentCompanion = null;
-            this.hasCompanion = false;
+        if (this.currentCompanion != null) {
+            this.currentCompanion.setRemoved(Entity.RemovalReason.DISCARDED);
         }
+        this.currentCompanion = null;
+        this.backUpCompanionKey = "";
+        this.hasCompanion = false;
     }
+
+//    @Override
+//    public void revokeCompanion(String companion) {
+//        this.unlockedCompanions.remove(companion);
+//
+//        if (this.currentCompanion.getType().getTranslationKey().equals(companion)) {
+//            this.currentCompanion = null;
+//            this.hasCompanion = false;
+//        }
+//    }
 
     @Override
     public void grantCompanion(PlayerCompanion companion) {
+
+        if (this.currentCompanion != null) {
+            this.currentCompanion.setRemoved(Entity.RemovalReason.DISCARDED);
+        }
+
         this.currentCompanion = companion;
+        this.backUpCompanionKey = companion.getType().getTranslationKey();
         this.hasCompanion = true;
     }
 
     @Nullable
     @Override
-    public PlayerCompanion currentCompanion() {
+    public String currentCompanion() {
+        return this.backUpCompanionKey;
+    }
+
+    @Override
+    public void syncCurrentCompanion(String companion) {
+        this.backUpCompanionKey = companion;
+    }
+
+    @Unique
+    private PlayerCompanion createCompanion() {
+        for (Class<? extends PlayerCompanion> companionClass : BookCompanionRegistry.COMPANIONS) {
+            try {
+
+                PlayerCompanion companionInstance = companionClass.getConstructor(
+                        World.class,
+                        PlayerEntity.class,
+                        boolean.class
+                ).newInstance(
+                        getPlayer().getWorld(),
+                        getPlayer(),
+                        false
+                );
+
+                if (companionInstance.getType().getTranslationKey().equals(this.backUpCompanionKey)) {
+
+                    return companionInstance;
+
+                }
+
+            } catch (Exception ignore) {
+
+            }
+        }
         return null;
     }
 }
