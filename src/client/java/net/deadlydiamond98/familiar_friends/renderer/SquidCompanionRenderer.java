@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier;
 
 public class SquidCompanionRenderer extends CompanionRenderer<SquidCompanion, SquidEntityModel<SquidCompanion>> {
 
-    private static final Identifier TEXTURE = Identifier.of("textures/entity/squid.png");
+    private static final Identifier TEXTURE = Identifier.of("textures/entity/squid/squid.png");
 
     public SquidCompanionRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new SquidEntityModel<>(ctx.getPart(EntityModelLayers.SQUID)));
@@ -24,12 +24,12 @@ public class SquidCompanionRenderer extends CompanionRenderer<SquidCompanion, Sq
 
     @Override
     protected void guiScale(MatrixStack matrices) {
-        this.scale(matrices, 1.5f);
+        this.scale(matrices, 0.75f);
     }
 
     @Override
     protected void worldScale(MatrixStack matrices) {
-        this.scale(matrices, 0.75f);
+        this.scale(matrices, 0.25f);
     }
 
 

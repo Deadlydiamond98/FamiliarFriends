@@ -19,7 +19,12 @@ public class IronGolemCompanion extends PlayerCompanion {
 
     @Override
     protected void doPassiveAction(PlayerEntity player, Entity nearestHostile) {
-
+        if (nearestHostile != null) {
+            if (this.age % 120 == 0) {
+                nearestHostile.damage(nearestHostile.getDamageSources().playerAttack(player), 3.0f);
+                nearestHostile.setVelocity(nearestHostile.getVelocity().multiply(1, 0, 1).add(0, 1, 0));
+            }
+        }
     }
 
     @Override
