@@ -363,8 +363,8 @@ public abstract class PlayerCompanion extends Entity implements Ownable {
         Vec3d interpolatedVelocity = currentVelocity.lerp(desiredVelocity, 0.1);
 
         this.setVelocity(interpolatedVelocity);
-        float yaw = (float) (Math.atan2(interpolatedVelocity.z, interpolatedVelocity.x) * (180 / Math.PI)) - 270;
-        this.setBodyYaw(yaw);
+//        float yaw = (float) (Math.atan2(interpolatedVelocity.z, interpolatedVelocity.x) * (180 / Math.PI)) - 270;
+//        this.setBodyYaw(yaw);
     }
 
     public Entity findNearestHostile(PlayerEntity player) {
