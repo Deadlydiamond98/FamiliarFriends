@@ -1,6 +1,3 @@
-// Made with Blockbench 4.9.3
-// Exported for Minecraft version 1.17+ for Yarn
-// Paste this class into your mod and generate all required imports
 
 package net.deadlydiamond98.familiar_friends.models;
 

@@ -12,10 +12,10 @@
   "entity.familiar_friends.creeper_companion.description": "idk yet :P",
 
   "entity.familiar_friends.chicken_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.chicken_companion.description": "Grants the player passive slow falling while the player is on the ground, which lasts for 2 seconds when in the air.",
+  "entity.familiar_friends.chicken_companion.description": "Grants the Player passive slow falling while the player is on the ground, which lasts for 2 seconds when in the air.",
 
   "entity.familiar_friends.iron_golem_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.iron_golem_companion.description": "damages attackers or hostile mobs while also sending them flying into the air (causing additional fall damage).",
+  "entity.familiar_friends.iron_golem_companion.description": "Damages attackers or hostile mobs while also sending them flying into the air (causing additional fall damage).",
 
   "entity.familiar_friends.ocelot_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.ocelot_companion.description": "Grants the player passive swiftness.",
@@ -25,5 +25,13 @@
 
   "entity.familiar_friends.navi_companion": "Navi",
   "entity.familiar_friends.navi_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.navi_companion.description": "When the Player approaches a vein of xyz (modify later), Navi will alert the player, and will increase their pitch the closer the player gets to the vein."
+  "entity.familiar_friends.navi_companion.description": "When the Player approaches a vein of xyz (modify later), Navi will alert the player, and will increase their pitch the closer the player gets to the vein.",
+
+  "entity.familiar_friends.one_up_mushroom_companion": "1-Up Mushroom",
+  "entity.familiar_friends.one_up_mushroom_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.one_up_mushroom_companion.description": "Saves the Player from death. If the 1-Up Mushroom is used it will need to be unlocked again!",
+
+  "entity.familiar_friends.companion_cube_companion": "Companion Cube",
+  "entity.familiar_friends.companion_cube_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.companion_cube_companion.description": "Grants the Player the ability to walk on lava (albeit, for a short period). This Companion is your best friend!"
 }

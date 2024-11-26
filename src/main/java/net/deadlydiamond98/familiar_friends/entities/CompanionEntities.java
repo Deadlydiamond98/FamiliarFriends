@@ -45,6 +45,14 @@ public class CompanionEntities {
             "squid_companion",
             SquidCompanion::new
     );
+    public static final EntityType<OneUpMushroomCompanion> One_Up_Mushroom_Companion = registerCompanion(
+            "one_up_mushroom_companion",
+            OneUpMushroomCompanion::new
+    );
+    public static final EntityType<CompanionCubeCompanion> Companion_Cube_Companion = registerCompanion(
+            "companion_cube_companion",
+            CompanionCubeCompanion::new
+    );
 
 
     public static <T extends Entity> EntityType<T> registerCompanion(
