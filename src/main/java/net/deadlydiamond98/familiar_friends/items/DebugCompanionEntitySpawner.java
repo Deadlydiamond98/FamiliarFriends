@@ -3,6 +3,7 @@ package net.deadlydiamond98.familiar_friends.items;
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.CreeperCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.NaviCompanion;
+import net.deadlydiamond98.familiar_friends.entities.companions.OcelotCompanion;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -18,7 +19,7 @@ public class DebugCompanionEntitySpawner extends Item {
     @Override
     public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
 
-        PlayerCompanion testEntity = new NaviCompanion(world, user, false);
+        PlayerCompanion testEntity = new OcelotCompanion(world, user, false);
 
         world.spawnEntity(testEntity);
 

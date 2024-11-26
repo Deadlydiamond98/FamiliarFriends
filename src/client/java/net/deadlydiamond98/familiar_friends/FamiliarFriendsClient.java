@@ -4,10 +4,7 @@ import net.deadlydiamond98.familiar_friends.entities.CompanionEntities;
 import net.deadlydiamond98.familiar_friends.models.CompanionModelTest;
 import net.deadlydiamond98.familiar_friends.models.IronGolemCompanionModel;
 import net.deadlydiamond98.familiar_friends.models.NaviEntityModel;
-import net.deadlydiamond98.familiar_friends.renderer.ChickenCompanionRenderer;
-import net.deadlydiamond98.familiar_friends.renderer.CreeperCompanionRenderer;
-import net.deadlydiamond98.familiar_friends.renderer.IronGolemCompanionRenderer;
-import net.deadlydiamond98.familiar_friends.renderer.NaviCompanionRenderer;
+import net.deadlydiamond98.familiar_friends.renderer.*;
 import net.deadlydiamond98.familiar_friends.screens.CompanionBookScreen;
 import net.deadlydiamond98.familiar_friends.screens.CompanionScreenHandlers;
 import net.fabricmc.api.ClientModInitializer;
@@ -30,6 +27,7 @@ public class FamiliarFriendsClient implements ClientModInitializer {
 		EntityRendererRegistry.register(CompanionEntities.Chicken_Companion, ChickenCompanionRenderer::new);
 		EntityRendererRegistry.register(CompanionEntities.Iron_Golem_Companion, IronGolemCompanionRenderer::new);
 		EntityRendererRegistry.register(CompanionEntities.Navi_Companion, NaviCompanionRenderer::new);
+		EntityRendererRegistry.register(CompanionEntities.Ocelot_Companion, OcelotCompanionRenderer::new);
 	}
 
 	public void registerModelLayers() {

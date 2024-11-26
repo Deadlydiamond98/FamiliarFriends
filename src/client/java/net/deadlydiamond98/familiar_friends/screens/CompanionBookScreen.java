@@ -87,41 +87,41 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         int x = (this.width) / 2;
         int y = 2;
 
-        context.drawTexture(BOOK_TEXTURE, (this.width - 320) / 2, 2, 8, 2, 320, 200, 512, 512);
+        context.drawTexture(BOOK_TEXTURE, (this.width - 320) / 2, y, 8, 2, 320, 200, 512, 512);
 
-        drawEntity(context, x + 26, y + 8, x + 75, y + 78, 30, 0.0625F, this.mouseX, this.mouseY,
-                CompanionBookAdd.companions.get(pageIndex));
+        drawEntity(context, x - 80, y + 95, 40, 0.0625F, CompanionBookAdd.companions.get(pageIndex));
     }
 
     @Override
     protected void drawForeground(DrawContext context, int mouseX, int mouseY) {
     }
 
-    public static void drawEntity(DrawContext context, int x1, int y1, int x2, int y2, int size, float f, float mouseX, float mouseY, PlayerCompanion entity) {
-        float g = (float)(x1 + x2) / 2.0F;
-        float h = (float)(y1 + y2) / 2.0F;
-        float i = (float)Math.atan((double)((g - mouseX) / 40.0F));
-        float j = (float)Math.atan((double)((h - mouseY) / 40.0F));
-        Quaternionf quaternionf = (new Quaternionf()).rotateZ(3.1415927F);
-        Quaternionf quaternionf2 = (new Quaternionf()).rotateX(j * 20.0F * 0.017453292F);
-        quaternionf.mul(quaternionf2);
-        float k = entity.bodyYaw;
-        float l = entity.getYaw();
-        float m = entity.getPitch();
-        float n = entity.prevHeadYaw;
-        float o = entity.headYaw;
-        entity.bodyYaw = 180.0F + i * 20.0F;
-        entity.setYaw(180.0F + i * 40.0F);
-        entity.setPitch(-j * 20.0F);
+    public static void drawEntity(DrawContext context, int x, int y, int size, float f, PlayerCompanion entity) {
+        float rotationAngle = (float)(System.currentTimeMillis() % 10000l) / 10000.0f * 360.0f;
+        float bobbingOffset = (float)Math.sin(System.currentTimeMillis() / 500.0) * 0.1f;
+
+        Quaternionf rotationQuaternion = new Quaternionf().rotateY((float)Math.toRadians(rotationAngle)).rotateZ((float) Math.toRadians(180));
+
+        float bodyYawBackup = entity.bodyYaw;
+        float yawBackup = entity.getYaw();
+        float pitchBackup = entity.getPitch();
+        float prevHeadYawBackup = entity.prevHeadYaw;
+        float headYawBackup = entity.headYaw;
+
+        entity.bodyYaw = 180.0f;
+        entity.setYaw(180.0f);
+        entity.setPitch(0.0f);
         entity.headYaw = entity.getYaw();
         entity.prevHeadYaw = entity.getYaw();
-        Vector3f vector3f = new Vector3f(0.0F, entity.getHeight() / 2.0F + f * 1, 0.0F);
-        drawEntity(context, g, h, size, vector3f, quaternionf, quaternionf2, entity);
-        entity.bodyYaw = k;
-        entity.setYaw(l);
-        entity.setPitch(m);
-        entity.prevHeadYaw = n;
-        entity.headYaw = o;
+
+        Vector3f vector3f = new Vector3f(0.0f, entity.getHeight() / 2.0f + f + bobbingOffset, 0.0f);
+        drawEntity(context, x, y, size, vector3f, rotationQuaternion, null, entity);
+
+        entity.bodyYaw = bodyYawBackup;
+        entity.setYaw(yawBackup);
+        entity.setPitch(pitchBackup);
+        entity.prevHeadYaw = prevHeadYawBackup;
+        entity.headYaw = headYawBackup;
     }
 
     public static void drawEntity(DrawContext context, float x, float y, float size, Vector3f vector3f, Quaternionf quaternionf, @Nullable Quaternionf quaternionf2, PlayerCompanion entity) {
@@ -133,12 +133,12 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         DiffuseLighting.method_34742();
         EntityRenderDispatcher entityRenderDispatcher = MinecraftClient.getInstance().getEntityRenderDispatcher();
         if (quaternionf2 != null) {
-            entityRenderDispatcher.setRotation(quaternionf2.conjugate(new Quaternionf()).rotateY(3.1415927F));
+            entityRenderDispatcher.setRotation(quaternionf2.conjugate(new Quaternionf()).rotateY((float) Math.toRadians(180)));
         }
 
         entityRenderDispatcher.setRenderShadows(false);
         RenderSystem.runAsFancy(() -> {
-            entityRenderDispatcher.render(entity, 0.0, 0.0, 0.0, 0.0F, 1.0F, context.getMatrices(), context.getVertexConsumers(), 15728880);
+            entityRenderDispatcher.render(entity, 0.0, 0.0, 0.0, 0.0f, 1.0f, context.getMatrices(), context.getVertexConsumers(), 15728880);
         });
         context.draw();
         entityRenderDispatcher.setRenderShadows(true);

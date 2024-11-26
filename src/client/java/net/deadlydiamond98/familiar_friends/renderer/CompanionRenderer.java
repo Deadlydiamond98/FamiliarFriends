@@ -18,6 +18,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.RotationAxis;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Iterator;
@@ -78,6 +79,7 @@ public abstract class CompanionRenderer<T extends PlayerCompanion, M extends Ent
         matrixStack.scale(-1.0F, -1.0F, 1.0F);
         this.scale(livingEntity, matrixStack, g);
         matrixStack.translate(0.0F, -1.501F, 0.0F);
+        matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(h));
         float o = 0.0F;
         float p = 0.0F;
         if (!livingEntity.hasVehicle() && livingEntity.isAlive()) {

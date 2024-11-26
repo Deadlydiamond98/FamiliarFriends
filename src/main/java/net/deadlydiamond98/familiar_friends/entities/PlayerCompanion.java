@@ -171,8 +171,6 @@ public abstract class PlayerCompanion extends Entity implements Ownable {
                     return;
                 }
 
-                this.moveAround(player);
-
                 this.prevOwnerPos = player.getPos();
                 this.velocityDirty = true;
             }
@@ -182,6 +180,10 @@ public abstract class PlayerCompanion extends Entity implements Ownable {
         }
         else {
             this.updateTrackedPositionAndAngles(this.getX(), this.getY(), this.getZ(), this.getYaw(), this.getPitch(), 20);
+        }
+
+        if (this.getOwner() != null && this.getOwner() instanceof PlayerEntity player) {
+            this.moveAround(player);
         }
 
         this.move(MovementType.SELF, this.getVelocity());
@@ -357,7 +359,7 @@ public abstract class PlayerCompanion extends Entity implements Ownable {
 
         this.setVelocity(interpolatedVelocity);
         float yaw = (float) (Math.atan2(interpolatedVelocity.z, interpolatedVelocity.x) * (180 / Math.PI)) - 270;
-        this.setYaw(yaw);
+        this.setBodyYaw(yaw);
     }
 
     public Entity findNearestHostile(PlayerEntity player) {
