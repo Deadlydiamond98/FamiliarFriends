@@ -383,10 +383,6 @@ public abstract class PlayerCompanion extends Entity implements Ownable {
         return !((CompanionPlayerData) player).isCompanionUnlocked(this);
     }
 
-    public void unlock(PlayerEntity player) {
-        ((CompanionPlayerData) player).unlockCompanion(this);
-    }
-
     @Nullable
     @Override
     public Entity getOwner() {

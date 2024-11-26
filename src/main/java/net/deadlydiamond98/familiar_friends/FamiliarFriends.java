@@ -4,6 +4,7 @@ import net.deadlydiamond98.familiar_friends.entities.CompanionEntities;
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.*;
 import net.deadlydiamond98.familiar_friends.items.CompanionItems;
+import net.deadlydiamond98.familiar_friends.networking.CompanionServerPackets;
 import net.deadlydiamond98.familiar_friends.screens.CompanionScreenHandlers;
 import net.deadlydiamond98.familiar_friends.util.BookCompanionRegistry;
 import net.fabricmc.api.ModInitializer;
@@ -29,6 +30,8 @@ public class FamiliarFriends implements ModInitializer {
 
 		// Add the initial classes that come with the mod!
 		BookCompanionRegistry.addCompanions();
+
+		CompanionServerPackets.registerServerPackets();
 
 		CompanionItems.registerItems();
 		CompanionEntities.registerEntities();

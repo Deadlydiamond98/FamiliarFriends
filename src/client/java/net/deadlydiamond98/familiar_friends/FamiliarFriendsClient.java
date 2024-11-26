@@ -4,6 +4,7 @@ import net.deadlydiamond98.familiar_friends.entities.CompanionEntities;
 import net.deadlydiamond98.familiar_friends.models.CompanionModelTest;
 import net.deadlydiamond98.familiar_friends.models.IronGolemCompanionModel;
 import net.deadlydiamond98.familiar_friends.models.NaviEntityModel;
+import net.deadlydiamond98.familiar_friends.networking.CompanionClientPackets;
 import net.deadlydiamond98.familiar_friends.renderer.*;
 import net.deadlydiamond98.familiar_friends.screens.CompanionBookScreen;
 import net.deadlydiamond98.familiar_friends.screens.CompanionScreenHandlers;
@@ -16,6 +17,7 @@ public class FamiliarFriendsClient implements ClientModInitializer {
 
 	@Override
 	public void onInitializeClient() {
+		CompanionClientPackets.registerC2SPackets();
 		registerEntityRenderers();
 		registerModelLayers();
 

@@ -4,6 +4,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.CreeperCompanion;
+import net.deadlydiamond98.familiar_friends.networking.CompanionClientPackets;
 import net.deadlydiamond98.familiar_friends.screens.widgets.CompanionBookButton;
 import net.deadlydiamond98.familiar_friends.util.BookCompanionRegistry;
 import net.deadlydiamond98.familiar_friends.util.TextFormatHelper;
@@ -40,6 +41,7 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
     private PageTurnWidget previousPageButton;
     
     private CompanionBookButton unlockButton;
+    private CompanionBookButton equipButton;
 
     public CompanionBookScreen(CompanionBookScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
@@ -278,12 +280,35 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
 
     private void addEntityButtons() {
         int i = (this.width) / 2;
-        this.unlockButton = this.addDrawableChild(new CompanionBookButton(i + 45, 100, 200, 20,
-                Text.translatable("gui.familiar_friends.unlock"), button -> this.goToNextPage()));
+        this.unlockButton = this.addDrawableChild(new CompanionBookButton(i + 80, 150, 100, 15,
+                Text.translatable("gui.familiar_friends.unlock"), button -> this.unlockFamiliar()));
+        this.equipButton = this.addDrawableChild(new CompanionBookButton(i + 80, 150, 100, 15,
+                Text.translatable("gui.familiar_friends.equip"), button -> this.goToNextPage()));
+
+        updateEntityButtons();
     }
 
-    private void unlockAction() {
+    private void unlockFamiliar() {
+        PlayerCompanion companion = RENDERED_COMPANIONS.get(pageIndex - 1);
+        CompanionClientPackets.unlockPlayerCompanion(companion.getType().getTranslationKey());
+        this.unlockButton.visible = false;
+        this.equipButton.visible = true;
+    }
 
+    private void equipFamiliar() {
+        this.updateEntityButtons();
+    }
+
+    private void updateEntityButtons() {
+        boolean pastFirstPage = this.pageIndex > 0;
+
+        PlayerCompanion companion = null;
+        if (pastFirstPage) {
+            companion = RENDERED_COMPANIONS.get(pageIndex - 1);
+        }
+
+        this.unlockButton.visible = pastFirstPage && companion != null && companion.isLocked(client.player);
+        this.equipButton.visible = pastFirstPage && companion != null && !companion.isLocked(client.player);
     }
 
     protected void addPageButtons() {
@@ -299,6 +324,7 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         }
 
         this.updatePageButtons();
+        this.updateEntityButtons();
     }
 
     protected void goToNextPage() {
@@ -307,6 +333,7 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         }
 
         this.updatePageButtons();
+        this.updateEntityButtons();
     }
 
     private void updatePageButtons() {

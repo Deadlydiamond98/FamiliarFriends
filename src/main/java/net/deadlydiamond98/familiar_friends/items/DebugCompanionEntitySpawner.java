@@ -4,6 +4,7 @@ import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.CreeperCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.NaviCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.OcelotCompanion;
+import net.deadlydiamond98.familiar_friends.util.CompanionPlayerData;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -21,7 +22,7 @@ public class DebugCompanionEntitySpawner extends Item {
 
         PlayerCompanion testEntity = new OcelotCompanion(world, user, false);
 
-        testEntity.unlock(user);
+        ((CompanionPlayerData) user).removeAllCompanions();
 
         world.spawnEntity(testEntity);
 
