@@ -36,7 +36,7 @@ public class NaviCompanionRenderer extends CompanionRenderer<NaviCompanion, Navi
     }
 
     @Override
-    protected void bookScale(MatrixStack matrices) {
+    protected void guiScale(MatrixStack matrices) {
         this.scale(matrices, 1.0f);
     }
 

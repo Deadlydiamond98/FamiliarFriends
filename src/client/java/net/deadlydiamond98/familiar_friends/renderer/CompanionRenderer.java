@@ -2,7 +2,6 @@ package net.deadlydiamond98.familiar_friends.renderer;
 
 import com.google.common.collect.Lists;
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
-import net.deadlydiamond98.familiar_friends.models.CompanionModelTest;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
@@ -149,7 +148,7 @@ public abstract class CompanionRenderer<T extends PlayerCompanion, M extends Ent
 
     protected void scale(T entity, MatrixStack matrices, float amount) {
         if (entity.isBookRender()) {
-            bookScale(matrices);
+            guiScale(matrices);
         }
         else {
             worldScale(matrices);
@@ -160,7 +159,7 @@ public abstract class CompanionRenderer<T extends PlayerCompanion, M extends Ent
         matrices.scale(i, i, i);
     }
 
-    protected abstract void bookScale(MatrixStack matrices);
+    protected abstract void guiScale(MatrixStack matrices);
 
     protected abstract void worldScale(MatrixStack matrices);
 

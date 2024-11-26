@@ -21,7 +21,7 @@ public class CreeperCompanionRenderer extends CompanionRenderer<CreeperCompanion
     }
 
     @Override
-    protected void bookScale(MatrixStack matrices) {
+    protected void guiScale(MatrixStack matrices) {
         this.scale(matrices, 1.0f);
     }
 

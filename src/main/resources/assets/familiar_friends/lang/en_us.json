@@ -1,4 +1,24 @@
 {
   "item.familiar_friends.book_of_familiars": "Book of Familiars",
-  "entity.familiar_friends.navi_companion": "Navi"
+
+  "gui.familiar_friends.author": "Author(s): ",
+  "gui.familiar_friends.desc": "Description",
+
+
+
+  "entity.familiar_friends.creeper_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.creeper_companion.description": "test",
+
+  "entity.familiar_friends.chicken_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.chicken_companion.description": "test",
+
+  "entity.familiar_friends.iron_golem_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.iron_golem_companion.description": "test",
+
+  "entity.familiar_friends.ocelot_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.ocelot_companion.description": "test",
+
+  "entity.familiar_friends.navi_companion": "Navi",
+  "entity.familiar_friends.navi_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.navi_companion.description": "When the Player approaches a vein of xyz (modify later), Navi will alert the player, and will increase their pitch the closer the player gets"
 }

@@ -11,8 +11,10 @@ import net.minecraft.client.gui.widget.PageTurnWidget;
 import net.minecraft.client.render.DiffuseLighting;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
@@ -122,31 +124,63 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
     }
 
     @Override
-    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        super.render(context, mouseX, mouseY, delta);
-    }
-
-    @Override
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
         RenderSystem.setShaderTexture(0, BOOK_TEXTURE);
+        MatrixStack matrices = context.getMatrices();
 
         int x = (this.width) / 2;
         int y = 2;
 
         context.drawTexture(BOOK_TEXTURE, (this.width - 320) / 2, y, 8, 2, 320, 200, 512, 512);
 
-        // Stop Execution of drawEntity if no Companions to prevent crashing
+        // Stop execution of drawEntity if no companions in book to prevent crashing
         if (RENDERED_COMPANIONS.isEmpty()) {
             return;
         }
 
-        drawEntity(context, x - 80, y + 95, 40, 0.0625F, RENDERED_COMPANIONS.get(pageIndex));
+        // Entity Page
+
+        PlayerCompanion companion = RENDERED_COMPANIONS.get(pageIndex);
+
+        int companionX = x - 80;
+        int companionY = y + 85;
+
+        drawEntity(context, companionX, companionY, 40, 0.0625F, companion); // Entity Model
+
+        Text name = companion.getName().copy().setStyle(Style.EMPTY.withUnderline(true));
+        drawResizeableCenteredText(context, matrices, companionX, companionY + 20, name, 1.25f, 0x574436); // Entity Name
+
+        drawResizeableCenteredText(context, matrices, companionX, companionY + 35, companion.getAuthor(), 0.55f, 0x95836a); // Entity Author
+
+
+        // Description Page
+
+        int descriptionX = x + 80;
+        int descriptionY = y + 15;
+
+        Text descriptionTitle = Text.translatable("gui.familiar_friends.desc").setStyle(Style.EMPTY.withUnderline(true));
+
+        drawResizeableCenteredText(context, matrices, descriptionX, descriptionY, descriptionTitle, 1.25f, 0x574436); // Description Title
+
+
     }
 
-    @Override
-    protected void drawForeground(DrawContext context, int mouseX, int mouseY) {
+    private void drawResizeableCenteredText(DrawContext context, MatrixStack matrices, int companionX, int companionY, Text text, float size, int color) {
+        matrices.push();
+
+        float nameLength = ((float) textRenderer.getWidth(text) / 2) * size;
+
+        matrices.translate(companionX - nameLength, companionY, 0);
+        matrices.scale(size, size, size);
+
+        context.drawText(textRenderer, text, 0, 0, color, false);
+
+        matrices.pop();
     }
+
+
+    // These are modified versions of the drawEntity methods from the inventory
 
     public static void drawEntity(DrawContext context, int x, int y, int size, float f, PlayerCompanion entity) {
         float rotationAngle = (float)(System.currentTimeMillis() % 10000l) / 10000.0f * 360.0f;
@@ -196,5 +230,11 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         entityRenderDispatcher.setRenderShadows(true);
         context.getMatrices().pop();
         DiffuseLighting.enableGuiDepthLighting();
+    }
+
+
+    //removed super to make empty, did this to remove the "inventory" Text, since there is no Inventory
+    @Override
+    protected void drawForeground(DrawContext context, int mouseX, int mouseY) {
     }
 }

@@ -19,6 +19,11 @@ public class FamiliarFriends implements ModInitializer {
 	public static final String MOD_ID = "familiar_friends";
     public static final Logger LOGGER = LoggerFactory.getLogger("familiar_friends");
 
+	/**
+	 * Example of adding a Companion to a book in your own mod:
+	 *		BookCompanionRegistry.addCompanion(**Insert Companion Class Here**.class);
+	 */
+
 	@Override
 	public void onInitialize() {
 

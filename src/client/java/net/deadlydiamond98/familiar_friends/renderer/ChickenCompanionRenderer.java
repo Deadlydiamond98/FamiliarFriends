@@ -23,7 +23,7 @@ public class ChickenCompanionRenderer extends CompanionRenderer<ChickenCompanion
     }
 
     @Override
-    protected void bookScale(MatrixStack matrices) {
+    protected void guiScale(MatrixStack matrices) {
         this.scale(matrices, 1.5f);
     }
 

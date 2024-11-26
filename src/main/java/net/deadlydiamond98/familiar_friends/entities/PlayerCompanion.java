@@ -374,7 +374,8 @@ public abstract class PlayerCompanion extends Entity implements Ownable {
     }
 
     public Text getAuthor() {
-        return Text.translatable(this.getType().getTranslationKey() + ".author");
+        return Text.translatable("gui.familiar_friends.author").append(
+                Text.translatable(this.getType().getTranslationKey() + ".author"));
     }
 
     @Nullable
