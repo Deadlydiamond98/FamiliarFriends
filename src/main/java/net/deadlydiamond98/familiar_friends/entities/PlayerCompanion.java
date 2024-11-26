@@ -13,6 +13,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.network.packet.s2c.play.EntityAnimationS2CPacket;
 import net.minecraft.server.world.ServerChunkManager;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
@@ -366,6 +367,14 @@ public abstract class PlayerCompanion extends Entity implements Ownable {
         List<Entity> nearbyEntities = player.getWorld().getEntitiesByClass(Entity.class, player.getBoundingBox().expand(10),
                 entity -> entity instanceof Monster && entity.isAlive());
         return nearbyEntities.stream().min(Comparator.comparingDouble(entity -> entity.squaredDistanceTo(player))).orElse(null);
+    }
+
+    public Text getDescription() {
+        return Text.translatable(this.getType().getTranslationKey() + ".description");
+    }
+
+    public Text getAuthor() {
+        return Text.translatable(this.getType().getTranslationKey() + ".author");
     }
 
     @Nullable

@@ -7,6 +7,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.text.Text;
 import net.minecraft.world.World;
 
 public class ChickenCompanion extends PlayerCompanion {
@@ -23,5 +24,10 @@ public class ChickenCompanion extends PlayerCompanion {
         if (player.isOnGround()) {
             player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 60, 0, true, false));
         }
+    }
+
+    @Override
+    public Text getName() {
+        return Text.translatable("entity.minecraft.chicken");
     }
 }

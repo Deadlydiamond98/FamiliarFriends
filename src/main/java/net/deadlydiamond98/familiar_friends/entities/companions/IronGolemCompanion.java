@@ -5,6 +5,7 @@ import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.text.Text;
 import net.minecraft.world.World;
 
 public class IronGolemCompanion extends PlayerCompanion {
@@ -19,5 +20,10 @@ public class IronGolemCompanion extends PlayerCompanion {
     @Override
     protected void doPassiveAction(PlayerEntity player, Entity nearestHostile) {
 
+    }
+
+    @Override
+    public Text getName() {
+        return Text.translatable("entity.minecraft.iron_golem");
     }
 }

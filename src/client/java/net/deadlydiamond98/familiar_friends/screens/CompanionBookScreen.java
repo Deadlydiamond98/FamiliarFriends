@@ -1,10 +1,9 @@
 package net.deadlydiamond98.familiar_friends.screens;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.deadlydiamond98.familiar_friends.CompanionBookAdd;
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
-import net.deadlydiamond98.familiar_friends.FamiliarFriendsClient;
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.util.BookCompanionRegistry;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
@@ -12,19 +11,25 @@ import net.minecraft.client.gui.widget.PageTurnWidget;
 import net.minecraft.client.render.DiffuseLighting;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandler> {
 
     private static final Identifier BOOK_TEXTURE = Identifier.of(FamiliarFriends.MOD_ID, "textures/gui/companion_book.png");
 
-    private float mouseX;
-    private float mouseY;
+    private final List<PlayerCompanion> RENDERED_COMPANIONS = new ArrayList<>();
+
+//    private final List<Integer> LETTER_INDEXS = new ArrayList<>();
 
     private int pageIndex;
     private PageTurnWidget nextPageButton;
@@ -35,8 +40,52 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
     }
 
     protected void init() {
-        CompanionBookAdd.addCompanions();
+        this.addCompanions();
+        // TODO: find the first of each letter, then implement skipping around companions based on the first letter!
+//        this.createLetterIndex();
         this.addPageButtons();
+    }
+
+    private void addCompanions() {
+        MinecraftClient client = MinecraftClient.getInstance();
+
+        if (client.player == null) {
+            FamiliarFriends.LOGGER.info("Tried to add Companions to book, but player was null");
+            return;
+        }
+
+        RENDERED_COMPANIONS.clear();
+
+        for (Class<? extends PlayerCompanion> companionClass : BookCompanionRegistry.COMPANIONS) {
+            try {
+
+                PlayerCompanion companion = companionClass.getConstructor(
+                        World.class,
+                        PlayerEntity.class,
+                        boolean.class
+                ).newInstance(
+                        client.player.getWorld(),
+                        client.player,
+                        true
+                );
+
+                RENDERED_COMPANIONS.add(companion);
+
+            } catch (Exception e) {
+                FamiliarFriends.LOGGER.info("Failed to add companion: " + companionClass.getSimpleName(), e);
+            }
+        }
+
+        if (RENDERED_COMPANIONS.isEmpty()) {
+            FamiliarFriends.LOGGER.info("No Companions added to the book :<");
+        }
+
+        // Sort Alphabetically, taking language into account
+        RENDERED_COMPANIONS.sort((o1, o2) -> {
+            String name1 = o1.getName().getString();
+            String name2 = o2.getName().getString();
+            return name1.compareToIgnoreCase(name2);
+        });
     }
 
     protected void addPageButtons() {
@@ -69,14 +118,12 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
 
 
     private int getPageCount() {
-        return CompanionBookAdd.companions.size();
+        return RENDERED_COMPANIONS.size();
     }
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
         super.render(context, mouseX, mouseY, delta);
-        this.mouseX = (float)mouseX;
-        this.mouseY = (float)mouseY;
     }
 
     @Override
@@ -89,7 +136,12 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
 
         context.drawTexture(BOOK_TEXTURE, (this.width - 320) / 2, y, 8, 2, 320, 200, 512, 512);
 
-        drawEntity(context, x - 80, y + 95, 40, 0.0625F, CompanionBookAdd.companions.get(pageIndex));
+        // Stop Execution of drawEntity if no Companions to prevent crashing
+        if (RENDERED_COMPANIONS.isEmpty()) {
+            return;
+        }
+
+        drawEntity(context, x - 80, y + 95, 40, 0.0625F, RENDERED_COMPANIONS.get(pageIndex));
     }
 
     @Override

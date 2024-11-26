@@ -7,6 +7,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.text.Text;
 import net.minecraft.world.World;
 
 public class OcelotCompanion extends PlayerCompanion {
@@ -21,5 +22,10 @@ public class OcelotCompanion extends PlayerCompanion {
     @Override
     protected void doPassiveAction(PlayerEntity player, Entity nearestHostile) {
         player.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 60, 0, true, false));
+    }
+
+    @Override
+    public Text getName() {
+        return Text.translatable("entity.minecraft.ocelot");
     }
 }

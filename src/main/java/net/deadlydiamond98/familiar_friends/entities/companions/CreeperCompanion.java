@@ -7,6 +7,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.text.Text;
 import net.minecraft.world.World;
 
 public class CreeperCompanion extends PlayerCompanion {
@@ -20,5 +21,10 @@ public class CreeperCompanion extends PlayerCompanion {
 
     @Override
     protected void doPassiveAction(PlayerEntity player, Entity nearestHostile) {
+    }
+
+    @Override
+    public Text getName() {
+        return Text.translatable("entity.minecraft.creeper");
     }
 }
