@@ -3,6 +3,8 @@ package net.deadlydiamond98.familiar_friends.screens;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.companions.CreeperCompanion;
+import net.deadlydiamond98.familiar_friends.screens.widgets.CompanionBookButton;
 import net.deadlydiamond98.familiar_friends.util.BookCompanionRegistry;
 import net.deadlydiamond98.familiar_friends.util.TextFormatHelper;
 import net.minecraft.client.MinecraftClient;
@@ -18,6 +20,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Pair;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Quaternionf;
@@ -35,6 +38,8 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
     private int pageIndex;
     private PageTurnWidget nextPageButton;
     private PageTurnWidget previousPageButton;
+    
+    private CompanionBookButton unlockButton;
 
     public CompanionBookScreen(CompanionBookScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
@@ -43,6 +48,7 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
     protected void init() {
         this.addCompanions();
         this.addPageButtons();
+        this.addEntityButtons();
     }
 
     private void addCompanions() {
@@ -87,49 +93,16 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         });
     }
 
-    protected void addPageButtons() {
-        int i = (this.width - 320) / 2;
-        this.nextPageButton = this.addDrawableChild(new PageTurnWidget(i + 280, 170, true, (button) -> this.goToNextPage(), true));
-        this.previousPageButton = this.addDrawableChild(new PageTurnWidget(i + 16, 170, false, (button) -> this.goToPreviousPage(), true));
-        this.updatePageButtons();
-    }
-
-    protected void goToPreviousPage() {
-        if (this.pageIndex > 0) {
-            --this.pageIndex;
-        }
-
-        this.updatePageButtons();
-    }
-
-    protected void goToNextPage() {
-        if (this.pageIndex < this.getPageCount() - 1) {
-            ++this.pageIndex;
-        }
-
-        this.updatePageButtons();
-    }
-
-    private void updatePageButtons() {
-        this.nextPageButton.visible = this.pageIndex < this.getPageCount() - 1;
-        this.previousPageButton.visible = this.pageIndex > 0;
-    }
-
-
-    private int getPageCount() {
-        return RENDERED_COMPANIONS.size() + 1;
-    }
-
     @Override
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
         RenderSystem.setShaderTexture(0, BOOK_TEXTURE);
         MatrixStack matrices = context.getMatrices();
 
-        int x = (this.width) / 2;
-        int y = 2;
+        int guiX = (this.width) / 2;
+        int guiY = 2;
 
-        context.drawTexture(BOOK_TEXTURE, (this.width - 320) / 2, y, 8, 2, 320, 200, 512, 512);
+        context.drawTexture(BOOK_TEXTURE, (this.width - 320) / 2, guiY, 8, 2, 320, 200, 512, 512);
 
         // Stop execution of drawEntity if no companions in book to prevent crashing
         if (RENDERED_COMPANIONS.isEmpty()) {
@@ -138,7 +111,7 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
 
         // If on the first page, render the page selection area rather than an entity
         if (this.pageIndex == 0) {
-            drawFirstPage(context, delta, mouseX, mouseY, x, y);
+            drawFirstPage(context, delta, mouseX, mouseY, guiX, guiY);
             return;
         }
 
@@ -146,12 +119,12 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
 
         PlayerCompanion companion = RENDERED_COMPANIONS.get(pageIndex - 1);
 
-        int companionX = x - 80;
-        int companionY = y + 105;
+        int companionX = guiX - 80;
+        int companionY = guiY + 105;
 
-        context.drawTexture(BOOK_TEXTURE, ((this.width - 106) / 2) - 80, y + 22, 329, 2, 106, 106, 512, 512); // Entity frame thing
+        context.drawTexture(BOOK_TEXTURE, ((this.width - 106) / 2) - 80, companionY - 83, 329, 2, 106, 106, 512, 512); // Entity frame thing
 
-        drawEntity(context, companionX, companionY, 40, 0.0625F, companion, true); // Entity Model
+        drawEntity(context, companionX, companionY, 40, 0.0625F, companion, companion.isLocked(client.player)); // Entity Model
 
         Text name = companion.getName().copy().setStyle(Style.EMPTY.withUnderline(true));
 
@@ -166,8 +139,8 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
 
         // Description Page
 
-        int descriptionX = x + 80;
-        int descriptionY = y + 15;
+        int descriptionX = guiX + 80;
+        int descriptionY = guiY + 15;
 
         Text descriptionTitle = Text.translatable("gui.familiar_friends.desc").setStyle(Style.EMPTY.withUnderline(true));
 
@@ -228,9 +201,13 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
         RenderSystem.setShaderTexture(0, BOOK_TEXTURE);
 
-        //        PlayerCompanion companion = RENDERED_COMPANIONS.get(pageIndex - 1);
+        PlayerCompanion companion = RENDERED_COMPANIONS.get(pageIndex - 1);
 
-        context.drawTexture(BOOK_TEXTURE, ((this.width - 106) / 2) - 82, 22, 110, 110, 57, 204, 56, 56, 512, 512);
+        // Lock Overlay
+        if (companion.isLocked(client.player)) {
+            context.drawTexture(BOOK_TEXTURE, ((this.width - 106) / 2) - 82, 22, 110, 110, 57, 204,
+                    56, 56, 512, 512);
+        }
     }
 
 
@@ -293,5 +270,51 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         entityRenderDispatcher.setRenderShadows(true);
         context.getMatrices().pop();
         DiffuseLighting.enableGuiDepthLighting();
+    }
+
+    
+    
+    // Button Things!!!
+
+    private void addEntityButtons() {
+        int i = (this.width) / 2;
+        this.unlockButton = this.addDrawableChild(new CompanionBookButton(i + 45, 100, 200, 20,
+                Text.translatable("gui.familiar_friends.unlock"), button -> this.goToNextPage()));
+    }
+
+    private void unlockAction() {
+
+    }
+
+    protected void addPageButtons() {
+        int i = (this.width - 320) / 2;
+        this.nextPageButton = this.addDrawableChild(new PageTurnWidget(i + 280, 170, true, (button) -> this.goToNextPage(), true));
+        this.previousPageButton = this.addDrawableChild(new PageTurnWidget(i + 16, 170, false, (button) -> this.goToPreviousPage(), true));
+        this.updatePageButtons();
+    }
+
+    protected void goToPreviousPage() {
+        if (this.pageIndex > 0) {
+            --this.pageIndex;
+        }
+
+        this.updatePageButtons();
+    }
+
+    protected void goToNextPage() {
+        if (this.pageIndex < this.getPageCount() - 1) {
+            ++this.pageIndex;
+        }
+
+        this.updatePageButtons();
+    }
+
+    private void updatePageButtons() {
+        this.nextPageButton.visible = this.pageIndex < this.getPageCount() - 1;
+        this.previousPageButton.visible = this.pageIndex > 0;
+    }
+    
+    private int getPageCount() {
+        return RENDERED_COMPANIONS.size() + 1;
     }
 }

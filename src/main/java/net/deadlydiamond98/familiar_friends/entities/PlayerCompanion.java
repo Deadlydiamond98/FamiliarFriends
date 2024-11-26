@@ -1,5 +1,6 @@
 package net.deadlydiamond98.familiar_friends.entities;
 
+import net.deadlydiamond98.familiar_friends.util.CompanionPlayerData;
 import net.minecraft.command.argument.EntityAnchorArgumentType;
 import net.minecraft.entity.*;
 import net.minecraft.entity.data.DataTracker;
@@ -376,6 +377,14 @@ public abstract class PlayerCompanion extends Entity implements Ownable {
     public Text getAuthor() {
         return Text.translatable("gui.familiar_friends.author").append(
                 Text.translatable(this.getType().getTranslationKey() + ".author"));
+    }
+
+    public boolean isLocked(PlayerEntity player) {
+        return !((CompanionPlayerData) player).isCompanionUnlocked(this);
+    }
+
+    public void unlock(PlayerEntity player) {
+        ((CompanionPlayerData) player).unlockCompanion(this);
     }
 
     @Nullable

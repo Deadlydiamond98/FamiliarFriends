@@ -21,6 +21,8 @@ public class DebugCompanionEntitySpawner extends Item {
 
         PlayerCompanion testEntity = new OcelotCompanion(world, user, false);
 
+        testEntity.unlock(user);
+
         world.spawnEntity(testEntity);
 
         return super.use(world, user, hand);
