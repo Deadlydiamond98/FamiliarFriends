@@ -1,7 +1,7 @@
 package net.deadlydiamond98.familiar_friends.networking;
 
+import net.deadlydiamond98.familiar_friends.networking.packet.EquipCompanionPacket;
 import net.deadlydiamond98.familiar_friends.networking.packet.UnlockCompanionPacket;
-import net.deadlydiamond98.familiar_friends.networking.packet.UnlockCompanionPacketReciever;
 import net.deadlydiamond98.familiar_friends.networking.packet.SyncUnlockedCompanionsPacket;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
@@ -13,8 +13,10 @@ public class CompanionServerPackets {
     public static void registerServerPackets() {
         PayloadTypeRegistry.playS2C().register(SyncUnlockedCompanionsPacket.ID, SyncUnlockedCompanionsPacket.CODEC);
         PayloadTypeRegistry.playC2S().register(UnlockCompanionPacket.ID, UnlockCompanionPacket.CODEC);
+        PayloadTypeRegistry.playC2S().register(EquipCompanionPacket.ID, EquipCompanionPacket.CODEC);
 
-        ServerPlayNetworking.registerGlobalReceiver(UnlockCompanionPacket.ID, UnlockCompanionPacketReciever::recieve);
+        ServerPlayNetworking.registerGlobalReceiver(UnlockCompanionPacket.ID, UnlockCompanionPacket::recieve);
+        ServerPlayNetworking.registerGlobalReceiver(EquipCompanionPacket.ID, EquipCompanionPacket::recieve);
     }
 
     public static void updatePlayerUnlockedCompanions(ServerPlayerEntity player, List<String> unlockedCompanions) {

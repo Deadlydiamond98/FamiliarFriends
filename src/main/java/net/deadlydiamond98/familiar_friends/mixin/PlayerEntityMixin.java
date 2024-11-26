@@ -9,6 +9,7 @@ import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.nbt.NbtString;
 import net.minecraft.server.network.ServerPlayerEntity;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -24,9 +25,12 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
     @Unique
     private boolean hasCompanion;
 
-    //IDK if a list like this is the best approach, but it works
     @Unique
     private List<String> unlockedCompanions;
+
+    @Nullable
+    @Unique
+    private PlayerCompanion currentCompanion;
 
     public PlayerEntity getPlayer() {
         return ((PlayerEntity)(Object)this);
@@ -36,6 +40,7 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
     private void onInit(CallbackInfo ci) {
         this.hasCompanion = false;
         this.unlockedCompanions = new ArrayList<>();
+        this.currentCompanion = null;
     }
 
     @Inject(method = "tick", at = @At("HEAD"))
@@ -96,9 +101,30 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
         this.unlockedCompanions = unlockedCompanions;
     }
 
-
     @Override
     public void removeAllCompanions() {
         this.unlockedCompanions.clear();
+    }
+
+    @Override
+    public void revokeCompanion(String companion) {
+        this.unlockedCompanions.remove(companion);
+
+        if (this.currentCompanion.getType().getTranslationKey().equals(companion)) {
+            this.currentCompanion = null;
+            this.hasCompanion = false;
+        }
+    }
+
+    @Override
+    public void grantCompanion(PlayerCompanion companion) {
+        this.currentCompanion = companion;
+        this.hasCompanion = true;
+    }
+
+    @Nullable
+    @Override
+    public PlayerCompanion currentCompanion() {
+        return null;
     }
 }

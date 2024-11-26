@@ -12,7 +12,7 @@ import java.util.List;
 
 public record SyncUnlockedCompanionsPacket(List<String> unlockedCompanions) implements CustomPayload {
 
-    public static final CustomPayload.Id<SyncUnlockedCompanionsPacket> ID = new CustomPayload.Id<>(Identifier.of(FamiliarFriends.MOD_ID, "familiar_sync_packet"));
+    public static final CustomPayload.Id<SyncUnlockedCompanionsPacket> ID = new CustomPayload.Id<>(Identifier.of(FamiliarFriends.MOD_ID, "companion_sync_packet"));
 
     public static final PacketCodec<PacketByteBuf, SyncUnlockedCompanionsPacket> CODEC = PacketCodec.tuple(
             PacketCodecs.collection(ArrayList::new, PacketCodecs.STRING), SyncUnlockedCompanionsPacket::unlockedCompanions,

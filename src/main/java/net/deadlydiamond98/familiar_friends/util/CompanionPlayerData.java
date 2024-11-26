@@ -10,7 +10,11 @@ public interface CompanionPlayerData {
     boolean hasCompanion();
 
     void unlockCompanion(String companion);
+    void revokeCompanion(String companion);
     boolean isCompanionUnlocked(PlayerCompanion companion);
     void removeAllCompanions();
     void syncUnlockedList(List<String> unlockedCompanions);
+
+    PlayerCompanion currentCompanion();
+    void grantCompanion(PlayerCompanion companion);
 }

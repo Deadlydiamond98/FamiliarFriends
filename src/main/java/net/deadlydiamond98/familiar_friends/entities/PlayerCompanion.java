@@ -11,6 +11,8 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.Monster;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.network.RegistryByteBuf;
+import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.packet.s2c.play.EntityAnimationS2CPacket;
 import net.minecraft.server.world.ServerChunkManager;
 import net.minecraft.server.world.ServerWorld;
@@ -25,6 +27,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public abstract class PlayerCompanion extends Entity implements Ownable {
+
     private int idleTime;
     private float currentAngle;
     public static final float SPEED = 1.5f;

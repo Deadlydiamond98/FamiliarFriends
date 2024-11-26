@@ -32,7 +32,7 @@ public class CompanionBookButton extends ButtonWidget {
         MinecraftClient client = MinecraftClient.getInstance();
         TextRenderer textRenderer = client.textRenderer;
 
-        int pressed = this.isSelected() ? 21 : 0;
+        int pressed = this.active ? (this.isSelected() ? 21 : 0) : 42;
 
         int centerX = this.renderX - (this.getWidth() / 2);
         int centerY = this.renderY - (this.getHeight() / 2);
@@ -40,7 +40,7 @@ public class CompanionBookButton extends ButtonWidget {
         context.drawTexture(BOOK_TEXTURE, centerX, centerY, this.getWidth(), this.getHeight(), 114, 203 + pressed,
                 200, 20, 512, 512);
 
-        int textColor = this.isSelected() ? 0x700000 : 0x574436;
+        int textColor = this.active ? (this.isSelected() ? 0x700000 : 0x574436) : 0x2a2a2a;
 
         int textWidth = textRenderer.getWidth(getMessage());
         int textHeight = textRenderer.fontHeight;

@@ -7,6 +7,7 @@ import net.deadlydiamond98.familiar_friends.entities.companions.CreeperCompanion
 import net.deadlydiamond98.familiar_friends.networking.CompanionClientPackets;
 import net.deadlydiamond98.familiar_friends.screens.widgets.CompanionBookButton;
 import net.deadlydiamond98.familiar_friends.util.BookCompanionRegistry;
+import net.deadlydiamond98.familiar_friends.util.CompanionPlayerData;
 import net.deadlydiamond98.familiar_friends.util.TextFormatHelper;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
@@ -283,7 +284,7 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         this.unlockButton = this.addDrawableChild(new CompanionBookButton(i + 80, 150, 100, 15,
                 Text.translatable("gui.familiar_friends.unlock"), button -> this.unlockFamiliar()));
         this.equipButton = this.addDrawableChild(new CompanionBookButton(i + 80, 150, 100, 15,
-                Text.translatable("gui.familiar_friends.equip"), button -> this.goToNextPage()));
+                Text.translatable("gui.familiar_friends.equip"), button -> this.equipFamiliar()));
 
         updateEntityButtons();
     }
@@ -296,6 +297,9 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
     }
 
     private void equipFamiliar() {
+        PlayerCompanion companion = RENDERED_COMPANIONS.get(pageIndex - 1);
+        CompanionClientPackets.equipPlayerCompanion(companion.getType().getTranslationKey());
+        this.equipButton.active = false;
         this.updateEntityButtons();
     }
 
@@ -309,6 +313,8 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
 
         this.unlockButton.visible = pastFirstPage && companion != null && companion.isLocked(client.player);
         this.equipButton.visible = pastFirstPage && companion != null && !companion.isLocked(client.player);
+
+        this.equipButton.active = companion != ( (CompanionPlayerData) client.player).currentCompanion();
     }
 
     protected void addPageButtons() {
