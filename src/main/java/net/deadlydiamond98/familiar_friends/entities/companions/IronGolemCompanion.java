@@ -42,6 +42,11 @@ public class IronGolemCompanion extends PlayerCompanion {
     }
 
     @Override
+    public void doKeyEvent(PlayerEntity player) {
+
+    }
+
+    @Override
     public Text getName() {
         return Text.translatable("entity.minecraft.iron_golem");
     }

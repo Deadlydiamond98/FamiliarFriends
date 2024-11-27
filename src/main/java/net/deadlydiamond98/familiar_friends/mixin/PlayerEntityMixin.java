@@ -1,9 +1,11 @@
 package net.deadlydiamond98.familiar_friends.mixin;
 
 import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.companions.CompanionCubeCompanion;
 import net.deadlydiamond98.familiar_friends.networking.CompanionServerPackets;
 import net.deadlydiamond98.familiar_friends.util.BookCompanionRegistry;
 import net.deadlydiamond98.familiar_friends.util.CompanionPlayerData;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -145,25 +147,26 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
         if (this.currentCompanion != null) {
             this.currentCompanion.setRemoved(Entity.RemovalReason.DISCARDED);
         }
-        this.currentCompanion = null;
+
         this.backUpCompanionKey = "";
         this.hasCompanion = false;
     }
 
-//    @Override
-//    public void revokeCompanion(String companion) {
-//        this.unlockedCompanions.remove(companion);
-//
-//        if (this.currentCompanion.getType().getTranslationKey().equals(companion)) {
-//            this.currentCompanion = null;
-//            this.hasCompanion = false;
-//        }
-//    }
+    @Override
+    public void revokeCompanion(String companion) {
+        this.unlockedCompanions.remove(companion);
+
+        if (this.currentCompanion.getType().getTranslationKey().equals(companion)) {
+            this.hasCompanion = false;
+            this.currentCompanion.remove(Entity.RemovalReason.DISCARDED);
+            this.backUpCompanionKey = "";
+        }
+    }
 
     @Override
     public void grantCompanion(PlayerCompanion companion) {
 
-        if (this.currentCompanion != null) {
+        if (this.currentCompanion != null && !this.currentCompanion.isRemoved()) {
             this.currentCompanion.setRemoved(Entity.RemovalReason.DISCARDED);
         }
 
@@ -181,6 +184,18 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
     @Override
     public void syncCurrentCompanion(String companion) {
         this.backUpCompanionKey = companion;
+    }
+
+    @Override
+    public void doCompanionKeybind() {
+        if (this.currentCompanion != null) {
+            this.currentCompanion.doKeyEvent(getPlayer());
+        }
+    }
+
+    @Override
+    public PlayerCompanion getCompanion() {
+        return createCompanion();
     }
 
     @Unique

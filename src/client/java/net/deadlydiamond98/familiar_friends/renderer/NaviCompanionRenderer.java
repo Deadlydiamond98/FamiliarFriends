@@ -25,8 +25,8 @@ public class NaviCompanionRenderer extends CompanionRenderer<NaviCompanion, Navi
     }
 
     @Override
-    public void render(NaviCompanion entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumerProvider, int i) {
-        super.render(entity, yaw, tickDelta, matrices, vertexConsumerProvider, i);
+    protected void otherModelParts(NaviCompanion entity, MatrixStack matrices, VertexConsumerProvider vertexConsumerProvider, float tickDelta) {
+        super.otherModelParts(entity, matrices, vertexConsumerProvider, tickDelta);
         renderBody(entity, matrices, vertexConsumerProvider, tickDelta);
     }
 

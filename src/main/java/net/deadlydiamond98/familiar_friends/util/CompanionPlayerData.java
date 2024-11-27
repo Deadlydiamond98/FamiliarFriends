@@ -7,7 +7,6 @@ import java.util.List;
 public interface CompanionPlayerData {
     void setCompanionStatus(boolean value);
     boolean hasCompanion();
-
     void unlockCompanion(String companion);
     void revokeCompanion(String companion);
     boolean isCompanionUnlocked(PlayerCompanion companion);
@@ -16,4 +15,7 @@ public interface CompanionPlayerData {
     void syncCurrentCompanion(String companion);
     String currentCompanion();
     void grantCompanion(PlayerCompanion companion);
+    void doCompanionKeybind();
+    PlayerCompanion getCompanion();
+
 }

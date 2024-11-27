@@ -10,6 +10,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 public class NaviCompanion extends PlayerCompanion {
@@ -22,8 +23,16 @@ public class NaviCompanion extends PlayerCompanion {
     }
 
     @Override
+    protected void lookBehavior() {
+        if (this.getOwner() != null) {
+            float ownerYaw = this.getOwner().getHeadYaw();
+            this.setYaw(ownerYaw + 20);
+        }
+    }
+
+    @Override
     protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
-        int radius = 15;
+        int radius = 20;
 
         BlockPos closestBlockPos = null;
 
@@ -35,7 +44,9 @@ public class NaviCompanion extends PlayerCompanion {
                     BlockPos blockPos = new BlockPos((int) (player.getX() + x), (int) (player.getY() + y), (int) (player.getZ() + z));
                     Block block = world.getBlockState(blockPos).getBlock();
 
-                    if (block.getDefaultState().isOf(Blocks.ANCIENT_DEBRIS)) {
+                    if (block.getDefaultState().isOf(Blocks.ANCIENT_DEBRIS) ||
+                            block.getDefaultState().isOf(Blocks.DEEPSLATE_DIAMOND_ORE) ||
+                            block.getDefaultState().isOf(Blocks.DIAMOND_ORE)) {
                         if (closestBlockPos == null || getClosest(player, closestBlockPos, blockPos)) {
                             closestBlockPos = blockPos;
                         }
@@ -54,9 +65,14 @@ public class NaviCompanion extends PlayerCompanion {
 
                 float pitch = (Math.max(-2.0f, 2.0f / (distance + 1)) + 0.5f) * 2;
 
-                world.playSound(this, player.getBlockPos(), CompanionSounds.Navi, SoundCategory.PLAYERS, 1.0f, pitch);
+                this.playSound(CompanionSounds.Navi, 1.0f, pitch);
             }
         }
+
+    }
+
+    @Override
+    public void doKeyEvent(PlayerEntity player) {
 
     }
 

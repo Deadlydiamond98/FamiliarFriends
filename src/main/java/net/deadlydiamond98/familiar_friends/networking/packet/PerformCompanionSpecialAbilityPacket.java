@@ -1,6 +1,7 @@
 package net.deadlydiamond98.familiar_friends.networking.packet;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
+import net.deadlydiamond98.familiar_friends.util.CompanionPlayerData;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.codec.PacketCodec;
@@ -23,10 +24,9 @@ public record PerformCompanionSpecialAbilityPacket(String keybinding) implements
     }
 
     public static void recieve(PerformCompanionSpecialAbilityPacket payload, ServerPlayNetworking.Context context) {
-        String keybinding = payload.keybinding();
         MinecraftServer server = context.server();
         server.execute(() -> {
-
+            ((CompanionPlayerData) context.player()).doCompanionKeybind();
         });
     }
 }

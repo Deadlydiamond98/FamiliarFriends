@@ -20,4 +20,9 @@ public class NotchCompanion extends PlayerCompanion {
     protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
     }
 
+    @Override
+    public void doKeyEvent(PlayerEntity player) {
+
+    }
+
 }

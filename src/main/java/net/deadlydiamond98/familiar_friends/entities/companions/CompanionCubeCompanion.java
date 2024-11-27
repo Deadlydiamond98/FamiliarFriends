@@ -19,4 +19,9 @@ public class CompanionCubeCompanion extends PlayerCompanion {
     @Override
     protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
     }
+
+    @Override
+    public void doKeyEvent(PlayerEntity player) {
+
+    }
 }

@@ -38,6 +38,12 @@ public abstract class CompanionRenderer<T extends PlayerCompanion, M extends Ent
     @Override
     public void render(T entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumerProvider, int i) {
         matrices.push();
+
+        if (this.doBobbingAnimation() && !entity.isBookRender()) {
+            matrices.translate(0, Math.sin(entity.age * 0.1) * 0.1, 0);
+        }
+
+        matrices.push();
         this.model.handSwingProgress = this.getHandSwingProgress(entity, tickDelta);
 
         float bodyYaw = MathHelper.lerpAngleDegrees(tickDelta, entity.prevBodyYaw, entity.bodyYaw);
@@ -86,6 +92,17 @@ public abstract class CompanionRenderer<T extends PlayerCompanion, M extends Ent
 
         matrices.pop();
         super.render(entity, yaw, tickDelta, matrices, vertexConsumerProvider, i);
+
+        otherModelParts(entity, matrices, vertexConsumerProvider, tickDelta);
+        matrices.pop();
+    }
+
+    protected void otherModelParts(T entity, MatrixStack matrices, VertexConsumerProvider vertexConsumerProvider, float tickDelta) {
+    }
+
+
+    protected boolean doBobbingAnimation() {
+        return true;
     }
 
     protected void setupTransforms(T entity, MatrixStack matrices, float animationProgress, float bodyYaw, float tickDelta, int i) {

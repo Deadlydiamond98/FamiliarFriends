@@ -73,6 +73,7 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
         if (this.getOwner() != null && this.getOwner() instanceof PlayerEntity player) {
             this.moveAround(player);
         }
+
         this.move(MovementType.SELF, this.getVelocity());
 
         super.tickMovement();
@@ -202,7 +203,7 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
         return !((CompanionPlayerData) player).isCompanionUnlocked(this);
     }
 
-//    public abstract void doKeyEvent(PlayerEntity player);
+    public abstract void doKeyEvent(PlayerEntity player);
 
     @Nullable
     @Override
