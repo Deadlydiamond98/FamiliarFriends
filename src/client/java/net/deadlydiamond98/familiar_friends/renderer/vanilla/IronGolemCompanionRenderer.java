@@ -5,7 +5,9 @@ import net.deadlydiamond98.familiar_friends.models.vanilla.IronGolemCompanionMod
 import net.deadlydiamond98.familiar_friends.renderer.CompanionRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.passive.IronGolemEntity;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.RotationAxis;
 
 public class IronGolemCompanionRenderer extends CompanionRenderer<IronGolemCompanion, IronGolemCompanionModel<IronGolemCompanion>> {
 
@@ -13,11 +15,6 @@ public class IronGolemCompanionRenderer extends CompanionRenderer<IronGolemCompa
 
     public IronGolemCompanionRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new IronGolemCompanionModel<>(ctx.getPart(IronGolemCompanionModel.LAYER_LOCATION)));
-    }
-
-    @Override
-    protected void setupTransforms(IronGolemCompanion entity, MatrixStack matrices, float animationProgress, float bodyYaw, float tickDelta, float scale) {
-
     }
 
     @Override

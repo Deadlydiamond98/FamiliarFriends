@@ -1,7 +1,7 @@
 package net.deadlydiamond98.familiar_friends.renderer;
 
 import com.google.common.collect.Lists;
-import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
@@ -36,117 +36,66 @@ public abstract class CompanionRenderer<T extends PlayerCompanion, M extends Ent
     }
 
     @Override
-    public void render(T livingEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
-        matrixStack.push();
-        this.model.handSwingProgress = this.getHandSwingProgress(livingEntity, g);
-        this.model.riding = livingEntity.hasVehicle();
-        float h = MathHelper.lerpAngleDegrees(g, livingEntity.prevBodyYaw, livingEntity.bodyYaw);
-        float j = MathHelper.lerpAngleDegrees(g, livingEntity.prevHeadYaw, livingEntity.headYaw);
-        float k = j - h;
-        float l;
-        if (livingEntity.hasVehicle()) {
-            Entity var11 = livingEntity.getVehicle();
-            if (var11 instanceof LivingEntity) {
-                LivingEntity livingEntity2 = (LivingEntity)var11;
-                h = MathHelper.lerpAngleDegrees(g, livingEntity2.prevBodyYaw, livingEntity2.bodyYaw);
-                k = j - h;
-                l = MathHelper.wrapDegrees(k);
-                if (l < -85.0F) {
-                    l = -85.0F;
-                }
+    public void render(T entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumerProvider, int i) {
+        matrices.push();
+        this.model.handSwingProgress = this.getHandSwingProgress(entity, tickDelta);
 
-                if (l >= 85.0F) {
-                    l = 85.0F;
-                }
+        float bodyYaw = MathHelper.lerpAngleDegrees(tickDelta, entity.prevBodyYaw, entity.bodyYaw);
+        float headYaw = MathHelper.lerpAngleDegrees(tickDelta, entity.prevHeadYaw, entity.headYaw);
 
-                h = j - l;
-                if (l * l > 2500.0F) {
-                    h += l * 0.2F;
-                }
+        float netHeadYaw = headYaw - bodyYaw;
+        netHeadYaw = MathHelper.wrapDegrees(netHeadYaw);
 
-                k = j - h;
-            }
+        float animationProgress = this.getAnimationProgress(entity, tickDelta);
+        this.setupTransforms(entity, matrices, animationProgress, bodyYaw, tickDelta, 0);
+        matrices.scale(-1.0F, -1.0F, 1.0F);
+        this.scale(entity, matrices);
+        matrices.translate(0.0F, -1.501F, 0.0F);
+
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(entity.bodyYaw + 180));
+
+        float limbSwing = entity.limbAnimator.getSpeed(tickDelta);
+        float limbSwingAmount = entity.limbAnimator.getPos(tickDelta);
+
+        if (limbSwing > 1.0F) {
+            limbSwing = 1.0F;
         }
 
-        float m = MathHelper.lerp(g, livingEntity.prevPitch, livingEntity.getPitch());
+        this.model.animateModel(entity, limbSwingAmount, limbSwing, tickDelta);
+        this.model.setAngles(entity, limbSwingAmount, limbSwing, animationProgress, netHeadYaw, 0);
 
-        k = MathHelper.wrapDegrees(k);
-        float n;
-
-        n = this.getAnimationProgress(livingEntity, g);
-        this.setupTransforms(livingEntity, matrixStack, n, h, g, 1);
-        matrixStack.scale(-1.0F, -1.0F, 1.0F);
-        this.scale(livingEntity, matrixStack, g);
-        matrixStack.translate(0.0F, -1.501F, 0.0F);
-        matrixStack.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(h));
-        float o = 0.0F;
-        float p = 0.0F;
-        if (!livingEntity.hasVehicle() && livingEntity.isAlive()) {
-            o = livingEntity.limbAnimator.getSpeed(g);
-            p = livingEntity.limbAnimator.getPos(g);
-
-            if (o > 1.0F) {
-                o = 1.0F;
-            }
-        }
-
-        this.model.animateModel(livingEntity, p, o, g);
-        this.model.setAngles(livingEntity, p, o, n, k, m);
         MinecraftClient minecraftClient = MinecraftClient.getInstance();
-        boolean bl = this.isVisible(livingEntity);
-        boolean bl2 = livingEntity.isInvisibleTo(minecraftClient.player);
-        boolean bl3 = minecraftClient.hasOutline(livingEntity);
-        RenderLayer renderLayer = this.getRenderLayer(livingEntity, bl, bl2, bl3);
+        boolean bl = !entity.isInvisible();
+        boolean bl2 = entity.isInvisibleTo(minecraftClient.player);
+        boolean bl3 = minecraftClient.hasOutline(entity);
+        RenderLayer renderLayer = this.getRenderLayer(entity, bl, bl2, bl3);
         if (renderLayer != null) {
             VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(renderLayer);
-            int q = getOverlay(livingEntity, this.getAnimationCounter(livingEntity, g));
-            this.model.render(matrixStack, vertexConsumer, i, q, bl2 ? 654311423 : -1);
+            int q = getOverlay(entity, 0.0f);
+            this.model.render(matrices, vertexConsumer, i, q, bl2 ? 654311423 : -1);
         }
 
-        if (!livingEntity.isSpectator()) {
+        if (!entity.isSpectator()) {
             Iterator var25 = this.features.iterator();
 
             while(var25.hasNext()) {
                 FeatureRenderer<T, M> featureRenderer = (FeatureRenderer)var25.next();
-                featureRenderer.render(matrixStack, vertexConsumerProvider, i, livingEntity, p, o, g, n, k, m);
+                featureRenderer.render(matrices, vertexConsumerProvider, i, entity, limbSwingAmount, limbSwing, tickDelta, animationProgress, netHeadYaw, 0);
             }
         }
 
-        matrixStack.pop();
-        super.render(livingEntity, f, g, matrixStack, vertexConsumerProvider, i);
+        matrices.pop();
+        super.render(entity, yaw, tickDelta, matrices, vertexConsumerProvider, i);
     }
 
-    @Nullable
-    protected RenderLayer getRenderLayer(T entity, boolean showBody, boolean translucent, boolean showOutline) {
-        Identifier identifier = this.getTexture(entity);
-        if (translucent) {
-            return RenderLayer.getItemEntityTranslucentCull(identifier);
-        } else if (showBody) {
-            return this.model.getLayer(identifier);
-        } else {
-            return showOutline ? RenderLayer.getOutline(identifier) : null;
-        }
+    protected void setupTransforms(T entity, MatrixStack matrices, float animationProgress, float bodyYaw, float tickDelta, int i) {
     }
 
     public M getModel() {
         return this.model;
     }
 
-    protected boolean isVisible(T entity) {
-        return !entity.isInvisible();
-    }
-
-    public int getOverlay(T entity, float whiteOverlayProgress) {
-        return OverlayTexture.packUv(OverlayTexture.getU(whiteOverlayProgress), OverlayTexture.getV(false));
-    }
-
-    protected float getAnimationCounter(T entity, float tickDelta) {
-        return 0.0F;
-    }
-
-    protected abstract void setupTransforms(T entity, MatrixStack matrices, float animationProgress, float bodyYaw, float tickDelta, float scale);
-
-    protected void scale(T entity, MatrixStack matrices, float amount) {
+    protected void scale(T entity, MatrixStack matrices) {
         if (entity.isBookRender()) {
             guiScale(matrices);
         }
@@ -163,11 +112,24 @@ public abstract class CompanionRenderer<T extends PlayerCompanion, M extends Ent
 
     protected abstract void worldScale(MatrixStack matrices);
 
+    @Nullable
+    protected RenderLayer getRenderLayer(T entity, boolean showBody, boolean translucent, boolean showOutline) {
+        Identifier identifier = this.getTexture(entity);
+        if (translucent) {
+            return RenderLayer.getItemEntityTranslucentCull(identifier);
+        } else if (showBody) {
+            return this.model.getLayer(identifier);
+        } else {
+            return showOutline ? RenderLayer.getOutline(identifier) : null;
+        }
+    }
+    public int getOverlay(T entity, float whiteOverlayProgress) {
+        return OverlayTexture.packUv(OverlayTexture.getU(whiteOverlayProgress), OverlayTexture.getV(false));
+    }
     protected float getAnimationProgress(T entity, float tickDelta) {
         return (float)entity.age + tickDelta;
     }
-
-    protected float getHandSwingProgress(T entity, float tickDelta) {
+    private float getHandSwingProgress(T entity, float tickDelta) {
         return entity.getHandSwingProgress(tickDelta);
     }
 }

@@ -1,7 +1,6 @@
 package net.deadlydiamond98.familiar_friends.util;
 
-import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
-import net.minecraft.nbt.NbtCompound;
+import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
 
 import java.util.List;
 

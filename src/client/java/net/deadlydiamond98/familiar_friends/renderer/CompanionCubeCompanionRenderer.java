@@ -18,11 +18,6 @@ public class CompanionCubeCompanionRenderer extends CompanionRenderer<CompanionC
     }
 
     @Override
-    protected void setupTransforms(CompanionCubeCompanion entity, MatrixStack matrices, float animationProgress, float bodyYaw, float tickDelta, float scale) {
-
-    }
-
-    @Override
     protected void guiScale(MatrixStack matrices) {
         this.scale(matrices, 1.0f);
     }

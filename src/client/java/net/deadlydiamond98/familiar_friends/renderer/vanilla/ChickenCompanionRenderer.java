@@ -16,11 +16,6 @@ public class ChickenCompanionRenderer extends CompanionRenderer<ChickenCompanion
     }
 
     @Override
-    protected void setupTransforms(ChickenCompanion entity, MatrixStack matrices, float animationProgress, float bodyYaw, float tickDelta, float scale) {
-
-    }
-
-    @Override
     protected void guiScale(MatrixStack matrices) {
         this.scale(matrices, 2.5f);
     }

@@ -1,8 +1,6 @@
 package net.deadlydiamond98.familiar_friends.items;
 
-import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
-import net.deadlydiamond98.familiar_friends.entities.companions.CreeperCompanion;
-import net.deadlydiamond98.familiar_friends.entities.companions.NaviCompanion;
+import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.OcelotCompanion;
 import net.deadlydiamond98.familiar_friends.util.CompanionPlayerData;
 import net.minecraft.entity.player.PlayerEntity;

@@ -16,11 +16,6 @@ public class CreeperCompanionRenderer extends CompanionRenderer<CreeperCompanion
     }
 
     @Override
-    protected void setupTransforms(CreeperCompanion entity, MatrixStack matrices, float animationProgress, float bodyYaw, float tickDelta, float scale) {
-
-    }
-
-    @Override
     protected void guiScale(MatrixStack matrices) {
         this.scale(matrices, 1.0f);
     }

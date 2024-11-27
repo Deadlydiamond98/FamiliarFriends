@@ -17,11 +17,6 @@ public class SquidCompanionRenderer extends CompanionRenderer<SquidCompanion, Sq
     }
 
     @Override
-    protected void setupTransforms(SquidCompanion entity, MatrixStack matrices, float animationProgress, float bodyYaw, float tickDelta, float scale) {
-
-    }
-
-    @Override
     protected void guiScale(MatrixStack matrices) {
         this.scale(matrices, 0.70f);
     }

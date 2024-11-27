@@ -18,11 +18,6 @@ public class OcelotCompanionRenderer extends CompanionRenderer<OcelotCompanion, 
     }
 
     @Override
-    protected void setupTransforms(OcelotCompanion entity, MatrixStack matrices, float animationProgress, float bodyYaw, float tickDelta, float scale) {
-
-    }
-
-    @Override
     protected void guiScale(MatrixStack matrices) {
         this.scale(matrices, 2.0f);
     }

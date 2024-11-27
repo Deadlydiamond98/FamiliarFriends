@@ -25,14 +25,9 @@ public class NaviCompanionRenderer extends CompanionRenderer<NaviCompanion, Navi
     }
 
     @Override
-    public void render(NaviCompanion mobEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i) {
-        super.render(mobEntity, f, g, matrixStack, vertexConsumerProvider, i);
-        renderBody(mobEntity, matrixStack, vertexConsumerProvider, g);
-    }
-
-    @Override
-    protected void setupTransforms(NaviCompanion entity, MatrixStack matrices, float animationProgress, float bodyYaw, float tickDelta, float scale) {
-
+    public void render(NaviCompanion entity, float yaw, float tickDelta, MatrixStack matrices, VertexConsumerProvider vertexConsumerProvider, int i) {
+        super.render(entity, yaw, tickDelta, matrices, vertexConsumerProvider, i);
+        renderBody(entity, matrices, vertexConsumerProvider, tickDelta);
     }
 
     @Override
@@ -42,13 +37,13 @@ public class NaviCompanionRenderer extends CompanionRenderer<NaviCompanion, Navi
 
     @Override
     protected void worldScale(MatrixStack matrices) {
-        this.scale(matrices, 0.5f);
+        this.scale(matrices, 0.25f);
     }
 
     private void renderBody(NaviCompanion fairy, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, float g) {
         matrixStack.push();
 
-        int size = fairy.isBookRender() ? 2 : 1;
+        float size = fairy.isBookRender() ? 2 : 0.5f;
 
         matrixStack.translate(0.0f, 0.3125f * size, 0.0f);
 

@@ -1,14 +1,15 @@
 package net.deadlydiamond98.familiar_friends.models.vanilla;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
-import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.companions.IronGolemCompanion;
 import net.minecraft.client.model.*;
 import net.minecraft.client.render.entity.model.EntityModelLayer;
 import net.minecraft.client.render.entity.model.SinglePartEntityModel;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 
-public class IronGolemCompanionModel<T extends PlayerCompanion> extends SinglePartEntityModel<T> {
+public class IronGolemCompanionModel<T extends IronGolemCompanion> extends SinglePartEntityModel<T> {
 
     public static final EntityModelLayer LAYER_LOCATION = new EntityModelLayer(Identifier.of(FamiliarFriends.MOD_ID, "iron_golem_companion"), "main");
 
@@ -45,6 +46,7 @@ public class IronGolemCompanionModel<T extends PlayerCompanion> extends SinglePa
     }
 
     public void setAngles(T ironGolemEntity, float f, float g, float h, float i, float j) {
+
         this.head.yaw = i * 0.017453292F;
         this.head.pitch = j * 0.017453292F;
         this.rightLeg.pitch = -1.5F * MathHelper.wrap(f, 13.0F) * g;
@@ -54,8 +56,21 @@ public class IronGolemCompanionModel<T extends PlayerCompanion> extends SinglePa
     }
 
     public void animateModel(T ironGolemEntity, float f, float g, float h) {
-        this.rightArm.pitch = (-0.2F + 1.5F * MathHelper.wrap(f, 13.0F)) * g;
-        this.leftArm.pitch = (-0.2F - 1.5F * MathHelper.wrap(f, 13.0F)) * g;
+
+        int attackTicksLeft = ironGolemEntity.getAttackTicksLeft();
+
+        if (attackTicksLeft > 0) {
+            float attackProgress = ((float) attackTicksLeft - g) / 10.0F;
+            attackProgress = MathHelper.clamp(attackProgress, 0.0F, 1.0F);
+            float swingAmount = MathHelper.sin(attackProgress * (float) Math.PI);
+            float basePitch = -2.0F;
+            float swingOffset = 1.5F * swingAmount;
+            this.rightArm.pitch = basePitch + swingOffset;
+            this.leftArm.pitch = basePitch + swingOffset;
+        } else {
+            this.rightArm.pitch = 0.0F;
+            this.leftArm.pitch = 0.0F;
+        }
     }
 
     public ModelPart getRightArm() {

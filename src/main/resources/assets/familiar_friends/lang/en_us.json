@@ -33,5 +33,13 @@
 
   "entity.familiar_friends.companion_cube_companion": "Companion Cube",
   "entity.familiar_friends.companion_cube_companion.author": "Deadlydiamond98, pitman-87",
-  "entity.familiar_friends.companion_cube_companion.description": "Grants the Player the ability to walk on lava (albeit, for a short period). This Companion is your best friend!"
+  "entity.familiar_friends.companion_cube_companion.description": "Grants the Player the ability to walk on lava (albeit, for a short period). This Companion is your best friend!",
+
+  "entity.familiar_friends.notch_companion": "Notch",
+  "entity.familiar_friends.notch_companion.author": "Deadlydiamond98, pitman-87",
+  "entity.familiar_friends.notch_companion.description": "Will Smite the direction you look when pressing \"%s\"! There is a 15 second cooldown before lightning can be struck again.",
+
+  "entity.familiar_friends.chuck_norris_companion": "Chuck Norris",
+  "entity.familiar_friends.chuck_norris_companion.author": "Deadlydiamond98, pitman-87, Cipher_Punk",
+  "entity.familiar_friends.chuck_norris_companion.description": "Perform a Round-House-Kick that sends foes flying with \"%s\"! There is a 25 second cooldown before Chuck Norris will perform another Round-House-Kick"
 }

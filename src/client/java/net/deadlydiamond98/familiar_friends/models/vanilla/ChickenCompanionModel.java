@@ -66,7 +66,5 @@ public class ChickenCompanionModel<T extends Entity> extends AnimalModel<T> {
         this.wattle.yaw = this.head.yaw;
         this.rightLeg.pitch = MathHelper.cos(limbAngle * 0.6662F) * 1.4F * limbDistance;
         this.leftLeg.pitch = MathHelper.cos(limbAngle * 0.6662F + 3.1415927F) * 1.4F * limbDistance;
-        this.rightWing.roll = animationProgress;
-        this.leftWing.roll = -animationProgress;
     }
 }

@@ -20,18 +20,13 @@ public class OneUpMushroomCompanionRenderer extends CompanionRenderer<OneUpMushr
     }
 
     @Override
-    protected void setupTransforms(OneUpMushroomCompanion entity, MatrixStack matrices, float animationProgress, float bodyYaw, float tickDelta, float scale) {
-
-    }
-
-    @Override
     protected void guiScale(MatrixStack matrices) {
         this.scale(matrices, 1.25f);
     }
 
     @Override
     protected void worldScale(MatrixStack matrices) {
-        this.scale(matrices, 0.5f);
+        this.scale(matrices, 0.25f);
     }
 
 

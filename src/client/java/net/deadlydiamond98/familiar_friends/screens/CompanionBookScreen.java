@@ -2,8 +2,7 @@ package net.deadlydiamond98.familiar_friends.screens;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
-import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
-import net.deadlydiamond98.familiar_friends.entities.companions.CreeperCompanion;
+import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.networking.CompanionClientPackets;
 import net.deadlydiamond98.familiar_friends.screens.widgets.CompanionBookButton;
 import net.deadlydiamond98.familiar_friends.util.BookCompanionRegistry;
@@ -22,7 +21,6 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.Pair;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.joml.Quaternionf;

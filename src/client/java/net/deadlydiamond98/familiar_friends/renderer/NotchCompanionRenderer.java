@@ -16,11 +16,6 @@ public class NotchCompanionRenderer extends CompanionRenderer<NotchCompanion, Bi
     }
 
     @Override
-    protected void setupTransforms(NotchCompanion entity, MatrixStack matrices, float animationProgress, float bodyYaw, float tickDelta, float scale) {
-
-    }
-
-    @Override
     protected void guiScale(MatrixStack matrices) {
         this.scale(matrices, 1.5f);
     }

@@ -1,15 +1,10 @@
 package net.deadlydiamond98.familiar_friends.entities.companions;
 
 import net.deadlydiamond98.familiar_friends.entities.CompanionEntities;
-import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
-import net.deadlydiamond98.familiar_friends.sounds.CompanionSounds;
-import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.entity.Entity;
+import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.sound.SoundCategory;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 public class NotchCompanion extends PlayerCompanion {
@@ -22,8 +17,7 @@ public class NotchCompanion extends PlayerCompanion {
     }
 
     @Override
-    protected void doPassiveAction(PlayerEntity player, Entity nearestHostile) {
-
+    protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
     }
 
 }
