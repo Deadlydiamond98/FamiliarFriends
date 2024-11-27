@@ -46,19 +46,4 @@ public abstract class LivingEntityMixin {
             }
         }
     }
-
-    @Inject(method = "canWalkOnFluid", at = @At(value = "RETURN"), cancellable = true)
-    private void walkOnFluid(FluidState state, CallbackInfoReturnable<Boolean> cir) {
-
-        if (this.getPlayer() instanceof PlayerEntity player) {
-            if (((CompanionPlayerData) player).getCompanion() != null) {
-                PlayerCompanion companion = ((CompanionPlayerData) player).getCompanion();
-                if (state.isOf(Fluids.LAVA) || state.isOf(Fluids.FLOWING_LAVA) && companion instanceof CompanionCubeCompanion) {
-                    cir.setReturnValue(true);
-                    cir.cancel();
-                }
-            }
-        }
-    }
-
 }

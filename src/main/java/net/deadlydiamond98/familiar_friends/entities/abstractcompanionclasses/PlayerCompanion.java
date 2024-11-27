@@ -215,4 +215,9 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
     protected void initDataTracker(DataTracker.Builder builder) {
         super.initDataTracker(builder);
     }
+
+    @Override
+    public boolean doesRenderOnFire() {
+        return false;
+    }
 }

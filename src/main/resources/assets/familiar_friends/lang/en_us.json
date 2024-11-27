@@ -15,13 +15,19 @@
   "entity.familiar_friends.chicken_companion.description": "Grants the Player passive slow falling while the player is on the ground, which lasts for 2 seconds when in the air.",
 
   "entity.familiar_friends.iron_golem_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.iron_golem_companion.description": "Damages attackers or hostile mobs while also sending them flying into the air (causing additional fall damage).",
+  "entity.familiar_friends.iron_golem_companion.description": "Damages hostile mobs and sends them flying into the air (causing additional fall damage).",
 
   "entity.familiar_friends.ocelot_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.ocelot_companion.description": "Grants the player passive Swiftness. You can also press \"%s\" to Meow.",
 
   "entity.familiar_friends.squid_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.squid_companion.description": "not yet",
+
+  "entity.familiar_friends.skeleton_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.skeleton_companion.description": "Shoots arrows at nearby Hostile Creatures!",
+
+  "entity.familiar_friends.spider_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.spider_companion.description": "Allows the user to climb up any wall!",
 
   "entity.familiar_friends.navi_companion": "Navi",
   "entity.familiar_friends.navi_companion.author": "Deadlydiamond98",
@@ -38,6 +44,14 @@
   "entity.familiar_friends.notch_companion": "Notch",
   "entity.familiar_friends.notch_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.notch_companion.description": "Will Smite the direction you look when pressing \"%s\"! There is a 15 second cooldown before lightning can be struck again.",
+
+  "entity.familiar_friends.herobrine_companion": "Herobrine",
+  "entity.familiar_friends.herobrine_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.herobrine_companion.description": "I don't remember his mechanic, will add later",
+
+  "entity.familiar_friends.tater_companion": "Lil Tater",
+  "entity.familiar_friends.tater_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.tater_companion.description": "I don't remember his mechanic, will add later",
 
   "entity.familiar_friends.chuck_norris_companion": "Chuck Norris",
   "entity.familiar_friends.chuck_norris_companion.author": "Deadlydiamond98",

@@ -19,7 +19,7 @@ public class OcelotCompanionRenderer extends CompanionRenderer<OcelotCompanion, 
 
     @Override
     protected void guiScale(MatrixStack matrices) {
-        this.scale(matrices, 2.0f);
+        this.scale(matrices, 1.75f);
     }
 
     @Override

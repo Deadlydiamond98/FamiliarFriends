@@ -57,7 +57,22 @@ public class CompanionEntities {
             "notch_companion",
             NotchCompanion::new
     );
-
+    public static final EntityType<HerobrineCompanion> Herobrine_Companion = registerCompanion(
+            "herobrine_companion",
+            HerobrineCompanion::new
+    );
+    public static final EntityType<SpiderCompanion> Spider_Companion = registerCompanion(
+            "spider_companion",
+            SpiderCompanion::new
+    );
+    public static final EntityType<SkeletonCompanion> Skeleton_Companion = registerCompanion(
+            "skeleton_companion",
+            SkeletonCompanion::new
+    );
+    public static final EntityType<TaterCompanion> Tater_Companion = registerCompanion(
+            "tater_companion",
+            TaterCompanion::new
+    );
 
     public static <T extends Entity> EntityType<T> registerCompanion(
             String name,
