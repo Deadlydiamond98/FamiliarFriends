@@ -2,6 +2,7 @@ package net.deadlydiamond98.familiar_friends.entities.companions;
 
 import net.deadlydiamond98.familiar_friends.entities.CompanionEntities;
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.sounds.CompanionSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.Entity;
@@ -24,7 +25,7 @@ public class NaviCompanion extends PlayerCompanion {
 
     @Override
     protected void doPassiveAction(PlayerEntity player, Entity nearestHostile) {
-        int radius = 10;
+        int radius = 15;
 
         BlockPos closestBlockPos = null;
 
@@ -36,7 +37,7 @@ public class NaviCompanion extends PlayerCompanion {
                     BlockPos blockPos = new BlockPos((int) (player.getX() + x), (int) (player.getY() + y), (int) (player.getZ() + z));
                     Block block = world.getBlockState(blockPos).getBlock();
 
-                    if (block.getDefaultState().isOf(Blocks.DIAMOND_ORE)) {
+                    if (block.getDefaultState().isOf(Blocks.ANCIENT_DEBRIS)) {
                         if (closestBlockPos == null || getClosest(player, closestBlockPos, blockPos)) {
                             closestBlockPos = blockPos;
                         }
@@ -49,13 +50,13 @@ public class NaviCompanion extends PlayerCompanion {
 
             float distance = (float) player.squaredDistanceTo(closestBlockPos.getX(), closestBlockPos.getY(), closestBlockPos.getZ());
 
-            int frequency = Math.max(20, (int) (distance * 2.5));
+            int frequency = Math.max(20, (int) (distance * 1.5));
 
             if (this.age % frequency == 0) {
 
                 float pitch = (Math.max(-2.0f, 2.0f / (distance + 1)) + 0.5f) * 2;
 
-                world.playSound(this, player.getBlockPos(), SoundEvents.ITEM_BOTTLE_FILL, SoundCategory.PLAYERS, 1.0f, pitch);
+                world.playSound(this, player.getBlockPos(), CompanionSounds.Navi, SoundCategory.PLAYERS, 1.0f, pitch);
             }
         }
 

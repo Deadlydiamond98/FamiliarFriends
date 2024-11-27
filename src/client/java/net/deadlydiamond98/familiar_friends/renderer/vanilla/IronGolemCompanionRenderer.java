@@ -1,8 +1,8 @@
-package net.deadlydiamond98.familiar_friends.renderer;
+package net.deadlydiamond98.familiar_friends.renderer.vanilla;
 
-import net.deadlydiamond98.familiar_friends.entities.companions.ChickenCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.IronGolemCompanion;
-import net.deadlydiamond98.familiar_friends.models.IronGolemCompanionModel;
+import net.deadlydiamond98.familiar_friends.models.vanilla.IronGolemCompanionModel;
+import net.deadlydiamond98.familiar_friends.renderer.CompanionRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;

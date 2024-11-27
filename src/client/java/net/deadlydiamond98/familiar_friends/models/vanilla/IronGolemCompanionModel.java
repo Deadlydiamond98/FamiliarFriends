@@ -1,4 +1,4 @@
-package net.deadlydiamond98.familiar_friends.models;
+package net.deadlydiamond98.familiar_friends.models.vanilla;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;

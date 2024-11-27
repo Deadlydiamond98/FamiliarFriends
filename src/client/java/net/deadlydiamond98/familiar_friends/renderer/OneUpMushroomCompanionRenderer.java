@@ -26,7 +26,7 @@ public class OneUpMushroomCompanionRenderer extends CompanionRenderer<OneUpMushr
 
     @Override
     protected void guiScale(MatrixStack matrices) {
-        this.scale(matrices, 1.0f);
+        this.scale(matrices, 1.25f);
     }
 
     @Override

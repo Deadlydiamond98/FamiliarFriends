@@ -1,20 +1,18 @@
-package net.deadlydiamond98.familiar_friends.renderer;
+package net.deadlydiamond98.familiar_friends.renderer.vanilla;
 
 import net.deadlydiamond98.familiar_friends.entities.companions.ChickenCompanion;
-import net.deadlydiamond98.familiar_friends.entities.companions.CreeperCompanion;
+import net.deadlydiamond98.familiar_friends.models.vanilla.ChickenCompanionModel;
+import net.deadlydiamond98.familiar_friends.renderer.CompanionRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
-import net.minecraft.client.render.entity.model.ChickenEntityModel;
-import net.minecraft.client.render.entity.model.CreeperEntityModel;
-import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
-public class ChickenCompanionRenderer extends CompanionRenderer<ChickenCompanion, ChickenEntityModel<ChickenCompanion>> {
+public class ChickenCompanionRenderer extends CompanionRenderer<ChickenCompanion, ChickenCompanionModel<ChickenCompanion>> {
 
     private static final Identifier TEXTURE = Identifier.of("textures/entity/chicken.png");
 
     public ChickenCompanionRenderer(EntityRendererFactory.Context ctx) {
-        super(ctx, new ChickenEntityModel<>(ctx.getPart(EntityModelLayers.CHICKEN)));
+        super(ctx, new ChickenCompanionModel<>(ctx.getPart(ChickenCompanionModel.LAYER_LOCATION)));
     }
 
     @Override
@@ -24,7 +22,7 @@ public class ChickenCompanionRenderer extends CompanionRenderer<ChickenCompanion
 
     @Override
     protected void guiScale(MatrixStack matrices) {
-        this.scale(matrices, 1.5f);
+        this.scale(matrices, 2.5f);
     }
 
     @Override

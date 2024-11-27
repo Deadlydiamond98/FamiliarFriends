@@ -19,6 +19,7 @@ public class BookCompanionRegistry {
         addCompanion(SquidCompanion.class);
         addCompanion(OneUpMushroomCompanion.class);
         addCompanion(CompanionCubeCompanion.class);
+        addCompanion(NotchCompanion.class);
     }
 
     /**

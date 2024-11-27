@@ -1,7 +1,7 @@
-package net.deadlydiamond98.familiar_friends.renderer;
+package net.deadlydiamond98.familiar_friends.renderer.vanilla;
 
-import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.CreeperCompanion;
+import net.deadlydiamond98.familiar_friends.renderer.CompanionRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.render.entity.model.*;
 import net.minecraft.client.util.math.MatrixStack;

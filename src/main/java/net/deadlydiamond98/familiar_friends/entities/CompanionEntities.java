@@ -53,6 +53,10 @@ public class CompanionEntities {
             "companion_cube_companion",
             CompanionCubeCompanion::new
     );
+    public static final EntityType<NotchCompanion> Notch_Companion = registerCompanion(
+            "notch_companion",
+            NotchCompanion::new
+    );
 
 
     public static <T extends Entity> EntityType<T> registerCompanion(

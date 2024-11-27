@@ -1,0 +1,14 @@
+{
+  "navi_attention": {
+    "sounds": [
+      "familiar_friends:navi_hello",
+      "familiar_friends:navi_hey",
+      "familiar_friends:navi_listen"
+    ]
+  },
+  "one_up": {
+    "sounds": [
+      "familiar_friends:1up"
+    ]
+  }
+}

@@ -1,9 +1,8 @@
-package net.deadlydiamond98.familiar_friends.renderer;
+package net.deadlydiamond98.familiar_friends.renderer.vanilla;
 
-import net.deadlydiamond98.familiar_friends.entities.companions.ChickenCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.SquidCompanion;
+import net.deadlydiamond98.familiar_friends.renderer.CompanionRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
-import net.minecraft.client.render.entity.model.ChickenEntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.client.render.entity.model.SquidEntityModel;
 import net.minecraft.client.util.math.MatrixStack;
@@ -24,7 +23,7 @@ public class SquidCompanionRenderer extends CompanionRenderer<SquidCompanion, Sq
 
     @Override
     protected void guiScale(MatrixStack matrices) {
-        this.scale(matrices, 0.75f);
+        this.scale(matrices, 0.70f);
     }
 
     @Override
