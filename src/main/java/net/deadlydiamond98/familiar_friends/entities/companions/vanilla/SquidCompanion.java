@@ -30,4 +30,9 @@ public class SquidCompanion extends PlayerCompanion {
     public Text getName() {
         return Text.translatable("entity.minecraft.squid");
     }
+
+    @Override
+    public int getCost() {
+        return 0;
+    }
 }

@@ -34,4 +34,9 @@ public class OcelotCompanion extends PlayerCompanion {
     public Text getName() {
         return Text.translatable("entity.minecraft.ocelot");
     }
+
+    @Override
+    public int getCost() {
+        return 0;
+    }
 }

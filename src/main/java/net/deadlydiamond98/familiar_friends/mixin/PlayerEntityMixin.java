@@ -128,7 +128,7 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
 
     // Removes all Companions from the player, is a leftover from debugging, but I'm keeping it just in case
     @Override
-    public void removeAllCompanions() {
+    public void lockAllCompanions() {
         this.unlockedCompanions.clear();
 
         if (this.currentCompanion != null) {
@@ -141,7 +141,7 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
 
     // Re-lock a companion
     @Override
-    public void revokeCompanion(String companion) {
+    public void lockCompanion(String companion) {
         this.unlockedCompanions.remove(companion);
 
         if (this.currentCompanion.getType().getTranslationKey().equals(companion)) {
@@ -153,7 +153,7 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
 
     // Sets the player's current Companion
     @Override
-    public void grantCompanion(PlayerCompanion companion) {
+    public void equipCompanion(PlayerCompanion companion) {
 
         if (this.currentCompanion != null && !this.currentCompanion.isRemoved()) {
             this.currentCompanion.setRemoved(Entity.RemovalReason.DISCARDED);
@@ -162,6 +162,14 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
         this.currentCompanion = companion;
         this.backUpCompanionKey = companion.getType().getTranslationKey();
         this.hasCompanion = true;
+        getPlayer().getWorld().spawnEntity(companion);
+    }
+
+    @Override
+    public void unequipCompanion(PlayerCompanion companion) {
+        this.hasCompanion = false;
+        this.currentCompanion.remove(Entity.RemovalReason.DISCARDED);
+        this.backUpCompanionKey = "";
     }
 
     // Gets the current Companion
@@ -188,7 +196,7 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
     // Gets the companion on the player as a Player Companion
     @Override
     public PlayerCompanion getCompanion() {
-        return CompanionRegistry.createCompanion(this.backUpCompanionKey, getPlayer());
+        return CompanionRegistry.createCompanion(this.backUpCompanionKey, getPlayer(), false);
     }
 
     // Past Here just NBT stuffs

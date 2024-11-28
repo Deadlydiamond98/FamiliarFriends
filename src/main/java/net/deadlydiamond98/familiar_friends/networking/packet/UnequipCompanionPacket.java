@@ -12,12 +12,12 @@ import net.minecraft.network.packet.CustomPayload;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.Identifier;
 
-public record EquipCompanionPacket(String companion) implements CustomPayload {
-    public static final Id<EquipCompanionPacket> ID = new Id<>(Identifier.of(FamiliarFriends.MOD_ID, "equip_companion_packet"));
+public record UnequipCompanionPacket(String companion) implements CustomPayload {
+    public static final Id<UnequipCompanionPacket> ID = new Id<>(Identifier.of(FamiliarFriends.MOD_ID, "unequip_companion_packet"));
 
-    public static final PacketCodec<PacketByteBuf, EquipCompanionPacket> CODEC = PacketCodec.tuple(
-            PacketCodecs.STRING, EquipCompanionPacket::companion,
-            EquipCompanionPacket::new
+    public static final PacketCodec<PacketByteBuf, UnequipCompanionPacket> CODEC = PacketCodec.tuple(
+            PacketCodecs.STRING, UnequipCompanionPacket::companion,
+            UnequipCompanionPacket::new
     );
 
     @Override
@@ -25,16 +25,15 @@ public record EquipCompanionPacket(String companion) implements CustomPayload {
         return ID;
     }
 
-    public static void recieve(EquipCompanionPacket payload, ServerPlayNetworking.Context context) {
-        String companion = payload.companion();
+    public static void recieve(UnequipCompanionPacket payload, ServerPlayNetworking.Context context) {
         MinecraftServer server = context.server();
         server.execute(() -> {
 
-            PlayerCompanion playerCompanion = CompanionRegistry.createCompanion(companion, context.player(), false);
+            PlayerEntity player = context.player();
+            PlayerCompanion playerCompanion = player.getCompanion();
 
             if (playerCompanion != null) {
-                PlayerEntity player = context.player();
-                player.equipCompanion(playerCompanion);
+                player.unequipCompanion(playerCompanion);
             }
 
         });

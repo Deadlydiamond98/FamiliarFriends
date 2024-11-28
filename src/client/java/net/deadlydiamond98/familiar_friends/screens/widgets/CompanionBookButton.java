@@ -17,7 +17,7 @@ public class CompanionBookButton extends ButtonWidget {
 
     private static final Identifier BOOK_TEXTURE = Identifier.of(FamiliarFriends.MOD_ID, "textures/gui/companion_book.png");
 
-    int renderX, renderY;
+    private int renderX, renderY;
 
     public CompanionBookButton(int x, int y, int width, int height, Text message, PressAction onPress) {
         super(x - (width / 2), y - (height / 2), width, height, message, onPress, DEFAULT_NARRATION_SUPPLIER);

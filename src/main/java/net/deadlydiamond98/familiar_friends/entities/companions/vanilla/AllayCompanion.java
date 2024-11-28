@@ -1,19 +1,20 @@
-package net.deadlydiamond98.familiar_friends.entities.companions;
+package net.deadlydiamond98.familiar_friends.entities.companions.vanilla;
 
 import net.deadlydiamond98.familiar_friends.entities.CompanionEntities;
 import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.text.Text;
 import net.minecraft.world.World;
 
-public class CompanionCubeCompanion extends PlayerCompanion {
-    public CompanionCubeCompanion(EntityType<?> type, World world) {
+public class AllayCompanion extends PlayerCompanion {
+    public AllayCompanion(EntityType<?> type, World world) {
         super(type, world);
     }
 
-    public CompanionCubeCompanion(World world, PlayerEntity owner, boolean gui) {
-        super(CompanionEntities.Companion_Cube_Companion, world, owner, gui);
+    public AllayCompanion(World world, PlayerEntity owner, boolean gui) {
+        super(CompanionEntities.Allay_Companion, world, owner, gui);
     }
 
     @Override
@@ -23,6 +24,11 @@ public class CompanionCubeCompanion extends PlayerCompanion {
     @Override
     public void doKeyEvent(PlayerEntity player) {
 
+    }
+
+    @Override
+    public Text getName() {
+        return Text.translatable("entity.minecraft.allay");
     }
 
     @Override

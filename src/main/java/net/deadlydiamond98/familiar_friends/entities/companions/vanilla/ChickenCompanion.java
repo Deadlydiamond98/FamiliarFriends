@@ -36,4 +36,9 @@ public class ChickenCompanion extends PlayerCompanion {
     public Text getName() {
         return Text.translatable("entity.minecraft.chicken");
     }
+
+    @Override
+    public int getCost() {
+        return 0;
+    }
 }

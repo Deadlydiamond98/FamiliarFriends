@@ -24,4 +24,9 @@ public class OneUpMushroomCompanion extends PlayerCompanion {
     public void doKeyEvent(PlayerEntity player) {
 
     }
+
+    @Override
+    public int getCost() {
+        return 0;
+    }
 }

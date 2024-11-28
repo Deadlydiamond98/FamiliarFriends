@@ -18,6 +18,10 @@ public class CompanionClientPackets {
         ClientPlayNetworking.send(new EquipCompanionPacket(companion));
     }
 
+    public static void unequipPlayerCompanion(String companion) {
+        ClientPlayNetworking.send(new UnequipCompanionPacket(companion));
+    }
+
     public static void companionSpecialAbility(String keybinding) {
         ClientPlayNetworking.send(new PerformCompanionSpecialAbilityPacket(keybinding));
     }

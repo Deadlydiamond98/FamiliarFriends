@@ -203,6 +203,12 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
                 Text.translatable(this.getType().getTranslationKey() + ".author"));
     }
 
+    public Text getCostLang() {
+        return Text.translatable("gui.familiar_friends.cost", getCost()).withColor(0x478e47);
+    }
+
+    public abstract int getCost();
+
     public boolean isLocked(PlayerEntity player) {
         return !((CompanionPlayerData) player).isCompanionUnlocked(this);
     }

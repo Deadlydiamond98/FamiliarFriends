@@ -80,4 +80,9 @@ public class NaviCompanion extends PlayerCompanion {
         return newDistance < currentDistance;
     }
 
+    @Override
+    public int getCost() {
+        return 0;
+    }
+
 }

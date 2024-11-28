@@ -12,11 +12,13 @@ public class CompanionServerPackets {
         PayloadTypeRegistry.playS2C().register(SyncCompanionDataPacket.ID, SyncCompanionDataPacket.CODEC);
         PayloadTypeRegistry.playC2S().register(UnlockCompanionPacket.ID, UnlockCompanionPacket.CODEC);
         PayloadTypeRegistry.playC2S().register(EquipCompanionPacket.ID, EquipCompanionPacket.CODEC);
+        PayloadTypeRegistry.playC2S().register(UnequipCompanionPacket.ID, UnequipCompanionPacket.CODEC);
         PayloadTypeRegistry.playC2S().register(PerformCompanionSpecialAbilityPacket.ID, PerformCompanionSpecialAbilityPacket.CODEC);
         PayloadTypeRegistry.playC2S().register(CurrentKeybindPacket.ID, CurrentKeybindPacket.CODEC);
 
         ServerPlayNetworking.registerGlobalReceiver(UnlockCompanionPacket.ID, UnlockCompanionPacket::recieve);
         ServerPlayNetworking.registerGlobalReceiver(EquipCompanionPacket.ID, EquipCompanionPacket::recieve);
+        ServerPlayNetworking.registerGlobalReceiver(UnequipCompanionPacket.ID, UnequipCompanionPacket::recieve);
         ServerPlayNetworking.registerGlobalReceiver(PerformCompanionSpecialAbilityPacket.ID, PerformCompanionSpecialAbilityPacket::recieve);
         ServerPlayNetworking.registerGlobalReceiver(CurrentKeybindPacket.ID, CurrentKeybindPacket::recieve);
     }

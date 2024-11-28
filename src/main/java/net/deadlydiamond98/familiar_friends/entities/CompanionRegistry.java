@@ -57,7 +57,7 @@ public class CompanionRegistry {
 
     // Reconstructs a companion from the backupKey when needed
     // There might be a better way to do this, but I don't know what that way would be...
-    public static PlayerCompanion createCompanion(String key, PlayerEntity player) {
+    public static PlayerCompanion createCompanion(String key, PlayerEntity player, boolean gui) {
         try {
             Class<? extends PlayerCompanion> companionClass = CompanionRegistry.COMPANIONS.get(key);
             return companionClass.getConstructor(
@@ -67,7 +67,7 @@ public class CompanionRegistry {
             ).newInstance(
                     player.getWorld(),
                     player,
-                    false
+                    gui
             );
 
         } catch (Exception e) {
@@ -85,22 +85,8 @@ public class CompanionRegistry {
         List<PlayerCompanion> companions = new ArrayList<>();
 
         CompanionRegistry.COMPANIONS.forEach((key, companionClass) -> {
-            try {
-                PlayerCompanion companion = companionClass.getConstructor(
-                        World.class,
-                        PlayerEntity.class,
-                        boolean.class
-                ).newInstance(
-                        player.getWorld(),
-                        player,
-                        true
-                );
-
-                companions.add(companion);
-
-            } catch (Exception e) {
-                FamiliarFriends.LOGGER.info("Failed to add companion: " + companionClass.getSimpleName(), e);
-            }
+            PlayerCompanion companion = createCompanion(key, player, true);
+            companions.add(companion);
         });
 
         if (companions.isEmpty()) {

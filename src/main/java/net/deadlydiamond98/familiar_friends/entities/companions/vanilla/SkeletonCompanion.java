@@ -30,4 +30,9 @@ public class SkeletonCompanion extends PlayerCompanion {
     public Text getName() {
         return Text.translatable("entity.minecraft.skeleton");
     }
+
+    @Override
+    public int getCost() {
+        return 0;
+    }
 }

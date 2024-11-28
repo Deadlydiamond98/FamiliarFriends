@@ -51,6 +51,11 @@ public class IronGolemCompanion extends PlayerCompanion {
         return Text.translatable("entity.minecraft.iron_golem");
     }
 
+    @Override
+    public int getCost() {
+        return 0;
+    }
+
     public int getAttackTicksLeft() {
         return this.dataTracker.get(ATTACK_TICKS_LEFT);
     }

@@ -1,11 +1,14 @@
 {
   "item.familiar_friends.book_of_familiars": "Book of Familiars",
 
+  "gui.familiar_friends.current_companion": "Current Companion",
+  "gui.familiar_friends.unlocked": "Unlocked",
   "gui.familiar_friends.author": "Author(s): ",
   "gui.familiar_friends.desc": "Description",
   "gui.familiar_friends.unlock": "Unlock Companion",
   "gui.familiar_friends.equip": "Equip Companion",
   "gui.familiar_friends.unequip": "Unequip Companion",
+  "gui.familiar_friends.cost": "Cost: %s XP Level(s)",
 
   "cooldown.familiar_friends.second": "second",
   "cooldown.familiar_friends.seconds": "seconds",
@@ -28,6 +31,12 @@
 
   "entity.familiar_friends.iron_golem_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.iron_golem_companion.description": "Damages hostile mobs and sends them flying into the air (causing additional fall damage).",
+
+  "entity.familiar_friends.snow_golem_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.snow_golem_companion.description": "Throws snowballs that deal low damage",
+
+  "entity.familiar_friends.allay_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.allay_companion.description": "When equipped, nearby items will gravitate towards the player",
 
   "entity.familiar_friends.ocelot_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.ocelot_companion.description": "Grants the player passive Swiftness. You can also press \"%s\" to Meow.",

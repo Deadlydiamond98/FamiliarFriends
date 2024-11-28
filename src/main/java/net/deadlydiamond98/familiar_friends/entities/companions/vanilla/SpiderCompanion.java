@@ -30,4 +30,9 @@ public class SpiderCompanion extends PlayerCompanion {
     public Text getName() {
         return Text.translatable("entity.minecraft.spider");
     }
+
+    @Override
+    public int getCost() {
+        return 0;
+    }
 }

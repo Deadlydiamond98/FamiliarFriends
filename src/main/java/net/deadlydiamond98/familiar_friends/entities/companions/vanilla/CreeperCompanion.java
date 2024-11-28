@@ -31,4 +31,9 @@ public class CreeperCompanion extends PlayerCompanion {
     public Text getName() {
         return Text.translatable("entity.minecraft.creeper");
     }
+
+    @Override
+    public int getCost() {
+        return 0;
+    }
 }

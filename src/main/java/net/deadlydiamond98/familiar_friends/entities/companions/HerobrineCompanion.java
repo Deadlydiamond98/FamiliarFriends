@@ -103,4 +103,9 @@ public class HerobrineCompanion extends PlayerCompanion {
             player.getWorld().addParticle(ParticleTypes.PORTAL, e, k, l, (double)f, (double)g, (double)h);
         }
     }
+
+    @Override
+    public int getCost() {
+        return 0;
+    }
 }
