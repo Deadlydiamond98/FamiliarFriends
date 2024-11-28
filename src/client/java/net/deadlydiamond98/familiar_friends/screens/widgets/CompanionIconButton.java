@@ -24,6 +24,8 @@ public class CompanionIconButton extends ButtonWidget {
 
     private int renderX, renderY;
 
+    private int originalY;
+
     private int entityIndex;
 
     public boolean locked;
@@ -34,6 +36,7 @@ public class CompanionIconButton extends ButtonWidget {
         super(x - (width / 2), y - (height / 2), width, height, ScreenTexts.EMPTY, onPress, DEFAULT_NARRATION_SUPPLIER);
         this.renderX = x;
         this.renderY = y;
+        this.originalY = y;
         this.entityIndex = i;
         this.locked = locked;
         this.companion = companion;
@@ -54,13 +57,19 @@ public class CompanionIconButton extends ButtonWidget {
         context.drawTexture(BOOK_TEXTURE, centerX, centerY, this.getWidth(), this.getHeight(), 315, 203 + pressed,
                 20, 20, 512, 512);
 
-        CompanionGuiDrawMethods.drawEntity(context, renderX, renderY + 6, 9, 0.0625F, companion, false);
+        CompanionGuiDrawMethods.drawEntity(context, renderX, renderY + 6, 9, 0.0625F, companion, locked);
 
         if (this.locked) {
-            context.drawTexture(BOOK_TEXTURE, centerX + 14, centerY + 14, (int) (this.getWidth() * 0.75), (int) (this.getHeight() * 0.75), 336, 203,
+            RenderSystem.disableDepthTest();
+            context.drawTexture(BOOK_TEXTURE, centerX - 4, centerY - 4, (int) (this.getWidth() * 0.75), (int) (this.getHeight() * 0.75), 336, 203,
                     20, 20, 512, 512);
+            RenderSystem.enableDepthTest();
         }
 
+        renderTooltip(context, textRenderer,  mouseX, mouseY);
+    }
+
+    public void renderTooltip(DrawContext context, TextRenderer textRenderer, int mouseX, int mouseY) {
         if (isHovered()) {
             List<Text> tooltip = new ArrayList<>();
             tooltip.add(companion.getName().copy());
@@ -85,6 +94,16 @@ public class CompanionIconButton extends ButtonWidget {
 
             context.drawTooltip(textRenderer, tooltip, mouseX, mouseY);
         }
+    }
+
+
+    public void scroll(int offset) {
+        this.renderY = originalY + offset;
+        this.setY(this.renderY - (height / 2));
+    }
+
+    public int getYScrolled() {
+        return this.renderY;
     }
 
     public int getEntityIndex() {

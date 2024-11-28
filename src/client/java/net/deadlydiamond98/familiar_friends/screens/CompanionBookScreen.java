@@ -1,15 +1,19 @@
 package net.deadlydiamond98.familiar_friends.screens;
 
+import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
 import net.deadlydiamond98.familiar_friends.entities.CompanionRegistry;
 import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.networking.CompanionClientPackets;
 import net.deadlydiamond98.familiar_friends.screens.widgets.CompanionBookButton;
+import net.deadlydiamond98.familiar_friends.screens.widgets.CompanionHomeButton;
 import net.deadlydiamond98.familiar_friends.screens.widgets.CompanionIconButton;
 import net.deadlydiamond98.familiar_friends.util.CompanionGuiDrawMethods;
-import net.deadlydiamond98.familiar_friends.util.TextFormatHelper;
 import net.minecraft.client.gui.DrawContext;
+import net.minecraft.client.gui.Drawable;
+import net.minecraft.client.gui.Element;
+import net.minecraft.client.gui.Selectable;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.widget.PageTurnWidget;
 import net.minecraft.client.render.GameRenderer;
@@ -21,15 +25,17 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandler> {
-
+    private static final int SCROLL_STEP = 10;
 
     private static final Identifier BOOK_TEXTURE = Identifier.of(FamiliarFriends.MOD_ID, "textures/gui/companion_book.png");
 
-    private final List<PlayerCompanion> RENDERED_COMPANIONS = new ArrayList<>();
-    private final List<CompanionIconButton> LEGEND_BUTTONS = new ArrayList<>();
+    private final List<PlayerCompanion> renderedCompanions = new ArrayList<>();
+    private final List<CompanionIconButton> legendButtons = new ArrayList<>();
+    private final List<Drawable> drawables = Lists.newArrayList();
 
     private int pageIndex;
     private PageTurnWidget nextPageButton;
@@ -38,9 +44,15 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
     private CompanionBookButton unlockButton;
     private CompanionBookButton equipButton;
     private CompanionBookButton unequipButton;
+    private CompanionHomeButton homeButton;
+
+    private int scrollOffset;
+    private int maxScroll;
 
     public CompanionBookScreen(CompanionBookScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
+        this.scrollOffset = 0;
+        this.maxScroll = 0;
     }
 
     @Override
@@ -57,12 +69,15 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
             FamiliarFriends.LOGGER.info("Tried to add Companions to book, but player was null");
             return;
         }
-        RENDERED_COMPANIONS.clear();
-        RENDERED_COMPANIONS.addAll(CompanionRegistry.addCompanions(client.player));
+        renderedCompanions.clear();
+        renderedCompanions.addAll(CompanionRegistry.addCompanions(client.player));
     }
 
     @Override
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
+        updateEntityButtons();
+        updatePageButtons();
+
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
         RenderSystem.setShaderTexture(0, BOOK_TEXTURE);
         MatrixStack matrices = context.getMatrices();
@@ -73,7 +88,7 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         context.drawTexture(BOOK_TEXTURE, (this.width - 320) / 2, guiY, 8, 2, 320, 200, 512, 512);
 
         // Stop execution of drawEntity if no companions in book to prevent crashing
-        if (RENDERED_COMPANIONS.isEmpty()) {
+        if (renderedCompanions.isEmpty()) {
             return;
         }
 
@@ -85,7 +100,7 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
 
         // Entity Page
 
-        PlayerCompanion companion = RENDERED_COMPANIONS.get(pageIndex - 1);
+        PlayerCompanion companion = renderedCompanions.get(pageIndex - 1);
 
         int companionX = guiX - 80;
         int companionY = guiY + 105;
@@ -132,7 +147,7 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
 
         PlayerEntity player = client.player;
 
-        PlayerCompanion playerCompanion = player.getCompanion();
+        PlayerCompanion playerCompanion = CompanionRegistry.createCompanion(player.currentCompanion(), player, true);
 
         Text currentText = Text.translatable("gui.familiar_friends.current_companion").setStyle(Style.EMPTY.withUnderline(true));
 
@@ -145,6 +160,9 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
             showCurrentCompanionGUI(context, delta, mouseX, mouseY, companionX, companionY, playerCompanion, matrices);
         }
 
+        context.drawTexture(BOOK_TEXTURE, ((this.width - 106) / 2) + 65, companionY - 98, 56, 266, 126, 160, 512, 512); // Entity frame thing 2
+
+        drawScrollBar(context, guiX + 138, companionY - 98, 158);
     }
 
     private void showCurrentCompanionGUI(DrawContext context, float delta, int mouseX, int mouseY, int companionX, int companionY, PlayerCompanion playerCompanion, MatrixStack matrices) {
@@ -172,7 +190,7 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
         RenderSystem.setShaderTexture(0, BOOK_TEXTURE);
 
-        PlayerCompanion companion = RENDERED_COMPANIONS.get(pageIndex - 1);
+        PlayerCompanion companion = renderedCompanions.get(pageIndex - 1);
 
         // Lock Overlay
         if (companion.isLocked(client.player)) {
@@ -180,7 +198,72 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
                     56, 56, 512, 512);
         }
     }
-    
+
+    // Scroll Bar
+
+    @Override
+    public boolean mouseScrolled(double mouseX, double mouseY, double horizontalAmount, double verticalAmount) {
+        if (verticalAmount < 0) {
+            scrollOffset = Math.min(scrollOffset + SCROLL_STEP, maxScroll);
+        } else if (verticalAmount > 0) {
+            scrollOffset = Math.max(scrollOffset - SCROLL_STEP, 0);
+        }
+
+        legendButtons.forEach(button -> {
+            button.scroll(-scrollOffset);
+        });
+        updateLegendButtons();
+
+        return true;
+    }
+
+    private void drawScrollBar(DrawContext context, int guiX, int guiY, int height) {
+        int scrollBarHeight = height;
+        int barWidth = 5;
+
+        context.fill(guiX, guiY, guiX + barWidth, guiY + scrollBarHeight, 0xff95836a);
+
+        // Avoid creating Scroll bar thumb if unnecessary
+        if (maxScroll > 0) {
+            int scrollBarThumbHeight = Math.max(20, (scrollBarHeight * scrollBarHeight) / (scrollBarHeight + maxScroll));
+            int scrollThumbY = guiY + (scrollOffset * (scrollBarHeight - scrollBarThumbHeight) / maxScroll);
+            context.fill(guiX, scrollThumbY, guiX + barWidth, scrollThumbY + scrollBarThumbHeight, 0xff574436);
+        }
+    }
+
+    // Only using render, so I can scissor some buttons for scrolling, there might be a better way,
+    // but right now I'm running on low sleep (I have a horrible sleep schedule), so I'm just worried about it working
+    // no one other than me will be interacting with this part of the code anyways
+
+    @Override
+    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+        this.renderBackground(context, mouseX, mouseY, delta);
+        Iterator var5 = this.drawables.iterator();
+
+        List<CompanionIconButton> iconButtons = new ArrayList<>();
+        while(var5.hasNext()) {
+            Drawable drawable = (Drawable)var5.next();
+
+            if (drawable instanceof CompanionIconButton iconButton) {
+                int guiX = (this.width) / 2;
+                int guiY = 2;
+                context.enableScissor(guiX, guiY + 14, guiX + 160, guiY + 164);
+                drawable.render(context, mouseX, mouseY, delta);
+                context.disableScissor();
+                iconButtons.add(iconButton);
+            }
+            else {
+                drawable.render(context, mouseX, mouseY, delta);
+            }
+        }
+
+        iconButtons.forEach(iconButton -> {
+            if (iconButton.visible) {
+                iconButton.renderTooltip(context, textRenderer, mouseX, mouseY);
+            }
+        });
+    }
+
     // Button Things!!!
 
     // Add Buttons
@@ -197,8 +280,10 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
                 Text.translatable("gui.familiar_friends.unlock"), button -> this.unlockFamiliar()));
         this.equipButton = this.addDrawableChild(new CompanionBookButton(i + 80, 150, 100, 15,
                 Text.translatable("gui.familiar_friends.equip"), button -> this.equipFamiliar()));
-        this.unequipButton = this.addDrawableChild(new CompanionBookButton(i - 80, 178, 100, 15,
+        this.unequipButton = this.addDrawableChild(new CompanionBookButton(i - 80, 176, 100, 15,
                 Text.translatable("gui.familiar_friends.unequip"), button -> this.unequipFamiliar()));
+        this.homeButton = this.addDrawableChild(new CompanionHomeButton(i + 80, 175, 12, 12,
+                button -> this.goHome()));
     }
 
     private void addLegendButtons() {
@@ -215,18 +300,22 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         int spacing = 5;
         int buttonsPerRow = 4;
 
-        for (int i = 0; i < RENDERED_COMPANIONS.size(); i++) {
+        for (int i = 0; i < renderedCompanions.size(); i++) {
             int row = i / buttonsPerRow;
             int col = i % buttonsPerRow;
+
+            if (row >= 5 && col == 0) {
+                this.maxScroll += buttonHeight + spacing;
+            }
 
             int buttonX = guiX + col * (buttonWidth + spacing);
             int buttonY = guiY + row * (buttonHeight + spacing);
 
-            LEGEND_BUTTONS.add(this.addDrawableChild(
-                    new CompanionIconButton(buttonX, buttonY, buttonWidth, buttonHeight,
-                            i, RENDERED_COMPANIONS.get(i).isLocked(client.player),
-                            RENDERED_COMPANIONS.get(i), button -> this.onLegendButtonClicked((CompanionIconButton) button))
-            ));
+            CompanionIconButton legendButton = new CompanionIconButton(buttonX, buttonY, buttonWidth, buttonHeight,
+                    i, renderedCompanions.get(i).isLocked(client.player),
+                    renderedCompanions.get(i), button -> this.onLegendButtonClicked((CompanionIconButton) button));
+
+            legendButtons.add(this.addDrawableChild(legendButton));
         }
     }
 
@@ -238,14 +327,14 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
     }
 
     private void unlockFamiliar() {
-        PlayerCompanion companion = RENDERED_COMPANIONS.get(pageIndex - 1);
+        PlayerCompanion companion = renderedCompanions.get(pageIndex - 1);
         CompanionClientPackets.unlockPlayerCompanion(companion.getType().getTranslationKey());
         this.unlockButton.visible = false;
         this.equipButton.visible = true;
     }
 
     private void equipFamiliar() {
-        PlayerCompanion companion = RENDERED_COMPANIONS.get(pageIndex - 1);
+        PlayerCompanion companion = renderedCompanions.get(pageIndex - 1);
         CompanionClientPackets.equipPlayerCompanion(companion.getType().getTranslationKey());
         this.equipButton.active = false;
         this.updateEntityButtons();
@@ -271,6 +360,11 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         this.updateButtons();
     }
 
+    private void goHome() {
+        this.pageIndex = 0;
+        updateButtons();
+    }
+
 
     // Update Button Viewability
 
@@ -281,7 +375,7 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
 
         PlayerCompanion companion = null;
         if (pastFirstPage) {
-            companion = RENDERED_COMPANIONS.get(pageIndex - 1);
+            companion = renderedCompanions.get(pageIndex - 1);
         }
 
         this.unlockButton.visible = pastFirstPage && companion != null && companion.isLocked(client.player);
@@ -295,6 +389,8 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
 
         this.equipButton.active = bl;
         this.unequipButton.active = player.getCompanion() != null;
+
+        this.homeButton.visible = pastFirstPage;
     }
 
     private void updatePageButtons() {
@@ -309,15 +405,22 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
     }
 
     private void updateLegendButtons() {
-        LEGEND_BUTTONS.forEach(button -> {
-            button.visible = this.pageIndex < 1;
-            button.locked = RENDERED_COMPANIONS.get(button.getEntityIndex()).isLocked(client.player);
+        legendButtons.forEach(button -> {
+            button.visible = this.pageIndex < 1 && button.getYScrolled() > 0 && button.getYScrolled() < 180;;
+            button.locked = renderedCompanions.get(button.getEntityIndex()).isLocked(client.player);
         });
     }
 
     // Other
 
     private int getPageCount() {
-        return RENDERED_COMPANIONS.size() + 1;
+        return renderedCompanions.size() + 1;
+    }
+
+    // I feel like this is a half-assed solution, but if it works it works
+    @Override
+    protected <T extends Element & Drawable & Selectable> T addDrawableChild(T drawableElement) {
+        this.drawables.add(drawableElement);
+        return super.addDrawableChild(drawableElement);
     }
 }
