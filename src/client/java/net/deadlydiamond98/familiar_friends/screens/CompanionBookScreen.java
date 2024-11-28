@@ -103,7 +103,14 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         PlayerCompanion companion = renderedCompanions.get(pageIndex - 1);
 
         int companionX = guiX - 80;
-        int companionY = guiY + 105;
+        int companionY = guiY + 110;
+
+        context.drawTexture(BOOK_TEXTURE, ((this.width - 11) / 2) - 140, companionY - 100, 12, 246, 11, 15, 512, 512);
+
+        Text xpCost = companion.getCostLang().copy().setStyle(Style.EMPTY.withUnderline(true));
+
+        CompanionGuiDrawMethods.drawResizeableCenteredText(textRenderer, context,
+                matrices, companionX, companionY - 95, xpCost, 1.0f, 0x478e47, false); // Experience Cost
 
         context.drawTexture(BOOK_TEXTURE, ((this.width - 106) / 2) - 80, companionY - 83, 329, 2, 106, 106, 512, 512); // Entity frame thing
 
@@ -372,25 +379,25 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         boolean pastFirstPage = this.pageIndex > 0;
 
         PlayerEntity player = client.player;
+        PlayerCompanion companion = pastFirstPage ? renderedCompanions.get(pageIndex - 1) : null;
 
-        PlayerCompanion companion = null;
-        if (pastFirstPage) {
-            companion = renderedCompanions.get(pageIndex - 1);
-        }
+        boolean companionExists = companion != null;
+        boolean companionLocked = companionExists && companion.isLocked(player);
+        boolean hasCompanion = player.getCompanion() != null;
+        boolean hasDifferentCompanion = hasCompanion && companionExists &&
+                !companion.getType().getTranslationKey().equals(player.currentCompanion());
 
-        this.unlockButton.visible = pastFirstPage && companion != null && companion.isLocked(client.player);
-        this.equipButton.visible = pastFirstPage && companion != null && !companion.isLocked(client.player);
+        // Update button visibility
+        this.unlockButton.visible = pastFirstPage && companionLocked;
+        this.equipButton.visible = pastFirstPage && !companionLocked;
         this.unequipButton.visible = !pastFirstPage;
-
-        boolean bl = true;
-        if ((player.currentCompanion() != null && companion != null)) {
-            bl = !companion.getType().getTranslationKey().equals((player.currentCompanion()));
-        }
-
-        this.equipButton.active = bl;
-        this.unequipButton.active = player.getCompanion() != null;
-
         this.homeButton.visible = pastFirstPage;
+
+        // Update button active states
+        this.equipButton.active = hasDifferentCompanion;
+        this.unequipButton.active = hasCompanion;
+        this.unlockButton.active = pastFirstPage && companionExists &&
+                player.experienceLevel >= companion.getCost();
     }
 
     private void updatePageButtons() {
