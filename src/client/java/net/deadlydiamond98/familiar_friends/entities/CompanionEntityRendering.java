@@ -1,0 +1,55 @@
+package net.deadlydiamond98.familiar_friends.entities;
+
+import net.deadlydiamond98.familiar_friends.entities.models.CompanionCubeModel;
+import net.deadlydiamond98.familiar_friends.entities.models.LilTaterCompanionModel;
+import net.deadlydiamond98.familiar_friends.entities.models.NaviEntityModel;
+import net.deadlydiamond98.familiar_friends.entities.models.OneUpMushroomModel;
+import net.deadlydiamond98.familiar_friends.entities.models.vanilla.BipedCompanionModel;
+import net.deadlydiamond98.familiar_friends.entities.models.vanilla.ChickenCompanionModel;
+import net.deadlydiamond98.familiar_friends.entities.models.vanilla.IronGolemCompanionModel;
+import net.deadlydiamond98.familiar_friends.entities.models.vanilla.OcelotCompanionModel;
+import net.deadlydiamond98.familiar_friends.entities.renderer.CompanionCubeCompanionRenderer;
+import net.deadlydiamond98.familiar_friends.entities.renderer.NaviCompanionRenderer;
+import net.deadlydiamond98.familiar_friends.entities.renderer.OneUpMushroomCompanionRenderer;
+import net.deadlydiamond98.familiar_friends.entities.renderer.TaterCompanionRenderer;
+import net.deadlydiamond98.familiar_friends.entities.renderer.player.HerobrineCompanionRenderer;
+import net.deadlydiamond98.familiar_friends.entities.renderer.player.NotchCompanionRenderer;
+import net.deadlydiamond98.familiar_friends.entities.renderer.vanilla.*;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
+
+public class CompanionEntityRendering {
+
+    public static void registerCompanionRenderers() {
+        registerEntityRenderers();
+        registerModelLayers();
+    }
+
+    private static void registerEntityRenderers() {
+        EntityRendererRegistry.register(CompanionEntities.Creeper_Companion, CreeperCompanionRenderer::new);
+        EntityRendererRegistry.register(CompanionEntities.Chicken_Companion, ChickenCompanionRenderer::new);
+        EntityRendererRegistry.register(CompanionEntities.Iron_Golem_Companion, IronGolemCompanionRenderer::new);
+        EntityRendererRegistry.register(CompanionEntities.Navi_Companion, NaviCompanionRenderer::new);
+        EntityRendererRegistry.register(CompanionEntities.Ocelot_Companion, OcelotCompanionRenderer::new);
+        EntityRendererRegistry.register(CompanionEntities.Squid_Companion, SquidCompanionRenderer::new);
+        EntityRendererRegistry.register(CompanionEntities.One_Up_Mushroom_Companion, OneUpMushroomCompanionRenderer::new);
+        EntityRendererRegistry.register(CompanionEntities.Companion_Cube_Companion, CompanionCubeCompanionRenderer::new);
+        EntityRendererRegistry.register(CompanionEntities.Notch_Companion, NotchCompanionRenderer::new);
+        EntityRendererRegistry.register(CompanionEntities.Herobrine_Companion, HerobrineCompanionRenderer::new);
+        EntityRendererRegistry.register(CompanionEntities.Spider_Companion, SpiderCompanionRenderer::new);
+        EntityRendererRegistry.register(CompanionEntities.Skeleton_Companion, SkeletonCompanionRenderer::new);
+        EntityRendererRegistry.register(CompanionEntities.Tater_Companion, TaterCompanionRenderer::new);
+    }
+
+    private static void registerModelLayers() {
+        EntityModelLayerRegistry.registerModelLayer(IronGolemCompanionModel.LAYER_LOCATION, IronGolemCompanionModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(NaviEntityModel.LAYER_LOCATION, NaviEntityModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(OneUpMushroomModel.LAYER_LOCATION, OneUpMushroomModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(CompanionCubeModel.LAYER_LOCATION, CompanionCubeModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(BipedCompanionModel.LAYER_LOCATION, BipedCompanionModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(ChickenCompanionModel.LAYER_LOCATION, ChickenCompanionModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(OcelotCompanionModel.LAYER_LOCATION, OcelotCompanionModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(SkeletonCompanionModel.LAYER_LOCATION, SkeletonCompanionModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(LilTaterCompanionModel.LAYER_LOCATION, LilTaterCompanionModel::getTexturedModelData);
+    }
+}

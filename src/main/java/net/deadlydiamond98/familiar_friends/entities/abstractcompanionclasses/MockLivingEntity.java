@@ -275,5 +275,10 @@ public class MockLivingEntity extends Entity {
     protected void writeCustomDataToNbt(NbtCompound nbt) {
 
     }
+
+    @Override
+    public boolean doesRenderOnFire() {
+        return false;
+    }
 }
 

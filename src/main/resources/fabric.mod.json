@@ -37,5 +37,10 @@
 	},
 	"suggests": {
 		"another-mod": "*"
+	},
+	"custom": {
+		"loom:injected_interfaces": {
+			"net/minecraft/class_1657": ["net/deadlydiamond98/familiar_friends/util/CompanionPlayerData"]
+		}
 	}
 }

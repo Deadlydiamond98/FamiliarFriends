@@ -5,7 +5,19 @@
   "gui.familiar_friends.desc": "Description",
   "gui.familiar_friends.unlock": "Unlock Companion",
   "gui.familiar_friends.equip": "Equip Companion",
+  "gui.familiar_friends.unequip": "Unequip Companion",
 
+  "cooldown.familiar_friends.second": "second",
+  "cooldown.familiar_friends.seconds": "seconds",
+  "cooldown.familiar_friends.minute": "minute",
+  "cooldown.familiar_friends.minutes": "minutes",
+  "cooldown.familiar_friends.hour": "hour",
+  "cooldown.familiar_friends.hours": "hours",
+  "cooldown.familiar_friends.cooldown": "You must wait %s more %s before you can perform this action!",
+
+  "cooldown.familiar_friends.hunger": "hunger",
+  "cooldown.familiar_friends.health": "health",
+  "cooldown.familiar_friends.lowstat": "Cannot Perform this action! Your %s is too low!",
 
 
   "entity.familiar_friends.creeper_companion.author": "Deadlydiamond98",
@@ -27,7 +39,7 @@
   "entity.familiar_friends.skeleton_companion.description": "Shoots arrows at nearby Hostile Creatures!",
 
   "entity.familiar_friends.spider_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.spider_companion.description": "Allows the user to climb up any wall!",
+  "entity.familiar_friends.spider_companion.description": "Allows the user to climb up any wall! It also allows one to slide down walls.",
 
   "entity.familiar_friends.navi_companion": "Navi",
   "entity.familiar_friends.navi_companion.author": "Deadlydiamond98",
@@ -47,9 +59,9 @@
 
   "entity.familiar_friends.herobrine_companion": "Herobrine",
   "entity.familiar_friends.herobrine_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.herobrine_companion.description": "I don't remember his mechanic, will add later",
+  "entity.familiar_friends.herobrine_companion.description": "Will Teleport the player in the direction they are looking when pressing \"%s\", but will consume player health. More health is consumed the further the teleport is, but it will kill the player. Teleports don't work when player health is too low, and they have a 20 second cooldown.",
 
-  "entity.familiar_friends.tater_companion": "Lil Tater",
+  "entity.familiar_friends.tater_companion": "Lil' Tater",
   "entity.familiar_friends.tater_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.tater_companion.description": "I don't remember his mechanic, will add later",
 

@@ -3,6 +3,7 @@ package net.deadlydiamond98.familiar_friends.networking.packet;
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
 import net.deadlydiamond98.familiar_friends.util.CompanionPlayerData;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.codec.PacketCodecs;
@@ -27,7 +28,8 @@ public record UnlockCompanionPacket(String companion) implements CustomPayload {
         String companion = payload.companion();
         MinecraftServer server = context.server();
         server.execute(() -> {
-            ((CompanionPlayerData) context.player()).unlockCompanion(companion);
+            PlayerEntity player = context.player();
+            player.unlockCompanion(companion);
         });
     }
 }

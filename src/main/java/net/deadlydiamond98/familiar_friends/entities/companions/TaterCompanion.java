@@ -5,7 +5,6 @@ import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.Pl
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.text.Text;
 import net.minecraft.world.World;
 
 public class TaterCompanion extends PlayerCompanion {

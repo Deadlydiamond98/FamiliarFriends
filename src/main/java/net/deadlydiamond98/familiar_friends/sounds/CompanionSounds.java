@@ -11,6 +11,7 @@ public class CompanionSounds {
     public static SoundEvent OneUp = registerSoundEvent("one_up");
 
     public static SoundEvent Navi = registerSoundEvent("navi_attention");
+    public static SoundEvent Action_Failed = registerSoundEvent("action_failed");
 
     public static SoundEvent registerSoundEvent(String name) {
         Identifier id = Identifier.of(FamiliarFriends.MOD_ID, name);

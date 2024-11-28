@@ -5,8 +5,6 @@ import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.Pl
 import java.util.List;
 
 public interface CompanionPlayerData {
-    void setCompanionStatus(boolean value);
-    boolean hasCompanion();
     void unlockCompanion(String companion);
     void revokeCompanion(String companion);
     boolean isCompanionUnlocked(PlayerCompanion companion);

@@ -3,11 +3,13 @@ package net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses;
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
 import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.behaviors.LookAroundBehavior;
 import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.behaviors.LookBehavior;
+import net.deadlydiamond98.familiar_friends.sounds.CompanionSounds;
 import net.deadlydiamond98.familiar_friends.util.CompanionPlayerData;
 import net.minecraft.entity.*;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.mob.Monster;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
@@ -19,11 +21,13 @@ import java.util.List;
 
 public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
 
+    public static final float SPEED = 1.5f;
+    public static final float FOLLOW_DISTANCE = 5.0f;
+
     private int idleTime;
     private float orbitArc;
     private Entity owner;
-    public static final float SPEED = 1.5f;
-    public static final float FOLLOW_DISTANCE = 5.0f;
+    private int cooldown;
 
     protected boolean bookRender;
 
@@ -36,16 +40,13 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
     public PlayerCompanion(EntityType<?> type, World world, PlayerEntity owner, boolean gui) {
         this(type, world);
 
+        this.cooldown = 0;
         this.idleTime = 0;
         this.orbitArc = 0.0f;
         this.noClip = true;
         this.owner = owner;
         this.setPosition(owner.getPos());
         this.bookRender = gui;
-    }
-
-    public boolean isBookRender() {
-        return this.bookRender;
     }
 
     @Override
@@ -60,6 +61,10 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
             else {
                 this.discard();
             }
+        }
+
+        if (this.cooldown > 0) {
+            this.cooldown--;
         }
 
         super.baseTick();
@@ -89,7 +94,6 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
             this.currentLookBehavior.tick();
         }
     }
-
 
     private void moveAround(PlayerEntity player) {
         double distanceToTarget = this.getPos().distanceTo(player.getPos());
@@ -216,8 +220,82 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
         super.initDataTracker(builder);
     }
 
-    @Override
-    public boolean doesRenderOnFire() {
-        return false;
+    public boolean hasNoHealthLimitation(PlayerEntity player, int minimum) {
+        return hasNoLimitationOf(player.getHealth(), minimum, player, Text.translatable("cooldown.familiar_friends.lowstat",
+                Text.translatable("cooldown.familiar_friends.health").getString()), true);
+    }
+
+    public boolean hasNoHungerLimitation(PlayerEntity player, int minimum) {
+        return hasNoLimitationOf(player.getHungerManager().getFoodLevel(), minimum, player, Text.translatable("cooldown.familiar_friends.lowstat",
+                Text.translatable("cooldown.familiar_friends.hunger").getString()), true);
+    }
+
+    public boolean hasNoCooldown(PlayerEntity player) {
+        String cooldownUnit = getCooldownUnitText(this.cooldown);
+        int time = calculateCooldownUnit(this.cooldown);
+
+        return hasNoLimitationOf(1, this.cooldown, player, Text.translatable("cooldown.familiar_friends.cooldown",
+                time, Text.translatable("cooldown.familiar_friends." + cooldownUnit).getString()), false);
+    }
+
+    public boolean hasNoLimitationOf(float currentValue, float threshold, PlayerEntity player, Text translation, boolean trueIfCreative) {
+        if (trueIfCreative && (player.isCreative() || player.isSpectator())) {
+            return true;
+        }
+        if (currentValue <= threshold) {
+            player.getWorld().playSound(null, player.getBlockPos(), CompanionSounds.Action_Failed, SoundCategory.PLAYERS, 0.5f, 1.0f);
+            player.sendMessage(translation, true);
+        }
+        return !(currentValue <= threshold);
+    }
+
+    protected String getCooldownUnitText(float cooldown) {
+        int seconds = Math.max(1, Math.round(cooldown)) / 20;
+        int minutes = seconds / 20;
+        int hours = minutes / 20;
+
+        if (hours >= 1) {
+            return hours > 1 ? "hours" : "hour";
+        } else if (minutes >= 1) {
+            return minutes > 1 ? "minutes" : "minute";
+        } else {
+            return seconds > 1 ? "seconds" : "second";
+        }
+    }
+
+    protected int calculateCooldownUnit(float cooldown) {
+        int seconds = Math.max(1, Math.round(cooldown)) / 20;
+        int minutes = seconds / 20;
+        int hours = minutes / 20;
+
+        if (hours >= 1) {
+            return hours;
+        }
+        else if (minutes >= 1) {
+            return minutes;
+        }
+        else {
+            return seconds;
+        }
+    }
+
+    public int getCooldown() {
+        return this.cooldown;
+    }
+
+    public void setCooldown(int cooldown) {
+        this.cooldown = cooldown;
+    }
+
+    public void setCooldownSeconds(int cooldown) {
+        this.cooldown = cooldown * 20;
+    }
+
+    public void setCooldownMinutes(int cooldown) {
+        this.cooldown = cooldown * 20 * 60;
+    }
+
+    public boolean isBookRender() {
+        return this.bookRender;
     }
 }

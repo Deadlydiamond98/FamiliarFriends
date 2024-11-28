@@ -10,5 +10,10 @@
     "sounds": [
       "familiar_friends:1up"
     ]
+  },
+  "action_failed": {
+    "sounds": [
+      "familiar_friends:failed"
+    ]
   }
 }
