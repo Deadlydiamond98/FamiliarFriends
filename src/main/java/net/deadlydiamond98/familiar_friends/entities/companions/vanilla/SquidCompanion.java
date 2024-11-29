@@ -4,6 +4,8 @@ import net.deadlydiamond98.familiar_friends.entities.CompanionEntities;
 import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.world.World;
@@ -19,10 +21,18 @@ public class SquidCompanion extends PlayerCompanion {
 
     @Override
     protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
+        if (!player.isSubmergedInWater()) {
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 200, 0, true, false));
+        }
     }
 
     @Override
     public void doKeyEvent(PlayerEntity player) {
+
+    }
+
+    @Override
+    public void onAttack(PlayerEntity player, LivingEntity target) {
 
     }
 
@@ -33,6 +43,6 @@ public class SquidCompanion extends PlayerCompanion {
 
     @Override
     public int getCost() {
-        return 0;
+        return 12;
     }
 }

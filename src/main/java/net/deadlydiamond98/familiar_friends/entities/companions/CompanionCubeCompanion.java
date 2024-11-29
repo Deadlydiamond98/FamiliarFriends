@@ -35,7 +35,12 @@ public class CompanionCubeCompanion extends PlayerCompanion {
     }
 
     @Override
+    public void onAttack(PlayerEntity player, LivingEntity target) {
+
+    }
+
+    @Override
     public int getCost() {
-        return 25;
+        return 20;
     }
 }

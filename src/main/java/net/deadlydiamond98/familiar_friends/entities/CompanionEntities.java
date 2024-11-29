@@ -21,11 +21,6 @@ public class CompanionEntities {
             Identifier.of(FamiliarFriends.MOD_ID, "snow_golem_companion")
     );
 
-    public static final EntityType<CreeperCompanion> Creeper_Companion = CompanionRegistry.registerCompanion(
-            CreeperCompanion.class,
-            Identifier.of(FamiliarFriends.MOD_ID, "creeper_companion")
-    );
-
     public static final EntityType<ChickenCompanion> Chicken_Companion = CompanionRegistry.registerCompanion(
             ChickenCompanion.class,
             Identifier.of(FamiliarFriends.MOD_ID, "chicken_companion")
@@ -73,10 +68,6 @@ public class CompanionEntities {
     public static final EntityType<SkeletonCompanion> Skeleton_Companion = CompanionRegistry.registerCompanion(
             SkeletonCompanion.class,
             Identifier.of(FamiliarFriends.MOD_ID, "skeleton_companion")
-    );
-    public static final EntityType<TaterCompanion> Tater_Companion = CompanionRegistry.registerCompanion(
-            TaterCompanion.class,
-            Identifier.of(FamiliarFriends.MOD_ID, "tater_companion")
     );
 
 }

@@ -8,8 +8,8 @@ import net.minecraft.util.Identifier;
 
 public class CompanionSounds {
 
-    public static SoundEvent OneUp = registerSoundEvent("one_up");
-
+    public static SoundEvent One_Up = registerSoundEvent("one_up");
+    public static SoundEvent Mr_Saturn = registerSoundEvent("mr_saturn_shield_break");
     public static SoundEvent Navi = registerSoundEvent("navi_attention");
     public static SoundEvent Action_Failed = registerSoundEvent("action_failed");
 

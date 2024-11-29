@@ -39,7 +39,7 @@ public abstract class LivingEntityMixin {
                 if (companion instanceof OneUpMushroomCompanion) {
                     if (player.getHealth() - amount <= 0.0f) {
                         player.setHealth(player.getMaxHealth());
-                        companion.playSound(CompanionSounds.OneUp, 1.0f, 1.0f);
+                        companion.playSound(CompanionSounds.One_Up, 1.0f, 1.0f);
                         player.lockCompanion(companion.getType().getTranslationKey());
                         cir.setReturnValue(false);
                     }
@@ -86,4 +86,5 @@ public abstract class LivingEntityMixin {
             }
         }
     }
+
 }

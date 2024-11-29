@@ -60,9 +60,14 @@ public class HerobrineCompanion extends PlayerCompanion {
 
                 damagePlayer(range, distance, player);
                 teleportPlayer(hitResult, player);
-                setCooldownSeconds(20);
+                setCooldownSeconds(15);
             }
         }
+    }
+
+    @Override
+    public void onAttack(PlayerEntity player, LivingEntity target) {
+
     }
 
     private void damagePlayer(float range, double distance, PlayerEntity player) {

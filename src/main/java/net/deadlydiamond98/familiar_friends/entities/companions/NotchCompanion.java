@@ -29,32 +29,41 @@ public class NotchCompanion extends PlayerCompanion {
 
     @Override
     public void doKeyEvent(PlayerEntity player) {
+        boolean noCooldown = hasNoCooldown(player);
 
-        double range = 100.0;
+        if (noCooldown) {
+            double range = 100.0;
 
-        Vec3d startPos = player.getCameraPosVec(1.0F);
-        Vec3d lookVec = player.getRotationVec(1.0F);
-        Vec3d endPos = startPos.add(lookVec.multiply(range));
+            Vec3d startPos = player.getCameraPosVec(1.0F);
+            Vec3d lookVec = player.getRotationVec(1.0F);
+            Vec3d endPos = startPos.add(lookVec.multiply(range));
 
-        BlockHitResult hitResult = player.getWorld().raycast(new RaycastContext(
-                startPos,
-                endPos,
-                RaycastContext.ShapeType.COLLIDER,
-                RaycastContext.FluidHandling.NONE,
-                player
-        ));
+            BlockHitResult hitResult = player.getWorld().raycast(new RaycastContext(
+                    startPos,
+                    endPos,
+                    RaycastContext.ShapeType.COLLIDER,
+                    RaycastContext.FluidHandling.NONE,
+                    player
+            ));
 
-        if (hitResult.getType() == HitResult.Type.BLOCK) {
-            BlockPos hitPos = hitResult.getBlockPos();
-            Direction hitSide = hitResult.getSide();
-            BlockPos againstBlockPos = hitPos.offset(hitSide);
+            if (hitResult.getType() == HitResult.Type.BLOCK) {
+                BlockPos hitPos = hitResult.getBlockPos();
+                Direction hitSide = hitResult.getSide();
+                BlockPos againstBlockPos = hitPos.offset(hitSide);
 
-            LightningEntity lightning = EntityType.LIGHTNING_BOLT.create(player.getWorld());
-            if (lightning != null) {
-                lightning.refreshPositionAfterTeleport(Vec3d.ofCenter(againstBlockPos));
-                player.getWorld().spawnEntity(lightning);
+                LightningEntity lightning = EntityType.LIGHTNING_BOLT.create(player.getWorld());
+                if (lightning != null) {
+                    lightning.refreshPositionAfterTeleport(Vec3d.ofCenter(againstBlockPos));
+                    player.getWorld().spawnEntity(lightning);
+                    setCooldownSeconds(20);
+                }
             }
         }
+    }
+
+    @Override
+    public void onAttack(PlayerEntity player, LivingEntity target) {
+
     }
 
     @Override

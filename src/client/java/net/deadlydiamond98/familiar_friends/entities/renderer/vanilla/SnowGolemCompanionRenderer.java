@@ -1,10 +1,8 @@
 package net.deadlydiamond98.familiar_friends.entities.renderer.vanilla;
 
-import net.deadlydiamond98.familiar_friends.entities.companions.vanilla.CreeperCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.vanilla.SnowGolemCompanion;
 import net.deadlydiamond98.familiar_friends.entities.renderer.CompanionRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
-import net.minecraft.client.render.entity.model.CreeperEntityModel;
 import net.minecraft.client.render.entity.model.EntityModelLayers;
 import net.minecraft.client.render.entity.model.SnowGolemEntityModel;
 import net.minecraft.client.util.math.MatrixStack;

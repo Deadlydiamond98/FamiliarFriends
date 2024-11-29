@@ -217,6 +217,8 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
 
     public abstract void doKeyEvent(PlayerEntity player);
 
+    public abstract void onAttack(PlayerEntity player, LivingEntity target);
+
     @Nullable
     @Override
     public Entity getOwner() {

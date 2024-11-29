@@ -213,7 +213,7 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
 
         // Lock Overlay
         if (companion.isLocked(client.player)) {
-            context.drawTexture(BOOK_TEXTURE, ((this.width - 106) / 2) - 82, 22, 110, 110, 57, 204,
+            context.drawTexture(BOOK_TEXTURE, ((this.width - 106) / 2) - 82, 27, 110, 110, 57, 204,
                     56, 56, 512, 512);
         }
     }
@@ -281,6 +281,12 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
                 iconButton.renderTooltip(context, textRenderer, mouseX, mouseY);
             }
         });
+
+        RenderSystem.disableDepthTest();
+
+        this.drawForeground(context, mouseX, mouseY);
+
+        RenderSystem.enableDepthTest();
     }
 
     // Button Things!!!

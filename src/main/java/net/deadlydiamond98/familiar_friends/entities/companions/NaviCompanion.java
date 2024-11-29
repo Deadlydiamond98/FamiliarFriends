@@ -74,6 +74,11 @@ public class NaviCompanion extends PlayerCompanion {
 
     }
 
+    @Override
+    public void onAttack(PlayerEntity player, LivingEntity target) {
+
+    }
+
     private boolean getClosest(PlayerEntity player, BlockPos currentClosest, BlockPos newPos) {
         double currentDistance = player.squaredDistanceTo(currentClosest.getX(), currentClosest.getY(), currentClosest.getZ());
         double newDistance = player.squaredDistanceTo(newPos.getX(), newPos.getY(), newPos.getZ());

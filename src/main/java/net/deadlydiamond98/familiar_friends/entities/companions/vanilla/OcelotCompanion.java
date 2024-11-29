@@ -31,6 +31,11 @@ public class OcelotCompanion extends PlayerCompanion {
     }
 
     @Override
+    public void onAttack(PlayerEntity player, LivingEntity target) {
+
+    }
+
+    @Override
     public Text getName() {
         return Text.translatable("entity.minecraft.ocelot");
     }

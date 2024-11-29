@@ -7,6 +7,7 @@ import net.deadlydiamond98.familiar_friends.networking.CompanionServerPackets;
 import net.deadlydiamond98.familiar_friends.util.CompanionPlayerData;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
@@ -229,6 +230,15 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
             this.unlockedCompanions.clear();
             for (int i = 0; i < companionList.size(); i++) {
                 this.unlockedCompanions.add(companionList.getString(i));
+            }
+        }
+    }
+
+    @Inject(method = "attack", at = @At("HEAD"))
+    public void onAttackEntity(Entity target, CallbackInfo ci) {
+        if (target instanceof LivingEntity livingEntity) {
+            if (this.currentCompanion != null) {
+                this.currentCompanion.onAttack(this.getPlayer(), livingEntity);
             }
         }
     }

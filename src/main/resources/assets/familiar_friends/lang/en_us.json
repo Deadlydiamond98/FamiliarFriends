@@ -22,10 +22,6 @@
   "cooldown.familiar_friends.health": "health",
   "cooldown.familiar_friends.lowstat": "Cannot Perform this action! Your %s is too low!",
 
-
-  "entity.familiar_friends.creeper_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.creeper_companion.description": "idk yet :P",
-
   "entity.familiar_friends.chicken_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.chicken_companion.description": "Grants the Player passive slow falling while the player is on the ground, which lasts for 2 seconds when in the air.",
 
@@ -33,7 +29,7 @@
   "entity.familiar_friends.iron_golem_companion.description": "Damages hostile mobs and sends them flying into the air (causing additional fall damage).",
 
   "entity.familiar_friends.snow_golem_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.snow_golem_companion.description": "Throws snowballs that deal low damage",
+  "entity.familiar_friends.snow_golem_companion.description": "Throws snowballs that knock-back foes.",
 
   "entity.familiar_friends.allay_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.allay_companion.description": "When equipped, Items are able to be picked up from farther away!",
@@ -64,17 +60,9 @@
 
   "entity.familiar_friends.notch_companion": "Notch",
   "entity.familiar_friends.notch_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.notch_companion.description": "Will Smite the direction you look when pressing \"%s\"! There is a 15 second cooldown before lightning can be struck again.",
+  "entity.familiar_friends.notch_companion.description": "Will Smite the direction you look when pressing \"%s\"! There is a 20 second cooldown before lightning can be struck again.",
 
   "entity.familiar_friends.herobrine_companion": "Herobrine",
   "entity.familiar_friends.herobrine_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.herobrine_companion.description": "Will Teleport the player in the direction they are looking when pressing \"%s\", but will consume player health. More health is consumed the further the teleport is, but it will kill the player. Teleports don't work when player health is too low, and they have a 20 second cooldown.",
-
-  "entity.familiar_friends.tater_companion": "Lil' Tater",
-  "entity.familiar_friends.tater_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.tater_companion.description": "I don't remember his mechanic, will add later",
-
-  "entity.familiar_friends.chuck_norris_companion": "Chuck Norris",
-  "entity.familiar_friends.chuck_norris_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.chuck_norris_companion.description": "Perform a Round-House-Kick that sends foes flying with \"%s\"! There is a 25 second cooldown before Chuck Norris will perform another Round-House-Kick"
+  "entity.familiar_friends.herobrine_companion.description": "Will Teleport the player in the direction they are looking when pressing \"%s\", but will consume player health. More health is consumed the further the teleport is, but it will kill the player. Teleports don't work when player health is too low, and they have a 15 second cooldown."
 }

@@ -15,5 +15,10 @@
     "sounds": [
       "familiar_friends:failed"
     ]
+  },
+  "mr_saturn_shield_break": {
+    "sounds": [
+      "familiar_friends:mr_saturn_shield_break"
+    ]
   }
 }

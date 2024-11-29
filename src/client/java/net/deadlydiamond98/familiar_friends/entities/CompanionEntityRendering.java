@@ -1,14 +1,8 @@
 package net.deadlydiamond98.familiar_friends.entities;
 
-import net.deadlydiamond98.familiar_friends.entities.models.CompanionCubeModel;
-import net.deadlydiamond98.familiar_friends.entities.models.LilTaterCompanionModel;
-import net.deadlydiamond98.familiar_friends.entities.models.NaviEntityModel;
-import net.deadlydiamond98.familiar_friends.entities.models.OneUpMushroomModel;
+import net.deadlydiamond98.familiar_friends.entities.models.*;
 import net.deadlydiamond98.familiar_friends.entities.models.vanilla.*;
-import net.deadlydiamond98.familiar_friends.entities.renderer.CompanionCubeCompanionRenderer;
-import net.deadlydiamond98.familiar_friends.entities.renderer.NaviCompanionRenderer;
-import net.deadlydiamond98.familiar_friends.entities.renderer.OneUpMushroomCompanionRenderer;
-import net.deadlydiamond98.familiar_friends.entities.renderer.TaterCompanionRenderer;
+import net.deadlydiamond98.familiar_friends.entities.renderer.*;
 import net.deadlydiamond98.familiar_friends.entities.renderer.player.HerobrineCompanionRenderer;
 import net.deadlydiamond98.familiar_friends.entities.renderer.player.NotchCompanionRenderer;
 import net.deadlydiamond98.familiar_friends.entities.renderer.vanilla.*;
@@ -23,7 +17,6 @@ public class CompanionEntityRendering {
     }
 
     private static void registerEntityRenderers() {
-        EntityRendererRegistry.register(CompanionEntities.Creeper_Companion, CreeperCompanionRenderer::new);
         EntityRendererRegistry.register(CompanionEntities.Chicken_Companion, ChickenCompanionRenderer::new);
         EntityRendererRegistry.register(CompanionEntities.Iron_Golem_Companion, IronGolemCompanionRenderer::new);
         EntityRendererRegistry.register(CompanionEntities.Navi_Companion, NaviCompanionRenderer::new);
@@ -35,7 +28,6 @@ public class CompanionEntityRendering {
         EntityRendererRegistry.register(CompanionEntities.Herobrine_Companion, HerobrineCompanionRenderer::new);
         EntityRendererRegistry.register(CompanionEntities.Spider_Companion, SpiderCompanionRenderer::new);
         EntityRendererRegistry.register(CompanionEntities.Skeleton_Companion, SkeletonCompanionRenderer::new);
-        EntityRendererRegistry.register(CompanionEntities.Tater_Companion, TaterCompanionRenderer::new);
         EntityRendererRegistry.register(CompanionEntities.Snow_Golem_Companion, SnowGolemCompanionRenderer::new);
         EntityRendererRegistry.register(CompanionEntities.Allay_Companion, AllayCompanionRenderer::new);
     }
@@ -49,7 +41,7 @@ public class CompanionEntityRendering {
         EntityModelLayerRegistry.registerModelLayer(ChickenCompanionModel.LAYER_LOCATION, ChickenCompanionModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(OcelotCompanionModel.LAYER_LOCATION, OcelotCompanionModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(SkeletonCompanionModel.LAYER_LOCATION, SkeletonCompanionModel::getTexturedModelData);
-        EntityModelLayerRegistry.registerModelLayer(LilTaterCompanionModel.LAYER_LOCATION, LilTaterCompanionModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(AllayCompanionModel.LAYER_LOCATION, AllayCompanionModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(SquidCompanionModel.LAYER_LOCATION, SquidCompanionModel::getTexturedModelData);
     }
 }

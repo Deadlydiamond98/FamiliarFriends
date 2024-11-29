@@ -32,19 +32,6 @@ public abstract class EntityMixin {
         return ((Entity)(Object)this);
     }
 
-//    @Inject(method = "canClimb", at = @At(value = "HEAD"), cancellable = true)
-//    private void climbWithSpider(BlockState state, CallbackInfoReturnable<Boolean> cir) {
-//        if (this.getPlayer() instanceof PlayerEntity player) {
-//            if (((CompanionPlayerData) player).getCompanion() != null) {
-//                PlayerCompanion companion = ((CompanionPlayerData) player).getCompanion();
-//                if (companion instanceof SpiderCompanion) {
-//                    cir.setReturnValue(true);
-//                    cir.cancel();
-//                }
-//            }
-//        }
-//    }
-
     @Inject(method = "isInLava", at = @At(value = "HEAD"), cancellable = true)
     private void inLava(CallbackInfoReturnable<Boolean> cir) {
         if (this.getPlayer() instanceof PlayerEntity player) {

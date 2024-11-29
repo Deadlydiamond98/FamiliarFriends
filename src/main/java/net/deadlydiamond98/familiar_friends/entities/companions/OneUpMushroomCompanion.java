@@ -26,7 +26,12 @@ public class OneUpMushroomCompanion extends PlayerCompanion {
     }
 
     @Override
+    public void onAttack(PlayerEntity player, LivingEntity target) {
+
+    }
+
+    @Override
     public int getCost() {
-        return 20;
+        return 10;
     }
 }

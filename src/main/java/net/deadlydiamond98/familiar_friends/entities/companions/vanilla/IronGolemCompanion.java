@@ -34,7 +34,7 @@ public class IronGolemCompanion extends PlayerCompanion {
         if (nearestHostile != null) {
             if (this.age % 120 == 0) {
                 this.setAttackTicksLeft(10);
-                nearestHostile.damage(nearestHostile.getDamageSources().playerAttack(player), 3.0f);
+                nearestHostile.damage(nearestHostile.getDamageSources().playerAttack(player), 4.0f);
                 nearestHostile.setVelocity(nearestHostile.getVelocity().multiply(1, 0, 1).add(0, 1, 0));
                 this.playSound(SoundEvents.ENTITY_IRON_GOLEM_ATTACK, 1.0F, 1.0F);
             }
@@ -43,6 +43,11 @@ public class IronGolemCompanion extends PlayerCompanion {
 
     @Override
     public void doKeyEvent(PlayerEntity player) {
+
+    }
+
+    @Override
+    public void onAttack(PlayerEntity player, LivingEntity target) {
 
     }
 
