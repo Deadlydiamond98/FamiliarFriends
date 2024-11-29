@@ -72,8 +72,19 @@ public class CompanionIconButton extends ButtonWidget {
     public void renderTooltip(DrawContext context, TextRenderer textRenderer, int mouseX, int mouseY) {
         if (isHovered()) {
             List<Text> tooltip = new ArrayList<>();
+
+            int maxLen = 30;
+
             tooltip.add(companion.getName().copy());
-            tooltip.add(companion.getAuthor().copy().setStyle(Style.EMPTY.withColor(0x797979)));
+            int authorColor = 0x797979;
+            String author = companion.getAuthor().getString();
+            while (author.length() > maxLen) {
+                int split = TextFormatHelper.findCommaSplitIndex(author, maxLen);
+                tooltip.add(Text.literal(author.substring(0, split).trim()).setStyle(Style.EMPTY.withColor(authorColor)));
+                author = author.substring(split).trim();
+            }
+            tooltip.add(Text.literal(author).setStyle(Style.EMPTY.withColor(authorColor)));
+
             if (locked) {
                 tooltip.add(companion.getCostLang());
             }
@@ -83,7 +94,6 @@ public class CompanionIconButton extends ButtonWidget {
 
             String description = companion.getDescription().getString();
 
-            int maxLen = 30;
             int descriptionColor = 0xffec74;
             while (description.length() > maxLen) {
                 int split = TextFormatHelper.findSplitIndex(description, maxLen);

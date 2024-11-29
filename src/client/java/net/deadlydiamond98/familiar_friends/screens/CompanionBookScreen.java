@@ -57,6 +57,10 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
 
     @Override
     protected void init() {
+        this.clearChildren();
+        this.legendButtons.clear();
+        this.drawables.clear();
+
         this.addCompanions();
         this.addLegendButtons();
         this.addPageButtons();

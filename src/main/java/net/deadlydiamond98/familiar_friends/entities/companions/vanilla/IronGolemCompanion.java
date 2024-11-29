@@ -53,7 +53,7 @@ public class IronGolemCompanion extends PlayerCompanion {
 
     @Override
     public int getCost() {
-        return 0;
+        return 12;
     }
 
     public int getAttackTicksLeft() {

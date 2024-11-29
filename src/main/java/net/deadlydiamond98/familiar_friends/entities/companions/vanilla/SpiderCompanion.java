@@ -33,6 +33,6 @@ public class SpiderCompanion extends PlayerCompanion {
 
     @Override
     public int getCost() {
-        return 0;
+        return 20;
     }
 }

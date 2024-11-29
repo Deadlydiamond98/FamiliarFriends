@@ -50,6 +50,6 @@ public class AllayCompanion extends PlayerCompanion {
 
     @Override
     public int getCost() {
-        return 0;
+        return 10;
     }
 }

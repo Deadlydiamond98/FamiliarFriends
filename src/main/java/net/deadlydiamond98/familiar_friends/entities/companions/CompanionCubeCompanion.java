@@ -7,10 +7,14 @@ import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+
+import java.util.List;
 
 public class CompanionCubeCompanion extends PlayerCompanion {
     public CompanionCubeCompanion(EntityType<?> type, World world) {
@@ -32,6 +36,6 @@ public class CompanionCubeCompanion extends PlayerCompanion {
 
     @Override
     public int getCost() {
-        return 0;
+        return 25;
     }
 }

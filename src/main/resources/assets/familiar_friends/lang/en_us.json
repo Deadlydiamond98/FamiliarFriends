@@ -60,7 +60,7 @@
 
   "entity.familiar_friends.companion_cube_companion": "Companion Cube",
   "entity.familiar_friends.companion_cube_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.companion_cube_companion.description": "Grants the Player the ability to walk on lava (albeit, for a short period). This Companion is your best friend!",
+  "entity.familiar_friends.companion_cube_companion.description": "Grants the Player the ability to walk on non-flowing Lava!",
 
   "entity.familiar_friends.notch_companion": "Notch",
   "entity.familiar_friends.notch_companion.author": "Deadlydiamond98",

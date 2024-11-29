@@ -71,7 +71,6 @@ public class CompanionRegistry {
             );
 
         } catch (Exception e) {
-            FamiliarFriends.LOGGER.info("Failed to Retrieve Companion {}", key);
             return null;
         }
     }
