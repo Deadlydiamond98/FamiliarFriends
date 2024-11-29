@@ -105,12 +105,20 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         int companionX = guiX - 80;
         int companionY = guiY + 110;
 
-        context.drawTexture(BOOK_TEXTURE, ((this.width - 11) / 2) - 140, companionY - 100, 12, 246, 11, 15, 512, 512);
+        if (companion.isLocked(client.player)) {
+            context.drawTexture(BOOK_TEXTURE, ((this.width - 11) / 2) - 140, companionY - 100, 12, 246, 11, 15, 512, 512);
 
-        Text xpCost = companion.getCostLang().copy().setStyle(Style.EMPTY.withUnderline(true));
+            Text xpCost = companion.getCostLang().copy().setStyle(Style.EMPTY.withUnderline(true));
 
-        CompanionGuiDrawMethods.drawResizeableCenteredText(textRenderer, context,
-                matrices, companionX, companionY - 95, xpCost, 1.0f, 0x478e47, false); // Experience Cost
+            CompanionGuiDrawMethods.drawResizeableCenteredText(textRenderer, context,
+                    matrices, companionX, companionY - 95, xpCost, 1.0f, 0x478e47, false); // Experience Cost
+        }
+        else {
+            Text xpCost = Text.translatable("gui.familiar_friends.unlocked").setStyle(Style.EMPTY.withUnderline(true).withColor(0x478e47));
+
+            CompanionGuiDrawMethods.drawResizeableCenteredText(textRenderer, context,
+                    matrices, companionX, companionY - 95, xpCost, 1.0f, 0x478e47, false); // Experience Cost
+        }
 
         context.drawTexture(BOOK_TEXTURE, ((this.width - 106) / 2) - 80, companionY - 83, 329, 2, 106, 106, 512, 512); // Entity frame thing
 
