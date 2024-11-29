@@ -2,9 +2,14 @@ package net.deadlydiamond98.familiar_friends.entities.companions;
 
 import net.deadlydiamond98.familiar_friends.entities.CompanionEntities;
 import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.particle.ParticleTypes;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 
 public class CompanionCubeCompanion extends PlayerCompanion {

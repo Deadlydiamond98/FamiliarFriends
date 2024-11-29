@@ -36,7 +36,7 @@
   "entity.familiar_friends.snow_golem_companion.description": "Throws snowballs that deal low damage",
 
   "entity.familiar_friends.allay_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.allay_companion.description": "When equipped, nearby items will gravitate towards the player",
+  "entity.familiar_friends.allay_companion.description": "When equipped, Items are able to be picked up from farther away!",
 
   "entity.familiar_friends.ocelot_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.ocelot_companion.description": "Grants the player passive Swiftness. You can also press \"%s\" to Meow.",
@@ -56,7 +56,7 @@
 
   "entity.familiar_friends.one_up_mushroom_companion": "1-Up Mushroom",
   "entity.familiar_friends.one_up_mushroom_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.one_up_mushroom_companion.description": "Saves the Player from death. If the 1-Up Mushroom is used it will need to be unlocked again!",
+  "entity.familiar_friends.one_up_mushroom_companion.description": "If the player is supposed to die, their health will be fully restored. If the 1-Up Mushroom is used it will need to be unlocked again!",
 
   "entity.familiar_friends.companion_cube_companion": "Companion Cube",
   "entity.familiar_friends.companion_cube_companion.author": "Deadlydiamond98",

@@ -392,7 +392,7 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         boolean companionExists = companion != null;
         boolean companionLocked = companionExists && companion.isLocked(player);
         boolean hasCompanion = player.getCompanion() != null;
-        boolean hasDifferentCompanion = hasCompanion && companionExists &&
+        boolean hasDifferentCompanion = companionExists &&
                 !companion.getType().getTranslationKey().equals(player.currentCompanion());
 
         // Update button visibility

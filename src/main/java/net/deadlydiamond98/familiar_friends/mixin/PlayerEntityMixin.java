@@ -147,6 +147,7 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
         if (this.currentCompanion.getType().getTranslationKey().equals(companion)) {
             this.hasCompanion = false;
             this.currentCompanion.remove(Entity.RemovalReason.DISCARDED);
+            this.currentCompanion = null;
             this.backUpCompanionKey = "";
         }
     }
@@ -169,6 +170,7 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
     public void unequipCompanion(PlayerCompanion companion) {
         this.hasCompanion = false;
         this.currentCompanion.remove(Entity.RemovalReason.DISCARDED);
+        this.currentCompanion = null;
         this.backUpCompanionKey = "";
     }
 
