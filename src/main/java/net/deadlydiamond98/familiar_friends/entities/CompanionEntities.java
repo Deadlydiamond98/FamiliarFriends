@@ -11,6 +11,11 @@ public class CompanionEntities {
     public static void registerEntities() {
     }
 
+    public static final EntityType<CreeperCompanion> Creeper_Companion = CompanionRegistry.registerCompanion(
+            CreeperCompanion.class,
+            Identifier.of(FamiliarFriends.MOD_ID, "creeper_companion")
+    );
+
     public static final EntityType<AllayCompanion> Allay_Companion = CompanionRegistry.registerCompanion(
             AllayCompanion.class,
             Identifier.of(FamiliarFriends.MOD_ID, "allay_companion")

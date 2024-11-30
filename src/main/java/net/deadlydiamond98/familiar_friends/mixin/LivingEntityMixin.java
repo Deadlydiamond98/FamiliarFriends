@@ -3,12 +3,14 @@ package net.deadlydiamond98.familiar_friends.mixin;
 import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.CompanionCubeCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.OneUpMushroomCompanion;
+import net.deadlydiamond98.familiar_friends.entities.companions.vanilla.CreeperCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.vanilla.SpiderCompanion;
 import net.deadlydiamond98.familiar_friends.sounds.CompanionSounds;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
+import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -17,6 +19,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Optional;
@@ -32,17 +35,35 @@ public abstract class LivingEntityMixin {
     }
 
     @Inject(method = "damage", at = @At(value = "HEAD"), cancellable = true)
-    private void beforeTryUseTotem(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+    private void onDeath(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         if (this.getPlayer() instanceof PlayerEntity player) {
             if (player.getCompanion() != null) {
-                PlayerCompanion companion = ( player).getCompanion();
+                PlayerCompanion companion = player.getCompanion();
                 if (companion instanceof OneUpMushroomCompanion) {
                     if (player.getHealth() - amount <= 0.0f) {
                         player.setHealth(player.getMaxHealth());
                         companion.playSound(CompanionSounds.One_Up, 1.0f, 1.0f);
                         player.lockCompanion(companion.getType().getTranslationKey());
+                    }
+                }
+                if (companion instanceof CreeperCompanion) {
+                    if (source.isIn(DamageTypeTags.IS_EXPLOSION)) {
                         cir.setReturnValue(false);
                     }
+                }
+            }
+        }
+    }
+
+    @Inject(method = "onDeath", at = @At(value = "HEAD"), cancellable = true)
+    private void died(DamageSource damageSource, CallbackInfo ci) {
+        if (this.getPlayer() instanceof PlayerEntity player) {
+            if (player.getCompanion() != null) {
+                PlayerCompanion companion = player.getCompanion();
+                if (companion instanceof CreeperCompanion) {
+                    player.lockCompanion(companion.getType().getTranslationKey());
+                    player.getWorld().createExplosion(player, player.getX(), player.getY(), player.getZ(),
+                            4, World.ExplosionSourceType.NONE);
                 }
             }
         }

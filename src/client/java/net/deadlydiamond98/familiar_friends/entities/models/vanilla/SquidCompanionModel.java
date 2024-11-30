@@ -49,6 +49,7 @@ public class SquidCompanionModel<T extends PlayerCompanion> extends SinglePartEn
     }
 
     public void setAngles(T entity, float limbAngle, float limbDistance, float animationProgress, float headYaw, float headPitch) {
+        this.root.pivotY = -6;
         ModelPart[] var7 = this.tentacles;
         int var8 = var7.length;
 

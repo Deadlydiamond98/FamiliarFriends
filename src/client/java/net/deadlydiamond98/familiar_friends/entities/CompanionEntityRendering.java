@@ -1,5 +1,6 @@
 package net.deadlydiamond98.familiar_friends.entities;
 
+import net.deadlydiamond98.familiar_friends.entities.companions.vanilla.CreeperCompanion;
 import net.deadlydiamond98.familiar_friends.entities.models.*;
 import net.deadlydiamond98.familiar_friends.entities.models.vanilla.*;
 import net.deadlydiamond98.familiar_friends.entities.renderer.*;
@@ -30,6 +31,7 @@ public class CompanionEntityRendering {
         EntityRendererRegistry.register(CompanionEntities.Skeleton_Companion, SkeletonCompanionRenderer::new);
         EntityRendererRegistry.register(CompanionEntities.Snow_Golem_Companion, SnowGolemCompanionRenderer::new);
         EntityRendererRegistry.register(CompanionEntities.Allay_Companion, AllayCompanionRenderer::new);
+        EntityRendererRegistry.register(CompanionEntities.Creeper_Companion, CreeperCompanionRenderer::new);
     }
 
     private static void registerModelLayers() {

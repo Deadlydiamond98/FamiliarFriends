@@ -1,12 +1,15 @@
 package net.deadlydiamond98.familiar_friends;
 
 import net.deadlydiamond98.familiar_friends.entities.CompanionEntities;
+import net.deadlydiamond98.familiar_friends.events.CompanionEvents;
+import net.deadlydiamond98.familiar_friends.events.OnPlayerDeathEvent;
 import net.deadlydiamond98.familiar_friends.items.CompanionItems;
 import net.deadlydiamond98.familiar_friends.networking.CompanionServerPackets;
 import net.deadlydiamond98.familiar_friends.screens.CompanionScreenHandlers;
 import net.deadlydiamond98.familiar_friends.sounds.CompanionSounds;
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +31,8 @@ public class FamiliarFriends implements ModInitializer {
 		CompanionItems.registerItems();
 		CompanionEntities.registerEntities();
 		CompanionScreenHandlers.registerScreenHandlers();
+
+		CompanionEvents.registerEvents();
 
 		LOGGER.info(MOD_ID + " has loaded successfully");
 	}
