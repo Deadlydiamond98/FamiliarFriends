@@ -22,7 +22,7 @@ public class OcelotCompanion extends PlayerCompanion {
 
     @Override
     protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
-        player.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 60, 0, true, false));
+        player.addStatusEffect(new StatusEffectInstance(StatusEffects.SPEED, 23, 0, true, false));
     }
 
     @Override

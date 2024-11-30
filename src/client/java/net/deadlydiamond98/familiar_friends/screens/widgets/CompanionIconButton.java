@@ -79,9 +79,15 @@ public class CompanionIconButton extends ButtonWidget {
             int authorColor = 0x797979;
             String author = companion.getAuthor().getString();
             while (author.length() > maxLen) {
-                int split = TextFormatHelper.findCommaSplitIndex(author, maxLen);
-                tooltip.add(Text.literal(author.substring(0, split).trim()).setStyle(Style.EMPTY.withColor(authorColor)));
-                author = author.substring(split).trim();
+
+                int splitIndex = TextFormatHelper.findCommaSplitIndex(author, maxLen);
+
+                if (splitIndex == -1) {
+                    splitIndex = TextFormatHelper.findSplitIndex(author, maxLen);
+                }
+
+                tooltip.add(Text.literal(author.substring(0, splitIndex).trim()).setStyle(Style.EMPTY.withColor(authorColor)));
+                author = author.substring(splitIndex).trim();
             }
             tooltip.add(Text.literal(author).setStyle(Style.EMPTY.withColor(authorColor)));
 

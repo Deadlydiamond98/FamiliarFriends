@@ -23,13 +23,16 @@
   "cooldown.familiar_friends.lowstat": "Cannot Perform this action! Your %s is too low!",
 
   "entity.familiar_friends.chicken_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.chicken_companion.description": "Grants the Player passive slow falling while the player is on the ground, which lasts for 2 seconds when in the air.",
+  "entity.familiar_friends.chicken_companion.description": "Grants the Player passive slow falling while the player is on the ground, which lasts for 3 seconds when in the air.",
 
   "entity.familiar_friends.iron_golem_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.iron_golem_companion.description": "Damages hostile mobs and sends them flying into the air (causing additional fall damage).",
 
   "entity.familiar_friends.snow_golem_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.snow_golem_companion.description": "Throws snowballs that knock-back foes.",
+
+  "entity.familiar_friends.creeper_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.creeper_companion.description": "Grants the user immunity to explosion damage. If the user dies, the companion will explode (won't damage blocks), causing great damage to creatures around the player. If the companion explodes, you will need to unlock it again",
 
   "entity.familiar_friends.allay_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.allay_companion.description": "When equipped, Items are able to be picked up from farther away!",
@@ -38,7 +41,7 @@
   "entity.familiar_friends.ocelot_companion.description": "Grants the player passive Swiftness. You can also press \"%s\" to Meow.",
 
   "entity.familiar_friends.squid_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.squid_companion.description": "not yet",
+  "entity.familiar_friends.squid_companion.description": "Grants the player 5 seconds of water breathing",
 
   "entity.familiar_friends.skeleton_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.skeleton_companion.description": "Shoots arrows at nearby Hostile Creatures!",
@@ -57,6 +60,10 @@
   "entity.familiar_friends.companion_cube_companion": "Companion Cube",
   "entity.familiar_friends.companion_cube_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.companion_cube_companion.description": "Grants the Player the ability to walk on non-flowing Lava!",
+
+  "entity.familiar_friends.mr_saturn_companion": "Mr. Saturn",
+  "entity.familiar_friends.mr_saturn_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.mr_saturn_companion.description": "Projectiles deal reduced damage, and sometimes even are reflected off of the player!",
 
   "entity.familiar_friends.notch_companion": "Notch",
   "entity.familiar_friends.notch_companion.author": "Deadlydiamond98",

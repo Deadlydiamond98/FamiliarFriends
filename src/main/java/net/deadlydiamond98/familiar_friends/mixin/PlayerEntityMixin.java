@@ -233,13 +233,4 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
             }
         }
     }
-
-    @Inject(method = "attack", at = @At("HEAD"))
-    public void onAttackEntity(Entity target, CallbackInfo ci) {
-        if (target instanceof LivingEntity livingEntity) {
-            if (this.currentCompanion != null) {
-                this.currentCompanion.onAttack(this.getPlayer(), livingEntity);
-            }
-        }
-    }
 }

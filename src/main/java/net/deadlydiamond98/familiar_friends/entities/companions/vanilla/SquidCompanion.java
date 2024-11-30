@@ -22,7 +22,7 @@ public class SquidCompanion extends PlayerCompanion {
     @Override
     protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
         if (!player.isSubmergedInWater()) {
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 200, 0, true, false));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 103, 0, true, false));
         }
     }
 
@@ -43,6 +43,6 @@ public class SquidCompanion extends PlayerCompanion {
 
     @Override
     public int getCost() {
-        return 12;
+        return 10;
     }
 }
