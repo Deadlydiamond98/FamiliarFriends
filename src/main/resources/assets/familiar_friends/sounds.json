@@ -20,5 +20,10 @@
     "sounds": [
       "familiar_friends:mr_saturn_shield_break"
     ]
+  },
+  "do_it": {
+    "sounds": [
+      "familiar_friends:do_it"
+    ]
   }
 }

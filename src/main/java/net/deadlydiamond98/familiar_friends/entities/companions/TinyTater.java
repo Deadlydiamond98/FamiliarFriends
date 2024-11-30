@@ -22,7 +22,7 @@ public class TinyTater extends PlayerCompanion {
     @Override
     protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
         if (player.isDead()) {
-            this.playSound(CompanionSounds.One_Up, 1.0f, 1);
+            this.playSound(CompanionSounds.DO_IT, 1.0f, 1);
         }
     }
 
@@ -33,11 +33,11 @@ public class TinyTater extends PlayerCompanion {
 
     @Override
     public void doKeyEvent(PlayerEntity player) {
-        this.playSound(CompanionSounds.One_Up, 1.0f, 1);
+        this.playSound(CompanionSounds.DO_IT, 1.0f, 1);
     }
 
     @Override
     public void onAttack(PlayerEntity player, LivingEntity target) {
-        this.playSound(CompanionSounds.One_Up, 1.0f, 1);
+        this.playSound(CompanionSounds.DO_IT, 1.0f, 1);
     }
 }
