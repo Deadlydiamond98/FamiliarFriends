@@ -1,7 +1,7 @@
 package net.deadlydiamond98.familiar_friends.events;
 
 import net.deadlydiamond98.familiar_friends.entities.CompanionRegistry;
-import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.network.ServerPlayerEntity;
@@ -13,7 +13,7 @@ public class OnPlayerDeathEvent implements ServerPlayerEvents.AfterRespawn {
         PlayerEntity newP = newPlayer;
 
         CompanionRegistry.COMPANIONS.forEach((string, aClass) -> {
-            if (oldP.isCompanionUnlocked(CompanionRegistry.createCompanion(string, oldP, false))) {
+            if (oldP.isCompanionUnlocked(CompanionRegistry.createCompanion(string, oldP))) {
                 newP.unlockCompanion(string);
             }
         });

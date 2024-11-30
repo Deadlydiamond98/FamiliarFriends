@@ -1,7 +1,6 @@
 package net.deadlydiamond98.familiar_friends.entities;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
-import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
@@ -10,9 +9,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.Pair;
 import net.minecraft.world.World;
-import org.spongepowered.asm.mixin.Unique;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,6 +20,17 @@ public class CompanionRegistry {
 
     public static final Map<String, Class<? extends PlayerCompanion>> COMPANIONS = new HashMap<>();
 
+    /**
+     *
+     * This class is used to register your entities. When calling this class, your entity will be registered,
+     * and it will add the companion to the book's GUI
+     *
+     * @param entityClass The class of an entity being registered
+     * @param id The Identifier for the entity, this will be used for assigning the name, author, and description of the
+     *           entity in the lang file
+     *
+     * @return returns the EntityType for an entity
+     */
     public static <T extends PlayerCompanion> EntityType<T> registerCompanion(Class<T> entityClass, Identifier id) {
 
         EntityType.EntityFactory<T> factory = (type, world) -> {
@@ -55,8 +63,24 @@ public class CompanionRegistry {
         return entityType;
     }
 
-    // Reconstructs a companion from the backupKey when needed
-    // There might be a better way to do this, but I don't know what that way would be...
+    /**
+     * Creates a companion for spawning in the world based on a translation key
+     * @param key The Translation key for the entity you're trying to retrieve
+     * @param player The player entity, used for creating the companion and assigning the companion an owner and world
+     * @return returns the companion entity corresponding to the key, if the key doesn't match an existing entity, returns null
+     */
+    public static PlayerCompanion createCompanion(String key, PlayerEntity player) {
+        return createCompanion(key, player, false);
+    }
+
+    /**
+     * Creates a companion for spawning in the world based on a translation key, you shouldn't use this one
+     *
+     * @param key The Translation key for the entity you're trying to retrieve
+     * @param player The player entity, used for creating the companion and assigning the companion an owner and world
+     * @param gui Whether the companion is rendering in the Book gui
+     * @return returns the companion entity corresponding to the key, if the key doesn't match an existing entity, returns null
+     */
     public static PlayerCompanion createCompanion(String key, PlayerEntity player, boolean gui) {
         try {
             Class<? extends PlayerCompanion> companionClass = CompanionRegistry.COMPANIONS.get(key);
@@ -77,9 +101,12 @@ public class CompanionRegistry {
 
 
 
-    // Used in book GUI so that language determines the order the companions show up in
-    // Called on client, but felt it could go here for organization
-    public static List<PlayerCompanion> addCompanions(PlayerEntity player) {
+    /**
+     * Creates a list of companions, and then sorts the companions based on their name (with language taken into account).
+     * This is used for the Book gui
+     * @param player The player entity, used for creating the companion and assigning the companion an owner and world
+     */
+    public static List<PlayerCompanion> addCompanionsToBook(PlayerEntity player) {
 
         List<PlayerCompanion> companions = new ArrayList<>();
 

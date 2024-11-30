@@ -1,11 +1,11 @@
 package net.deadlydiamond98.familiar_friends.entities.companions;
 
-import net.deadlydiamond98.familiar_friends.entities.CompanionEntities;
-import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.sounds.CompanionSounds;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
 public class MrSaturnCompanion extends PlayerCompanion {
@@ -14,29 +14,20 @@ public class MrSaturnCompanion extends PlayerCompanion {
     }
 
     public MrSaturnCompanion(World world, PlayerEntity owner, boolean gui) {
-        super(CompanionEntities.Companion_Cube_Companion, world, owner, gui);
-    }
-
-    @Override
-    protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
-    }
-
-    @Override
-    public void doKeyEvent(PlayerEntity player) {
-
+        super(CompanionEntityTypes.Mr_Saturn_Companion, world, owner, gui);
     }
 
     @Override
     public void onAttack(PlayerEntity player, LivingEntity target) {
+        if (player.getRandom().nextInt(10) == 4) {
+            target.damage(target.getDamageSources().magic(), 10);
 
-//        int random = player.getRandom().nextInt(5);
-//
-//        if (random == 0) {
-//            ItemStack mainHandItem = target.getMainHandStack();
-//            ItemStack offHandItem = target.getOffHandStack();
-//
-//            target.getStackInHand(target.getActiveHand()).damage();
-//        }
+            double x = player.getX() - target.getX();
+            double y = player.getZ() - target.getZ();
+
+            target.takeKnockback(3, x, y);
+            this.playSound(CompanionSounds.Smmaaash, 1.0f, 1.0f);
+        }
     }
 
     @Override

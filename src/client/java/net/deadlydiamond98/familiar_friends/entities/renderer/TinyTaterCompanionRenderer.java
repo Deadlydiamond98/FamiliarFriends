@@ -1,15 +1,14 @@
 package net.deadlydiamond98.familiar_friends.entities.renderer;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
-import net.deadlydiamond98.familiar_friends.entities.companions.TinyTater;
-import net.deadlydiamond98.familiar_friends.entities.models.OneUpMushroomModel;
+import net.deadlydiamond98.familiar_friends.entities.companions.TinyTaterCompanion;
 import net.deadlydiamond98.familiar_friends.entities.models.TinyTaterModel;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
-public class TaterCompanionRenderer extends CompanionRenderer<TinyTater, TinyTaterModel<TinyTater>>{
-    public TaterCompanionRenderer(EntityRendererFactory.Context ctx) {
+public class TinyTaterCompanionRenderer extends CompanionRenderer<TinyTaterCompanion, TinyTaterModel<TinyTaterCompanion>>{
+    public TinyTaterCompanionRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new TinyTaterModel<>(ctx.getPart(TinyTaterModel.LAYER_LOCATION)));
     }
     private static final Identifier TEXTURE = Identifier.of(FamiliarFriends.MOD_ID, "textures/entity/tater.png");
@@ -26,7 +25,7 @@ public class TaterCompanionRenderer extends CompanionRenderer<TinyTater, TinyTat
     }
 
     @Override
-    public Identifier getTexture(TinyTater entity) {
+    public Identifier getTexture(TinyTaterCompanion entity) {
         return TEXTURE;
     }
 }

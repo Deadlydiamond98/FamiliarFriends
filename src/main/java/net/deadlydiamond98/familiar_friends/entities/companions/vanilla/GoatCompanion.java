@@ -4,35 +4,32 @@ import net.deadlydiamond98.familiar_friends.entities.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.effect.StatusEffectInstance;
-import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.text.Text;
 import net.minecraft.world.World;
 
-public class SquidCompanion extends PlayerCompanion {
-    public SquidCompanion(EntityType<?> type, World world) {
+public class GoatCompanion extends PlayerCompanion {
+    public GoatCompanion(EntityType<?> type, World world) {
         super(type, world);
     }
 
-    public SquidCompanion(World world, PlayerEntity owner, boolean gui) {
-        super(CompanionEntityTypes.Squid_Companion, world, owner, gui);
+    public GoatCompanion(World world, PlayerEntity owner, boolean gui) {
+        super(CompanionEntityTypes.Goat_Companion, world, owner, gui);
     }
 
     @Override
     protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
-        if (!player.isSubmergedInWater()) {
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 103, 0, true, false));
-        }
     }
 
     @Override
     public Text getName() {
-        return Text.translatable("entity.minecraft.squid");
+        return Text.translatable("entity.minecraft.goat");
     }
 
     @Override
     public int getCost() {
-        return 10;
+        return 3;
     }
 }

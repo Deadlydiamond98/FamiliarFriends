@@ -1,6 +1,6 @@
 package net.deadlydiamond98.familiar_friends.events;
 
-import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
 import net.fabricmc.fabric.api.event.player.AttackEntityCallback;
 import net.minecraft.entity.LivingEntity;

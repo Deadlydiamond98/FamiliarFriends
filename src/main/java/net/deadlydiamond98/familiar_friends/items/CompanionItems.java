@@ -13,7 +13,7 @@ import net.minecraft.util.Rarity;
 public class CompanionItems {
 
     public static final Item Book_Of_Familiars = registerItem("book_of_familiars", new BookOfFamiliars(new Item.Settings()
-            .rarity(Rarity.UNCOMMON)));
+            .rarity(Rarity.UNCOMMON).maxCount(1)));
 
     //Registration stuff
     private static Item registerItem(String itemName, Item item) {

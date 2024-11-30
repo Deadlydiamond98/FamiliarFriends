@@ -6,10 +6,30 @@ import net.deadlydiamond98.familiar_friends.entities.companions.vanilla.*;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.Identifier;
 
-public class CompanionEntities {
+public class CompanionEntityTypes {
 
     public static void registerEntities() {
     }
+
+    public static final EntityType<RanaCompanion> Rana_Companion = CompanionRegistry.registerCompanion(
+            RanaCompanion.class,
+            Identifier.of(FamiliarFriends.MOD_ID, "rana_companion")
+    );
+
+    public static final EntityType<CirnoCompanion> Cirno_Companion = CompanionRegistry.registerCompanion(
+            CirnoCompanion.class,
+            Identifier.of(FamiliarFriends.MOD_ID, "cirno_companion")
+    );
+
+    public static final EntityType<GoatCompanion> Goat_Companion = CompanionRegistry.registerCompanion(
+            GoatCompanion.class,
+            Identifier.of(FamiliarFriends.MOD_ID, "goat_companion")
+    );
+
+    public static final EntityType<CaveSpiderCompanion> Cave_Spider_Companion = CompanionRegistry.registerCompanion(
+            CaveSpiderCompanion.class,
+            Identifier.of(FamiliarFriends.MOD_ID, "cave_spider_companion")
+    );
 
     public static final EntityType<CreeperCompanion> Creeper_Companion = CompanionRegistry.registerCompanion(
             CreeperCompanion.class,
@@ -75,9 +95,14 @@ public class CompanionEntities {
             Identifier.of(FamiliarFriends.MOD_ID, "skeleton_companion")
     );
 
-    public static final EntityType<TinyTater> Tiny_Tater = CompanionRegistry.registerCompanion(
-            TinyTater.class,
+    public static final EntityType<TinyTaterCompanion> Tiny_Tater_Companion = CompanionRegistry.registerCompanion(
+            TinyTaterCompanion.class,
             Identifier.of(FamiliarFriends.MOD_ID, "tater_companion")
+    );
+
+    public static final EntityType<MrSaturnCompanion> Mr_Saturn_Companion = CompanionRegistry.registerCompanion(
+            MrSaturnCompanion.class,
+            Identifier.of(FamiliarFriends.MOD_ID, "mr_saturn_companion")
     );
 
 }

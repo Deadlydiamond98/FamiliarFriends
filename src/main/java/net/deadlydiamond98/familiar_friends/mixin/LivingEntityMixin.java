@@ -1,11 +1,12 @@
 package net.deadlydiamond98.familiar_friends.mixin;
 
-import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.CompanionCubeCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.OneUpMushroomCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.vanilla.CreeperCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.vanilla.SpiderCompanion;
 import net.deadlydiamond98.familiar_friends.sounds.CompanionSounds;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,7 +20,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Optional;
@@ -29,41 +29,33 @@ public abstract class LivingEntityMixin {
 
     @Shadow private Optional<BlockPos> climbingPos;
 
+    @Shadow protected abstract boolean tryUseTotem(DamageSource source);
+
+    @Shadow public abstract void onAttacking(Entity target);
+
     @Unique
     public LivingEntity getPlayer() {
         return ((LivingEntity)(Object)this);
     }
 
-    @Inject(method = "damage", at = @At(value = "HEAD"), cancellable = true)
-    private void onDeath(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
+    @Inject(method = "tryUseTotem", at = @At(value = "TAIL"), cancellable = true)
+    private void onDeath(DamageSource source, CallbackInfoReturnable<Boolean> cir) {
         if (this.getPlayer() instanceof PlayerEntity player) {
             if (player.getCompanion() != null) {
                 PlayerCompanion companion = player.getCompanion();
-                if (companion instanceof OneUpMushroomCompanion) {
-                    if (player.getHealth() - amount <= 0.0f) {
-                        player.setHealth(player.getMaxHealth());
-                        companion.playSound(CompanionSounds.One_Up, 1.0f, 1.0f);
-                        player.lockCompanion(companion.getType().getTranslationKey());
-                    }
-                }
-                if (companion instanceof CreeperCompanion) {
-                    if (source.isIn(DamageTypeTags.IS_EXPLOSION)) {
-                        cir.setReturnValue(false);
-                    }
-                }
+                companion.onPlayerDeath(player);
+                cir.setReturnValue(!player.isDead());
             }
         }
     }
 
-    @Inject(method = "onDeath", at = @At(value = "HEAD"), cancellable = true)
-    private void died(DamageSource damageSource, CallbackInfo ci) {
+    @Inject(method = "damage", at = @At(value = "HEAD"), cancellable = true)
+    private void onDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
         if (this.getPlayer() instanceof PlayerEntity player) {
             if (player.getCompanion() != null) {
                 PlayerCompanion companion = player.getCompanion();
-                if (companion instanceof CreeperCompanion) {
-                    player.lockCompanion(companion.getType().getTranslationKey());
-                    player.getWorld().createExplosion(player, player.getX(), player.getY(), player.getZ(),
-                            4, World.ExplosionSourceType.NONE);
+                if (companion.onDamaged(source, amount, player)) {
+                    cir.setReturnValue(false);
                 }
             }
         }
@@ -74,7 +66,7 @@ public abstract class LivingEntityMixin {
         if (this.getPlayer() instanceof PlayerEntity player) {
             if (player.getCompanion() != null) {
                 PlayerCompanion companion = player.getCompanion();
-                if (companion instanceof SpiderCompanion) {
+                if (companion.canClimbWalls()) {
                     if (!getPlayer().isSpectator()) {
                         World world = player.getWorld();
                         BlockPos pos = getPlayer().getBlockPos();

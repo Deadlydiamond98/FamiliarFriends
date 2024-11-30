@@ -1,9 +1,8 @@
 package net.deadlydiamond98.familiar_friends.entities.companions;
 
-import net.deadlydiamond98.familiar_friends.entities.CompanionEntities;
-import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
@@ -26,11 +25,7 @@ public class HerobrineCompanion extends PlayerCompanion {
     }
 
     public HerobrineCompanion(World world, PlayerEntity owner, boolean gui) {
-        super(CompanionEntities.Herobrine_Companion, world, owner, gui);
-    }
-
-    @Override
-    protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
+        super(CompanionEntityTypes.Herobrine_Companion, world, owner, gui);
     }
 
     @Override
@@ -64,15 +59,9 @@ public class HerobrineCompanion extends PlayerCompanion {
             }
         }
     }
-
-    @Override
-    public void onAttack(PlayerEntity player, LivingEntity target) {
-
-    }
-
     private void damagePlayer(float range, double distance, PlayerEntity player) {
 
-        float calculatedDamage = (float) ((range - distance) / range * 10.0f);
+        float calculatedDamage = (float) ((distance / range) * 15.0f);
 
         float currentHealth = player.getHealth();
 
@@ -97,20 +86,10 @@ public class HerobrineCompanion extends PlayerCompanion {
                     Vec3d.of(againstBlockPos), player.getVelocity(), player.getYaw(), player.getPitch(), TeleportTarget.NO_OP));
             player.onLanding();
         }
-        for(int j = 0; j < 128; ++j) {
-            double d = (double)j / 127.0;
-            float f = (this.random.nextFloat() - 0.5F) * 0.2F;
-            float g = (this.random.nextFloat() - 0.5F) * 0.2F;
-            float h = (this.random.nextFloat() - 0.5F) * 0.2F;
-            double e = MathHelper.lerp(d, player.prevX, player.getX()) + (this.random.nextDouble() - 0.5) * (double)player.getWidth() * 2.0;
-            double k = MathHelper.lerp(d, player.prevY, player.getY()) + this.random.nextDouble() * (double)player.getHeight();
-            double l = MathHelper.lerp(d, player.prevZ, player.getZ()) + (this.random.nextDouble() - 0.5) * (double)player.getWidth() * 2.0;
-            player.getWorld().addParticle(ParticleTypes.PORTAL, e, k, l, (double)f, (double)g, (double)h);
-        }
     }
 
     @Override
     public int getCost() {
-        return 20;
+        return 25;
     }
 }

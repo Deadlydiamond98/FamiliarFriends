@@ -1,7 +1,7 @@
 package net.deadlydiamond98.familiar_friends.entities.renderer;
 
 import com.google.common.collect.Lists;
-import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.OverlayTexture;
 import net.minecraft.client.render.RenderLayer;
@@ -13,8 +13,6 @@ import net.minecraft.client.render.entity.feature.FeatureRenderer;
 import net.minecraft.client.render.entity.feature.FeatureRendererContext;
 import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RotationAxis;
@@ -25,6 +23,7 @@ import java.util.List;
 
 public abstract class CompanionRenderer<T extends PlayerCompanion, M extends EntityModel<T>> extends EntityRenderer<T> implements FeatureRendererContext<T, M> {
     protected M model;
+
     protected final List<FeatureRenderer<T, M>> features = Lists.newArrayList();
     public CompanionRenderer(EntityRendererFactory.Context ctx, M model) {
         super(ctx);

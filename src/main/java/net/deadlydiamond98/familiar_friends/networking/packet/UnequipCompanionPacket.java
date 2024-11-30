@@ -1,8 +1,7 @@
 package net.deadlydiamond98.familiar_friends.networking.packet;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
-import net.deadlydiamond98.familiar_friends.entities.CompanionRegistry;
-import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;

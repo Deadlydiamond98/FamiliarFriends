@@ -1,7 +1,7 @@
 package net.deadlydiamond98.familiar_friends.entities.companions.vanilla;
 
-import net.deadlydiamond98.familiar_friends.entities.CompanionEntities;
-import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.data.DataTracker;
@@ -21,7 +21,7 @@ public class IronGolemCompanion extends PlayerCompanion {
     }
 
     public IronGolemCompanion(World world, PlayerEntity owner, boolean gui) {
-        super(CompanionEntities.Iron_Golem_Companion, world, owner, gui);
+        super(CompanionEntityTypes.Iron_Golem_Companion, world, owner, gui);
     }
 
     @Override
@@ -39,16 +39,6 @@ public class IronGolemCompanion extends PlayerCompanion {
                 this.playSound(SoundEvents.ENTITY_IRON_GOLEM_ATTACK, 1.0F, 1.0F);
             }
         }
-    }
-
-    @Override
-    public void doKeyEvent(PlayerEntity player) {
-
-    }
-
-    @Override
-    public void onAttack(PlayerEntity player, LivingEntity target) {
-
     }
 
     @Override

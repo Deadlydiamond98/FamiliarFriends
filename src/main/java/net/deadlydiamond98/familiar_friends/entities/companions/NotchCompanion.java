@@ -1,10 +1,9 @@
 package net.deadlydiamond98.familiar_friends.entities.companions;
 
-import net.deadlydiamond98.familiar_friends.entities.CompanionEntities;
-import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.hit.HitResult;
@@ -20,11 +19,7 @@ public class NotchCompanion extends PlayerCompanion {
     }
 
     public NotchCompanion(World world, PlayerEntity owner, boolean gui) {
-        super(CompanionEntities.Notch_Companion, world, owner, gui);
-    }
-
-    @Override
-    protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
+        super(CompanionEntityTypes.Notch_Companion, world, owner, gui);
     }
 
     @Override
@@ -55,15 +50,10 @@ public class NotchCompanion extends PlayerCompanion {
                 if (lightning != null) {
                     lightning.refreshPositionAfterTeleport(Vec3d.ofCenter(againstBlockPos));
                     player.getWorld().spawnEntity(lightning);
-                    setCooldownSeconds(20);
+                    setCooldownSeconds(15);
                 }
             }
         }
-    }
-
-    @Override
-    public void onAttack(PlayerEntity player, LivingEntity target) {
-
     }
 
     @Override

@@ -30,7 +30,7 @@ public record UnlockCompanionPacket(String companion) implements CustomPayload {
         MinecraftServer server = context.server();
         server.execute(() -> {
             PlayerEntity player = context.player();
-            int levels = CompanionRegistry.createCompanion(companion, player, false).getCost();
+            int levels = CompanionRegistry.createCompanion(companion, player).getCost();
             player.addExperienceLevels(-levels);
             player.unlockCompanion(companion);
         });

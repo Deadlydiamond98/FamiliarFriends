@@ -31,6 +31,9 @@
   "entity.familiar_friends.snow_golem_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.snow_golem_companion.description": "Throws snowballs that knock-back foes.",
 
+  "entity.familiar_friends.goat_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.goat_companion.description": "Prevents the user from sinking into powder snow.",
+
   "entity.familiar_friends.creeper_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.creeper_companion.description": "Grants the user immunity to explosion damage. If the user dies, the companion will explode (won't damage blocks), causing great damage to creatures around the player. If the companion explodes, you will need to unlock it again",
 
@@ -41,13 +44,16 @@
   "entity.familiar_friends.ocelot_companion.description": "Grants the player passive Swiftness. You can also press \"%s\" to Meow.",
 
   "entity.familiar_friends.squid_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.squid_companion.description": "Grants the player 5 seconds of water breathing",
+  "entity.familiar_friends.squid_companion.description": "Grants the player 5 seconds of water breathing.",
 
   "entity.familiar_friends.skeleton_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.skeleton_companion.description": "Shoots arrows at nearby Hostile Creatures!",
 
   "entity.familiar_friends.spider_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.spider_companion.description": "Allows the user to climb up any wall! It also allows one to slide down walls.",
+
+  "entity.familiar_friends.cave_spider_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.cave_spider_companion.description": "Allows the user to climb up any wall and slide down any wall. Attacks have a chance of inflicting Poison too!",
 
   "entity.familiar_friends.navi_companion": "Navi",
   "entity.familiar_friends.navi_companion.author": "Deadlydiamond98",
@@ -63,11 +69,19 @@
 
   "entity.familiar_friends.mr_saturn_companion": "Mr. Saturn",
   "entity.familiar_friends.mr_saturn_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.mr_saturn_companion.description": "Projectiles deal reduced damage, and sometimes even are reflected off of the player!",
+  "entity.familiar_friends.mr_saturn_companion.description": "Has a chance to deal a SMAAAASH! attack on an target while attacking, knocking the target back and dealing a lot of damage.",
 
   "entity.familiar_friends.notch_companion": "Notch",
   "entity.familiar_friends.notch_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.notch_companion.description": "Will Smite the direction you look when pressing \"%s\"! There is a 20 second cooldown before lightning can be struck again.",
+  "entity.familiar_friends.notch_companion.description": "Will Smite the direction you look when pressing \"%s\"! There is a 15 second cooldown before lightning can be struck again.",
+
+  "entity.familiar_friends.cirno_companion": "Cirno",
+  "entity.familiar_friends.cirno_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.cirno_companion.description": "Test",
+
+  "entity.familiar_friends.rana_companion": "Rana",
+  "entity.familiar_friends.cirno_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.cirno_companion.description": "Grants the player passive jump boost and immunity to fall damage!",
 
   "entity.familiar_friends.tater_companion": "Tiny Tater",
   "entity.familiar_friends.tater_companion.author": "Mrmrmrpizza",

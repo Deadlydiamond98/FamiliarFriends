@@ -1,7 +1,7 @@
 package net.deadlydiamond98.familiar_friends.entities.companions;
 
-import net.deadlydiamond98.familiar_friends.entities.CompanionEntities;
-import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.sounds.CompanionSounds;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -17,7 +17,7 @@ public class NaviCompanion extends PlayerCompanion {
     }
 
     public NaviCompanion(World world, PlayerEntity owner, boolean gui) {
-        super(CompanionEntities.Navi_Companion, world, owner, gui);
+        super(CompanionEntityTypes.Navi_Companion, world, owner, gui);
     }
 
     @Override
@@ -69,16 +69,6 @@ public class NaviCompanion extends PlayerCompanion {
 
     }
 
-    @Override
-    public void doKeyEvent(PlayerEntity player) {
-
-    }
-
-    @Override
-    public void onAttack(PlayerEntity player, LivingEntity target) {
-
-    }
-
     private boolean getClosest(PlayerEntity player, BlockPos currentClosest, BlockPos newPos) {
         double currentDistance = player.squaredDistanceTo(currentClosest.getX(), currentClosest.getY(), currentClosest.getZ());
         double newDistance = player.squaredDistanceTo(newPos.getX(), newPos.getY(), newPos.getZ());
@@ -87,7 +77,7 @@ public class NaviCompanion extends PlayerCompanion {
 
     @Override
     public int getCost() {
-        return 20;
+        return 18;
     }
 
 }

@@ -1,7 +1,7 @@
 package net.deadlydiamond98.familiar_friends.entities.companions.vanilla;
 
-import net.deadlydiamond98.familiar_friends.entities.CompanionEntities;
-import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,7 +19,7 @@ public class SnowGolemCompanion extends PlayerCompanion {
     }
 
     public SnowGolemCompanion(World world, PlayerEntity owner, boolean gui) {
-        super(CompanionEntities.Snow_Golem_Companion, world, owner, gui);
+        super(CompanionEntityTypes.Snow_Golem_Companion, world, owner, gui);
     }
 
     @Override
@@ -48,22 +48,12 @@ public class SnowGolemCompanion extends PlayerCompanion {
     }
 
     @Override
-    public void doKeyEvent(PlayerEntity player) {
-
-    }
-
-    @Override
-    public void onAttack(PlayerEntity player, LivingEntity target) {
-
-    }
-
-    @Override
     public Text getName() {
         return Text.translatable("entity.minecraft.snow_golem");
     }
 
     @Override
     public int getCost() {
-        return 4;
+        return 6;
     }
 }

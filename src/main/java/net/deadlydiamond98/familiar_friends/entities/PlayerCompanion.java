@@ -1,16 +1,16 @@
-package net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses;
+package net.deadlydiamond98.familiar_friends.entities;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
+import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.MockMobEntity;
 import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.behaviors.LookAroundBehavior;
 import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.behaviors.LookBehavior;
 import net.deadlydiamond98.familiar_friends.sounds.CompanionSounds;
 import net.deadlydiamond98.familiar_friends.util.CompanionPlayerData;
 import net.minecraft.entity.*;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.mob.Monster;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.MathHelper;
@@ -50,6 +50,173 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
         this.setPosition(owner.getPos());
         this.bookRender = gui;
     }
+
+    /**
+     * Anything here will be run every tick
+     * @param player The player the companion belongs to
+     * @param nearestHostile The nearest hostile mob
+     */
+    protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
+
+    }
+    /**
+     * Anything here will be run whenever the player presses the action key
+     * @param player The player the companion belongs to
+     */
+    public void doKeyEvent(PlayerEntity player) {
+
+    }
+
+    /**
+     * Anything here will be run whenever the player attacks a target
+     * @param player The player the companion belongs to
+     * @param target The target that is being attacked
+     */
+    public void onAttack(PlayerEntity player, LivingEntity target) {
+
+    }
+
+    /**
+     * Anything here will be run whenever right before the player is about to die
+     * @param player The player the companion belongs to
+     */
+    public void onPlayerDeath(PlayerEntity player) {
+
+    }
+
+    /**
+     * Anything here will be run whenever the player takes damage
+     * @param source The source of the taken damage
+     * @param amount The amount of damage the player is taking
+     * @param player The player the companion belongs to
+     * @return returns false by default, if set to true, damage will be ignored
+     */
+    public boolean onDamaged(DamageSource source, float amount, PlayerEntity player) {
+        return false;
+    }
+
+    /**
+     * @return if this is true, the player will be allowed the ability to climb up walls
+     */
+    public boolean canClimbWalls() {
+        return false;
+    }
+
+    /**
+     * @param player The companion's player
+     * @return Returns the Hostile Entity that is closest to the player
+     */
+    public LivingEntity findNearestHostile(PlayerEntity player) {
+        List<LivingEntity> nearbyEntities = player.getWorld().getEntitiesByClass(LivingEntity.class, player.getBoundingBox().expand(10),
+                entity -> entity instanceof Monster && entity.isAlive());
+        return nearbyEntities.stream().min(Comparator.comparingDouble(entity -> entity.squaredDistanceTo(player))).orElse(null);
+    }
+
+    /**
+     * @param player The companion's player
+     * @return Returns the Living Entity that is closest to the player
+     */
+    public Entity findNearestEntity(PlayerEntity player) {
+        List<Entity> nearbyEntities = player.getWorld().getEntitiesByClass(Entity.class, player.getBoundingBox().expand(10),
+                entity -> entity.isAlive());
+        return nearbyEntities.stream().min(Comparator.comparingDouble(entity -> entity.squaredDistanceTo(player))).orElse(null);
+    }
+
+
+    /**
+     * Used for determining how many XP levels a companion will cost in the Book
+     */
+    public abstract int getCost();
+
+    /**
+     * @param player The companion's player
+     * @param minimum The Minimum Health the player needs for the action
+     * @return returns true if the player's hunger is greater than the minimum, otherwise this will return false and
+     * warn the player that their health is too low
+     */
+    public boolean hasNoHealthLimitation(PlayerEntity player, int minimum) {
+        return hasNoLimitationOf(player.getHealth(), minimum, player, Text.translatable("cooldown.familiar_friends.lowstat",
+                Text.translatable("cooldown.familiar_friends.health").getString()), true);
+    }
+
+    /**
+     * @param player The companion's player
+     * @param minimum The Minimum Hunger the player needs for the action
+     * @return returns true if the player's hunger is greater than the minimum, otherwise this will return false and
+     * warn the player that their hunger is too low
+     */
+    public boolean hasNoHungerLimitation(PlayerEntity player, int minimum) {
+        return hasNoLimitationOf(player.getHungerManager().getFoodLevel(), minimum, player, Text.translatable("cooldown.familiar_friends.lowstat",
+                Text.translatable("cooldown.familiar_friends.hunger").getString()), true);
+    }
+
+    /**
+     * @param currentValue The value you want to check for
+     * @param threshold The minimum value current value can be
+     * @param player The companion's player
+     * @param translation The Text to be displayed if false
+     * @param trueIfCreative sets the return value to true if the player is in creative or spectator
+     * @return returns true if the current value is greater than the threshold, otherwise this will return false,
+     * and will display the translation along with a failure sound
+     */
+    public boolean hasNoLimitationOf(float currentValue, float threshold, PlayerEntity player, Text translation, boolean trueIfCreative) {
+        if (trueIfCreative && (player.isCreative() || player.isSpectator())) {
+            return true;
+        }
+        if (currentValue <= threshold) {
+            player.getWorld().playSound(null, player.getBlockPos(), CompanionSounds.Action_Failed, SoundCategory.PLAYERS, 0.5f, 1.0f);
+            player.sendMessage(translation, true);
+        }
+        return !(currentValue <= threshold);
+    }
+
+    /**
+     * @param player The companion's player
+     * @return returns true if the companion isn't on cooldown (when cooldown is 0), if false, will display the
+     * cooldown on screen in seconds, minutes, or hours depending on how long the cooldown is
+     */
+    public boolean hasNoCooldown(PlayerEntity player) {
+        String cooldownUnit = getCooldownUnitText(this.cooldown);
+        int time = calculateCooldownUnit(this.cooldown);
+
+        return hasNoLimitationOf(1, this.cooldown, player, Text.translatable("cooldown.familiar_friends.cooldown",
+                time, Text.translatable("cooldown.familiar_friends." + cooldownUnit).getString()), false);
+    }
+
+    /**
+     *
+     * @return get the current companion cooldown
+     */
+    public int getCooldown() {
+        return this.cooldown;
+    }
+
+    /**
+     * set the companion cooldown (in ticks)
+     * @param cooldown the cooldown in ticks
+     */
+    public void setCooldown(int cooldown) {
+        this.cooldown = cooldown;
+    }
+
+    /**
+     * set the companion cooldown (in seconds)
+     * @param cooldown the cooldown in seconds
+     */
+    public void setCooldownSeconds(int cooldown) {
+        this.cooldown = cooldown * 20;
+    }
+
+    /**
+     * set the companion cooldown (in minutes)
+     * @param cooldown the cooldown in minutes
+     */
+    public void setCooldownMinutes(int cooldown) {
+        this.cooldown = cooldown * 20 * 60;
+    }
+
+    // Most of the stuff past here shouldn't be modified, it makes the companion follow the player
+    // and handles translation file stuff
 
     @Override
     public void baseTick() {
@@ -116,8 +283,6 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
         doPassiveAction(player, findNearestHostile(player));
     }
 
-    protected abstract void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile);
-
     protected void handleIdleMovement(PlayerEntity player) {
         this.idleTime++;
         if (this.idleTime <= 500) {
@@ -183,18 +348,6 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
         this.setVelocity(interpolatedVelocity);
     }
 
-    public LivingEntity findNearestHostile(PlayerEntity player) {
-        List<LivingEntity> nearbyEntities = player.getWorld().getEntitiesByClass(LivingEntity.class, player.getBoundingBox().expand(10),
-                entity -> entity instanceof Monster && entity.isAlive());
-        return nearbyEntities.stream().min(Comparator.comparingDouble(entity -> entity.squaredDistanceTo(player))).orElse(null);
-    }
-
-    public Entity findNearestEntity(PlayerEntity player) {
-        List<Entity> nearbyEntities = player.getWorld().getEntitiesByClass(Entity.class, player.getBoundingBox().expand(10),
-                entity -> entity.isAlive());
-        return nearbyEntities.stream().min(Comparator.comparingDouble(entity -> entity.squaredDistanceTo(player))).orElse(null);
-    }
-
     public Text getDescription() {
         return Text.translatable(this.getType().getTranslationKey() + ".description",
                 Text.translatable(FamiliarFriends.Current_Keybinding_Key).getString());
@@ -209,54 +362,8 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
         return Text.translatable("gui.familiar_friends.cost", getCost()).withColor(0x478e47);
     }
 
-    public abstract int getCost();
-
-    public boolean isLocked(PlayerEntity player) {
-        return !((CompanionPlayerData) player).isCompanionUnlocked(this);
-    }
-
-    public abstract void doKeyEvent(PlayerEntity player);
-
-    public abstract void onAttack(PlayerEntity player, LivingEntity target);
-
-    @Nullable
-    @Override
-    public Entity getOwner() {
-        return this.owner;
-    }
-
-    @Override
-    protected void initDataTracker(DataTracker.Builder builder) {
-        super.initDataTracker(builder);
-    }
-
-    public boolean hasNoHealthLimitation(PlayerEntity player, int minimum) {
-        return hasNoLimitationOf(player.getHealth(), minimum, player, Text.translatable("cooldown.familiar_friends.lowstat",
-                Text.translatable("cooldown.familiar_friends.health").getString()), true);
-    }
-
-    public boolean hasNoHungerLimitation(PlayerEntity player, int minimum) {
-        return hasNoLimitationOf(player.getHungerManager().getFoodLevel(), minimum, player, Text.translatable("cooldown.familiar_friends.lowstat",
-                Text.translatable("cooldown.familiar_friends.hunger").getString()), true);
-    }
-
-    public boolean hasNoCooldown(PlayerEntity player) {
-        String cooldownUnit = getCooldownUnitText(this.cooldown);
-        int time = calculateCooldownUnit(this.cooldown);
-
-        return hasNoLimitationOf(1, this.cooldown, player, Text.translatable("cooldown.familiar_friends.cooldown",
-                time, Text.translatable("cooldown.familiar_friends." + cooldownUnit).getString()), false);
-    }
-
-    public boolean hasNoLimitationOf(float currentValue, float threshold, PlayerEntity player, Text translation, boolean trueIfCreative) {
-        if (trueIfCreative && (player.isCreative() || player.isSpectator())) {
-            return true;
-        }
-        if (currentValue <= threshold) {
-            player.getWorld().playSound(null, player.getBlockPos(), CompanionSounds.Action_Failed, SoundCategory.PLAYERS, 0.5f, 1.0f);
-            player.sendMessage(translation, true);
-        }
-        return !(currentValue <= threshold);
+    public boolean isBookRender() {
+        return this.bookRender;
     }
 
     protected String getCooldownUnitText(float cooldown) {
@@ -289,23 +396,18 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
         }
     }
 
-    public int getCooldown() {
-        return this.cooldown;
+    public boolean isLocked(PlayerEntity player) {
+        return !((CompanionPlayerData) player).isCompanionUnlocked(this);
     }
 
-    public void setCooldown(int cooldown) {
-        this.cooldown = cooldown;
+    @Nullable
+    @Override
+    public Entity getOwner() {
+        return this.owner;
     }
 
-    public void setCooldownSeconds(int cooldown) {
-        this.cooldown = cooldown * 20;
-    }
-
-    public void setCooldownMinutes(int cooldown) {
-        this.cooldown = cooldown * 20 * 60;
-    }
-
-    public boolean isBookRender() {
-        return this.bookRender;
+    @Override
+    protected void initDataTracker(DataTracker.Builder builder) {
+        super.initDataTracker(builder);
     }
 }

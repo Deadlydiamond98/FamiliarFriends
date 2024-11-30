@@ -1,20 +1,11 @@
 package net.deadlydiamond98.familiar_friends.entities.companions;
 
-import net.deadlydiamond98.familiar_friends.entities.CompanionEntities;
-import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
+import net.deadlydiamond98.familiar_friends.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.FluidState;
-import net.minecraft.fluid.Fluids;
-import net.minecraft.particle.ParticleTypes;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-
-import java.util.List;
 
 public class CompanionCubeCompanion extends PlayerCompanion {
     public CompanionCubeCompanion(EntityType<?> type, World world) {
@@ -22,7 +13,7 @@ public class CompanionCubeCompanion extends PlayerCompanion {
     }
 
     public CompanionCubeCompanion(World world, PlayerEntity owner, boolean gui) {
-        super(CompanionEntities.Companion_Cube_Companion, world, owner, gui);
+        super(CompanionEntityTypes.Companion_Cube_Companion, world, owner, gui);
     }
 
     @Override
@@ -30,17 +21,7 @@ public class CompanionCubeCompanion extends PlayerCompanion {
     }
 
     @Override
-    public void doKeyEvent(PlayerEntity player) {
-
-    }
-
-    @Override
-    public void onAttack(PlayerEntity player, LivingEntity target) {
-
-    }
-
-    @Override
     public int getCost() {
-        return 20;
+        return 25;
     }
 }

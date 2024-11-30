@@ -1,6 +1,6 @@
 package net.deadlydiamond98.familiar_friends.entities.renderer;
 
-import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.entities.models.vanilla.BipedCompanionModel;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;

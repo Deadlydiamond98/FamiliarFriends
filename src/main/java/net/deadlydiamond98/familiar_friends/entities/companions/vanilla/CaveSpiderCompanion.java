@@ -10,29 +10,29 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.world.World;
 
-public class SquidCompanion extends PlayerCompanion {
-    public SquidCompanion(EntityType<?> type, World world) {
+public class CaveSpiderCompanion extends PlayerCompanion {
+    public CaveSpiderCompanion(EntityType<?> type, World world) {
         super(type, world);
     }
 
-    public SquidCompanion(World world, PlayerEntity owner, boolean gui) {
-        super(CompanionEntityTypes.Squid_Companion, world, owner, gui);
+    public CaveSpiderCompanion(World world, PlayerEntity owner, boolean gui) {
+        super(CompanionEntityTypes.Cave_Spider_Companion, world, owner, gui);
     }
 
     @Override
-    protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
-        if (!player.isSubmergedInWater()) {
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 103, 0, true, false));
+    public void onAttack(PlayerEntity player, LivingEntity target) {
+        if (player.getRandom().nextInt(10) == 5) {
+            target.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 3, 0));
         }
     }
 
     @Override
     public Text getName() {
-        return Text.translatable("entity.minecraft.squid");
+        return Text.translatable("entity.minecraft.cave_spider");
     }
 
     @Override
     public int getCost() {
-        return 10;
+        return 12;
     }
 }

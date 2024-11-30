@@ -1,20 +1,15 @@
 package net.deadlydiamond98.familiar_friends.mixin;
 
-import net.deadlydiamond98.familiar_friends.FamiliarFriends;
 import net.deadlydiamond98.familiar_friends.entities.CompanionRegistry;
-import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.networking.CompanionServerPackets;
 import net.deadlydiamond98.familiar_friends.util.CompanionPlayerData;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.nbt.NbtList;
 import net.minecraft.nbt.NbtString;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.util.Pair;
-import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -127,7 +122,7 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
         this.unlockedCompanions = unlockedCompanions;
     }
 
-    // Removes all Companions from the player, is a leftover from debugging, but I'm keeping it just in case
+    // Removes all Companions from the player
     @Override
     public void lockAllCompanions() {
         this.unlockedCompanions.clear();
@@ -199,7 +194,7 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
     // Gets the companion on the player as a Player Companion
     @Override
     public PlayerCompanion getCompanion() {
-        return CompanionRegistry.createCompanion(this.backUpCompanionKey, getPlayer(), false);
+        return CompanionRegistry.createCompanion(this.backUpCompanionKey, getPlayer());
     }
 
     // Past Here just NBT stuffs

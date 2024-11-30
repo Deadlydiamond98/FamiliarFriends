@@ -1,6 +1,6 @@
 package net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.behaviors;
 
-import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 
 public class LookAroundBehavior implements LookBehavior {
     private final PlayerCompanion companion;

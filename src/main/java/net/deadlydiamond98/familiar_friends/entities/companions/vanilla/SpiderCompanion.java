@@ -1,7 +1,7 @@
 package net.deadlydiamond98.familiar_friends.entities.companions.vanilla;
 
-import net.deadlydiamond98.familiar_friends.entities.CompanionEntities;
-import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -14,21 +14,12 @@ public class SpiderCompanion extends PlayerCompanion {
     }
 
     public SpiderCompanion(World world, PlayerEntity owner, boolean gui) {
-        super(CompanionEntities.Spider_Companion, world, owner, gui);
+        super(CompanionEntityTypes.Spider_Companion, world, owner, gui);
     }
 
     @Override
-    protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
-    }
-
-    @Override
-    public void doKeyEvent(PlayerEntity player) {
-
-    }
-
-    @Override
-    public void onAttack(PlayerEntity player, LivingEntity target) {
-
+    public boolean canClimbWalls() {
+        return true;
     }
 
     @Override

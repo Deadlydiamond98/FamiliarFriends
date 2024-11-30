@@ -1,7 +1,7 @@
 package net.deadlydiamond98.familiar_friends.entities.companions.vanilla;
 
-import net.deadlydiamond98.familiar_friends.entities.CompanionEntities;
-import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -20,7 +20,7 @@ public class SkeletonCompanion extends PlayerCompanion {
     }
 
     public SkeletonCompanion(World world, PlayerEntity owner, boolean gui) {
-        super(CompanionEntities.Skeleton_Companion, world, owner, gui);
+        super(CompanionEntityTypes.Skeleton_Companion, world, owner, gui);
     }
 
     @Override
@@ -47,16 +47,6 @@ public class SkeletonCompanion extends PlayerCompanion {
             world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.ENTITY_ARROW_SHOOT, SoundCategory.PLAYERS, 1.0F, 1.0F / (this.random.nextFloat() * 0.4F + 0.8F));
             world.spawnEntity(arrow);
         }
-    }
-
-    @Override
-    public void doKeyEvent(PlayerEntity player) {
-
-    }
-
-    @Override
-    public void onAttack(PlayerEntity player, LivingEntity target) {
-
     }
 
     @Override

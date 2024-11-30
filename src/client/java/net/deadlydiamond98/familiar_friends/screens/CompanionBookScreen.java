@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
 import net.deadlydiamond98.familiar_friends.entities.CompanionRegistry;
-import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.networking.CompanionClientPackets;
 import net.deadlydiamond98.familiar_friends.screens.widgets.CompanionBookButton;
 import net.deadlydiamond98.familiar_friends.screens.widgets.CompanionHomeButton;
@@ -74,7 +74,7 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
             return;
         }
         renderedCompanions.clear();
-        renderedCompanions.addAll(CompanionRegistry.addCompanions(client.player));
+        renderedCompanions.addAll(CompanionRegistry.addCompanionsToBook(client.player));
     }
 
     @Override

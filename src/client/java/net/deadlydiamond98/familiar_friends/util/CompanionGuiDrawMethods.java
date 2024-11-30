@@ -1,7 +1,7 @@
 package net.deadlydiamond98.familiar_friends.util;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
