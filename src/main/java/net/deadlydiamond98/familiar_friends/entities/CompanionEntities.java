@@ -70,4 +70,9 @@ public class CompanionEntities {
             Identifier.of(FamiliarFriends.MOD_ID, "skeleton_companion")
     );
 
+    public static final EntityType<TinyTater> Tiny_Tater = CompanionRegistry.registerCompanion(
+            TinyTater.class,
+            Identifier.of(FamiliarFriends.MOD_ID, "tater_companion")
+    );
+
 }

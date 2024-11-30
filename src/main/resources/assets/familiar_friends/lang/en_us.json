@@ -62,6 +62,10 @@
   "entity.familiar_friends.notch_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.notch_companion.description": "Will Smite the direction you look when pressing \"%s\"! There is a 20 second cooldown before lightning can be struck again.",
 
+  "entity.familiar_friends.tater_companion": "Tiny Tater",
+  "entity.familiar_friends.tater_companion.author": "Mrmrmrpizza",
+  "entity.familiar_friends.tater_companion.description": "A funny goofy little guy that plays a funny goofy little sound when you press \"%s\"!",
+
   "entity.familiar_friends.herobrine_companion": "Herobrine",
   "entity.familiar_friends.herobrine_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.herobrine_companion.description": "Will Teleport the player in the direction they are looking when pressing \"%s\", but will consume player health. More health is consumed the further the teleport is, but it will kill the player. Teleports don't work when player health is too low, and they have a 15 second cooldown."

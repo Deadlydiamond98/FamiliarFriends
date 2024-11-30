@@ -30,6 +30,7 @@ public class CompanionEntityRendering {
         EntityRendererRegistry.register(CompanionEntities.Skeleton_Companion, SkeletonCompanionRenderer::new);
         EntityRendererRegistry.register(CompanionEntities.Snow_Golem_Companion, SnowGolemCompanionRenderer::new);
         EntityRendererRegistry.register(CompanionEntities.Allay_Companion, AllayCompanionRenderer::new);
+        EntityRendererRegistry.register(CompanionEntities.Tiny_Tater, TaterCompanionRenderer::new);
     }
 
     private static void registerModelLayers() {
@@ -43,5 +44,6 @@ public class CompanionEntityRendering {
         EntityModelLayerRegistry.registerModelLayer(SkeletonCompanionModel.LAYER_LOCATION, SkeletonCompanionModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(AllayCompanionModel.LAYER_LOCATION, AllayCompanionModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(SquidCompanionModel.LAYER_LOCATION, SquidCompanionModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(TinyTaterModel.LAYER_LOCATION, TinyTaterModel::getTexturedModelData);
     }
 }
