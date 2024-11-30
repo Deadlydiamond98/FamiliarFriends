@@ -31,6 +31,7 @@ public class CompanionEntityRendering {
         EntityRendererRegistry.register(CompanionEntities.Snow_Golem_Companion, SnowGolemCompanionRenderer::new);
         EntityRendererRegistry.register(CompanionEntities.Allay_Companion, AllayCompanionRenderer::new);
         EntityRendererRegistry.register(CompanionEntities.Tiny_Tater, TaterCompanionRenderer::new);
+        EntityRendererRegistry.register(CompanionEntities.Creeper_Companion, CreeperCompanionRenderer::new);
     }
 
     private static void registerModelLayers() {
