@@ -25,5 +25,10 @@
     "sounds": [
       "familiar_friends:do_it"
     ]
+  },
+  "th_shoot": {
+    "sounds": [
+      "familiar_friends:touhou_shoot"
+    ]
   }
 }

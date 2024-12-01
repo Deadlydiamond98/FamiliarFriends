@@ -1,6 +1,7 @@
 package net.deadlydiamond98.familiar_friends.mixin;
 
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.entities.companions.CirnoCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.CompanionCubeCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.OneUpMushroomCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.vanilla.CreeperCompanion;

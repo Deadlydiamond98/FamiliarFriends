@@ -1,4 +1,4 @@
-package net.deadlydiamond98.familiar_friends.entities.renderer.player;
+package net.deadlydiamond98.familiar_friends.entities.renderer.companions.player;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
 import net.deadlydiamond98.familiar_friends.entities.companions.NotchCompanion;

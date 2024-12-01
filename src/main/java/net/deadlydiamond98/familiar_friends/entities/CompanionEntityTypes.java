@@ -3,7 +3,13 @@ package net.deadlydiamond98.familiar_friends.entities;
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
 import net.deadlydiamond98.familiar_friends.entities.companions.*;
 import net.deadlydiamond98.familiar_friends.entities.companions.vanilla.*;
+import net.deadlydiamond98.familiar_friends.entities.projectiles.CirnoProjectile;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
+import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnGroup;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
 
 public class CompanionEntityTypes {
@@ -103,6 +109,17 @@ public class CompanionEntityTypes {
     public static final EntityType<MrSaturnCompanion> Mr_Saturn_Companion = CompanionRegistry.registerCompanion(
             MrSaturnCompanion.class,
             Identifier.of(FamiliarFriends.MOD_ID, "mr_saturn_companion")
+    );
+
+
+    //Other Non-Companion Entities
+
+    public static final EntityType<CirnoProjectile> Cirno_Projectile = Registry.register(
+            Registries.ENTITY_TYPE,
+            Identifier.of(FamiliarFriends.MOD_ID, "cirno_projectile"),
+            FabricEntityTypeBuilder.create(SpawnGroup.MISC, CirnoProjectile::new)
+                    .dimensions(EntityDimensions.fixed(0.4f,0.2f))
+                    .build()
     );
 
 }

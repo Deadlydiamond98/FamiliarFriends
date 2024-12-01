@@ -1,13 +1,14 @@
-package net.deadlydiamond98.familiar_friends.entities.renderer;
+package net.deadlydiamond98.familiar_friends.entities.renderer.companions;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
 import net.deadlydiamond98.familiar_friends.entities.companions.TinyTaterCompanion;
 import net.deadlydiamond98.familiar_friends.entities.models.TinyTaterModel;
+import net.deadlydiamond98.familiar_friends.entities.renderer.CompanionRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;
 
-public class TinyTaterCompanionRenderer extends CompanionRenderer<TinyTaterCompanion, TinyTaterModel<TinyTaterCompanion>>{
+public class TinyTaterCompanionRenderer extends CompanionRenderer<TinyTaterCompanion, TinyTaterModel<TinyTaterCompanion>> {
     public TinyTaterCompanionRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new TinyTaterModel<>(ctx.getPart(TinyTaterModel.LAYER_LOCATION)));
     }

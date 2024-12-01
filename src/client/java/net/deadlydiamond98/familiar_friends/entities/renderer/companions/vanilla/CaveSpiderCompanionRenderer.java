@@ -1,4 +1,4 @@
-package net.deadlydiamond98.familiar_friends.entities.renderer.vanilla;
+package net.deadlydiamond98.familiar_friends.entities.renderer.companions.vanilla;
 
 import net.deadlydiamond98.familiar_friends.entities.companions.vanilla.CaveSpiderCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.vanilla.SpiderCompanion;

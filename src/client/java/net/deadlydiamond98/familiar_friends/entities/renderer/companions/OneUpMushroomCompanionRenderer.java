@@ -1,8 +1,9 @@
-package net.deadlydiamond98.familiar_friends.entities.renderer;
+package net.deadlydiamond98.familiar_friends.entities.renderer.companions;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
 import net.deadlydiamond98.familiar_friends.entities.companions.OneUpMushroomCompanion;
 import net.deadlydiamond98.familiar_friends.entities.models.OneUpMushroomModel;
+import net.deadlydiamond98.familiar_friends.entities.renderer.CompanionRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.util.Identifier;

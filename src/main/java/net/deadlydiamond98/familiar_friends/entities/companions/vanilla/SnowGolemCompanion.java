@@ -54,6 +54,6 @@ public class SnowGolemCompanion extends PlayerCompanion {
 
     @Override
     public int getCost() {
-        return 6;
+        return 8;
     }
 }

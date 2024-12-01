@@ -23,7 +23,7 @@ public class ChickenCompanion extends PlayerCompanion {
     @Override
     protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
         if (player.isOnGround()) {
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 63, 0, true, false));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 43, 0, true, false));
         }
     }
 

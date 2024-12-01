@@ -1,13 +1,12 @@
 package net.deadlydiamond98.familiar_friends.entities;
 
-import net.deadlydiamond98.familiar_friends.entities.companions.CirnoCompanion;
-import net.deadlydiamond98.familiar_friends.entities.companions.vanilla.CaveSpiderCompanion;
 import net.deadlydiamond98.familiar_friends.entities.models.*;
 import net.deadlydiamond98.familiar_friends.entities.models.vanilla.*;
-import net.deadlydiamond98.familiar_friends.entities.renderer.*;
-import net.deadlydiamond98.familiar_friends.entities.renderer.player.HerobrineCompanionRenderer;
-import net.deadlydiamond98.familiar_friends.entities.renderer.player.NotchCompanionRenderer;
-import net.deadlydiamond98.familiar_friends.entities.renderer.vanilla.*;
+import net.deadlydiamond98.familiar_friends.entities.renderer.companions.*;
+import net.deadlydiamond98.familiar_friends.entities.renderer.companions.player.HerobrineCompanionRenderer;
+import net.deadlydiamond98.familiar_friends.entities.renderer.companions.player.NotchCompanionRenderer;
+import net.deadlydiamond98.familiar_friends.entities.renderer.companions.vanilla.*;
+import net.deadlydiamond98.familiar_friends.entities.renderer.projectiles.CirnoProjectileRenderer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 
@@ -39,6 +38,7 @@ public class CompanionEntityRendering {
         EntityRendererRegistry.register(CompanionEntityTypes.Cirno_Companion, CirnoCompanionRenderer::new);
         EntityRendererRegistry.register(CompanionEntityTypes.Goat_Companion, GoatCompanionRenderer::new);
         EntityRendererRegistry.register(CompanionEntityTypes.Rana_Companion, RanaCompanionRenderer::new);
+        EntityRendererRegistry.register(CompanionEntityTypes.Cirno_Projectile, CirnoProjectileRenderer::new);
     }
 
     private static void registerModelLayers() {

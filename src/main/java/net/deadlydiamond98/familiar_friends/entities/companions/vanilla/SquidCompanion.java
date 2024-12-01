@@ -33,6 +33,6 @@ public class SquidCompanion extends PlayerCompanion {
 
     @Override
     public int getCost() {
-        return 10;
+        return 14;
     }
 }

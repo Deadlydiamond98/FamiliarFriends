@@ -23,7 +23,7 @@
   "cooldown.familiar_friends.lowstat": "Cannot Perform this action! Your %s is too low!",
 
   "entity.familiar_friends.chicken_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.chicken_companion.description": "Grants the Player passive slow falling while the player is on the ground, which lasts for 3 seconds when in the air.",
+  "entity.familiar_friends.chicken_companion.description": "Grants the Player passive slow falling while the player is on the ground, which lasts for 2 seconds when in the air.",
 
   "entity.familiar_friends.iron_golem_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.iron_golem_companion.description": "Damages hostile mobs and sends them flying into the air (causing additional fall damage).",
@@ -77,7 +77,7 @@
 
   "entity.familiar_friends.cirno_companion": "Cirno",
   "entity.familiar_friends.cirno_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.cirno_companion.description": "Test",
+  "entity.familiar_friends.cirno_companion.description": "Grants players Frost Walker! Additionally, pressing \"%s\" will shoot 2 projectiles that deal low damage, but inflict mobs with slowness. Shooting has a 5 second cooldown.",
 
   "entity.familiar_friends.rana_companion": "Rana",
   "entity.familiar_friends.rana_companion.author": "Deadlydiamond98",

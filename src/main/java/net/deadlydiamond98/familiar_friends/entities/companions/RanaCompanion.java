@@ -41,6 +41,6 @@ public class RanaCompanion extends PlayerCompanion {
 
     @Override
     public int getCost() {
-        return 9;
+        return 18;
     }
 }

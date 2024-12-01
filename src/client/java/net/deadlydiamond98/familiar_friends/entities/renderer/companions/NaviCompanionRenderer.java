@@ -1,8 +1,9 @@
-package net.deadlydiamond98.familiar_friends.entities.renderer;
+package net.deadlydiamond98.familiar_friends.entities.renderer.companions;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
 import net.deadlydiamond98.familiar_friends.entities.companions.NaviCompanion;
 import net.deadlydiamond98.familiar_friends.entities.models.NaviEntityModel;
+import net.deadlydiamond98.familiar_friends.entities.renderer.CompanionRenderer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.*;
 import net.minecraft.client.render.entity.EntityRendererFactory;
@@ -61,7 +62,6 @@ public class NaviCompanionRenderer extends CompanionRenderer<NaviCompanion, Navi
 
         MatrixStack.Entry entry = matrixStack.peek();
         Matrix4f modelMatrix = entry.getPositionMatrix();
-        Matrix3f normalMatrix = entry.getNormalMatrix();
 
         VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(RenderLayer.getEntityTranslucent(TEXTURE));
         float minUV = 0.0f;
