@@ -5,6 +5,7 @@
   "mixins": [
     "EntityMixin",
     "LivingEntityMixin",
+    "LivingEntityAccessor",
     "PlayerEntityMixin",
     "PowderSnowBlockMixin"
   ],

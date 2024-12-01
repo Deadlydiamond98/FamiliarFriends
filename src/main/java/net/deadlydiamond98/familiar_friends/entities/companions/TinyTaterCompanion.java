@@ -19,20 +19,18 @@ public class TinyTaterCompanion extends PlayerCompanion {
     }
 
     @Override
-    protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
-        if (player.isDead()) {
-            this.playSound(CompanionSounds.DoIt, 0.5f, 1.0f);
-        }
-    }
-
-    @Override
     public void doKeyEvent(PlayerEntity player) {
         this.playSound(CompanionSounds.DoIt, 0.5f, 1.0f);
     }
 
     @Override
-    public void onAttack(PlayerEntity player, LivingEntity target) {
-        this.playSound(CompanionSounds.DoIt, 0.5f, 1.0f);
+    public void onAttack(PlayerEntity player, LivingEntity target, float amount) {
+        if (player.getRandom().nextInt(15) == 5) {
+            player.getHungerManager().add((int) (amount * 0.25), 0);
+            if (target instanceof PlayerEntity targetPlayer) {
+                targetPlayer.getHungerManager().addExhaustion((int) (amount * 0.25));
+            }
+        }
     }
 
     @Override

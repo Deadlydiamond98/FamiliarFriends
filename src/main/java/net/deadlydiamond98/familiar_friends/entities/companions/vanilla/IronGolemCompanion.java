@@ -32,7 +32,7 @@ public class IronGolemCompanion extends PlayerCompanion {
         }
 
         if (nearestHostile != null) {
-            if (this.age % 120 == 0) {
+            if (this.age % 80 == 0) {
                 this.setAttackTicksLeft(10);
                 nearestHostile.damage(nearestHostile.getDamageSources().playerAttack(player), 4.0f);
                 nearestHostile.setVelocity(nearestHostile.getVelocity().multiply(1, 0, 1).add(0, 1, 0));

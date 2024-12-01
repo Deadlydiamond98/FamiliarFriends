@@ -69,10 +69,12 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
 
     /**
      * Anything here will be run whenever the player attacks a target
+     *
      * @param player The player the companion belongs to
      * @param target The target that is being attacked
+     * @param amount The damage delt to attackers
      */
-    public void onAttack(PlayerEntity player, LivingEntity target) {
+    public void onAttack(PlayerEntity player, LivingEntity target, float amount) {
 
     }
 

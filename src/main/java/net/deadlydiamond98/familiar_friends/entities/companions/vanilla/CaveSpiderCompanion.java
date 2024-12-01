@@ -20,7 +20,7 @@ public class CaveSpiderCompanion extends PlayerCompanion {
     }
 
     @Override
-    public void onAttack(PlayerEntity player, LivingEntity target) {
+    public void onAttack(PlayerEntity player, LivingEntity target, float amount) {
         if (player.getRandom().nextInt(10) == 5) {
             target.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 3, 0));
         }

@@ -6,6 +6,7 @@ import net.deadlydiamond98.familiar_friends.sounds.CompanionSounds;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.text.Text;
 import net.minecraft.world.World;
 
 public class MrSaturnCompanion extends PlayerCompanion {
@@ -18,9 +19,10 @@ public class MrSaturnCompanion extends PlayerCompanion {
     }
 
     @Override
-    public void onAttack(PlayerEntity player, LivingEntity target) {
-        if (player.getRandom().nextInt(10) == 4) {
-            target.damage(target.getDamageSources().magic(), 10);
+    public void onAttack(PlayerEntity player, LivingEntity target, float amount) {
+        if (player.getRandom().nextInt(15) == 4) {
+
+            target.damage(target.getDamageSources().magic(), amount + 2);
 
             double x = player.getX() - target.getX();
             double y = player.getZ() - target.getZ();
@@ -32,6 +34,6 @@ public class MrSaturnCompanion extends PlayerCompanion {
 
     @Override
     public int getCost() {
-        return 20;
+        return 12;
     }
 }

@@ -69,7 +69,7 @@
 
   "entity.familiar_friends.mr_saturn_companion": "Mr. Saturn",
   "entity.familiar_friends.mr_saturn_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.mr_saturn_companion.description": "Has a chance to deal a SMAAAASH! attack on an target while attacking, knocking the target back and dealing a lot of damage.",
+  "entity.familiar_friends.mr_saturn_companion.description": "Has a chance to deal a SMAAAASH! attack on an target while attacking, knocking the target back and dealing extra damage.",
 
   "entity.familiar_friends.notch_companion": "Notch",
   "entity.familiar_friends.notch_companion.author": "Deadlydiamond98",
@@ -80,12 +80,12 @@
   "entity.familiar_friends.cirno_companion.description": "Test",
 
   "entity.familiar_friends.rana_companion": "Rana",
-  "entity.familiar_friends.cirno_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.cirno_companion.description": "Grants the player passive jump boost and immunity to fall damage!",
+  "entity.familiar_friends.rana_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.rana_companion.description": "Grants the player passive jump boost and immunity to fall damage!",
 
   "entity.familiar_friends.tater_companion": "Tiny Tater",
-  "entity.familiar_friends.tater_companion.author": "Mrmrmrpizza",
-  "entity.familiar_friends.tater_companion.description": "A funny goofy little guy that plays a funny goofy little sound when you press \"%s\"!",
+  "entity.familiar_friends.tater_companion.author": "Mrmrmrpizza, Deadlydiamond98",
+  "entity.familiar_friends.tater_companion.description": "A funny goofy little guy that plays a funny goofy little sound when you press \"%s\"! He will also has a chance of \"stealing\" hunger from an entity when attacking an entity, and giving the stolen hunger to the player. More damage means more hunger stolen.",
 
   "entity.familiar_friends.herobrine_companion": "Herobrine",
   "entity.familiar_friends.herobrine_companion.author": "Deadlydiamond98",
