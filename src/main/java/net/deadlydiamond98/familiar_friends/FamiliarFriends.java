@@ -6,7 +6,6 @@ import net.deadlydiamond98.familiar_friends.entities.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.events.CompanionEvents;
 import net.deadlydiamond98.familiar_friends.items.CompanionItems;
 import net.deadlydiamond98.familiar_friends.networking.CompanionServerPackets;
-import net.deadlydiamond98.familiar_friends.screens.CompanionScreenHandlers;
 import net.deadlydiamond98.familiar_friends.sounds.CompanionSounds;
 import net.deadlydiamond98.familiar_friends.util.config.CompanionConfig;
 import net.fabricmc.api.ModInitializer;
@@ -32,7 +31,6 @@ public class FamiliarFriends implements ModInitializer {
 
 		CompanionItems.registerItems();
 		CompanionEntityTypes.registerEntities();
-		CompanionScreenHandlers.registerScreenHandlers();
 
 		CompanionEvents.registerEvents();
 		CompanionCommands.register();

@@ -12,6 +12,7 @@ public class CompanionServerPackets {
         //SERVER TO CLIENT
         PayloadTypeRegistry.playS2C().register(SyncCompanionPlayerDataPacket.ID, SyncCompanionPlayerDataPacket.CODEC);
         PayloadTypeRegistry.playS2C().register(SyncCompanionDataPacket.ID, SyncCompanionDataPacket.CODEC);
+        PayloadTypeRegistry.playS2C().register(OpenCompanionBookPacket.ID, OpenCompanionBookPacket.CODEC);
 
         //CLIENT TO SERVER
         PayloadTypeRegistry.playC2S().register(UnlockCompanionPacket.ID, UnlockCompanionPacket.CODEC);
@@ -21,6 +22,7 @@ public class CompanionServerPackets {
         PayloadTypeRegistry.playC2S().register(CurrentKeybindPacket.ID, CurrentKeybindPacket.CODEC);
         PayloadTypeRegistry.playC2S().register(RequestCompanionDataPacket.ID, RequestCompanionDataPacket.CODEC);
 
+        //Reciever
         ServerPlayNetworking.registerGlobalReceiver(UnlockCompanionPacket.ID, UnlockCompanionPacket::recieve);
         ServerPlayNetworking.registerGlobalReceiver(EquipCompanionPacket.ID, EquipCompanionPacket::recieve);
         ServerPlayNetworking.registerGlobalReceiver(UnequipCompanionPacket.ID, UnequipCompanionPacket::recieve);
@@ -37,4 +39,7 @@ public class CompanionServerPackets {
         ServerPlayNetworking.send(player, new SyncCompanionDataPacket(cost, enabled, index));
     }
 
+    public static void openCompanionBookScreen(ServerPlayerEntity player) {
+        ServerPlayNetworking.send(player, new OpenCompanionBookPacket(true));
+    }
 }

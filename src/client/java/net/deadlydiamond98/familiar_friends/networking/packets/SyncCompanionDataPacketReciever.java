@@ -16,7 +16,6 @@ public class SyncCompanionDataPacketReciever {
     public static void recieve(SyncCompanionDataPacket payload, ClientPlayNetworking.Context context) {
         MinecraftClient client = context.client();
         client.execute(() -> {
-            FamiliarFriends.LOGGER.info("TEST");
             if (client.currentScreen instanceof CompanionBookScreen bookScreen) {
                 bookScreen.syncCompanionData(payload.cost(), payload.enabled(), payload.index());
             }

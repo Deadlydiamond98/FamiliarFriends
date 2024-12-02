@@ -1,6 +1,7 @@
 package net.deadlydiamond98.familiar_friends.networking;
 
 import net.deadlydiamond98.familiar_friends.networking.packet.*;
+import net.deadlydiamond98.familiar_friends.networking.packets.OpenCompanionBookPacketReciever;
 import net.deadlydiamond98.familiar_friends.networking.packets.SyncCompanionDataPacketReciever;
 import net.deadlydiamond98.familiar_friends.networking.packets.SyncPlayerCompanionDataPacketReciever;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
@@ -10,6 +11,7 @@ public class CompanionClientPackets {
     public static void registerC2SPackets() {
         ClientPlayNetworking.registerGlobalReceiver(SyncCompanionPlayerDataPacket.ID, SyncPlayerCompanionDataPacketReciever::recieve);
         ClientPlayNetworking.registerGlobalReceiver(SyncCompanionDataPacket.ID, SyncCompanionDataPacketReciever::recieve);
+        ClientPlayNetworking.registerGlobalReceiver(OpenCompanionBookPacket.ID, OpenCompanionBookPacketReciever::recieve);
     }
 
     public static void unlockPlayerCompanion(String companion) {

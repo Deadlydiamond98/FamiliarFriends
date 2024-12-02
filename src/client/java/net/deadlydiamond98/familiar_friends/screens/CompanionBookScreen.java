@@ -14,6 +14,7 @@ import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.Drawable;
 import net.minecraft.client.gui.Element;
 import net.minecraft.client.gui.Selectable;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.widget.PageTurnWidget;
 import net.minecraft.client.render.GameRenderer;
@@ -29,7 +30,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandler> {
+public class CompanionBookScreen extends Screen {
     private static final int SCROLL_STEP = 10;
 
     private static final Identifier BOOK_TEXTURE = Identifier.of(FamiliarFriends.MOD_ID, "textures/gui/companion_book.png");
@@ -53,8 +54,8 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
     private int indexOffset;
     private boolean listLoaded;
 
-    public CompanionBookScreen(CompanionBookScreenHandler handler, PlayerInventory inventory, Text title) {
-        super(handler, inventory, title);
+    public CompanionBookScreen(Text title) {
+        super(title);
         this.scrollOffset = 0;
         this.maxScroll = 0;
         this.indexOffset = 0;
@@ -91,6 +92,11 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
     }
 
     @Override
+    public void renderBackground(DrawContext context, int mouseX, int mouseY, float delta) {
+        this.renderInGameBackground(context);
+        this.drawBackground(context, delta, mouseX, mouseY);
+    }
+
     protected void drawBackground(DrawContext context, float delta, int mouseX, int mouseY) {
         updateEntityButtons();
         updatePageButtons();
@@ -213,7 +219,6 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
                 matrices, companionX, companionY, playerCompanion.getAuthor(), 0.55f, 0x95836a, true); // Entity Author
     }
 
-    @Override
     protected void drawForeground(DrawContext context, int mouseX, int mouseY) {
         if (this.pageIndex == 0) {
             return;
@@ -503,5 +508,10 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         if (i == renderedCompanions.size() - 1) {
             listLoaded = true;
         }
+    }
+
+    @Override
+    public boolean shouldPause() {
+        return false;
     }
 }
