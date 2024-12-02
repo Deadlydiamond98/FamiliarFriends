@@ -28,6 +28,11 @@ public class CaveSpiderCompanion extends PlayerCompanion {
     }
 
     @Override
+    public boolean canClimbWalls() {
+        return true;
+    }
+
+    @Override
     public Text getName() {
         return Text.translatable("entity.minecraft.cave_spider");
     }

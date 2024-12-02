@@ -93,6 +93,8 @@
 
   "familiar_friends.midnightconfig.title": "Familiar Friends Config",
 
+  "familiar_friends.midnightconfig.cooldownTime": "Cooldown",
+
   "familiar_friends.midnightconfig.oneUpEnabled": "Enable 1-Up Mushroom Companion",
   "familiar_friends.midnightconfig.oneUpCost": "Set 1-Up Mushroom Cost (In Levels)",
 

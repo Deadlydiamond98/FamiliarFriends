@@ -31,8 +31,8 @@ public class CompanionServerPackets {
         ServerPlayNetworking.registerGlobalReceiver(RequestCompanionDataPacket.ID, RequestCompanionDataPacket::recieve);
     }
 
-    public static void syncCompanionPlayerData(ServerPlayerEntity player, List<String> unlockedCompanions, String currentCompanion) {
-        ServerPlayNetworking.send(player, new SyncCompanionPlayerDataPacket(unlockedCompanions, currentCompanion));
+    public static void syncCompanionPlayerData(ServerPlayerEntity player, List<String> unlockedCompanions, String currentCompanion, int cooldown) {
+        ServerPlayNetworking.send(player, new SyncCompanionPlayerDataPacket(unlockedCompanions, currentCompanion, cooldown));
     }
 
     public static void syncCompanionData(ServerPlayerEntity player, int cost, boolean enabled, int index) {

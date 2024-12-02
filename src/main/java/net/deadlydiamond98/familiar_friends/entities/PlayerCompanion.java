@@ -7,6 +7,7 @@ import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.be
 import net.deadlydiamond98.familiar_friends.networking.CompanionServerPackets;
 import net.deadlydiamond98.familiar_friends.sounds.CompanionSounds;
 import net.deadlydiamond98.familiar_friends.util.CompanionPlayerData;
+import net.deadlydiamond98.familiar_friends.util.TimeUnitHelper;
 import net.minecraft.entity.*;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
@@ -189,8 +190,8 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
      * cooldown on screen in seconds, minutes, or hours depending on how long the cooldown is
      */
     public boolean hasNoCooldown(PlayerEntity player) {
-        String cooldownUnit = getCooldownUnitText(this.cooldown);
-        int time = calculateCooldownUnit(this.cooldown);
+        String cooldownUnit = TimeUnitHelper.getCooldownUnitText(this.cooldown);
+        int time = TimeUnitHelper.calculateCooldownUnit(this.cooldown);
 
         return hasNoLimitationOf(1, this.cooldown, player, Text.translatable("cooldown.familiar_friends.cooldown",
                 time, Text.translatable("cooldown.familiar_friends." + cooldownUnit).getString()), false);
@@ -377,36 +378,6 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
 
     public boolean isBookRender() {
         return this.bookRender;
-    }
-
-    protected String getCooldownUnitText(float cooldown) {
-        int seconds = Math.max(1, Math.round(cooldown)) / 20;
-        int minutes = seconds / 20;
-        int hours = minutes / 20;
-
-        if (hours >= 1) {
-            return hours > 1 ? "hours" : "hour";
-        } else if (minutes >= 1) {
-            return minutes > 1 ? "minutes" : "minute";
-        } else {
-            return seconds > 1 ? "seconds" : "second";
-        }
-    }
-
-    protected int calculateCooldownUnit(float cooldown) {
-        int seconds = Math.max(1, Math.round(cooldown)) / 20;
-        int minutes = seconds / 20;
-        int hours = minutes / 20;
-
-        if (hours >= 1) {
-            return hours;
-        }
-        else if (minutes >= 1) {
-            return minutes;
-        }
-        else {
-            return seconds;
-        }
     }
 
     public boolean isLocked(PlayerEntity player) {

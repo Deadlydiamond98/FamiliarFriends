@@ -36,6 +36,10 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
     private String lastSyncedBackUpCompanionKey;
     @Unique
     private boolean hasCompanion;
+    @Unique
+    private int companionCooldown;
+    @Unique
+    private int lastCompanionCooldown;
 
     public PlayerEntity getPlayer() {
         return ((PlayerEntity)(Object)this);
@@ -47,6 +51,8 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
         this.unlockedCompanions = new ArrayList<>();
         this.currentCompanion = null;
         this.backUpCompanionKey = "";
+        this.companionCooldown = 0;
+        this.lastCompanionCooldown = 0;
 
         String highlyImprobableString = "42069, Trying to make a string that will never happen so this updates when the " +
                 "player's joins, and so that this isn't mistaken for an entity";
@@ -59,17 +65,27 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
     @Inject(method = "tick", at = @At("HEAD"))
     public void tick(CallbackInfo ci) {
         if (!getPlayer().getWorld().isClient()) {
-            SyncCompanionData();
+            if (this.companionCooldown > 0) {
+                this.companionCooldown--;
+            }
+
+            syncCompanionData();
             updateCompanionExistance();
+
+            if (this.companionCooldown > 0) {
+                this.lastCompanionCooldown--;
+            }
         }
     }
 
 
     // Only sync when data doesn't match
     @Unique
-    private void SyncCompanionData() {
-        if (!this.lastSyncedBackUpCompanionKey.equals(this.backUpCompanionKey) || !this.lastSyncedUnlockedCompanions.equals(this.unlockedCompanions)) {
-            CompanionServerPackets.syncCompanionPlayerData((ServerPlayerEntity) getPlayer(), this.unlockedCompanions, this.backUpCompanionKey);
+    private void syncCompanionData() {
+        if (!this.lastSyncedBackUpCompanionKey.equals(this.backUpCompanionKey)
+                || !this.lastSyncedUnlockedCompanions.equals(this.unlockedCompanions)
+                || this.companionCooldown != this.lastCompanionCooldown) {
+            CompanionServerPackets.syncCompanionPlayerData((ServerPlayerEntity) getPlayer(), this.unlockedCompanions, this.backUpCompanionKey, this.companionCooldown);
         }
     }
 
@@ -120,6 +136,11 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
     @Override
     public void syncUnlockedList(List<String> unlockedCompanions) {
         this.unlockedCompanions = unlockedCompanions;
+    }
+
+    @Override
+    public void syncCompanionCooldown(int cooldown) {
+        this.companionCooldown = cooldown;
     }
 
     // Removes all Companions from the player
@@ -197,12 +218,25 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
         return CompanionRegistry.createCompanion(this.backUpCompanionKey, getPlayer());
     }
 
+    @Override
+    public int getCompanionCooldown() {
+        return this.companionCooldown;
+    }
+
+    @Override
+    public void setCompanionCooldown(int companionCooldown) {
+        this.companionCooldown = companionCooldown;
+        this.lastCompanionCooldown = companionCooldown;
+    }
+
     // Past Here just NBT stuffs
 
     @Inject(method = "writeCustomDataToNbt", at = @At("HEAD"))
     public void onSave(NbtCompound nbt, CallbackInfo info) {
         nbt.putBoolean("hasCompanion", this.hasCompanion);
         nbt.putString("backUpCompanionKey", this.backUpCompanionKey);
+        nbt.putInt("companionCooldown", this.companionCooldown);
+        nbt.putInt("lastCompanionCooldown", this.lastCompanionCooldown);
 
         NbtList companionList = new NbtList();
         for (String companion : this.unlockedCompanions) {
@@ -218,6 +252,12 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
         }
         if (nbt.contains("backUpCompanionKey")) {
             this.backUpCompanionKey = nbt.getString("backUpCompanionKey");
+        }
+        if (nbt.contains("companionCooldown")) {
+            this.companionCooldown = nbt.getInt("companionCooldown");
+        }
+        if (nbt.contains("lastCompanionCooldown")) {
+            this.lastCompanionCooldown = nbt.getInt("lastCompanionCooldown");
         }
 
         if (nbt.contains("unlockedCompanions", 9)) {

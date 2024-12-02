@@ -10,21 +10,19 @@ import net.deadlydiamond98.familiar_friends.screens.widgets.CompanionBookButton;
 import net.deadlydiamond98.familiar_friends.screens.widgets.CompanionHomeButton;
 import net.deadlydiamond98.familiar_friends.screens.widgets.CompanionIconButton;
 import net.deadlydiamond98.familiar_friends.util.CompanionGuiDrawMethods;
+import net.deadlydiamond98.familiar_friends.util.TimeUnitHelper;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.Drawable;
 import net.minecraft.client.gui.Element;
 import net.minecraft.client.gui.Selectable;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.ingame.HandledScreen;
 import net.minecraft.client.gui.widget.PageTurnWidget;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.Pair;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -434,10 +432,20 @@ public class CompanionBookScreen extends Screen {
         this.homeButton.visible = pastFirstPage;
 
         // Update button active states
-        this.equipButton.active = hasDifferentCompanion;
+        this.equipButton.active = hasDifferentCompanion && player.getCompanionCooldown() <= 0;
         this.unequipButton.active = hasCompanion;
         this.unlockButton.active = pastFirstPage && companionExists &&
                 player.experienceLevel >= companion.getCostClient();
+
+        if (player.getCompanionCooldown() > 0) {
+            this.equipButton.setMessage(
+                    Text.literal(TimeUnitHelper.calculateCooldownUnit(player.getCompanionCooldown()) + " ")
+                            .append(Text.translatable("cooldown.familiar_friends." +
+                                    TimeUnitHelper.getCooldownUnitText((float) player.getCompanionCooldown()))));
+        }
+        else {
+            this.equipButton.setMessage(Text.translatable("gui.familiar_friends.equip"));
+        }
     }
 
     private void updatePageButtons() {

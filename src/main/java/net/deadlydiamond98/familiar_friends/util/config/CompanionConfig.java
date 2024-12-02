@@ -3,6 +3,9 @@ package net.deadlydiamond98.familiar_friends.util.config;
 import eu.midnightdust.lib.config.MidnightConfig;
 
 public class CompanionConfig extends MidnightConfig {
+    @Entry(category = "text") public static int cooldownTime = 60;
+
+    @Comment(category = "text") public static Comment spacer0;
     @Comment(category = "text") public static Comment spacer1;
     @Entry(category = "text") public static boolean oneUpEnabled = true;
     @Entry(category = "text") public static int oneUpCost = 10;

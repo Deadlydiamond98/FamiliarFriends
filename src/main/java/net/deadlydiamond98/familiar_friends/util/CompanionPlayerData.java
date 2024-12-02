@@ -14,10 +14,14 @@ public interface CompanionPlayerData {
     void lockAllCompanions();
     void syncUnlockedList(List<String> unlockedCompanions);
     void syncCurrentCompanion(String companion);
+    void syncCompanionCooldown(int cooldown);
     String currentCompanion();
     void equipCompanion(PlayerCompanion companion);
     void unequipCompanion(PlayerCompanion companion);
     void doCompanionKeybind();
     PlayerCompanion getCompanion();
+
+    int getCompanionCooldown();
+    void setCompanionCooldown(int cooldown);
 
 }

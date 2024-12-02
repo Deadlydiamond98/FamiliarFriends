@@ -1,0 +1,157 @@
+{
+  "item.familiar_friends.book_of_familiars": "Kniha společníků",
+
+  "gui.familiar_friends.current_companion": "Aktuální společník",
+  "gui.familiar_friends.unlocked": "Odemčeno",
+  "gui.familiar_friends.author": "Autor: ",
+  "gui.familiar_friends.desc": "Popisek",
+  "gui.familiar_friends.unlock": "Odemknout společníka",
+  "gui.familiar_friends.equip": "Vypustit společníka",
+  "gui.familiar_friends.unequip": "Vypnout společníka",
+  "gui.familiar_friends.cost": "Cena: %s ůrovní zkušenosti",
+
+  "cooldown.familiar_friends.second": "vteřinu",
+  "cooldown.familiar_friends.seconds": "vteřin",
+  "cooldown.familiar_friends.minute": "minutu",
+  "cooldown.familiar_friends.minutes": "minut",
+  "cooldown.familiar_friends.hour": "hodinu",
+  "cooldown.familiar_friends.hours": "hodin",
+  "cooldown.familiar_friends.cooldown": "Musíte počkat %s %s než budete moct ynovu provést tuto akci!",
+
+  "cooldown.familiar_friends.hunger": "Jste moc hladoví",
+  "cooldown.familiar_friends.health": "Máte moc nízké zdraví",
+  "cooldown.familiar_friends.lowstat": "Akce nemůže být provedena! %s!",
+
+  "entity.familiar_friends.chicken_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.chicken_companion.description": "Umožňuje hráči pasivní pomalé padání, když je hráč na zemi, což ve vzduchu trvá 2 sekundy.",
+
+  "entity.familiar_friends.iron_golem_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.iron_golem_companion.description": "Zraní nepřátelské moby a pošle je do vzduchu (způsobí další zranění při pádu).",
+
+  "entity.familiar_friends.snow_golem_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.snow_golem_companion.description": "Hází sněhové koule, které odhazují nepřátele.",
+
+  "entity.familiar_friends.goat_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.goat_companion.description": "Zabraňuje uživateli zapadnout do prašanu.",
+
+  "entity.familiar_friends.creeper_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.creeper_companion.description": "Poskytuje uživateli imunitu proti zranění výbuchem. Pokud uživatel zemře, společník exploduje (nepoškodí bloky), což způsobí velké zranění tvorům kolem hráče. Pokud společník exploduje, budete jej muset znovu odemknout",
+
+  "entity.familiar_friends.allay_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.allay_companion.description": "Po vybavení lze předměty vyzvednout z větší vzdálenosti!",
+
+  "entity.familiar_friends.ocelot_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.ocelot_companion.description": "Poskytuje hráči pasivní rychlost. Můžete také stisknout \"%s\" pro zamňoukání.",
+
+  "entity.familiar_friends.squid_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.squid_companion.description": "Poskytuje hráči 5 sekund dýchání pod vodou.",
+
+  "entity.familiar_friends.skeleton_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.skeleton_companion.description": "Střílí šípy na okolní nepřátelská stvoření!",
+
+  "entity.familiar_friends.spider_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.spider_companion.description": "Umožňuje uživateli vylézt na jakoukoli stěnu! Umožňuje také sklouznout po stěnách.",
+
+  "entity.familiar_friends.cave_spider_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.cave_spider_companion.description": "Umožňuje uživateli vylézt po jakékoli stěně a sklouznout po jakékoli stěně. Útoky mají také šanci způsobit otravu!",
+
+  "entity.familiar_friends.navi_companion": "Navík",
+  "entity.familiar_friends.navi_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.navi_companion.description": "Když se hráč přiblíží k nalezišti prastaré suti nebo diamantové rudy, Navík hráče upozorní. Intenzitu budou zvyšovat, čím blíže se hráč dostane k nalezišti.",
+
+  "entity.familiar_friends.one_up_mushroom_companion": "1-up houba",
+  "entity.familiar_friends.one_up_mushroom_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.one_up_mushroom_companion.description": "Pokud má hráč zemřít, jeho zdraví bude plně obnoveno. Pokud použijete 1-up houbu, bude nutné ji znovu odemknout!",
+
+  "entity.familiar_friends.companion_cube_companion": "Doprovodná kostka",
+  "entity.familiar_friends.companion_cube_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.companion_cube_companion.description": "Poskytuje hráči schopnost chodit po netekoucí lávě!",
+
+  "entity.familiar_friends.mr_saturn_companion": "Pan Saturn",
+  "entity.familiar_friends.mr_saturn_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.mr_saturn_companion.description": "Má šanci udělit SMAAAASH! útok na cíl při útoku, sražení cíle zpět a způsobení dalšího poškození.",
+
+  "entity.familiar_friends.notch_companion": "Notch",
+  "entity.familiar_friends.notch_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.notch_companion.description": "Při stisknutí \"%s\" blesk udeří ve směru kterým se díváte! Trvá 15 sekund dobíjení než blesk může znovu uhodit.",
+
+  "entity.familiar_friends.cirno_companion": "Cirna",
+  "entity.familiar_friends.cirno_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.cirno_companion.description": "Uděluje hráčům zmrazit vodu, a chid po ní! Navíc stisknutím \"%s\" vystřelíte 2 projektily, které způsobí nízké zranění, ale zasažené moby zpomalí. Dobíjení trvá 5 sekund.",
+
+  "entity.familiar_friends.rana_companion": "Rana",
+  "entity.familiar_friends.rana_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.rana_companion.description": "Poskytuje hráči pasivní zesílení skoku a imunitu vůči zranění způsobenému pádem!",
+
+  "entity.familiar_friends.tater_companion": "Brambůrka",
+  "entity.familiar_friends.tater_companion.author": "Mrmrmrpizza, Deadlydiamond98",
+  "entity.familiar_friends.tater_companion.description": "Legrační praštěný chlápek, který po stisknutí \"%s\" přehraje legrační praštěný zvuk! Při útoku na entitu má také šanci \"ukrást\" hlad z entity a dát ukradený hlad hráči. Větší zranění znamená větší ukradený hlad.",
+
+  "entity.familiar_friends.herobrine_companion": "Herobrine",
+  "entity.familiar_friends.herobrine_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.herobrine_companion.description": "Teleportuje hráče ve směru, kterým se dívá, když stisknete \"%s\", ale spotřebuje zdraví hráče. Čím dále je teleport spotřebován, tím více zdraví se spotřebuje, ale hráče to nezabije. Teleporty nefunguje, když je zdraví hráče příliš nízké a dobití trvá 15 sekund.",
+
+  "familiar_friends.midnightconfig.title": "Konfigurace Familiar Friends",
+
+  "familiar_friends.midnightconfig.cooldownTime": "Cooldown",
+
+  "familiar_friends.midnightconfig.oneUpEnabled": "Zapnout společníka 1-Up houbu",
+  "familiar_friends.midnightconfig.oneUpCost": "Nastavit cenu 1-Up houby (v úrovních)",
+
+  "familiar_friends.midnightconfig.allayEnabled": "Zapnout společníka Alík",
+  "familiar_friends.midnightconfig.allayCost": "Nastavit cenu Alíka (v úrovních)",
+
+  "familiar_friends.midnightconfig.caveSpiderEnabled": "Zapnout společníka jeskynní pavouk",
+  "familiar_friends.midnightconfig.caveSpiderCost": "Nastavit cenu jeskynního pavouka (v úrovních)",
+
+  "familiar_friends.midnightconfig.chickenEnabled": "Zapnout společníka slepice",
+  "familiar_friends.midnightconfig.chickenCost": "Nastavit cenu slepice (v úrovních)",
+
+  "familiar_friends.midnightconfig.cirnoEnabled": "Zapnout společníka Cirna",
+  "familiar_friends.midnightconfig.cirnoCost": "Nastavit cenu Cirny (v úrovních)",
+
+  "familiar_friends.midnightconfig.companionCubeEnabled": "Zapnout společníka doprovodnou kostku",
+  "familiar_friends.midnightconfig.companionCubeCost": "Nastavit cenu doprovodné kostky (v úrovních)",
+
+  "familiar_friends.midnightconfig.creeperEnabled": "Zapnout společníka creeper",
+  "familiar_friends.midnightconfig.creeperCost": "Nastavit cenu creepera (v úrovních)",
+
+  "familiar_friends.midnightconfig.goatEnabled": "Zapnout společníka kozu",
+  "familiar_friends.midnightconfig.goatCost": "Nastavit cenu kozy (v úrovních)",
+
+  "familiar_friends.midnightconfig.herobrineEnabled": "Zapnout společníka Herobrine",
+  "familiar_friends.midnightconfig.herobrineCost": "Nastavit cenu Herobrina (v úrovních)",
+
+  "familiar_friends.midnightconfig.ironGolemEnabled": "Zapnout společníka železného golema",
+  "familiar_friends.midnightconfig.ironGolemCost": "Nastavit cenu železného golema (v úrovních)",
+
+  "familiar_friends.midnightconfig.mrSaturnEnabled": "Zapnout společníka pana Saturna",
+  "familiar_friends.midnightconfig.mrSaturnCost": "Nastavit cenu pana Saturna (v úrovních)",
+
+  "familiar_friends.midnightconfig.naviEnabled": "Zapnout společníka Navíka",
+  "familiar_friends.midnightconfig.naviCost": "Nastavit cenu Navíka (v úrovních)",
+
+  "familiar_friends.midnightconfig.notchEnabled": "Zapnout společníka Notche",
+  "familiar_friends.midnightconfig.notchCost": "Nastavit cenu Notche (v úrovních)",
+
+  "familiar_friends.midnightconfig.ocelotEnabled": "Zapnout společníka ocelot",
+  "familiar_friends.midnightconfig.ocelotCost": "Nastavit cenu ocelota (v úrovních)",
+
+  "familiar_friends.midnightconfig.ranaEnabled": "Zapnout společníka Rana",
+  "familiar_friends.midnightconfig.ranaCost": "Nastavit cenu Rany (v úrovních)",
+
+  "familiar_friends.midnightconfig.skeletonEnabled": "Zapnout společníka kostlivce",
+  "familiar_friends.midnightconfig.skeletonCost": "Nastavit cenu kostlivce (v úrovních)",
+
+  "familiar_friends.midnightconfig.snowGolemEnabled": "Zapnout společníka sněhuláka",
+  "familiar_friends.midnightconfig.snowGolemCost": "Nastavit cenu sněhuláka",
+
+  "familiar_friends.midnightconfig.spiderEnabled": "Zapnout společníka pavouka",
+  "familiar_friends.midnightconfig.spiderCost": "Nastavit cenu pavouka (v úrovních)",
+
+  "familiar_friends.midnightconfig.squidEnabled": "Zapnout společníka chobotnici",
+  "familiar_friends.midnightconfig.squidCost": "Nastavit cenu chobotnice (v úrovních)",
+
+  "familiar_friends.midnightconfig.taterEnabled": "Zapnout společníka Brambůrku",
+  "familiar_friends.midnightconfig.taterCost": "Nastavit cenu Brambůrky (v úrovních)"
+}

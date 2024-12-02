@@ -11,6 +11,7 @@ public class SyncPlayerCompanionDataPacketReciever {
     public static void recieve(SyncCompanionPlayerDataPacket payload, ClientPlayNetworking.Context context) {
         List<String> unlockedCompanions = payload.unlockedCompanions();
         String currentCompanion = payload.currentCompanion();
+        int cooldown = payload.cooldown();
         MinecraftClient client = context.client();
         client.execute(() -> {
 
@@ -19,6 +20,7 @@ public class SyncPlayerCompanionDataPacketReciever {
             if (player != null) {
                 player.syncUnlockedList(unlockedCompanions);
                 player.syncCurrentCompanion(currentCompanion);
+                player.syncCompanionCooldown(cooldown);
             }
         });
     }
