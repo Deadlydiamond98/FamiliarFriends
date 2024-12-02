@@ -83,11 +83,73 @@
   "entity.familiar_friends.rana_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.rana_companion.description": "Grants the player passive jump boost and immunity to fall damage!",
 
-  "entity.familiar_friends.tater_companion": "Tiny Tater",
+  "entity.familiar_friends.tater_companion": "Tiny Potato",
   "entity.familiar_friends.tater_companion.author": "Mrmrmrpizza, Deadlydiamond98",
   "entity.familiar_friends.tater_companion.description": "A funny goofy little guy that plays a funny goofy little sound when you press \"%s\"! He will also has a chance of \"stealing\" hunger from an entity when attacking an entity, and giving the stolen hunger to the player. More damage means more hunger stolen.",
 
   "entity.familiar_friends.herobrine_companion": "Herobrine",
   "entity.familiar_friends.herobrine_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.herobrine_companion.description": "Will Teleport the player in the direction they are looking when pressing \"%s\", but will consume player health. More health is consumed the further the teleport is, but it will kill the player. Teleports don't work when player health is too low, and they have a 15 second cooldown."
+  "entity.familiar_friends.herobrine_companion.description": "Will Teleport the player in the direction they are looking when pressing \"%s\", but will consume player health. More health is consumed the further the teleport is, but it will kill the player. Teleports don't work when player health is too low, and they have a 15 second cooldown.",
+
+  "familiar_friends.midnightconfig.title": "Familiar Friends Config",
+
+  "familiar_friends.midnightconfig.oneUpEnabled": "Enable 1-Up Mushroom Companion",
+  "familiar_friends.midnightconfig.oneUpCost": "Set 1-Up Mushroom Cost (In Levels)",
+
+  "familiar_friends.midnightconfig.allayEnabled": "Enable Allay Companion",
+  "familiar_friends.midnightconfig.allayCost": "Set Allay Cost (In Levels)",
+
+  "familiar_friends.midnightconfig.caveSpiderEnabled": "Enable Cave Spider Companion",
+  "familiar_friends.midnightconfig.caveSpiderCost": "Set Cave Spider Cost (In Levels)",
+
+  "familiar_friends.midnightconfig.chickenEnabled": "Enable Chicken Companion",
+  "familiar_friends.midnightconfig.chickenCost": "Set Chicken Cost (In Levels)",
+
+  "familiar_friends.midnightconfig.cirnoEnabled": "Enable Cirno Companion",
+  "familiar_friends.midnightconfig.cirnoCost": "Set Cirno Cost (In Levels)",
+
+  "familiar_friends.midnightconfig.companionCubeEnabled": "Enable Companion Cube Companion",
+  "familiar_friends.midnightconfig.companionCubeCost": "Set Companion Cube Cost (In Levels)",
+
+  "familiar_friends.midnightconfig.creeperEnabled": "Enable Creeper Companion",
+  "familiar_friends.midnightconfig.creeperCost": "Set Creeper Cost (In Levels)",
+
+  "familiar_friends.midnightconfig.goatEnabled": "Enable Goat Companion",
+  "familiar_friends.midnightconfig.goatCost": "Set Goat Cost (In Levels)",
+
+  "familiar_friends.midnightconfig.herobrineEnabled": "Enable Herobrine Companion",
+  "familiar_friends.midnightconfig.herobrineCost": "Set Herobrine Cost (In Levels)",
+
+  "familiar_friends.midnightconfig.ironGolemEnabled": "Enable Iron Golem Companion",
+  "familiar_friends.midnightconfig.ironGolemCost": "Set Iron Golem Cost (In Levels)",
+
+  "familiar_friends.midnightconfig.mrSaturnEnabled": "Enable Mr. Saturn Companion",
+  "familiar_friends.midnightconfig.mrSaturnCost": "Set Mr. Saturn Cost (In Levels)",
+
+  "familiar_friends.midnightconfig.naviEnabled": "Enable Navi Companion",
+  "familiar_friends.midnightconfig.naviCost": "Set Navi Cost (In Levels)",
+
+  "familiar_friends.midnightconfig.notchEnabled": "Enable Notch Companion",
+  "familiar_friends.midnightconfig.notchCost": "Set Notch Cost (In Levels)",
+
+  "familiar_friends.midnightconfig.ocelotEnabled": "Enable Ocelot Companion",
+  "familiar_friends.midnightconfig.ocelotCost": "Set Ocelot Cost (In Levels)",
+
+  "familiar_friends.midnightconfig.ranaEnabled": "Enable Rana Companion",
+  "familiar_friends.midnightconfig.ranaCost": "Set Rana Cost (In Levels)",
+
+  "familiar_friends.midnightconfig.skeletonEnabled": "Enable Skeleton Companion",
+  "familiar_friends.midnightconfig.skeletonCost": "Set Skeleton Cost (In Levels)",
+
+  "familiar_friends.midnightconfig.snowGolemEnabled": "Enable Snow Golem Companion",
+  "familiar_friends.midnightconfig.snowGolemCost": "Set Snow Golem Cost (In Levels)",
+
+  "familiar_friends.midnightconfig.spiderEnabled": "Enable Spider Companion",
+  "familiar_friends.midnightconfig.spiderCost": "Set Spider Cost (In Levels)",
+
+  "familiar_friends.midnightconfig.squidEnabled": "Enable Squid Companion",
+  "familiar_friends.midnightconfig.squidCost": "Set Squid Cost (In Levels)",
+
+  "familiar_friends.midnightconfig.taterEnabled": "Enable Tiny Potato Companion",
+  "familiar_friends.midnightconfig.taterCost": "Set Tiny Potato Cost (In Levels)"
 }

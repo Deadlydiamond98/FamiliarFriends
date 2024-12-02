@@ -22,7 +22,7 @@ public class TinyTaterCompanion extends PlayerCompanion {
 
     @Override
     public void doKeyEvent(PlayerEntity player) {
-        this.playSound(CompanionSounds.Do_It, 0.5f, 1.0f);
+        this.playSound(CompanionSounds.Do_It, 0.25f, 1.0f);
     }
 
     @Override
