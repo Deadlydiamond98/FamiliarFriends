@@ -92,7 +92,7 @@ public class CompanionIconButton extends ButtonWidget {
             tooltip.add(Text.literal(author).setStyle(Style.EMPTY.withColor(authorColor)));
 
             if (locked) {
-                tooltip.add(companion.getCostLang());
+                tooltip.add(companion.getCostLang(companion.getCostClient()));
             }
             else {
                 tooltip.add(Text.translatable("gui.familiar_friends.unlocked").withColor(0x478e47));

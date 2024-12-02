@@ -2,11 +2,13 @@ package net.deadlydiamond98.familiar_friends.networking;
 
 import net.deadlydiamond98.familiar_friends.networking.packet.*;
 import net.deadlydiamond98.familiar_friends.networking.packets.SyncCompanionDataPacketReciever;
+import net.deadlydiamond98.familiar_friends.networking.packets.SyncPlayerCompanionDataPacketReciever;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 
 public class CompanionClientPackets {
 
     public static void registerC2SPackets() {
+        ClientPlayNetworking.registerGlobalReceiver(SyncCompanionPlayerDataPacket.ID, SyncPlayerCompanionDataPacketReciever::recieve);
         ClientPlayNetworking.registerGlobalReceiver(SyncCompanionDataPacket.ID, SyncCompanionDataPacketReciever::recieve);
     }
 
@@ -30,4 +32,7 @@ public class CompanionClientPackets {
         ClientPlayNetworking.send(new CurrentKeybindPacket(keybinding));
     }
 
+    public static void sendCompanion(String key, int index) {
+        ClientPlayNetworking.send(new RequestCompanionDataPacket(key, index));
+    }
 }

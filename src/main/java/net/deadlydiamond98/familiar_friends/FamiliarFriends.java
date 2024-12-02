@@ -1,5 +1,6 @@
 package net.deadlydiamond98.familiar_friends;
 
+import eu.midnightdust.lib.config.MidnightConfig;
 import net.deadlydiamond98.familiar_friends.commands.CompanionCommands;
 import net.deadlydiamond98.familiar_friends.entities.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.events.CompanionEvents;
@@ -7,6 +8,7 @@ import net.deadlydiamond98.familiar_friends.items.CompanionItems;
 import net.deadlydiamond98.familiar_friends.networking.CompanionServerPackets;
 import net.deadlydiamond98.familiar_friends.screens.CompanionScreenHandlers;
 import net.deadlydiamond98.familiar_friends.sounds.CompanionSounds;
+import net.deadlydiamond98.familiar_friends.util.config.CompanionConfig;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -21,6 +23,8 @@ public class FamiliarFriends implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+
+		MidnightConfig.init(MOD_ID, CompanionConfig.class);
 
 		CompanionSounds.registerSounds();
 

@@ -1,6 +1,7 @@
 package net.deadlydiamond98.familiar_friends.entities;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
+import net.deadlydiamond98.familiar_friends.networking.CompanionServerPackets;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
@@ -97,35 +98,5 @@ public class CompanionRegistry {
         } catch (Exception e) {
             return null;
         }
-    }
-
-
-
-    /**
-     * Creates a list of companions, and then sorts the companions based on their name (with language taken into account).
-     * This is used for the Book gui
-     * @param player The player entity, used for creating the companion and assigning the companion an owner and world
-     */
-    public static List<PlayerCompanion> addCompanionsToBook(PlayerEntity player) {
-
-        List<PlayerCompanion> companions = new ArrayList<>();
-
-        CompanionRegistry.COMPANIONS.forEach((key, companionClass) -> {
-            PlayerCompanion companion = createCompanion(key, player, true);
-            companions.add(companion);
-        });
-
-        if (companions.isEmpty()) {
-            FamiliarFriends.LOGGER.info("No Companions added to the book :<");
-        }
-
-        // Sort Alphabetically, taking language into account
-        companions.sort((o1, o2) -> {
-            String name1 = o1.getName().getString();
-            String name2 = o2.getName().getString();
-            return name1.compareToIgnoreCase(name2);
-        });
-
-        return companions;
     }
 }

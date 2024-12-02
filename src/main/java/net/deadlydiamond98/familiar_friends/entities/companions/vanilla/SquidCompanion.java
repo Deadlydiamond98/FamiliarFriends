@@ -2,6 +2,7 @@ package net.deadlydiamond98.familiar_friends.entities.companions.vanilla;
 
 import net.deadlydiamond98.familiar_friends.entities.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.util.config.CompanionConfig;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -33,6 +34,11 @@ public class SquidCompanion extends PlayerCompanion {
 
     @Override
     public int getCost() {
-        return 14;
+        return CompanionConfig.squidCost;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return CompanionConfig.squidEnabled;
     }
 }

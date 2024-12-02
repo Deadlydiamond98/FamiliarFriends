@@ -2,6 +2,7 @@ package net.deadlydiamond98.familiar_friends.entities.companions;
 
 import net.deadlydiamond98.familiar_friends.entities.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.util.config.CompanionConfig;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
@@ -90,6 +91,11 @@ public class HerobrineCompanion extends PlayerCompanion {
 
     @Override
     public int getCost() {
-        return 25;
+        return CompanionConfig.herobrineCost;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return CompanionConfig.herobrineEnabled;
     }
 }

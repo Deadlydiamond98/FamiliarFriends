@@ -23,6 +23,7 @@ import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Pair;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -49,19 +50,31 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
     private int scrollOffset;
     private int maxScroll;
 
+    private int indexOffset;
+    private boolean listLoaded;
+
     public CompanionBookScreen(CompanionBookScreenHandler handler, PlayerInventory inventory, Text title) {
         super(handler, inventory, title);
         this.scrollOffset = 0;
         this.maxScroll = 0;
+        this.indexOffset = 0;
+        this.listLoaded = false;
     }
 
     @Override
     protected void init() {
+        init(true);
+    }
+
+    private void init(boolean createCompanionList) {
         this.clearChildren();
         this.legendButtons.clear();
         this.drawables.clear();
 
-        this.addCompanions();
+        if (createCompanionList) {
+            this.addCompanions();
+        }
+
         this.addLegendButtons();
         this.addPageButtons();
         this.addEntityButtons();
@@ -74,7 +87,7 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
             return;
         }
         renderedCompanions.clear();
-        renderedCompanions.addAll(CompanionRegistry.addCompanionsToBook(client.player));
+        addCompanionsToBook(client.player);
     }
 
     @Override
@@ -112,7 +125,7 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         if (companion.isLocked(client.player)) {
             context.drawTexture(BOOK_TEXTURE, ((this.width - 11) / 2) - 140, companionY - 100, 12, 246, 11, 15, 512, 512);
 
-            Text xpCost = companion.getCostLang().copy().setStyle(Style.EMPTY.withUnderline(true));
+            Text xpCost = companion.getCostLang(companion.getCostClient()).copy().setStyle(Style.EMPTY.withUnderline(true));
 
             CompanionGuiDrawMethods.drawResizeableCenteredText(textRenderer, context,
                     matrices, companionX, companionY - 95, xpCost, 1.0f, 0x478e47, false); // Experience Cost
@@ -256,6 +269,10 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+        if (!listLoaded) {
+            return;
+        }
+
         this.renderBackground(context, mouseX, mouseY, delta);
         Iterator var5 = this.drawables.iterator();
 
@@ -415,7 +432,7 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         this.equipButton.active = hasDifferentCompanion;
         this.unequipButton.active = hasCompanion;
         this.unlockButton.active = pastFirstPage && companionExists &&
-                player.experienceLevel >= companion.getCost();
+                player.experienceLevel >= companion.getCostClient();
     }
 
     private void updatePageButtons() {
@@ -442,10 +459,49 @@ public class CompanionBookScreen extends HandledScreen<CompanionBookScreenHandle
         return renderedCompanions.size() + 1;
     }
 
-    // I feel like this is a half-assed solution, but if it works it works
     @Override
     protected <T extends Element & Drawable & Selectable> T addDrawableChild(T drawableElement) {
         this.drawables.add(drawableElement);
         return super.addDrawableChild(drawableElement);
+    }
+
+    public void addCompanionsToBook(PlayerEntity player) {
+
+        CompanionRegistry.COMPANIONS.forEach((key, companionClass) -> {
+            PlayerCompanion companion = CompanionRegistry.createCompanion(key, player, true);
+
+            if (companion != null) {
+                renderedCompanions.add(companion);
+            }
+        });
+
+        if (renderedCompanions.isEmpty()) {
+            FamiliarFriends.LOGGER.info("No Companions added to the book :<");
+        }
+
+        // Sort Alphabetically, taking language into account
+        renderedCompanions.sort((o1, o2) -> {
+            String name1 = o1.getName().getString();
+            String name2 = o2.getName().getString();
+            return name1.compareToIgnoreCase(name2);
+        });
+
+        for (int i = 0; i < renderedCompanions.size(); i++) {
+            CompanionClientPackets.sendCompanion(renderedCompanions.get(i).getType().getTranslationKey(), i);
+        }
+    }
+
+    public void syncCompanionData(int cost, boolean enabled, int index) {
+        int i = index - indexOffset;
+        renderedCompanions.get(i).syncClientData(cost, enabled);
+        if (!enabled) {
+            renderedCompanions.remove(i);
+            init(false);
+            indexOffset++;
+        }
+
+        if (i == renderedCompanions.size() - 1) {
+            listLoaded = true;
+        }
     }
 }

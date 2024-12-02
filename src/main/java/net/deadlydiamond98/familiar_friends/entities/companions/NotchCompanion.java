@@ -2,6 +2,7 @@ package net.deadlydiamond98.familiar_friends.entities.companions;
 
 import net.deadlydiamond98.familiar_friends.entities.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.util.config.CompanionConfig;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -58,7 +59,12 @@ public class NotchCompanion extends PlayerCompanion {
 
     @Override
     public int getCost() {
-        return 20;
+        return CompanionConfig.notchCost;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return CompanionConfig.notchEnabled;
     }
 
 }

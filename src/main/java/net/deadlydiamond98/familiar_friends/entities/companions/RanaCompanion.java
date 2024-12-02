@@ -2,6 +2,7 @@ package net.deadlydiamond98.familiar_friends.entities.companions;
 
 import net.deadlydiamond98.familiar_friends.entities.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.util.config.CompanionConfig;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.LivingEntity;
@@ -41,6 +42,11 @@ public class RanaCompanion extends PlayerCompanion {
 
     @Override
     public int getCost() {
-        return 18;
+        return CompanionConfig.ranaCost;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return CompanionConfig.ranaEnabled;
     }
 }

@@ -4,6 +4,7 @@ import net.deadlydiamond98.familiar_friends.FamiliarFriends;
 import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.MockMobEntity;
 import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.behaviors.LookAroundBehavior;
 import net.deadlydiamond98.familiar_friends.entities.abstractcompanionclasses.behaviors.LookBehavior;
+import net.deadlydiamond98.familiar_friends.networking.CompanionServerPackets;
 import net.deadlydiamond98.familiar_friends.sounds.CompanionSounds;
 import net.deadlydiamond98.familiar_friends.util.CompanionPlayerData;
 import net.minecraft.entity.*;
@@ -31,6 +32,8 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
     private Entity owner;
     private int cooldown;
 
+    private int costClient;
+    private boolean enabledClient;
     protected boolean bookRender;
 
     private LookBehavior currentLookBehavior;
@@ -41,6 +44,9 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
 
     public PlayerCompanion(EntityType<?> type, World world, PlayerEntity owner, boolean gui) {
         this(type, world);
+
+        this.costClient = 0;
+        this.enabledClient = false;
 
         this.cooldown = 0;
         this.idleTime = 0;
@@ -129,6 +135,11 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
      * Used for determining how many XP levels a companion will cost in the Book
      */
     public abstract int getCost();
+
+    /**
+     * Used for determining if a companion can show up in the book, used for configs to disable a companion!
+     */
+    public abstract boolean isEnabled();
 
     /**
      * @param player The companion's player
@@ -360,8 +371,8 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
                 Text.translatable(this.getType().getTranslationKey() + ".author"));
     }
 
-    public Text getCostLang() {
-        return Text.translatable("gui.familiar_friends.cost", getCost()).withColor(0x478e47);
+    public Text getCostLang(int cost) {
+        return Text.translatable("gui.familiar_friends.cost", cost).withColor(0x478e47);
     }
 
     public boolean isBookRender() {
@@ -400,6 +411,19 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
 
     public boolean isLocked(PlayerEntity player) {
         return !((CompanionPlayerData) player).isCompanionUnlocked(this);
+    }
+
+    public void syncClientData(int cost, boolean enabledClient) {
+        this.costClient = cost;
+        this.enabledClient = enabledClient;
+    }
+
+    public boolean getEnabledClient() {
+        return this.enabledClient;
+    }
+
+    public int getCostClient() {
+        return this.costClient;
     }
 
     @Nullable

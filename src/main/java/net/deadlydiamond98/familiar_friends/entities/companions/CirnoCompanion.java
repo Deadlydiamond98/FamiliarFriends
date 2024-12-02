@@ -4,6 +4,7 @@ import net.deadlydiamond98.familiar_friends.entities.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.entities.projectiles.CirnoProjectile;
 import net.deadlydiamond98.familiar_friends.sounds.CompanionSounds;
+import net.deadlydiamond98.familiar_friends.util.config.CompanionConfig;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
@@ -80,6 +81,11 @@ public class CirnoCompanion extends PlayerCompanion {
 
     @Override
     public int getCost() {
-        return 19;
+        return CompanionConfig.cirnoCost;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return CompanionConfig.cirnoEnabled;
     }
 }

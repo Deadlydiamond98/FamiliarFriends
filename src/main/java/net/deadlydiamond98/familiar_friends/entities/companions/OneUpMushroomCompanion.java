@@ -3,6 +3,7 @@ package net.deadlydiamond98.familiar_friends.entities.companions;
 import net.deadlydiamond98.familiar_friends.entities.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.sounds.CompanionSounds;
+import net.deadlydiamond98.familiar_friends.util.config.CompanionConfig;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.world.World;
@@ -25,6 +26,11 @@ public class OneUpMushroomCompanion extends PlayerCompanion {
 
     @Override
     public int getCost() {
-        return 10;
+        return CompanionConfig.oneUpCost;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return CompanionConfig.oneUpEnabled;
     }
 }

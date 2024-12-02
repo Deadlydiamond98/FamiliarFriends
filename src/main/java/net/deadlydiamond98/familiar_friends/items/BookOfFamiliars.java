@@ -1,5 +1,6 @@
 package net.deadlydiamond98.familiar_friends.items;
 
+import net.deadlydiamond98.familiar_friends.entities.CompanionRegistry;
 import net.deadlydiamond98.familiar_friends.screens.CompanionBookScreenHandler;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -34,6 +35,7 @@ public class BookOfFamiliars extends Item {
                 return new CompanionBookScreenHandler(syncId, playerInventory);
             }
         });
+
         return super.use(world, user, hand);
     }
 }

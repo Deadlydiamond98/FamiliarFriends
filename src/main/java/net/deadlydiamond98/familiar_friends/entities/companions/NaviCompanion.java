@@ -3,6 +3,7 @@ package net.deadlydiamond98.familiar_friends.entities.companions;
 import net.deadlydiamond98.familiar_friends.entities.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.sounds.CompanionSounds;
+import net.deadlydiamond98.familiar_friends.util.config.CompanionConfig;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
@@ -77,7 +78,12 @@ public class NaviCompanion extends PlayerCompanion {
 
     @Override
     public int getCost() {
-        return 18;
+        return CompanionConfig.naviCost;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return CompanionConfig.naviEnabled;
     }
 
 }
