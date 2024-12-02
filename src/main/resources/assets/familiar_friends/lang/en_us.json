@@ -85,11 +85,11 @@
 
   "entity.familiar_friends.tater_companion": "Tiny Potato",
   "entity.familiar_friends.tater_companion.author": "Mrmrmrpizza, Deadlydiamond98",
-  "entity.familiar_friends.tater_companion.description": "A funny goofy little guy that plays a funny goofy little sound when you press \"%s\"! He will also has a chance of \"stealing\" hunger from an entity when attacking an entity, and giving the stolen hunger to the player. More damage means more hunger stolen.",
+  "entity.familiar_friends.tater_companion.description": "A funny goofy little guy that plays a funny goofy little sound when you press \"%s\"! He also has a chance of \"stealing\" hunger from an entity when attacking an entity, and giving the stolen hunger to the player. More damage means more hunger stolen.",
 
   "entity.familiar_friends.herobrine_companion": "Herobrine",
   "entity.familiar_friends.herobrine_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.herobrine_companion.description": "Will Teleport the player in the direction they are looking when pressing \"%s\", but will consume player health. More health is consumed the further the teleport is, but it will kill the player. Teleports don't work when player health is too low, and they have a 15 second cooldown.",
+  "entity.familiar_friends.herobrine_companion.description": "Will Teleport the player in the direction they are looking when pressing \"%s\", but will consume player health. More health is consumed the further the teleport is, but it will not kill the player. Teleports don't work when player health is too low, and they have a 15 second cooldown.",
 
   "familiar_friends.midnightconfig.title": "Familiar Friends Config",
 
