@@ -1,4 +1,10 @@
 {
+  "key.category.familiar_friends.companion_keys": "Familiar Friends",
+  "key.familiar_friends.action": "Ability",
+
+  "effect.familiar_friends.super": "Super Powered",
+  "effect.familiar_friends.mini": "Mini",
+
   "item.familiar_friends.book_of_familiars": "Book of Familiars",
 
   "gui.familiar_friends.current_companion": "Current Companion",
@@ -41,7 +47,7 @@
   "entity.familiar_friends.allay_companion.description": "When equipped, Items are able to be picked up from farther away!",
 
   "entity.familiar_friends.ocelot_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.ocelot_companion.description": "Grants the player passive Swiftness. You can also press \"%s\" to Meow.",
+  "entity.familiar_friends.ocelot_companion.description": "Grants the player passive Swiftness.",
 
   "entity.familiar_friends.squid_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.squid_companion.description": "Grants the player 5 seconds of water breathing.",
@@ -90,6 +96,22 @@
   "entity.familiar_friends.herobrine_companion": "Herobrine",
   "entity.familiar_friends.herobrine_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.herobrine_companion.description": "Will Teleport the player in the direction they are looking when pressing \"%s\", but will consume player health. More health is consumed the further the teleport is, but it will not kill the player. Teleports don't work when player health is too low, and they have a 15 second cooldown.",
+
+  "entity.familiar_friends.lemon_companion": "Lemon 4K",
+  "entity.familiar_friends.lemon_companion.author": "Banduty",
+  "entity.familiar_friends.lemon_companion.description": "Squirts Lemon Juice at enemies in a small radius around the player, slowing them down and dealing low damage. Has a 15 second cooldown",
+
+  "entity.familiar_friends.super_mushroom_companion": "Super Mushroom",
+  "entity.familiar_friends.super_mushroom_companion.author": "Kamtheman56",
+  "entity.familiar_friends.super_mushroom_companion.description": "This familiar increases your size when pressing \"%s\"! This consumes hunger but the player is granted strength. This ability has a 60 second cooldown.",
+
+  "entity.familiar_friends.mini_mushroom_companion": "Mini Mushroom",
+  "entity.familiar_friends.mini_mushroom_companion.author": "Kamtheman56",
+  "entity.familiar_friends.mini_mushroom_companion.description": "This familiar decreases your size when pressing \"%s\"! This consumes hunger but the player is much faster and immune to fall damage whilst small. This ability has a 60 second cooldown.",
+
+  "entity.familiar_friends.biter_companion": "Vampire",
+  "entity.familiar_friends.biter_companion.author": "Nekomaster1000",
+  "entity.familiar_friends.biter_companion.description": "While equipped, anytime the player kills another mob, the player recover half a heart of health.",
 
   "familiar_friends.midnightconfig.title": "Familiar Friends Config",
 
@@ -153,5 +175,17 @@
   "familiar_friends.midnightconfig.squidCost": "Set Squid Cost (In Levels)",
 
   "familiar_friends.midnightconfig.taterEnabled": "Enable Tiny Potato Companion",
-  "familiar_friends.midnightconfig.taterCost": "Set Tiny Potato Cost (In Levels)"
+  "familiar_friends.midnightconfig.taterCost": "Set Tiny Potato Cost (In Levels)",
+
+  "familiar_friends.midnightconfig.lemonEnabled": "Enable Lemon 4K Companion",
+  "familiar_friends.midnightconfig.lemonCost": "Set Lemon 4K Cost (In Levels)",
+
+  "familiar_friends.midnightconfig.superEnabled": "Enable Super Mushroom Companion",
+  "familiar_friends.midnightconfig.superCost": "Set Super Mushroom Cost (In Levels)",
+
+  "familiar_friends.midnightconfig.miniEnabled": "Enable Mini Mushroom Companion",
+  "familiar_friends.midnightconfig.miniCost": "Set Mini Mushroom Cost (In Levels)",
+
+  "familiar_friends.midnightconfig.biterEnabled": "Enable Vampire Companion",
+  "familiar_friends.midnightconfig.biterCost": "Set Vampire Cost (In Levels)"
 }

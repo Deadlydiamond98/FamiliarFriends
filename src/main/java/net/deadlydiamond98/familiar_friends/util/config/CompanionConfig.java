@@ -85,4 +85,20 @@ public class CompanionConfig extends MidnightConfig {
     @Comment(category = "text") public static Comment spacer20;
     @Entry(category = "text") public static boolean taterEnabled = true;
     @Entry(category = "text") public static int taterCost = 14;
+
+    @Comment(category = "text") public static Comment spacer21;
+    @Entry(category = "text") public static boolean superEnabled = true;
+    @Entry(category = "text") public static int superCost = 18;
+
+    @Comment(category = "text") public static Comment spacer22;
+    @Entry(category = "text") public static boolean miniEnabled = true;
+    @Entry(category = "text") public static int miniCost = 16;
+
+    @Comment(category = "text") public static Comment spacer23;
+    @Entry(category = "text") public static boolean lemonEnabled = true;
+    @Entry(category = "text") public static int lemonCost = 15;
+
+    @Comment(category = "text") public static Comment spacer24;
+    @Entry(category = "text") public static boolean biterEnabled = true;
+    @Entry(category = "text") public static int biterCost = 12;
 }

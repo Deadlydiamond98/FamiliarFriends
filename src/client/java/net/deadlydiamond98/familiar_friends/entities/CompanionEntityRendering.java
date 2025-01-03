@@ -38,6 +38,12 @@ public class CompanionEntityRendering {
         EntityRendererRegistry.register(CompanionEntityTypes.Cirno_Companion, CirnoCompanionRenderer::new);
         EntityRendererRegistry.register(CompanionEntityTypes.Goat_Companion, GoatCompanionRenderer::new);
         EntityRendererRegistry.register(CompanionEntityTypes.Rana_Companion, RanaCompanionRenderer::new);
+        EntityRendererRegistry.register(CompanionEntityTypes.Lemon_Companion, LemonCompanionRenderer::new);
+        EntityRendererRegistry.register(CompanionEntityTypes.Super_Mushroom_Companion, SuperMushroomCompanionRenderer::new);
+        EntityRendererRegistry.register(CompanionEntityTypes.Mini_Mushroom_Companion, MiniMushroomCompanionRenderer::new);
+        EntityRendererRegistry.register(CompanionEntityTypes.Biter_Companion, BiterCompanionRenderer::new);
+
+
         EntityRendererRegistry.register(CompanionEntityTypes.Cirno_Projectile, CirnoProjectileRenderer::new);
     }
 
@@ -57,5 +63,7 @@ public class CompanionEntityRendering {
         EntityModelLayerRegistry.registerModelLayer(CirnoCompanionModel.LAYER_LOCATION, CirnoCompanionModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(GoatCompanionModel.LAYER_LOCATION, GoatCompanionModel::getTexturedModelData);
         EntityModelLayerRegistry.registerModelLayer(RanaCompanionModel.LAYER_LOCATION, RanaCompanionModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(LemonCompanionModel.LAYER_LOCATION, LemonCompanionModel::getTexturedModelData);
+        EntityModelLayerRegistry.registerModelLayer(BiterCompanionModel.LAYER_LOCATION, BiterCompanionModel::getTexturedModelData);
     }
 }

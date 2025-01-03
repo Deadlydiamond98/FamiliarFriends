@@ -256,13 +256,13 @@ public class CompanionBookScreen extends Screen {
         int scrollBarHeight = height;
         int barWidth = 5;
 
-        context.fill(guiX, guiY, guiX + barWidth, guiY + scrollBarHeight, 0xff95836a);
+        context.fill(guiX, guiY, guiX + barWidth, guiY + scrollBarHeight, 0xff574436);
 
         // Avoid creating Scroll bar thumb if unnecessary
         if (maxScroll > 0) {
             int scrollBarThumbHeight = Math.max(20, (scrollBarHeight * scrollBarHeight) / (scrollBarHeight + maxScroll));
             int scrollThumbY = guiY + (scrollOffset * (scrollBarHeight - scrollBarThumbHeight) / maxScroll);
-            context.fill(guiX, scrollThumbY, guiX + barWidth, scrollThumbY + scrollBarThumbHeight, 0xff574436);
+            context.fill(guiX, scrollThumbY, guiX + barWidth, scrollThumbY + scrollBarThumbHeight, 0xff95836a);
         }
     }
 

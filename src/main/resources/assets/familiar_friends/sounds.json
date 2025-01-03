@@ -30,5 +30,10 @@
     "sounds": [
       "familiar_friends:touhou_shoot"
     ]
+  },
+  "power_up": {
+    "sounds": [
+      "familiar_friends:power_up"
+    ]
   }
 }

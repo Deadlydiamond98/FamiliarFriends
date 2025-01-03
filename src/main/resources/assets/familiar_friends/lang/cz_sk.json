@@ -41,7 +41,7 @@
   "entity.familiar_friends.allay_companion.description": "Po vybavení lze předměty vyzvednout z větší vzdálenosti!",
 
   "entity.familiar_friends.ocelot_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.ocelot_companion.description": "Poskytuje hráči pasivní rychlost. Můžete také stisknout \"%s\" pro zamňoukání.",
+  "entity.familiar_friends.ocelot_companion.description": "Poskytuje hráči pasivní rychlost.",
 
   "entity.familiar_friends.squid_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.squid_companion.description": "Poskytuje hráči 5 sekund dýchání pod vodou.",

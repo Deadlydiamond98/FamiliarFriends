@@ -2,6 +2,7 @@ package net.deadlydiamond98.familiar_friends;
 
 import eu.midnightdust.lib.config.MidnightConfig;
 import net.deadlydiamond98.familiar_friends.commands.CompanionCommands;
+import net.deadlydiamond98.familiar_friends.effects.CompanionEffects;
 import net.deadlydiamond98.familiar_friends.entities.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.events.CompanionEvents;
 import net.deadlydiamond98.familiar_friends.items.CompanionItems;
@@ -35,6 +36,7 @@ public class FamiliarFriends implements ModInitializer {
 		CompanionEvents.registerEvents();
 		CompanionCommands.register();
 
+		CompanionEffects.registerEffects();
 		LOGGER.info(MOD_ID + " has loaded successfully");
 	}
 }
