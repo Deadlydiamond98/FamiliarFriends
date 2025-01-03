@@ -17,9 +17,19 @@ public class CompanionEntityTypes {
     public static void registerEntities() {
     }
 
+    public static final EntityType<BiterCompanion> Biter_Companion = CompanionRegistry.registerCompanion(
+            BiterCompanion.class,
+            Identifier.of(FamiliarFriends.MOD_ID, "biter_companion")
+    );
+
     public static final EntityType<RanaCompanion> Rana_Companion = CompanionRegistry.registerCompanion(
             RanaCompanion.class,
             Identifier.of(FamiliarFriends.MOD_ID, "rana_companion")
+    );
+
+    public static final EntityType<LemonCompanion> Lemon_Companion = CompanionRegistry.registerCompanion(
+            LemonCompanion.class,
+            Identifier.of(FamiliarFriends.MOD_ID, "lemon_companion")
     );
 
     public static final EntityType<CirnoCompanion> Cirno_Companion = CompanionRegistry.registerCompanion(

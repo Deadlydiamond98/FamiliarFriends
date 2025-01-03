@@ -12,7 +12,7 @@ import net.minecraft.util.Identifier;
 
 public class CreeperCompanionRenderer extends CompanionRenderer<CreeperCompanion, CreeperEntityModel<CreeperCompanion>> {
 
-    private static final Identifier TEXTURE = Identifier.of("textures/entity/creeper/creeper.png");
+    private static final Identifier TEXTURE = new Identifier("textures/entity/creeper/creeper.png");
 
     public CreeperCompanionRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new CreeperEntityModel<>(ctx.getPart(EntityModelLayers.CREEPER)));

@@ -30,7 +30,7 @@ public class CompanionClientTickEvent {
                 }
 
                 if (companionAction.wasPressed()) {
-                    CompanionClientPackets.companionSpecialAbility(companionAction.getBoundKeyTranslationKey());
+                    CompanionClientPackets.companionSpecialAbility();
                 }
             }
 

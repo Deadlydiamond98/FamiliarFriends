@@ -13,7 +13,7 @@ import net.minecraft.util.Identifier;
 
 public class AllayCompanionRenderer extends CompanionRenderer<AllayCompanion, AllayCompanionModel<AllayCompanion>> {
 
-    private static final Identifier TEXTURE = Identifier.of("textures/entity/allay/allay.png");
+    private static final Identifier TEXTURE = new Identifier("textures/entity/allay/allay.png");
 
     public AllayCompanionRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new AllayCompanionModel<>(ctx.getPart(AllayCompanionModel.LAYER_LOCATION)));

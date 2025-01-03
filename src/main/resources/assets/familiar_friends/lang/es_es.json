@@ -1,0 +1,189 @@
+{
+  "key.category.familiar_friends.companion_keys": "Familiar Friends",
+  "key.familiar_friends.action": "Habilidad",
+
+  "effect.familiar_friends.super": "Potenciado",
+  "effect.familiar_friends.mini": "Mini",
+
+  "item.familiar_friends.book_of_familiars": "Libro de Familiares",
+
+  "gui.familiar_friends.current_companion": "Compañero Actual",
+  "gui.familiar_friends.unlocked": "Desbloqueado",
+  "gui.familiar_friends.author": "Autor(es): ",
+  "gui.familiar_friends.desc": "Descripción",
+  "gui.familiar_friends.unlock": "Desbloquear Compañero",
+  "gui.familiar_friends.equip": "Equipar Compañero",
+  "gui.familiar_friends.unequip": "Desequipar Compañero",
+  "gui.familiar_friends.cost": "Coste: %s XP Nivel(es)",
+
+  "cooldown.familiar_friends.second": "segundo",
+  "cooldown.familiar_friends.seconds": "segundos",
+  "cooldown.familiar_friends.minute": "minuto",
+  "cooldown.familiar_friends.minutes": "minutos",
+  "cooldown.familiar_friends.hour": "hora",
+  "cooldown.familiar_friends.hours": "horas",
+  "cooldown.familiar_friends.cooldown": "¡Debes esperar %s más %s antes de poder realizar esta acción!",
+
+  "cooldown.familiar_friends.hunger": "hambre",
+  "cooldown.familiar_friends.health": "vida",
+  "cooldown.familiar_friends.lowstat": "¡No se puede realizar esta acción! ¡Tu %s es demasiado bajo!",
+
+  "entity.familiar_friends.chicken_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.chicken_companion.description": "Otorga al jugador una caída lenta pasiva mientras está en el suelo, lo que dura 2 segundos cuando está en el aire.",
+
+  "entity.familiar_friends.iron_golem_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.iron_golem_companion.description": "Daña a los mobs hostiles y los envía volando por el aire (causando daño adicional por caída).",
+
+  "entity.familiar_friends.snow_golem_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.snow_golem_companion.description": "Lanza bolas de nieve que derriban a los enemigos.",
+
+  "entity.familiar_friends.goat_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.goat_companion.description": "Evita que el usuario se hunda en la nieve en polvo.",
+
+  "entity.familiar_friends.creeper_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.creeper_companion.description": "Otorga al usuario inmunidad al daño de explosión. Si el usuario muere, el compañero explotará (no dañará los bloques), causando un gran daño a las criaturas que rodean al jugador. Si el compañero explota, tendrás que desbloquearlo nuevamente.",
+
+  "entity.familiar_friends.allay_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.allay_companion.description": "¡Cuando están equipados, los artículos se pueden recoger desde más lejos!",
+
+  "entity.familiar_friends.ocelot_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.ocelot_companion.description": "Otorga al jugador efecto de Velocidad.",
+
+  "entity.familiar_friends.squid_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.squid_companion.description": "Otorga al jugador 5 segundos de Apnea.",
+
+  "entity.familiar_friends.skeleton_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.skeleton_companion.description": "¡Dispara flechas a criaturas hostiles cercanas!",
+
+  "entity.familiar_friends.spider_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.spider_companion.description": "¡Permite al usuario escalar cualquier pared! También permite deslizarse por las paredes.",
+
+  "entity.familiar_friends.cave_spider_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.cave_spider_companion.description": "Permite al usuario escalar cualquier pared y deslizarse hacia abajo por cualquier pared. ¡Los ataques también tienen la posibilidad de infligir veneno!",
+
+  "entity.familiar_friends.navi_companion": "Navi",
+  "entity.familiar_friends.navi_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.navi_companion.description": "Cuando el jugador se acerca a una veta de escombros antiguos o mineral de diamante, Navi alertará al jugador. Aumentarán su tono cuanto más se acerque el jugador a la vena.",
+
+  "entity.familiar_friends.one_up_mushroom_companion": "Hongo Verde",
+  "entity.familiar_friends.one_up_mushroom_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.one_up_mushroom_companion.description": "Si se supone que el jugador debe morir, su salud se restaurará por completo. ¡Si se usa el Hongo Verde, será necesario desbloquearlo nuevamente!",
+
+  "entity.familiar_friends.companion_cube_companion": "Cubo de Compañía",
+  "entity.familiar_friends.companion_cube_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.companion_cube_companion.description": "¡Otorga al jugador la capacidad de caminar sobre lava que no fluye!",
+
+  "entity.familiar_friends.mr_saturn_companion": "Mr. Saturn",
+  "entity.familiar_friends.mr_saturn_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.mr_saturn_companion.description": "¡Tiene la oportunidad de repartir un SMAAAASH! a un objetivo mientras ataca, derribando al objetivo e infligiendo daño adicional.",
+
+  "entity.familiar_friends.notch_companion": "Notch",
+  "entity.familiar_friends.notch_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.notch_companion.description": "¡Golpeará la dirección en la que mires al presionar \"%s\"! Hay un tiempo de reutilización de 15 segundos antes de que pueda volver a caer un rayo.",
+
+  "entity.familiar_friends.cirno_companion": "Cirno",
+  "entity.familiar_friends.cirno_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.cirno_companion.description": "¡Otorga a los jugadores Paso Helado! Además, al presionar \"%s\" se dispararán 2 proyectiles que causan poco daño, pero infligen lentitud a los mobs. Disparar tiene un tiempo de reutilización de 5 segundos.",
+
+  "entity.familiar_friends.rana_companion": "Rana",
+  "entity.familiar_friends.rana_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.rana_companion.description": "¡Otorga al jugador un impulso de salto pasivo e inmunidad al daño por caída!",
+
+  "entity.familiar_friends.tater_companion": "Tiny Potato",
+  "entity.familiar_friends.tater_companion.author": "Mrmrmrpizza, Deadlydiamond98",
+  "entity.familiar_friends.tater_companion.description": "¡Un pequeño y divertido tonto compañero que reproduce un pequeño sonido divertido y tonto cuando presionas \"%s\"! También tiene la posibilidad de \"robar\" hambre de una entidad cuando ataca a una entidad y darle el hambre robada al jugador. Más daño significa más hambre robada.",
+
+  "entity.familiar_friends.herobrine_companion": "Herobrine",
+  "entity.familiar_friends.herobrine_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.herobrine_companion.description": "Teletransportará al jugador en la dirección en la que mira al presionar \"%s\", pero consumirá la salud del jugador. Se consume más salud cuanto más lejos esté el teletransporte, pero no matará al jugador. Los teletransportes no funcionan cuando la salud del jugador es demasiado baja y tienen un tiempo de reutilización de 15 segundos.",
+
+  "entity.familiar_friends.lemon_companion": "Limón 4K",
+  "entity.familiar_friends.lemon_companion.author": "Banduty",
+  "entity.familiar_friends.lemon_companion.description": "Lanza jugo de limón a los enemigos en un pequeño radio alrededor del jugador, lo que los ralentiza y les inflige poco daño. Tiene un tiempo de reutilización de 15 segundos.",
+
+  "entity.familiar_friends.super_mushroom_companion": "Superchampiñón",
+  "entity.familiar_friends.super_mushroom_companion.author": "Kamtheman56",
+  "entity.familiar_friends.super_mushroom_companion.description": "¡Este familiar aumenta tu tamaño al presionar \"%s\"! Esto consume hambre, pero el jugador obtiene fuerza. Esta habilidad tiene un tiempo de recuperación de 60 segundos.",
+
+  "entity.familiar_friends.mini_mushroom_companion": "Minichampiñon",
+  "entity.familiar_friends.mini_mushroom_companion.author": "Kamtheman56",
+  "entity.familiar_friends.mini_mushroom_companion.description": "¡Este familiar disminuye tu tamaño al presionar \"%s\", ! Esto consume hambre, pero el jugador es mucho más rápido e inmune al daño por caída cuando es pequeño. Esta habilidad tiene un tiempo de recuperación de 60 segundos.",
+
+  "entity.familiar_friends.biter_companion": "Vampiro",
+  "entity.familiar_friends.biter_companion.author": "Nekomaster1000",
+  "entity.familiar_friends.biter_companion.description": "Mientras esté equipado, el jugador recupera medio corazón de salud al matar a otra entidad.",
+
+  "familiar_friends.midnightconfig.title": "Familiar Friends Config",
+
+  "familiar_friends.midnightconfig.oneUpEnabled": "Habilitar el Compañero Hongo Verde",
+  "familiar_friends.midnightconfig.oneUpCost": "Establecer el costo de Hongo Verde (en niveles)",
+
+  "familiar_friends.midnightconfig.allayEnabled": "Habilitar el Compañero Allay",
+  "familiar_friends.midnightconfig.allayCost": "Establecer el costo de Allay (en niveles)",
+
+  "familiar_friends.midnightconfig.caveSpiderEnabled": "Habilitar el Compañero Araña de Cueva",
+  "familiar_friends.midnightconfig.caveSpiderCost": "Establecer el costo de Araña de Cueva (en niveles)",
+
+  "familiar_friends.midnightconfig.chickenEnabled": "Habilitar el Compañero Pollo",
+  "familiar_friends.midnightconfig.chickenCost": "Establecer el costo de Pollo (en niveles)",
+
+  "familiar_friends.midnightconfig.cirnoEnabled": "Habilitar el Compañero Cirno",
+  "familiar_friends.midnightconfig.cirnoCost": "Establecer el costo de Cirno (en niveles)",
+
+  "familiar_friends.midnightconfig.companionCubeEnabled": "Habilitar el Compañero Cubo de Compañía",
+  "familiar_friends.midnightconfig.companionCubeCost": "Establecer el costo de Cubo de Compañía (en niveles)",
+
+  "familiar_friends.midnightconfig.creeperEnabled": "Habilitar el Compañero Creeper",
+  "familiar_friends.midnightconfig.creeperCost": "Establecer el costo de Creeper (en niveles)",
+
+  "familiar_friends.midnightconfig.goatEnabled": "Habilitar el Compañero Cabra",
+  "familiar_friends.midnightconfig.goatCost": "Establecer el costo de Cabra (en niveles)",
+
+  "familiar_friends.midnightconfig.herobrineEnabled": "Habilitar el Compañero Herobrine",
+  "familiar_friends.midnightconfig.herobrineCost": "Establecer el costo de Herobrine (en niveles)",
+
+  "familiar_friends.midnightconfig.ironGolemEnabled": "Habilitar el Compañero Golem de Hierro",
+  "familiar_friends.midnightconfig.ironGolemCost": "Establecer el costo de Golem de Hierro (en niveles)",
+
+  "familiar_friends.midnightconfig.mrSaturnEnabled": "Habilitar el Compañero Mr. Saturn",
+  "familiar_friends.midnightconfig.mrSaturnCost": "Establecer el costo de Mr. Saturn (en niveles)",
+
+  "familiar_friends.midnightconfig.naviEnabled": "Habilitar el Compañero Navi",
+  "familiar_friends.midnightconfig.naviCost": "Establecer el costo de Navi (en niveles)",
+
+  "familiar_friends.midnightconfig.notchEnabled": "Habilitar el Compañero Notch",
+  "familiar_friends.midnightconfig.notchCost": "Establecer el costo de Notch (en niveles)",
+
+  "familiar_friends.midnightconfig.ocelotEnabled": "Habilitar el Compañero Ocelote",
+  "familiar_friends.midnightconfig.ocelotCost": "Establecer el costo de Ocelote (en niveles)",
+
+  "familiar_friends.midnightconfig.ranaEnabled": "Habilitar el Compañero Rana",
+  "familiar_friends.midnightconfig.ranaCost": "Establecer el costo de Rana (en niveles)",
+
+  "familiar_friends.midnightconfig.skeletonEnabled": "Habilitar el Compañero Esqueleto",
+  "familiar_friends.midnightconfig.skeletonCost": "Establecer el costo de Esqueleto (en niveles)",
+
+  "familiar_friends.midnightconfig.snowGolemEnabled": "Habilitar el Compañero Golem de Nieve",
+  "familiar_friends.midnightconfig.snowGolemCost": "Establecer el costo de Golem de Nieve (en niveles)",
+
+  "familiar_friends.midnightconfig.spiderEnabled": "Habilitar el Compañero Araña",
+  "familiar_friends.midnightconfig.spiderCost": "Establecer el costo de Araña (en niveles)",
+
+  "familiar_friends.midnightconfig.squidEnabled": "Habilitar el Compañero Calamar",
+  "familiar_friends.midnightconfig.squidCost": "Establecer el costo de Calamar (en niveles)",
+
+  "familiar_friends.midnightconfig.taterEnabled": "Habilitar el Compañero Tiny Potato",
+  "familiar_friends.midnightconfig.taterCost": "Establecer el costo de Tiny Potato (en niveles)",
+
+  "familiar_friends.midnightconfig.lemonEnabled": "Habilitar Compañero Limón 4K",
+  "familiar_friends.midnightconfig.lemonCost": "Establecer Coste de Limón 4K (En Niveles)",
+
+  "familiar_friends.midnightconfig.superEnabled": "Habilitar Compañero Superchampiñon",
+  "familiar_friends.midnightconfig.superCost": "Establecer Coste Superchampiñon (En Niveles",
+
+  "familiar_friends.midnightconfig.miniEnabled": "Habilitar Compañero Minichampiñon",
+  "familiar_friends.midnightconfig.miniCost": "Establecer Coste Minichampiñon (En Niveles)",
+
+  "familiar_friends.midnightconfig.biterEnabled": "Habilitar Compañero Vampiro",
+  "familiar_friends.midnightconfig.biterCost": "Establecer Coste Vampiro (En Niveles)"
+}

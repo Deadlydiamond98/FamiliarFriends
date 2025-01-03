@@ -26,7 +26,7 @@ public class CompanionBookButton extends ButtonWidget {
     }
 
     @Override
-    protected void renderWidget(DrawContext context, int mouseX, int mouseY, float delta) {
+    protected void renderButton(DrawContext context, int mouseX, int mouseY, float delta) {
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
         RenderSystem.setShaderTexture(0, BOOK_TEXTURE);
         MinecraftClient client = MinecraftClient.getInstance();

@@ -11,6 +11,7 @@ import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import org.jetbrains.annotations.Nullable;
+import org.joml.Matrix4f;
 import org.joml.Quaternionf;
 import org.joml.Vector3f;
 
@@ -94,18 +95,19 @@ public class CompanionGuiDrawMethods {
     public static void drawEntity(DrawContext context, float x, float y, float size, Vector3f vector3f, Quaternionf quaternionf, @Nullable Quaternionf quaternionf2, PlayerCompanion entity) {
         context.getMatrices().push();
         context.getMatrices().translate((double)x, (double)y, 50.0);
-        context.getMatrices().scale(size, size, -size);
+        context.getMatrices().multiplyPositionMatrix((new Matrix4f()).scaling((float)size, (float)size, (float)(-size)));
         context.getMatrices().translate(vector3f.x, vector3f.y, vector3f.z);
         context.getMatrices().multiply(quaternionf);
         DiffuseLighting.method_34742();
         EntityRenderDispatcher entityRenderDispatcher = MinecraftClient.getInstance().getEntityRenderDispatcher();
         if (quaternionf2 != null) {
-            entityRenderDispatcher.setRotation(quaternionf2.conjugate(new Quaternionf()).rotateY((float) Math.toRadians(180)));
+            quaternionf2.conjugate();
+            entityRenderDispatcher.setRotation(quaternionf2);
         }
 
         entityRenderDispatcher.setRenderShadows(false);
         RenderSystem.runAsFancy(() -> {
-            entityRenderDispatcher.render(entity, 0.0, 0.0, 0.0, 0.0f, 1.0f, context.getMatrices(), context.getVertexConsumers(), 15728880);
+            entityRenderDispatcher.render(entity, 0.0, 0.0, 0.0, 0.0F, 1.0F, context.getMatrices(), context.getVertexConsumers(), 15728880);
         });
         context.draw();
         entityRenderDispatcher.setRenderShadows(true);

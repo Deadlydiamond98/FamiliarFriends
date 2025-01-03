@@ -63,7 +63,7 @@ public class CirnoProjectile extends ProjectileEntity {
     }
 
     @Override
-    protected void initDataTracker(DataTracker.Builder builder) {
+    protected void initDataTracker() {
 
     }
 }

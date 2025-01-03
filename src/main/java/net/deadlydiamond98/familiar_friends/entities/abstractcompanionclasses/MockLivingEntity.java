@@ -51,7 +51,7 @@ public class MockLivingEntity extends Entity {
     }
 
     @Override
-    protected void initDataTracker(DataTracker.Builder builder) {
+    protected void initDataTracker() {
 
     }
 
@@ -262,8 +262,19 @@ public class MockLivingEntity extends Entity {
         this.setVelocity(d, e, f);
     }
 
+    protected void lerpPosAndRotation(int step, double x, double y, double z, double yaw, double pitch) {
+        double d = 1.0 / (double)step;
+        double e = MathHelper.lerp(d, this.getX(), x);
+        double f = MathHelper.lerp(d, this.getY(), y);
+        double g = MathHelper.lerp(d, this.getZ(), z);
+        float h = MathHelper.lerpAngleDegrees((float) d, this.getYaw(), (float) yaw);
+        float i = (float)MathHelper.lerp(d, (double)this.getPitch(), pitch);
+        this.setPosition(e, f, g);
+        this.setRotation(h, i);
+    }
+
     protected void lerpHeadYaw(int headTrackingIncrements, double serverHeadYaw) {
-        this.headYaw = (float)MathHelper.lerpAngleDegrees(1.0 / (double)headTrackingIncrements, (double)this.headYaw, serverHeadYaw);
+        this.headYaw = MathHelper.lerpAngleDegrees((float) (1.0 / (double)headTrackingIncrements), this.headYaw, (float) serverHeadYaw);
     }
 
     @Override

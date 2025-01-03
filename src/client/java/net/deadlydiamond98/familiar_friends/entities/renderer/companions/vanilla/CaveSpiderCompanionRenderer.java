@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier;
 
 public class CaveSpiderCompanionRenderer extends CompanionRenderer<CaveSpiderCompanion, SpiderEntityModel<CaveSpiderCompanion>> {
 
-    private static final Identifier TEXTURE = Identifier.of("textures/entity/spider/cave_spider.png");
+    private static final Identifier TEXTURE = new Identifier("textures/entity/spider/cave_spider.png");
 
     public CaveSpiderCompanionRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new SpiderEntityModel<>(ctx.getPart(EntityModelLayers.CAVE_SPIDER)));

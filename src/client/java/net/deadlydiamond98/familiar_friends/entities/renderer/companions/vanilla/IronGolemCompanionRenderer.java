@@ -9,7 +9,7 @@ import net.minecraft.util.Identifier;
 
 public class IronGolemCompanionRenderer extends CompanionRenderer<IronGolemCompanion, IronGolemCompanionModel<IronGolemCompanion>> {
 
-    private static final Identifier TEXTURE = Identifier.of("textures/entity/iron_golem/iron_golem.png");
+    private static final Identifier TEXTURE = new Identifier("textures/entity/iron_golem/iron_golem.png");
 
     public IronGolemCompanionRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new IronGolemCompanionModel<>(ctx.getPart(IronGolemCompanionModel.LAYER_LOCATION)));

@@ -14,6 +14,7 @@ import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.mob.Monster;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.sound.SoundCategory;
+import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
@@ -373,7 +374,7 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
     }
 
     public Text getCostLang(int cost) {
-        return Text.translatable("gui.familiar_friends.cost", cost).withColor(0x478e47);
+        return Text.translatable("gui.familiar_friends.cost", cost).setStyle(Style.EMPTY.withColor(0x478e47));
     }
 
     public boolean isBookRender() {
@@ -404,7 +405,7 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
     }
 
     @Override
-    protected void initDataTracker(DataTracker.Builder builder) {
-        super.initDataTracker(builder);
+    protected void initDataTracker() {
+        super.initDataTracker();
     }
 }

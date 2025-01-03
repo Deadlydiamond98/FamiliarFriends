@@ -62,26 +62,27 @@ public class NaviCompanionRenderer extends CompanionRenderer<NaviCompanion, Navi
 
         MatrixStack.Entry entry = matrixStack.peek();
         Matrix4f modelMatrix = entry.getPositionMatrix();
+        Matrix3f normalMatrix = entry.getNormalMatrix();
 
         VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(RenderLayer.getEntityTranslucent(TEXTURE));
         float minUV = 0.0f;
         float maxUV = 0.375f;
 
         int light = 15728880;
-        vertexConsumer.vertex(modelMatrix, -0.15f * size,  0.15f * size, 0.01f).color(255, 255, 255, 255).texture(minUV, maxUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(entry, 0, 1, 0);
-        vertexConsumer.vertex(modelMatrix,  0.15f * size,  0.15f * size, 0.01f).color(255, 255, 255, 255).texture(maxUV, maxUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(entry, 0, 1, 0);
-        vertexConsumer.vertex(modelMatrix,  0.15f * size, -0.15f * size, 0.01f).color(255, 255, 255, 255).texture(maxUV, minUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(entry, 0, 1, 0);
-        vertexConsumer.vertex(modelMatrix, -0.15f * size, -0.15f * size, 0.01f).color(255, 255, 255, 255).texture(minUV, minUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(entry, 0, 1, 0);
+        vertexConsumer.vertex(modelMatrix, -0.15f * size,  0.15f * size, 0.01f).color(255, 255, 255, 255).texture(minUV, maxUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(normalMatrix, 0, 1, 0).next();
+        vertexConsumer.vertex(modelMatrix,  0.15f * size,  0.15f * size, 0.01f).color(255, 255, 255, 255).texture(maxUV, maxUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(normalMatrix, 0, 1, 0).next();
+        vertexConsumer.vertex(modelMatrix,  0.15f * size, -0.15f * size, 0.01f).color(255, 255, 255, 255).texture(maxUV, minUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(normalMatrix, 0, 1, 0).next();
+        vertexConsumer.vertex(modelMatrix, -0.15f * size, -0.15f * size, 0.01f).color(255, 255, 255, 255).texture(minUV, minUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(normalMatrix, 0, 1, 0).next();
 
-        vertexConsumer.vertex(modelMatrix, -0.17f * size,  0.17f * size, 0.0f).color(255, 255, 255, 50).texture(minUV, maxUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(entry, 0, 1, 0);
-        vertexConsumer.vertex(modelMatrix,  0.17f * size,  0.17f * size, 0.0f).color(255, 255, 255, 50).texture(maxUV, maxUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(entry, 0, 1, 0);
-        vertexConsumer.vertex(modelMatrix,  0.17f * size, -0.17f * size, 0.0f).color(255, 255, 255, 50).texture(maxUV, minUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(entry, 0, 1, 0);
-        vertexConsumer.vertex(modelMatrix, -0.17f * size, -0.17f * size, 0.0f).color(255, 255, 255, 50).texture(minUV, minUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(entry, 0, 1, 0);
+        vertexConsumer.vertex(modelMatrix, -0.17f * size,  0.17f * size, 0.0f).color(255, 255, 255, 50).texture(minUV, maxUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(normalMatrix, 0, 1, 0).next();
+        vertexConsumer.vertex(modelMatrix,  0.17f * size,  0.17f * size, 0.0f).color(255, 255, 255, 50).texture(maxUV, maxUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(normalMatrix, 0, 1, 0).next();
+        vertexConsumer.vertex(modelMatrix,  0.17f * size, -0.17f * size, 0.0f).color(255, 255, 255, 50).texture(maxUV, minUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(normalMatrix, 0, 1, 0).next();
+        vertexConsumer.vertex(modelMatrix, -0.17f * size, -0.17f * size, 0.0f).color(255, 255, 255, 50).texture(minUV, minUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(normalMatrix, 0, 1, 0).next();
 
-        vertexConsumer.vertex(modelMatrix, -0.18f * size,  0.18f * size, 0.0f).color(255, 255, 255, 10).texture(minUV, maxUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(entry, 0, 1, 0);
-        vertexConsumer.vertex(modelMatrix,  0.18f * size,  0.18f * size, 0.0f).color(255, 255, 255, 10).texture(maxUV, maxUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(entry, 0, 1, 0);
-        vertexConsumer.vertex(modelMatrix,  0.18f * size, -0.18f * size, 0.0f).color(255, 255, 255, 10).texture(maxUV, minUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(entry, 0, 1, 0);
-        vertexConsumer.vertex(modelMatrix, -0.18f * size, -0.18f * size, 0.0f).color(255, 255, 255, 10).texture(minUV, minUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(entry, 0, 1, 0);
+        vertexConsumer.vertex(modelMatrix, -0.18f * size,  0.18f * size, 0.0f).color(255, 255, 255, 10).texture(minUV, maxUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(normalMatrix, 0, 1, 0).next();
+        vertexConsumer.vertex(modelMatrix,  0.18f * size,  0.18f * size, 0.0f).color(255, 255, 255, 10).texture(maxUV, maxUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(normalMatrix, 0, 1, 0).next();
+        vertexConsumer.vertex(modelMatrix,  0.18f * size, -0.18f * size, 0.0f).color(255, 255, 255, 10).texture(maxUV, minUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(normalMatrix, 0, 1, 0).next();
+        vertexConsumer.vertex(modelMatrix, -0.18f * size, -0.18f * size, 0.0f).color(255, 255, 255, 10).texture(minUV, minUV).overlay(OverlayTexture.DEFAULT_UV).light(light).normal(normalMatrix, 0, 1, 0).next();
 
         matrixStack.pop();
     }

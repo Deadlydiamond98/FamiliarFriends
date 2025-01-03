@@ -77,7 +77,7 @@ public abstract class CompanionRenderer<T extends PlayerCompanion, M extends Ent
         if (renderLayer != null) {
             VertexConsumer vertexConsumer = vertexConsumerProvider.getBuffer(renderLayer);
             int q = getOverlay(entity, 0.0f);
-            this.model.render(matrices, vertexConsumer, i, q, bl2 ? 654311423 : -1);
+            this.model.render(matrices, vertexConsumer, i, q, 1.0F, 1.0F, 1.0F, bl2 ? 0.15F : 1.0F);
         }
 
         if (!entity.isSpectator()) {

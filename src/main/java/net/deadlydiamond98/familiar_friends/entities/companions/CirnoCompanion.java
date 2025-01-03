@@ -66,7 +66,7 @@ public class CirnoCompanion extends PlayerCompanion {
             spawnProjectile(player, projectile1Direction);
             spawnProjectile(player, projectile2Direction);
 
-            this.playSound(SoundEvents.ENTITY_BREEZE_SHOOT, 0.5f, 1.0f);
+//            this.playSound(SoundEvents.ENTITY_BREEZE_SHOOT, 0.5f, 1.0f);
             this.setCooldownSeconds(5);
         }
     }

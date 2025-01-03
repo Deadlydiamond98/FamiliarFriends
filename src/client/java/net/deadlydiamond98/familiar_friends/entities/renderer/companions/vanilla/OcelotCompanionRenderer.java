@@ -9,7 +9,7 @@ import net.minecraft.util.Identifier;
 
 public class OcelotCompanionRenderer extends CompanionRenderer<OcelotCompanion, OcelotCompanionModel<OcelotCompanion>> {
 
-    private static final Identifier TEXTURE = Identifier.of("textures/entity/cat/ocelot.png");
+    private static final Identifier TEXTURE = new Identifier("textures/entity/cat/ocelot.png");
 
     public OcelotCompanionRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new OcelotCompanionModel<>(ctx.getPart(OcelotCompanionModel.LAYER_LOCATION)));

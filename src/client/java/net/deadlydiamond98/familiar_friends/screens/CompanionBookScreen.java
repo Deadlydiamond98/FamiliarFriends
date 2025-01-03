@@ -89,9 +89,8 @@ public class CompanionBookScreen extends Screen {
         addCompanionsToBook(client.player);
     }
 
-    @Override
     public void renderBackground(DrawContext context, int mouseX, int mouseY, float delta) {
-        this.renderInGameBackground(context);
+        context.fillGradient(0, 0, this.width, this.height, -1072689136, -804253680);
         this.drawBackground(context, delta, mouseX, mouseY);
     }
 
@@ -236,11 +235,12 @@ public class CompanionBookScreen extends Screen {
 
     // Scroll Bar
 
+
     @Override
-    public boolean mouseScrolled(double mouseX, double mouseY, double horizontalAmount, double verticalAmount) {
-        if (verticalAmount < 0) {
+    public boolean mouseScrolled(double mouseX, double mouseY, double amount) {
+        if (amount < 0) {
             scrollOffset = Math.min(scrollOffset + SCROLL_STEP, maxScroll);
-        } else if (verticalAmount > 0) {
+        } else if (amount > 0) {
             scrollOffset = Math.max(scrollOffset - SCROLL_STEP, 0);
         }
 
@@ -256,13 +256,13 @@ public class CompanionBookScreen extends Screen {
         int scrollBarHeight = height;
         int barWidth = 5;
 
-        context.fill(guiX, guiY, guiX + barWidth, guiY + scrollBarHeight, 0xff95836a);
+        context.fill(guiX, guiY, guiX + barWidth, guiY + scrollBarHeight, 0xff574436);
 
         // Avoid creating Scroll bar thumb if unnecessary
         if (maxScroll > 0) {
             int scrollBarThumbHeight = Math.max(20, (scrollBarHeight * scrollBarHeight) / (scrollBarHeight + maxScroll));
             int scrollThumbY = guiY + (scrollOffset * (scrollBarHeight - scrollBarThumbHeight) / maxScroll);
-            context.fill(guiX, scrollThumbY, guiX + barWidth, scrollThumbY + scrollBarThumbHeight, 0xff574436);
+            context.fill(guiX, scrollThumbY, guiX + barWidth, scrollThumbY + scrollBarThumbHeight, 0xff95836a);
         }
     }
 
@@ -386,7 +386,7 @@ public class CompanionBookScreen extends Screen {
     }
 
     private void unequipFamiliar() {
-        CompanionClientPackets.unequipPlayerCompanion("");
+        CompanionClientPackets.unequipPlayerCompanion();
         this.unequipButton.active = false;
         this.updateEntityButtons();
     }

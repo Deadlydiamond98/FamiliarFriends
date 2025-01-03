@@ -13,7 +13,7 @@ import net.minecraft.util.Identifier;
 
 public class GoatCompanionRenderer extends CompanionRenderer<GoatCompanion, GoatCompanionModel<GoatCompanion>> {
 
-    private static final Identifier TEXTURE = Identifier.of("textures/entity/goat/goat.png");
+    private static final Identifier TEXTURE = new Identifier("textures/entity/goat/goat.png");
 
     public GoatCompanionRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new GoatCompanionModel<>(ctx.getPart(GoatCompanionModel.LAYER_LOCATION)));

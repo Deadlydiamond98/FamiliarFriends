@@ -4,6 +4,7 @@ import net.deadlydiamond98.familiar_friends.entities.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.util.config.CompanionConfig;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.mob.EndermanEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.server.world.ServerWorld;
@@ -83,8 +84,7 @@ public class HerobrineCompanion extends PlayerCompanion {
 
         if (!player.getWorld().isClient()) {
             player.getWorld().playSound(null, player.getBlockPos(), SoundEvents.ENTITY_ENDERMAN_TELEPORT, SoundCategory.PLAYERS);
-            player.teleportTo(new TeleportTarget((ServerWorld) player.getWorld(),
-                    Vec3d.of(againstBlockPos), player.getVelocity(), player.getYaw(), player.getPitch(), TeleportTarget.NO_OP));
+            player.teleport(againstBlockPos.getX(), againstBlockPos.getY(), againstBlockPos.getZ());
             player.onLanding();
         }
     }

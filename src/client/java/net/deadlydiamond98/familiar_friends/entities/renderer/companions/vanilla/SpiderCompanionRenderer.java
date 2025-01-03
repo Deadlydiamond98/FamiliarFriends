@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 
 public class SpiderCompanionRenderer extends CompanionRenderer<SpiderCompanion, SpiderEntityModel<SpiderCompanion>> {
 
-    private static final Identifier TEXTURE = Identifier.of("textures/entity/spider/spider.png");
+    private static final Identifier TEXTURE = new Identifier("textures/entity/spider/spider.png");
 
     public SpiderCompanionRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new SpiderEntityModel<>(ctx.getPart(EntityModelLayers.SPIDER)));

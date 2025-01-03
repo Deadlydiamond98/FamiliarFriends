@@ -43,7 +43,7 @@ public class CompanionIconButton extends ButtonWidget {
     }
 
     @Override
-    protected void renderWidget(DrawContext context, int mouseX, int mouseY, float delta) {
+    protected void renderButton(DrawContext context, int mouseX, int mouseY, float delta) {
         RenderSystem.setShader(GameRenderer::getPositionTexProgram);
         RenderSystem.setShaderTexture(0, BOOK_TEXTURE);
         MinecraftClient client = MinecraftClient.getInstance();
@@ -95,7 +95,7 @@ public class CompanionIconButton extends ButtonWidget {
                 tooltip.add(companion.getCostLang(companion.getCostClient()));
             }
             else {
-                tooltip.add(Text.translatable("gui.familiar_friends.unlocked").withColor(0x478e47));
+                tooltip.add(Text.translatable("gui.familiar_friends.unlocked").setStyle(Style.EMPTY.withColor(0x478e47)));
             }
 
             String description = companion.getDescription().getString();

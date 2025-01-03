@@ -34,7 +34,7 @@ public class SkeletonCompanion extends PlayerCompanion {
             World world = player.getWorld();
 
             PersistentProjectileEntity arrow = ProjectileUtil.createArrowProjectile(
-                    player, Items.ARROW.getDefaultStack(), 4.0f, null);
+                    player, Items.ARROW.getDefaultStack(), 4.0f);
             arrow.pickupType = PersistentProjectileEntity.PickupPermission.DISALLOWED;
 
             double dX = nearestHostile.getX() - player.getX();

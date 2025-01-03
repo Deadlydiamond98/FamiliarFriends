@@ -9,7 +9,7 @@ import net.minecraft.util.Identifier;
 
 public class SkeletonCompanionRenderer extends CompanionRenderer<SkeletonCompanion, SkeletonCompanionModel<SkeletonCompanion>> {
 
-    private static final Identifier TEXTURE = Identifier.of("textures/entity/skeleton/skeleton.png");
+    private static final Identifier TEXTURE = new Identifier("textures/entity/skeleton/skeleton.png");
 
     public SkeletonCompanionRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new SkeletonCompanionModel<>(ctx.getPart(SkeletonCompanionModel.LAYER_LOCATION)));

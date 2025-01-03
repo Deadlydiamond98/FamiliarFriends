@@ -11,7 +11,7 @@ import net.minecraft.util.Identifier;
 
 public class SquidCompanionRenderer extends CompanionRenderer<SquidCompanion, SquidCompanionModel<SquidCompanion>> {
 
-    private static final Identifier TEXTURE = Identifier.of("textures/entity/squid/squid.png");
+    private static final Identifier TEXTURE = new Identifier("textures/entity/squid/squid.png");
 
     public SquidCompanionRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new SquidCompanionModel<>(ctx.getPart(SquidCompanionModel.LAYER_LOCATION)));

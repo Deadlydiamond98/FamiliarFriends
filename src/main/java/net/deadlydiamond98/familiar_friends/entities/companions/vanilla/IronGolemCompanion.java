@@ -66,9 +66,9 @@ public class IronGolemCompanion extends PlayerCompanion {
     }
 
     @Override
-    protected void initDataTracker(DataTracker.Builder builder) {
-        super.initDataTracker(builder);
-        builder.add(ATTACK_TICKS_LEFT, 0);
+    protected void initDataTracker() {
+        super.initDataTracker();
+        this.dataTracker.startTracking(ATTACK_TICKS_LEFT, 0);
     }
 
     static {

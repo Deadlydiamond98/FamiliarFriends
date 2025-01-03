@@ -9,7 +9,7 @@ import net.minecraft.util.Identifier;
 
 public class ChickenCompanionRenderer extends CompanionRenderer<ChickenCompanion, ChickenCompanionModel<ChickenCompanion>> {
 
-    private static final Identifier TEXTURE = Identifier.of("textures/entity/chicken.png");
+    private static final Identifier TEXTURE = new Identifier("textures/entity/chicken.png");
 
     public ChickenCompanionRenderer(EntityRendererFactory.Context ctx) {
         super(ctx, new ChickenCompanionModel<>(ctx.getPart(ChickenCompanionModel.LAYER_LOCATION)));
