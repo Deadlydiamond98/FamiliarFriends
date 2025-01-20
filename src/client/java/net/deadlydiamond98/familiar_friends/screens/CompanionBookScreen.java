@@ -69,6 +69,7 @@ public class CompanionBookScreen extends Screen {
         this.clearChildren();
         this.legendButtons.clear();
         this.drawables.clear();
+        this.maxScroll = 0;
 
         if (createCompanionList) {
             this.addCompanions();
@@ -513,9 +514,7 @@ public class CompanionBookScreen extends Screen {
             indexOffset++;
         }
 
-        if (i == renderedCompanions.size() - 1) {
-            listLoaded = true;
-        }
+        listLoaded = true;
     }
 
     @Override
