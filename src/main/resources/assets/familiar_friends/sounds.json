@@ -35,5 +35,18 @@
     "sounds": [
       "familiar_friends:power_up"
     ]
+  },
+  "cirno_shoot": {
+    "sounds": [
+      "familiar_friends:shoot",
+      {
+        "name": "familiar_friends:shoot",
+        "pitch": 1.1
+      },
+      {
+        "name": "vshoot",
+        "pitch": 1.2
+      }
+    ]
   }
 }
