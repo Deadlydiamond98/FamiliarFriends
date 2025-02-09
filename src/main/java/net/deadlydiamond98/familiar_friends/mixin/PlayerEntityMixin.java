@@ -41,6 +41,7 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
     @Unique
     private int lastCompanionCooldown;
 
+    @Unique
     public PlayerEntity getPlayer() {
         return ((PlayerEntity)(Object)this);
     }
@@ -91,6 +92,7 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
 
     // these are just making sure the Companion doesn't disappear if the Companion gets too far or Worlds
     // are changed or something, and then also has removal if the companion should no longer exist
+    @Unique
     private void updateCompanionExistance() {
         if (this.hasCompanion && isMyFriendDead()) {
 
