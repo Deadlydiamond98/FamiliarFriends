@@ -30,10 +30,6 @@ public class CompanionClientPackets {
         ClientPlayNetworking.send(new PerformCompanionSpecialAbilityPacket(keybinding));
     }
 
-    public static void sendKeybinding(String keybinding) {
-        ClientPlayNetworking.send(new CurrentKeybindPacket(keybinding));
-    }
-
     public static void sendCompanion(String key, int index) {
         ClientPlayNetworking.send(new RequestCompanionDataPacket(key, index));
     }

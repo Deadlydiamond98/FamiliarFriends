@@ -1,18 +1,12 @@
 package net.deadlydiamond98.familiar_friends.mixin;
 
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
-import net.deadlydiamond98.familiar_friends.entities.companions.CirnoCompanion;
 import net.deadlydiamond98.familiar_friends.entities.companions.CompanionCubeCompanion;
-import net.deadlydiamond98.familiar_friends.entities.companions.OneUpMushroomCompanion;
-import net.deadlydiamond98.familiar_friends.entities.companions.vanilla.CreeperCompanion;
-import net.deadlydiamond98.familiar_friends.entities.companions.vanilla.SpiderCompanion;
-import net.deadlydiamond98.familiar_friends.sounds.CompanionSounds;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FluidState;
-import net.minecraft.registry.tag.DamageTypeTags;
 import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -35,13 +29,13 @@ public abstract class LivingEntityMixin {
     @Shadow public abstract void onAttacking(Entity target);
 
     @Unique
-    public LivingEntity getPlayer() {
+    public LivingEntity familiar_friends$getLiving() {
         return ((LivingEntity)(Object)this);
     }
 
     @Inject(method = "tryUseTotem", at = @At(value = "TAIL"), cancellable = true)
     private void onDeath(DamageSource source, CallbackInfoReturnable<Boolean> cir) {
-        if (this.getPlayer() instanceof PlayerEntity player) {
+        if (this.familiar_friends$getLiving() instanceof PlayerEntity player) {
             if (player.getCompanion() != null) {
                 PlayerCompanion companion = player.getCompanion();
                 companion.onPlayerDeath(player);
@@ -52,7 +46,7 @@ public abstract class LivingEntityMixin {
 
     @Inject(method = "damage", at = @At(value = "HEAD"), cancellable = true)
     private void onDamage(DamageSource source, float amount, CallbackInfoReturnable<Boolean> cir) {
-        if (this.getPlayer() instanceof PlayerEntity player) {
+        if (this.familiar_friends$getLiving() instanceof PlayerEntity player) {
             if (player.getCompanion() != null) {
                 PlayerCompanion companion = player.getCompanion();
                 if (companion.onDamaged(source, amount, player)) {
@@ -64,13 +58,13 @@ public abstract class LivingEntityMixin {
 
     @Inject(method = "isClimbing", at = @At(value = "HEAD"), cancellable = true)
     private void climb(CallbackInfoReturnable<Boolean> cir) {
-        if (this.getPlayer() instanceof PlayerEntity player) {
+        if (this.familiar_friends$getLiving() instanceof PlayerEntity player) {
             if (player.getCompanion() != null) {
                 PlayerCompanion companion = player.getCompanion();
                 if (companion.canClimbWalls()) {
-                    if (!getPlayer().isSpectator()) {
+                    if (!familiar_friends$getLiving().isSpectator()) {
                         World world = player.getWorld();
-                        BlockPos pos = getPlayer().getBlockPos();
+                        BlockPos pos = familiar_friends$getLiving().getBlockPos();
 
                         boolean isNearClimbable = world.getBlockState(pos.north()).isSolidBlock(world, pos.north())
                                 || world.getBlockState(pos.south()).isSolidBlock(world, pos.south())
@@ -89,11 +83,11 @@ public abstract class LivingEntityMixin {
 
     @Inject(method = "canWalkOnFluid", at = @At(value = "HEAD"), cancellable = true)
     private void walkOnFluid(FluidState state, CallbackInfoReturnable<Boolean> cir) {
-        if (this.getPlayer() instanceof PlayerEntity player) {
+        if (this.familiar_friends$getLiving() instanceof PlayerEntity player) {
             if (player.getCompanion() != null) {
                 PlayerCompanion companion = player.getCompanion();
                 if (companion instanceof CompanionCubeCompanion) {
-                    if (!getPlayer().isSpectator()) {
+                    if (!familiar_friends$getLiving().isSpectator()) {
                         cir.setReturnValue(state.isIn(FluidTags.LAVA) && !player.isInLava());
                     }
                 }

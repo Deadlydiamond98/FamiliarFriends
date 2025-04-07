@@ -22,16 +22,20 @@ public class TinyTaterCompanion extends PlayerCompanion {
 
     @Override
     public void doKeyEvent(PlayerEntity player) {
-        this.playSound(CompanionSounds.Do_It, 0.25f, 1.0f);
+        if (this.hasNoCooldown(player)) {
+            // Long cooldown due to spam-ability
+            this.playSound(CompanionSounds.Do_It, 0.25f, 1.0f);
+            this.setCooldownSeconds(15);
+        }
     }
 
     @Override
     public void onAttack(PlayerEntity player, LivingEntity target, float amount) {
-        if (player.getRandom().nextInt(15) == 5) {
+        if (player.getRandom().nextInt(10) == 5) {
             this.playSound(SoundEvents.ENTITY_GENERIC_EAT, 1.0f, 1.0f);
-            player.getHungerManager().add((int) (amount * 0.5), 0);
+            player.getHungerManager().add((int) (amount), 1);
             if (target instanceof PlayerEntity targetPlayer) {
-                targetPlayer.getHungerManager().addExhaustion((int) (amount * 0.5));
+                targetPlayer.getHungerManager().addExhaustion((int) (amount));
             }
         }
     }

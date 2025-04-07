@@ -5,6 +5,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
 import net.deadlydiamond98.familiar_friends.entities.CompanionRegistry;
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.events.CompanionClientTickEvent;
 import net.deadlydiamond98.familiar_friends.networking.CompanionClientPackets;
 import net.deadlydiamond98.familiar_friends.screens.widgets.CompanionBookButton;
 import net.deadlydiamond98.familiar_friends.screens.widgets.CompanionHomeButton;
@@ -172,7 +173,9 @@ public class CompanionBookScreen extends Screen {
         descriptionY += 15;
 
         CompanionGuiDrawMethods.drawResizeableCenteredText(textRenderer, context,
-                matrices, descriptionX, descriptionY, companion.getDescription(), 0.75f, 0x766450, false); // Companion Description
+                matrices, descriptionX, descriptionY, companion.getDescription(
+                        CompanionClientTickEvent.getKeybinding()),
+                0.75f, 0x766450, false); // Companion Description
     }
 
     private void drawFirstPage(DrawContext context, float delta, int mouseX, int mouseY, int guiX, int guiY) {
