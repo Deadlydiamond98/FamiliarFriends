@@ -18,8 +18,6 @@ public class FamiliarFriends implements ModInitializer {
 	public static final String MOD_ID = "familiar_friends";
     public static final Logger LOGGER = LoggerFactory.getLogger("familiar_friends");
 
-	public static String Current_Keybinding_Key = "R";
-
 	@Override
 	public void onInitialize() {
 

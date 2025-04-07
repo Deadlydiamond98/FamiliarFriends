@@ -40,12 +40,6 @@ public class CompanionClientPackets {
         ClientPlayNetworking.send(ActionCompanion, buf);
     }
 
-    public static void sendKeybinding(String keybinding) {
-        PacketByteBuf buf = PacketByteBufs.create();
-        buf.writeString(keybinding);
-        ClientPlayNetworking.send(KeybindingCompanion, buf);
-    }
-
     public static void sendCompanion(String key, int index) {
         PacketByteBuf buf = PacketByteBufs.create();
         buf.writeString(key);

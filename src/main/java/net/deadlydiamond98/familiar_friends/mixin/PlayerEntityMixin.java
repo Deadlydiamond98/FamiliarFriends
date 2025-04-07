@@ -42,7 +42,7 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
     private int lastCompanionCooldown;
 
     @Unique
-    public PlayerEntity getPlayer() {
+    public PlayerEntity familiar_friends$getPlayer() {
         return ((PlayerEntity)(Object)this);
     }
 
@@ -65,7 +65,7 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
 
     @Inject(method = "tick", at = @At("HEAD"))
     public void tick(CallbackInfo ci) {
-        if (!getPlayer().getWorld().isClient()) {
+        if (!familiar_friends$getPlayer().getWorld().isClient()) {
             if (this.companionCooldown > 0) {
                 this.companionCooldown--;
             }
@@ -86,7 +86,7 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
         if (!this.lastSyncedBackUpCompanionKey.equals(this.backUpCompanionKey)
                 || !this.lastSyncedUnlockedCompanions.equals(this.unlockedCompanions)
                 || this.companionCooldown != this.lastCompanionCooldown) {
-            CompanionServerPackets.syncCompanionPlayerData((ServerPlayerEntity) getPlayer(), this.unlockedCompanions, this.backUpCompanionKey, this.companionCooldown);
+            CompanionServerPackets.syncCompanionPlayerData((ServerPlayerEntity) familiar_friends$getPlayer(), this.unlockedCompanions, this.backUpCompanionKey, this.companionCooldown);
         }
     }
 
@@ -98,7 +98,7 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
 
             this.currentCompanion = this.getCompanion();
             if (this.currentCompanion != null) {
-                this.getPlayer().getWorld().spawnEntity(this.currentCompanion);
+                this.familiar_friends$getPlayer().getWorld().spawnEntity(this.currentCompanion);
             }
 
         }
@@ -182,7 +182,7 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
         this.currentCompanion = companion;
         this.backUpCompanionKey = companion.getType().getTranslationKey();
         this.hasCompanion = true;
-        getPlayer().getWorld().spawnEntity(companion);
+        familiar_friends$getPlayer().getWorld().spawnEntity(companion);
     }
 
     @Override
@@ -210,14 +210,14 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
     @Override
     public void doCompanionKeybind() {
         if (this.currentCompanion != null) {
-            this.currentCompanion.doKeyEvent(getPlayer());
+            this.currentCompanion.doKeyEvent(familiar_friends$getPlayer());
         }
     }
 
     // Gets the companion on the player as a Player Companion
     @Override
     public PlayerCompanion getCompanion() {
-        return CompanionRegistry.createCompanion(this.backUpCompanionKey, getPlayer());
+        return CompanionRegistry.createCompanion(this.backUpCompanionKey, familiar_friends$getPlayer());
     }
 
     @Override

@@ -17,7 +17,6 @@ public class CompanionServerPackets {
         ServerPlayNetworking.registerGlobalReceiver(EquipCompanion, EquipCompanionPacket::receive);
         ServerPlayNetworking.registerGlobalReceiver(UnequipCompanion, UnequipCompanionPacket::receive);
         ServerPlayNetworking.registerGlobalReceiver(ActionCompanion, PerformCompanionSpecialAbilityPacket::receive);
-        ServerPlayNetworking.registerGlobalReceiver(KeybindingCompanion, CurrentKeybindPacket::receive);
         ServerPlayNetworking.registerGlobalReceiver(CompanionRequest, RequestCompanionDataPacket::receive);
     }
 

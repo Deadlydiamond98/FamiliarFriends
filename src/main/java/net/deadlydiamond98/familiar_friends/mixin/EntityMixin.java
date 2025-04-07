@@ -25,13 +25,13 @@ public abstract class EntityMixin {
     @Shadow public abstract boolean isOnFire();
 
     @Unique
-    public Entity getPlayer() {
+    public Entity familiar_friends$getEntity() {
         return ((Entity)(Object)this);
     }
 
     @Inject(method = "isInLava", at = @At(value = "HEAD"), cancellable = true)
     private void inLava(CallbackInfoReturnable<Boolean> cir) {
-        if (this.getPlayer() instanceof PlayerEntity player) {
+        if (this.familiar_friends$getEntity() instanceof PlayerEntity player) {
             if (player.getCompanion() != null) {
                 PlayerCompanion companion = player.getCompanion();
                 if (companion instanceof CompanionCubeCompanion) {

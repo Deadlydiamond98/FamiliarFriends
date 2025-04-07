@@ -363,9 +363,8 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
         this.setVelocity(interpolatedVelocity);
     }
 
-    public Text getDescription() {
-        return Text.translatable(this.getType().getTranslationKey() + ".description",
-                Text.translatable(FamiliarFriends.Current_Keybinding_Key).getString());
+    public Text getDescription(String keybinding) {
+        return Text.translatable(this.getType().getTranslationKey() + ".description", keybinding);
     }
 
     public Text getAuthor() {

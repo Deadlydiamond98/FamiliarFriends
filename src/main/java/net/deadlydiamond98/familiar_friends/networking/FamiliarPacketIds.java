@@ -8,7 +8,6 @@ public class FamiliarPacketIds {
     public static final Identifier EquipCompanion = new Identifier(FamiliarFriends.MOD_ID, "equip_companion_packet");
     public static final Identifier UnequipCompanion = new Identifier(FamiliarFriends.MOD_ID, "unequip_companion_packet");
     public static final Identifier ActionCompanion = new Identifier(FamiliarFriends.MOD_ID, "action_companion_packet");
-    public static final Identifier KeybindingCompanion = new Identifier(FamiliarFriends.MOD_ID, "keybinding_companion_packet");
     public static final Identifier CompanionRequest = new Identifier(FamiliarFriends.MOD_ID, "companion_request_packet");
 
     public static final Identifier CompanionPlayerSync = new Identifier(FamiliarFriends.MOD_ID, "companion_player_sync_packet");
