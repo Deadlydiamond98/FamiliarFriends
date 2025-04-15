@@ -77,9 +77,9 @@
   "entity.familiar_friends.mr_saturn_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.mr_saturn_companion.description": "¡Tiene la oportunidad de repartir un SMAAAASH! a un objetivo mientras ataca, derribando al objetivo e infligiendo daño adicional.",
 
-  "entity.familiar_friends.notch_companion": "Notch",
-  "entity.familiar_friends.notch_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.notch_companion.description": "¡Golpeará la dirección en la que mires al presionar \"%s\"! Hay un tiempo de reutilización de 15 segundos antes de que pueda volver a caer un rayo.",
+  "entity.familiar_friends.jeb_companion": "Jeb",
+  "entity.familiar_friends.jeb_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.jeb_companion.description": "¡Golpeará la dirección en la que mires al presionar \"%s\"! Hay un tiempo de reutilización de 15 segundos antes de que pueda volver a caer un rayo.",
 
   "entity.familiar_friends.cirno_companion": "Cirno",
   "entity.familiar_friends.cirno_companion.author": "Deadlydiamond98",
@@ -151,8 +151,8 @@
   "familiar_friends.midnightconfig.naviEnabled": "Habilitar el Compañero Navi",
   "familiar_friends.midnightconfig.naviCost": "Establecer el costo de Navi (en niveles)",
 
-  "familiar_friends.midnightconfig.notchEnabled": "Habilitar el Compañero Notch",
-  "familiar_friends.midnightconfig.notchCost": "Establecer el costo de Notch (en niveles)",
+  "familiar_friends.midnightconfig.jebEnabled": "Habilitar el Compañero Jeb",
+  "familiar_friends.midnightconfig.jebCost": "Establecer el costo de Jeb (en niveles)",
 
   "familiar_friends.midnightconfig.ocelotEnabled": "Habilitar el Compañero Ocelote",
   "familiar_friends.midnightconfig.ocelotCost": "Establecer el costo de Ocelote (en niveles)",

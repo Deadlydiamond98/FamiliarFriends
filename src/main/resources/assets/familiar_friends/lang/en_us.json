@@ -77,9 +77,9 @@
   "entity.familiar_friends.mr_saturn_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.mr_saturn_companion.description": "Has a chance to deal a SMAAAASH! attack on an target while attacking, knocking the target back and dealing extra damage.",
 
-  "entity.familiar_friends.notch_companion": "Notch",
-  "entity.familiar_friends.notch_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.notch_companion.description": "Will Smite the direction you look when pressing \"%s\"! There is a 15 second cooldown before lightning can be struck again.",
+  "entity.familiar_friends.jeb_companion": "Jeb",
+  "entity.familiar_friends.jeb_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.jeb_companion.description": "Will Smite the direction you look when pressing \"%s\"! There is a 15 second cooldown before lightning can be struck again.",
 
   "entity.familiar_friends.cirno_companion": "Cirno",
   "entity.familiar_friends.cirno_companion.author": "Deadlydiamond98",
@@ -153,8 +153,8 @@
   "familiar_friends.midnightconfig.naviEnabled": "Enable Navi Companion",
   "familiar_friends.midnightconfig.naviCost": "Set Navi Cost (In Levels)",
 
-  "familiar_friends.midnightconfig.notchEnabled": "Enable Notch Companion",
-  "familiar_friends.midnightconfig.notchCost": "Set Notch Cost (In Levels)",
+  "familiar_friends.midnightconfig.jebEnabled": "Enable Jeb Companion",
+  "familiar_friends.midnightconfig.jebCost": "Set Jeb Cost (In Levels)",
 
   "familiar_friends.midnightconfig.ocelotEnabled": "Enable Ocelot Companion",
   "familiar_friends.midnightconfig.ocelotCost": "Set Ocelot Cost (In Levels)",

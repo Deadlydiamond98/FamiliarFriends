@@ -77,9 +77,9 @@
   "entity.familiar_friends.mr_saturn_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.mr_saturn_companion.description": "攻击时有概率触发SMAAAASH！击退效果+额外伤害",
 
-  "entity.familiar_friends.notch_companion": "Notch化身",
-  "entity.familiar_friends.notch_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.notch_companion.description": "按「%s」键召唤雷电（15秒冷却）",
+  "entity.familiar_friends.jeb_companion": "Jeb化身",
+  "entity.familiar_friends.jeb_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.jeb_companion.description": "按「%s」键召唤雷电（15秒冷却）",
 
   "entity.familiar_friends.cirno_companion": "琪露诺",
   "entity.familiar_friends.cirno_companion.author": "Deadlydiamond98",
@@ -153,8 +153,8 @@
   "familiar_friends.midnightconfig.naviEnabled": "启用精灵纳薇伙伴",
   "familiar_friends.midnightconfig.naviCost": "设置精灵纳薇解锁所需等级",
 
-  "familiar_friends.midnightconfig.notchEnabled": "启用Notch化身伙伴",
-  "familiar_friends.midnightconfig.notchCost": "设置Notch化身解锁所需等级",
+  "familiar_friends.midnightconfig.jebEnabled": "启用Jeb化身伙伴",
+  "familiar_friends.midnightconfig.jebCost": "设置Jeb化身解锁所需等级",
 
   "familiar_friends.midnightconfig.ocelotEnabled": "启用豹猫伙伴",
   "familiar_friends.midnightconfig.ocelotCost": "设置豹猫解锁所需等级",

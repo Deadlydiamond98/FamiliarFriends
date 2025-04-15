@@ -1,6 +1,7 @@
 package net.deadlydiamond98.familiar_friends;
 
 import eu.midnightdust.lib.config.MidnightConfig;
+import net.deadlydiamond98.familiar_friends.blocks.CompanionBlocks;
 import net.deadlydiamond98.familiar_friends.commands.CompanionCommands;
 import net.deadlydiamond98.familiar_friends.effects.CompanionEffects;
 import net.deadlydiamond98.familiar_friends.entities.CompanionEntityTypes;
@@ -29,6 +30,7 @@ public class FamiliarFriends implements ModInitializer {
 		CompanionServerPackets.registerServerPackets();
 
 		CompanionItems.registerItems();
+		CompanionBlocks.registerBlocks();
 		CompanionEntityTypes.registerEntities();
 
 		CompanionEvents.registerEvents();

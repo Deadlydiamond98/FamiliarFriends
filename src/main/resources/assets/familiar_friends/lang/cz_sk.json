@@ -71,9 +71,9 @@
   "entity.familiar_friends.mr_saturn_companion.author": "Deadlydiamond98",
   "entity.familiar_friends.mr_saturn_companion.description": "Má šanci udělit SMAAAASH! útok na cíl při útoku, sražení cíle zpět a způsobení dalšího poškození.",
 
-  "entity.familiar_friends.notch_companion": "Notch",
-  "entity.familiar_friends.notch_companion.author": "Deadlydiamond98",
-  "entity.familiar_friends.notch_companion.description": "Při stisknutí \"%s\" blesk udeří ve směru kterým se díváte! Trvá 15 sekund dobíjení než blesk může znovu uhodit.",
+  "entity.familiar_friends.jeb_companion": "Jeb",
+  "entity.familiar_friends.jeb_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.jeb_companion.description": "Při stisknutí \"%s\" blesk udeří ve směru kterým se díváte! Trvá 15 sekund dobíjení než blesk může znovu uhodit.",
 
   "entity.familiar_friends.cirno_companion": "Cirna",
   "entity.familiar_friends.cirno_companion.author": "Deadlydiamond98",
@@ -131,8 +131,8 @@
   "familiar_friends.midnightconfig.naviEnabled": "Zapnout společníka Navíka",
   "familiar_friends.midnightconfig.naviCost": "Nastavit cenu Navíka (v úrovních)",
 
-  "familiar_friends.midnightconfig.notchEnabled": "Zapnout společníka Notche",
-  "familiar_friends.midnightconfig.notchCost": "Nastavit cenu Notche (v úrovních)",
+  "familiar_friends.midnightconfig.jebEnabled": "Zapnout společníka Jeb",
+  "familiar_friends.midnightconfig.jebCost": "Nastavit cenu Jeb (v úrovních)",
 
   "familiar_friends.midnightconfig.ocelotEnabled": "Zapnout společníka ocelot",
   "familiar_friends.midnightconfig.ocelotCost": "Nastavit cenu ocelota (v úrovních)",

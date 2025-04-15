@@ -104,9 +104,9 @@ public class CompanionEntityTypes {
             CompanionCubeCompanion.class,
             Identifier.of(FamiliarFriends.MOD_ID, "companion_cube_companion")
     );
-    public static final EntityType<NotchCompanion> Notch_Companion = CompanionRegistry.registerCompanion(
-            NotchCompanion.class,
-            Identifier.of(FamiliarFriends.MOD_ID, "notch_companion")
+    public static final EntityType<JebCompanion> Jeb_Companion = CompanionRegistry.registerCompanion(
+            JebCompanion.class,
+            Identifier.of(FamiliarFriends.MOD_ID, "jeb_companion")
     );
     public static final EntityType<HerobrineCompanion> Herobrine_Companion = CompanionRegistry.registerCompanion(
             HerobrineCompanion.class,

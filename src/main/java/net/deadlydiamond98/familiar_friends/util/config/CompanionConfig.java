@@ -46,6 +46,10 @@ public class CompanionConfig extends MidnightConfig {
     @Entry(category = "text") public static boolean ironGolemEnabled = true;
     @Entry(category = "text") public static int ironGolemCost = 12;
 
+    @Comment(category = "text") public static Comment spacer13;
+    @Entry(category = "text") public static boolean jebEnabled = true;
+    @Entry(category = "text") public static int jebCost = 20;
+
     @Comment(category = "text") public static Comment spacer23;
     @Entry(category = "text") public static boolean lemonEnabled = true;
     @Entry(category = "text") public static int lemonCost = 15;
@@ -61,10 +65,6 @@ public class CompanionConfig extends MidnightConfig {
     @Comment(category = "text") public static Comment spacer12;
     @Entry(category = "text") public static boolean naviEnabled = true;
     @Entry(category = "text") public static int naviCost = 18;
-
-    @Comment(category = "text") public static Comment spacer13;
-    @Entry(category = "text") public static boolean notchEnabled = true;
-    @Entry(category = "text") public static int notchCost = 20;
 
     @Comment(category = "text") public static Comment spacer14;
     @Entry(category = "text") public static boolean ocelotEnabled = true;

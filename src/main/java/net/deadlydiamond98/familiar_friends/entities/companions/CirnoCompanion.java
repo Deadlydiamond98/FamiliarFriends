@@ -1,5 +1,6 @@
 package net.deadlydiamond98.familiar_friends.entities.companions;
 
+import net.deadlydiamond98.familiar_friends.blocks.CompanionBlocks;
 import net.deadlydiamond98.familiar_friends.entities.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.entities.projectiles.CirnoProjectile;
@@ -45,7 +46,7 @@ public class CirnoCompanion extends PlayerCompanion {
                     BlockPos blockPos = playerPos.add(x, -1, z);
                     BlockState blockState = world.getBlockState(blockPos);
                     if (blockState.isOf(Blocks.WATER) && blockState.get(LEVEL) == 0) {
-                        world.setBlockState(blockPos, Blocks.FROSTED_ICE.getDefaultState());
+                        world.setBlockState(blockPos, CompanionBlocks.Cirno_Ice.getDefaultState());
                     }
                 }
             }

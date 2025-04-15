@@ -14,13 +14,13 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
 
-public class NotchCompanion extends PlayerCompanion {
-    public NotchCompanion(EntityType<?> type, World world) {
+public class JebCompanion extends PlayerCompanion {
+    public JebCompanion(EntityType<?> type, World world) {
         super(type, world);
     }
 
-    public NotchCompanion(World world, PlayerEntity owner, boolean gui) {
-        super(CompanionEntityTypes.Notch_Companion, world, owner, gui);
+    public JebCompanion(World world, PlayerEntity owner, boolean gui) {
+        super(CompanionEntityTypes.Jeb_Companion, world, owner, gui);
     }
 
     @Override
@@ -59,12 +59,12 @@ public class NotchCompanion extends PlayerCompanion {
 
     @Override
     public int getCost() {
-        return CompanionConfig.notchCost;
+        return CompanionConfig.jebCost;
     }
 
     @Override
     public boolean isEnabled() {
-        return CompanionConfig.notchEnabled;
+        return CompanionConfig.jebEnabled;
     }
 
 }
