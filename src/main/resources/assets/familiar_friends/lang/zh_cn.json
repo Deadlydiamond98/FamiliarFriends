@@ -1,0 +1,191 @@
+{
+  "key.category.familiar_friends.companion_keys": "亲密伙伴",
+  "key.familiar_friends.action": "使用技能",
+
+  "effect.familiar_friends.super": "超级力量",
+  "effect.familiar_friends.mini": "迷你化",
+
+  "item.familiar_friends.book_of_familiars": "伙伴图鉴",
+
+  "gui.familiar_friends.current_companion": "当前伙伴",
+  "gui.familiar_friends.unlocked": "已解锁",
+  "gui.familiar_friends.author": "作者：",
+  "gui.familiar_friends.desc": "能力描述",
+  "gui.familiar_friends.unlock": "解锁伙伴",
+  "gui.familiar_friends.equip": "装备伙伴",
+  "gui.familiar_friends.unequip": "卸下伙伴",
+  "gui.familiar_friends.cost": "消耗：%s 级经验",
+
+  "cooldown.familiar_friends.second": "秒",
+  "cooldown.familiar_friends.seconds": "秒",
+  "cooldown.familiar_friends.minute": "分钟",
+  "cooldown.familiar_friends.minutes": "分钟",
+  "cooldown.familiar_friends.hour": "小时",
+  "cooldown.familiar_friends.hours": "小时",
+  "cooldown.familiar_friends.cooldown": "还需等待 %s %s 才能再次使用此能力！",
+
+  "cooldown.familiar_friends.hunger": "饥饿值",
+  "cooldown.familiar_friends.health": "生命值",
+  "cooldown.familiar_friends.lowstat": "无法使用！你的%s不足！",
+
+  "entity.familiar_friends.chicken_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.chicken_companion.description": "为玩家提供缓降效果（地面触发，空中可持续2秒）",
+
+  "entity.familiar_friends.iron_golem_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.iron_golem_companion.description": "击飞敌对生物并造成额外坠落伤害",
+
+  "entity.familiar_friends.snow_golem_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.snow_golem_companion.description": "投掷击退敌人的雪球",
+
+  "entity.familiar_friends.goat_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.goat_companion.description": "免疫细雪下陷",
+
+  "entity.familiar_friends.creeper_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.creeper_companion.description": "免疫爆炸伤害。玩家死亡时伙伴会引爆（不破坏方块），需重新解锁",
+
+  "entity.familiar_friends.allay_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.allay_companion.description": "扩大物品拾取范围",
+
+  "entity.familiar_friends.ocelot_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.ocelot_companion.description": "获得速度提升效果",
+
+  "entity.familiar_friends.squid_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.squid_companion.description": "获得5秒水下呼吸",
+
+  "entity.familiar_friends.skeleton_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.skeleton_companion.description": "自动射击附近敌对生物",
+
+  "entity.familiar_friends.spider_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.spider_companion.description": "获得攀墙能力（可上下滑动）",
+
+  "entity.familiar_friends.cave_spider_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.cave_spider_companion.description": "攀墙能力+攻击可能附加中毒",
+
+  "entity.familiar_friends.navi_companion": "精灵纳薇",
+  "entity.familiar_friends.navi_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.navi_companion.description": "靠近远古残骸或钻石矿时会发出提示音（距离越近音调越高）",
+
+  "entity.familiar_friends.one_up_mushroom_companion": "1UP蘑菇",
+  "entity.familiar_friends.one_up_mushroom_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.one_up_mushroom_companion.description": "死亡时满血复活（使用后需重新解锁）",
+
+  "entity.familiar_friends.companion_cube_companion": "伙伴方块",
+  "entity.familiar_friends.companion_cube_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.companion_cube_companion.description": "可在非流动岩浆上行走",
+
+  "entity.familiar_friends.mr_saturn_companion": "土星先生",
+  "entity.familiar_friends.mr_saturn_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.mr_saturn_companion.description": "攻击时有概率触发SMAAAASH！击退效果+额外伤害",
+
+  "entity.familiar_friends.jeb_companion": "Jeb化身",
+  "entity.familiar_friends.jeb_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.jeb_companion.description": "按「%s」键召唤雷电（15秒冷却）",
+
+  "entity.familiar_friends.cirno_companion": "琪露诺",
+  "entity.familiar_friends.cirno_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.cirno_companion.description": "获得冰霜行者效果，按「%s」发射减速弹（5秒冷却）",
+
+  "entity.familiar_friends.rana_companion": "莱娜",
+  "entity.familiar_friends.rana_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.rana_companion.description": "跳跃提升+免疫跌落伤害",
+
+  "entity.familiar_friends.tater_companion": "小土豆",
+  "entity.familiar_friends.tater_companion.author": "Mrmrmrpizza, Deadlydiamond98",
+  "entity.familiar_friends.tater_companion.description": "按「%s」播放滑稽音效，攻击时窃取目标饥饿值转移给玩家",
+
+  "entity.familiar_friends.herobrine_companion": "Herobrine",
+  "entity.familiar_friends.herobrine_companion.author": "Deadlydiamond98",
+  "entity.familiar_friends.herobrine_companion.description": "按「%s」消耗生命值进行定向传送（15秒冷却，生命过低时禁用）",
+
+  "entity.familiar_friends.lemon_companion": "柠檬4K",
+  "entity.familiar_friends.lemon_companion.author": "Banduty",
+  "entity.familiar_friends.lemon_companion.description": "向周围敌人喷射柠檬汁（减速+低伤害，15秒冷却）",
+
+  "entity.familiar_friends.super_mushroom_companion": "超级蘑菇",
+  "entity.familiar_friends.super_mushroom_companion.author": "Kamtheman56",
+  "entity.familiar_friends.super_mushroom_companion.description": "按「%s」变大+获得力量（消耗饥饿值，60秒冷却）",
+
+  "entity.familiar_friends.mini_mushroom_companion": "迷你蘑菇",
+  "entity.familiar_friends.mini_mushroom_companion.author": "Kamtheman56",
+  "entity.familiar_friends.mini_mushroom_companion.description": "按「%s」变小+加速+免疫跌落伤害（消耗饥饿值，60秒冷却）",
+
+  "entity.familiar_friends.biter_companion": "吸血鬼",
+  "entity.familiar_friends.biter_companion.author": "Nekomaster1000",
+  "entity.familiar_friends.biter_companion.description": "击杀生物时恢复半颗心生命值",
+
+  "familiar_friends.midnightconfig.title": "亲密伙伴配置",
+
+  "familiar_friends.midnightconfig.cooldownTime": "技能冷却时间",
+
+  "familiar_friends.midnightconfig.oneUpEnabled": "启用1UP蘑菇伙伴",
+  "familiar_friends.midnightconfig.oneUpCost": "设置1UP蘑菇解锁所需等级",
+
+  "familiar_friends.midnightconfig.allayEnabled": "启用Allay伙伴",
+  "familiar_friends.midnightconfig.allayCost": "设置Allay解锁所需等级",
+
+  "familiar_friends.midnightconfig.caveSpiderEnabled": "启用洞穴蜘蛛伙伴",
+  "familiar_friends.midnightconfig.caveSpiderCost": "设置洞穴蜘蛛解锁所需等级",
+
+  "familiar_friends.midnightconfig.chickenEnabled": "启用鸡伙伴",
+  "familiar_friends.midnightconfig.chickenCost": "设置鸡解锁所需等级",
+
+  "familiar_friends.midnightconfig.cirnoEnabled": "启用琪露诺伙伴",
+  "familiar_friends.midnightconfig.cirnoCost": "设置琪露诺解锁所需等级",
+
+  "familiar_friends.midnightconfig.companionCubeEnabled": "启用伙伴方块伙伴",
+  "familiar_friends.midnightconfig.companionCubeCost": "设置伙伴方块解锁所需等级",
+
+  "familiar_friends.midnightconfig.creeperEnabled": "启用苦力怕伙伴",
+  "familiar_friends.midnightconfig.creeperCost": "设置苦力怕解锁所需等级",
+
+  "familiar_friends.midnightconfig.goatEnabled": "启用山羊伙伴",
+  "familiar_friends.midnightconfig.goatCost": "设置山羊解锁所需等级",
+
+  "familiar_friends.midnightconfig.herobrineEnabled": "启用Herobrine伙伴",
+  "familiar_friends.midnightconfig.herobrineCost": "设置Herobrine解锁所需等级",
+
+  "familiar_friends.midnightconfig.ironGolemEnabled": "启用铁傀儡伙伴",
+  "familiar_friends.midnightconfig.ironGolemCost": "设置铁傀儡解锁所需等级",
+
+  "familiar_friends.midnightconfig.mrSaturnEnabled": "启用土星先生伙伴",
+  "familiar_friends.midnightconfig.mrSaturnCost": "设置土星先生解锁所需等级",
+
+  "familiar_friends.midnightconfig.naviEnabled": "启用精灵纳薇伙伴",
+  "familiar_friends.midnightconfig.naviCost": "设置精灵纳薇解锁所需等级",
+
+  "familiar_friends.midnightconfig.jebEnabled": "启用Jeb化身伙伴",
+  "familiar_friends.midnightconfig.jebCost": "设置Jeb化身解锁所需等级",
+
+  "familiar_friends.midnightconfig.ocelotEnabled": "启用豹猫伙伴",
+  "familiar_friends.midnightconfig.ocelotCost": "设置豹猫解锁所需等级",
+
+  "familiar_friends.midnightconfig.ranaEnabled": "启用莱娜伙伴",
+  "familiar_friends.midnightconfig.ranaCost": "设置莱娜解锁所需等级",
+
+  "familiar_friends.midnightconfig.skeletonEnabled": "启用骷髅伙伴",
+  "familiar_friends.midnightconfig.skeletonCost": "设置骷髅解锁所需等级",
+
+  "familiar_friends.midnightconfig.snowGolemEnabled": "启用雪傀儡伙伴",
+  "familiar_friends.midnightconfig.snowGolemCost": "设置雪傀儡解锁所需等级",
+
+  "familiar_friends.midnightconfig.spiderEnabled": "启用蜘蛛伙伴",
+  "familiar_friends.midnightconfig.spiderCost": "设置蜘蛛解锁所需等级",
+
+  "familiar_friends.midnightconfig.squidEnabled": "启用鱿鱼伙伴",
+  "familiar_friends.midnightconfig.squidCost": "设置鱿鱼解锁所需等级",
+
+  "familiar_friends.midnightconfig.taterEnabled": "启用小土豆伙伴",
+  "familiar_friends.midnightconfig.taterCost": "设置小土豆解锁所需等级",
+
+  "familiar_friends.midnightconfig.lemonEnabled": "启用柠檬4K伙伴",
+  "familiar_friends.midnightconfig.lemonCost": "设置柠檬4K解锁所需等级",
+
+  "familiar_friends.midnightconfig.superEnabled": "启用超级蘑菇伙伴",
+  "familiar_friends.midnightconfig.superCost": "设置超级蘑菇解锁所需等级",
+
+  "familiar_friends.midnightconfig.miniEnabled": "启用迷你蘑菇伙伴",
+  "familiar_friends.midnightconfig.miniCost": "设置迷你蘑菇解锁所需等级",
+
+  "familiar_friends.midnightconfig.biterEnabled": "启用吸血鬼伙伴",
+  "familiar_friends.midnightconfig.biterCost": "设置吸血鬼解锁所需等级"
+}

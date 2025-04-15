@@ -4,7 +4,7 @@ import net.deadlydiamond98.familiar_friends.entities.models.*;
 import net.deadlydiamond98.familiar_friends.entities.models.vanilla.*;
 import net.deadlydiamond98.familiar_friends.entities.renderer.companions.*;
 import net.deadlydiamond98.familiar_friends.entities.renderer.companions.player.HerobrineCompanionRenderer;
-import net.deadlydiamond98.familiar_friends.entities.renderer.companions.player.NotchCompanionRenderer;
+import net.deadlydiamond98.familiar_friends.entities.renderer.companions.player.JebCompanionRenderer;
 import net.deadlydiamond98.familiar_friends.entities.renderer.companions.vanilla.*;
 import net.deadlydiamond98.familiar_friends.entities.renderer.projectiles.CirnoProjectileRenderer;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
@@ -25,7 +25,7 @@ public class CompanionEntityRendering {
         EntityRendererRegistry.register(CompanionEntityTypes.Squid_Companion, SquidCompanionRenderer::new);
         EntityRendererRegistry.register(CompanionEntityTypes.One_Up_Mushroom_Companion, OneUpMushroomCompanionRenderer::new);
         EntityRendererRegistry.register(CompanionEntityTypes.Companion_Cube_Companion, CompanionCubeCompanionRenderer::new);
-        EntityRendererRegistry.register(CompanionEntityTypes.Notch_Companion, NotchCompanionRenderer::new);
+        EntityRendererRegistry.register(CompanionEntityTypes.Jeb_Companion, JebCompanionRenderer::new);
         EntityRendererRegistry.register(CompanionEntityTypes.Herobrine_Companion, HerobrineCompanionRenderer::new);
         EntityRendererRegistry.register(CompanionEntityTypes.Spider_Companion, SpiderCompanionRenderer::new);
         EntityRendererRegistry.register(CompanionEntityTypes.Skeleton_Companion, SkeletonCompanionRenderer::new);
