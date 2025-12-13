@@ -1,0 +1,77 @@
+package net.deadlydiamond98.familiar_friends.common.entities.companions.vanilla;
+
+import net.deadlydiamond98.familiar_friends.FamiliarFriendsConfig;
+import net.deadlydiamond98.familiar_friends.common.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.data.DataTracker;
+import net.minecraft.entity.data.TrackedData;
+import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.Text;
+import net.minecraft.world.World;
+
+public class IronGolemCompanion extends PlayerCompanion {
+
+    private static final TrackedData<Integer> ATTACK_TICKS_LEFT;
+
+    public IronGolemCompanion(EntityType<?> type, World world) {
+        super(type, world);
+    }
+
+    public IronGolemCompanion(World world, PlayerEntity owner, boolean gui) {
+        super(CompanionEntityTypes.Iron_Golem_Companion, world, owner, gui);
+    }
+
+    @Override
+    protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
+
+        if (this.getAttackTicksLeft() > 0) {
+            this.setAttackTicksLeft(this.getAttackTicksLeft() - 1);
+        }
+
+        if (nearestHostile != null) {
+            if (this.age % 80 == 0) {
+                this.setAttackTicksLeft(10);
+                nearestHostile.damage(nearestHostile.getDamageSources().playerAttack(player), 4.0f);
+                nearestHostile.setVelocity(nearestHostile.getVelocity().multiply(1, 0, 1).add(0, 1, 0));
+                this.playSound(SoundEvents.ENTITY_IRON_GOLEM_ATTACK, 1.0F, 1.0F);
+            }
+        }
+    }
+
+    @Override
+    public Text getName() {
+        return Text.translatable("entity.minecraft.iron_golem");
+    }
+
+    @Override
+    public int getCost() {
+        return FamiliarFriendsConfig.IronGolem.cost;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return FamiliarFriendsConfig.IronGolem.enabled;
+    }
+
+    public int getAttackTicksLeft() {
+        return this.dataTracker.get(ATTACK_TICKS_LEFT);
+    }
+
+    public void setAttackTicksLeft(int ticks) {
+        this.dataTracker.set(ATTACK_TICKS_LEFT, ticks);
+    }
+
+    @Override
+    protected void initDataTracker() {
+        super.initDataTracker();
+        this.dataTracker.startTracking(ATTACK_TICKS_LEFT, 0);
+    }
+
+    static {
+        ATTACK_TICKS_LEFT = DataTracker.registerData(IronGolemCompanion.class, TrackedDataHandlerRegistry.INTEGER);
+    }
+}

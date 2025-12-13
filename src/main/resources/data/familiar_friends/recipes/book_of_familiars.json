@@ -1,39 +1,34 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "#SE",
-    "RBF",
-    "/GX"
-  ],
-  "key": {
-    "#": {
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
       "item": "minecraft:phantom_membrane"
     },
-    "S": {
+    {
       "item": "minecraft:spider_eye"
     },
-    "E": {
+    {
       "item": "minecraft:ender_pearl"
     },
-    "R": {
+    {
       "item": "minecraft:rotten_flesh"
     },
-    "B": {
+    {
       "item": "minecraft:book"
     },
-    "F": {
+    {
       "item": "minecraft:bone"
     },
-    "/": {
+    {
       "item": "minecraft:blaze_rod"
     },
-    "G": {
+    {
       "item": "minecraft:gunpowder"
     },
-    "X": {
+    {
       "item": "minecraft:slime_ball"
     }
-  },
+  ],
   "result": {
     "item": "familiar_friends:book_of_familiars",
     "count": 1

@@ -1,8 +1,8 @@
 package net.deadlydiamond98.familiar_friends.mixin;
 
 import it.unimi.dsi.fastutil.objects.Object2DoubleMap;
-import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
-import net.deadlydiamond98.familiar_friends.entities.companions.CompanionCubeCompanion;
+import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.common.entities.companions.CompanionCubeCompanion;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluid;

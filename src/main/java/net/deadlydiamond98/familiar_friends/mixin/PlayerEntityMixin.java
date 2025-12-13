@@ -1,8 +1,8 @@
 package net.deadlydiamond98.familiar_friends.mixin;
 
-import net.deadlydiamond98.familiar_friends.entities.CompanionRegistry;
-import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
-import net.deadlydiamond98.familiar_friends.networking.CompanionServerPackets;
+import net.deadlydiamond98.familiar_friends.common.entities.CompanionRegistry;
+import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.networking.s2c.SyncCompanionPlayerDataS2CPacket;
 import net.deadlydiamond98.familiar_friends.util.CompanionPlayerData;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -86,7 +86,7 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
         if (!this.lastSyncedBackUpCompanionKey.equals(this.backUpCompanionKey)
                 || !this.lastSyncedUnlockedCompanions.equals(this.unlockedCompanions)
                 || this.companionCooldown != this.lastCompanionCooldown) {
-            CompanionServerPackets.syncCompanionPlayerData((ServerPlayerEntity) familiar_friends$getPlayer(), this.unlockedCompanions, this.backUpCompanionKey, this.companionCooldown);
+            SyncCompanionPlayerDataS2CPacket.send((ServerPlayerEntity) familiar_friends$getPlayer(), this.unlockedCompanions, this.backUpCompanionKey, this.companionCooldown);
         }
     }
 

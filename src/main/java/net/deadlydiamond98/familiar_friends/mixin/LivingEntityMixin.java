@@ -1,7 +1,7 @@
 package net.deadlydiamond98.familiar_friends.mixin;
 
-import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
-import net.deadlydiamond98.familiar_friends.entities.companions.CompanionCubeCompanion;
+import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.common.entities.companions.CompanionCubeCompanion;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;

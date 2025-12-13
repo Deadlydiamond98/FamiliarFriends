@@ -1,12 +1,10 @@
 package net.deadlydiamond98.familiar_friends.util;
 
-import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
 
 import java.util.List;
 
 public interface CompanionPlayerData {
-
-    // These are all used in the PlayerMixin, call them with player.(insert method)
 
     void unlockCompanion(String companion);
     void lockCompanion(String companion);

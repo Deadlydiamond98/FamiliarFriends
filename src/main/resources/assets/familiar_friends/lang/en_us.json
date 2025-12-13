@@ -113,79 +113,102 @@
   "entity.familiar_friends.biter_companion.author": "Nekomaster1000",
   "entity.familiar_friends.biter_companion.description": "While equipped, anytime the player kills another mob, the player recover half a heart of health.",
 
-  "familiar_friends.midnightconfig.title": "Familiar Friends Config",
+  "familiar_friends.main.config.category": "Familiar Friends",
+  "familiar_friends.main.config.cooldownTime": "Cooldown",
 
-  "familiar_friends.midnightconfig.cooldownTime": "Cooldown",
+  "familiar_friends.oneup.config.category": "1-Up Mushroom",
+  "familiar_friends.oneup.config.enabled": "Enable 1-Up Mushroom Companion",
+  "familiar_friends.oneup.config.cost": "Set 1-Up Mushroom Cost (In Levels)",
 
-  "familiar_friends.midnightconfig.oneUpEnabled": "Enable 1-Up Mushroom Companion",
-  "familiar_friends.midnightconfig.oneUpCost": "Set 1-Up Mushroom Cost (In Levels)",
+  "familiar_friends.allay.config.category": "Allay",
+  "familiar_friends.allay.config.enabled": "Enable Allay Companion",
+  "familiar_friends.allay.config.cost": "Set Allay Cost (In Levels)",
 
-  "familiar_friends.midnightconfig.allayEnabled": "Enable Allay Companion",
-  "familiar_friends.midnightconfig.allayCost": "Set Allay Cost (In Levels)",
+  "familiar_friends.cavespider.config.category": "Cave Spider",
+  "familiar_friends.cavespider.config.enabled": "Enable Cave Spider Companion",
+  "familiar_friends.cavespider.config.cost": "Set Cave Spider Cost (In Levels)",
 
-  "familiar_friends.midnightconfig.caveSpiderEnabled": "Enable Cave Spider Companion",
-  "familiar_friends.midnightconfig.caveSpiderCost": "Set Cave Spider Cost (In Levels)",
+  "familiar_friends.chicken.config.category": "Chicken",
+  "familiar_friends.chicken.config.enabled": "Enable Chicken Companion",
+  "familiar_friends.chicken.config.cost": "Set Chicken Cost (In Levels)",
 
-  "familiar_friends.midnightconfig.chickenEnabled": "Enable Chicken Companion",
-  "familiar_friends.midnightconfig.chickenCost": "Set Chicken Cost (In Levels)",
+  "familiar_friends.cirno.config.category": "Cirno",
+  "familiar_friends.cirno.config.enabled": "Enable Cirno Companion",
+  "familiar_friends.cirno.config.cost": "Set Cirno Cost (In Levels)",
 
-  "familiar_friends.midnightconfig.cirnoEnabled": "Enable Cirno Companion",
-  "familiar_friends.midnightconfig.cirnoCost": "Set Cirno Cost (In Levels)",
+  "familiar_friends.companionCube.config.category": "Companion Cube",
+  "familiar_friends.companionCube.config.enabled": "Enable Companion Cube Companion",
+  "familiar_friends.companionCube.config.cost": "Set Companion Cube Cost (In Levels)",
 
-  "familiar_friends.midnightconfig.companionCubeEnabled": "Enable Companion Cube Companion",
-  "familiar_friends.midnightconfig.companionCubeCost": "Set Companion Cube Cost (In Levels)",
+  "familiar_friends.creeper.config.category": "Creeper",
+  "familiar_friends.creeper.config.enabled": "Enable Creeper Companion",
+  "familiar_friends.creeper.config.cost": "Set Creeper Cost (In Levels)",
 
-  "familiar_friends.midnightconfig.creeperEnabled": "Enable Creeper Companion",
-  "familiar_friends.midnightconfig.creeperCost": "Set Creeper Cost (In Levels)",
+  "familiar_friends.goat.config.category": "Goat",
+  "familiar_friends.goat.config.enabled": "Enable Goat Companion",
+  "familiar_friends.goat.config.cost": "Set Goat Cost (In Levels)",
 
-  "familiar_friends.midnightconfig.goatEnabled": "Enable Goat Companion",
-  "familiar_friends.midnightconfig.goatCost": "Set Goat Cost (In Levels)",
+  "familiar_friends.herobrine.config.category": "Herobrine",
+  "familiar_friends.herobrine.config.enabled": "Enable Herobrine Companion",
+  "familiar_friends.herobrine.config.cost": "Set Herobrine Cost (In Levels)",
 
-  "familiar_friends.midnightconfig.herobrineEnabled": "Enable Herobrine Companion",
-  "familiar_friends.midnightconfig.herobrineCost": "Set Herobrine Cost (In Levels)",
+  "familiar_friends.ironGolem.config.category": "Iron Golem",
+  "familiar_friends.ironGolem.config.enabled": "Enable Iron Golem Companion",
+  "familiar_friends.ironGolem.config.cost": "Set Iron Golem Cost (In Levels)",
 
-  "familiar_friends.midnightconfig.ironGolemEnabled": "Enable Iron Golem Companion",
-  "familiar_friends.midnightconfig.ironGolemCost": "Set Iron Golem Cost (In Levels)",
+  "familiar_friends.mrSaturn.config.category": "Mr. Saturn",
+  "familiar_friends.mrSaturn.config.enabled": "Enable Mr. Saturn Companion",
+  "familiar_friends.mrSaturn.config.cost": "Set Mr. Saturn Cost (In Levels)",
 
-  "familiar_friends.midnightconfig.mrSaturnEnabled": "Enable Mr. Saturn Companion",
-  "familiar_friends.midnightconfig.mrSaturnCost": "Set Mr. Saturn Cost (In Levels)",
+  "familiar_friends.navi.config.category": "Navi",
+  "familiar_friends.navi.config.enabled": "Enable Navi Companion",
+  "familiar_friends.navi.config.cost": "Set Navi Cost (In Levels)",
 
-  "familiar_friends.midnightconfig.naviEnabled": "Enable Navi Companion",
-  "familiar_friends.midnightconfig.naviCost": "Set Navi Cost (In Levels)",
+  "familiar_friends.jeb.config.category": "Jeb",
+  "familiar_friends.jeb.config.enabled": "Enable Jeb Companion",
+  "familiar_friends.jeb.config.cost": "Set Jeb Cost (In Levels)",
 
-  "familiar_friends.midnightconfig.jebEnabled": "Enable Jeb Companion",
-  "familiar_friends.midnightconfig.jebCost": "Set Jeb Cost (In Levels)",
+  "familiar_friends.ocelot.config.category": "Ocelot",
+  "familiar_friends.ocelot.config.enabled": "Enable Ocelot Companion",
+  "familiar_friends.ocelot.config.cost": "Set Ocelot Cost (In Levels)",
 
-  "familiar_friends.midnightconfig.ocelotEnabled": "Enable Ocelot Companion",
-  "familiar_friends.midnightconfig.ocelotCost": "Set Ocelot Cost (In Levels)",
+  "familiar_friends.rana.config.category": "Rana",
+  "familiar_friends.rana.config.enabled": "Enable Rana Companion",
+  "familiar_friends.rana.config.cost": "Set Rana Cost (In Levels)",
 
-  "familiar_friends.midnightconfig.ranaEnabled": "Enable Rana Companion",
-  "familiar_friends.midnightconfig.ranaCost": "Set Rana Cost (In Levels)",
+  "familiar_friends.skeleton.config.category": "Skeleton",
+  "familiar_friends.skeleton.config.enabled": "Enable Skeleton Companion",
+  "familiar_friends.skeleton.config.cost": "Set Skeleton Cost (In Levels)",
 
-  "familiar_friends.midnightconfig.skeletonEnabled": "Enable Skeleton Companion",
-  "familiar_friends.midnightconfig.skeletonCost": "Set Skeleton Cost (In Levels)",
+  "familiar_friends.snowGolem.config.category": "Snow Golem",
+  "familiar_friends.snowGolem.config.enabled": "Enable Snow Golem Companion",
+  "familiar_friends.snowGolem.config.cost": "Set Snow Golem Cost (In Levels)",
 
-  "familiar_friends.midnightconfig.snowGolemEnabled": "Enable Snow Golem Companion",
-  "familiar_friends.midnightconfig.snowGolemCost": "Set Snow Golem Cost (In Levels)",
+  "familiar_friends.spider.config.category": "Spider",
+  "familiar_friends.spider.config.enabled": "Enable Spider Companion",
+  "familiar_friends.spider.config.cost": "Set Spider (In Levels)",
 
-  "familiar_friends.midnightconfig.spiderEnabled": "Enable Spider Companion",
-  "familiar_friends.midnightconfig.spiderCost": "Set Spider Cost (In Levels)",
+  "familiar_friends.squid.config.category": "Squid",
+  "familiar_friends.squid.config.enabled": "Enable Squid Companion",
+  "familiar_friends.squid.config.cost": "Set Squid (In Levels)",
 
-  "familiar_friends.midnightconfig.squidEnabled": "Enable Squid Companion",
-  "familiar_friends.midnightconfig.squidCost": "Set Squid Cost (In Levels)",
+  "familiar_friends.tater.config.category": "Tiny Potato",
+  "familiar_friends.tater.config.enabled": "Enable Tiny Potato Companion",
+  "familiar_friends.tater.config.cost": "Set Tiny Potato (In Levels)",
 
-  "familiar_friends.midnightconfig.taterEnabled": "Enable Tiny Potato Companion",
-  "familiar_friends.midnightconfig.taterCost": "Set Tiny Potato Cost (In Levels)",
+  "familiar_friends.lemon.config.category": "Lemon 4K",
+  "familiar_friends.lemon.config.enabled": "Enable Lemon 4K Companion",
+  "familiar_friends.lemon.config.cost": "Set Lemon 4K (In Levels)",
 
-  "familiar_friends.midnightconfig.lemonEnabled": "Enable Lemon 4K Companion",
-  "familiar_friends.midnightconfig.lemonCost": "Set Lemon 4K Cost (In Levels)",
+  "familiar_friends.super.config.category": "Super Mushroom",
+  "familiar_friends.super.config.enabled": "Enable Super Mushroom Companion",
+  "familiar_friends.super.config.cost": "Set Super Mushroom (In Levels)",
 
-  "familiar_friends.midnightconfig.superEnabled": "Enable Super Mushroom Companion",
-  "familiar_friends.midnightconfig.superCost": "Set Super Mushroom Cost (In Levels)",
+  "familiar_friends.mini.config.category": "Mini Mushroom",
+  "familiar_friends.mini.config.enabled": "Enable Mini Mushroom Companion",
+  "familiar_friends.mini.config.cost": "Set Mini Mushroom (In Levels)",
 
-  "familiar_friends.midnightconfig.miniEnabled": "Enable Mini Mushroom Companion",
-  "familiar_friends.midnightconfig.miniCost": "Set Mini Mushroom Cost (In Levels)",
-
-  "familiar_friends.midnightconfig.biterEnabled": "Enable Vampire Companion",
-  "familiar_friends.midnightconfig.biterCost": "Set Vampire Cost (In Levels)"
+  "familiar_friends.vampire.config.category": "Vampire",
+  "familiar_friends.vampire.config.enabled": "Enable Vampire Companion",
+  "familiar_friends.vampire.config.cost": "Set Vampire (In Levels)"
 }

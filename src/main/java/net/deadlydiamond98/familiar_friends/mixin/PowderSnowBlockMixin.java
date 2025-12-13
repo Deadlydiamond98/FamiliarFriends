@@ -1,10 +1,9 @@
 package net.deadlydiamond98.familiar_friends.mixin;
 
-import net.deadlydiamond98.familiar_friends.entities.PlayerCompanion;
-import net.deadlydiamond98.familiar_friends.entities.companions.vanilla.GoatCompanion;
+import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
+import net.deadlydiamond98.familiar_friends.common.entities.companions.vanilla.GoatCompanion;
 import net.minecraft.block.PowderSnowBlock;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
