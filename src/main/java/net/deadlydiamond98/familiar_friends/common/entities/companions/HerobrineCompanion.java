@@ -1,7 +1,7 @@
 package net.deadlydiamond98.familiar_friends.common.entities.companions;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriendsConfig;
-import net.deadlydiamond98.familiar_friends.common.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.init.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;
@@ -32,7 +32,7 @@ public class HerobrineCompanion extends PlayerCompanion {
         boolean noCooldown = hasNoCooldown(player);
 
         if (enoughHealth && noCooldown) {
-            float range = 100.0f;
+            double range = FamiliarFriendsConfig.Herobrine.teleportDistance;
 
             Vec3d startPos = player.getCameraPosVec(1.0F);
             Vec3d lookVec = player.getRotationVec(1.0F);
@@ -50,9 +50,9 @@ public class HerobrineCompanion extends PlayerCompanion {
 
                 double distance = startPos.distanceTo(hitResult.getPos());
 
-                damagePlayer(range, distance, player);
+                damagePlayer((float) range, distance, player);
                 teleportPlayer(hitResult, player);
-                setCooldownSeconds(15);
+                setCooldownSeconds(FamiliarFriendsConfig.Herobrine.teleportCooldown);
             }
         }
     }
@@ -67,7 +67,7 @@ public class HerobrineCompanion extends PlayerCompanion {
             calculatedDamage = maxDamage;
         }
 
-        if (calculatedDamage > 0) {
+        if (calculatedDamage > 0 && FamiliarFriendsConfig.Herobrine.shouldDamagePlayer) {
             player.damage(player.getDamageSources().fall(), calculatedDamage);
         }
     }

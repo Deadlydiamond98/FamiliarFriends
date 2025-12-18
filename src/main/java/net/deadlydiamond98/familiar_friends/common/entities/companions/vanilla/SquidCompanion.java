@@ -1,7 +1,7 @@
 package net.deadlydiamond98.familiar_friends.common.entities.companions.vanilla;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriendsConfig;
-import net.deadlydiamond98.familiar_friends.common.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.init.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -21,9 +21,9 @@ public class SquidCompanion extends PlayerCompanion {
     }
 
     @Override
-    protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
+    public void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
         if (!player.isSubmergedInWater()) {
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, 103, 0, true, false));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.WATER_BREATHING, FamiliarFriendsConfig.Squid.waterBreathingDuration, 0, true, false));
         }
     }
 

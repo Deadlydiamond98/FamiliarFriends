@@ -1,5 +1,7 @@
 package net.deadlydiamond98.familiar_friends.mixin;
 
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import com.llamalad7.mixinextras.sugar.Local;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.common.entities.companions.vanilla.GoatCompanion;
 import net.minecraft.block.PowderSnowBlock;
@@ -13,16 +15,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(PowderSnowBlock.class)
 public class PowderSnowBlockMixin {
 
-    @Inject(method = "canWalkOnPowderSnow", at = @At(value = "HEAD"), cancellable = true)
-    private static void walkOnPowderSnow(Entity entity, CallbackInfoReturnable<Boolean> cir) {
+    @ModifyReturnValue(method = "canWalkOnPowderSnow", at = @At("RETURN"))
+    private static boolean familiar_friends$canWalkOnPowderSnow(boolean original, @Local(argsOnly = true) Entity entity) {
         if (entity instanceof PlayerEntity player) {
             if (player.getCompanion() != null) {
                 PlayerCompanion companion = player.getCompanion();
-                if (companion instanceof GoatCompanion) {
-                    cir.setReturnValue(true);
-                }
+                return original || companion.canWalkOnPowderSnow();
             }
         }
+        return original;
     }
-
 }

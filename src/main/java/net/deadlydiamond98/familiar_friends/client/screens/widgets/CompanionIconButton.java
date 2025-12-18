@@ -3,9 +3,9 @@ package net.deadlydiamond98.familiar_friends.client.screens.widgets;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
-import net.deadlydiamond98.familiar_friends.events.client.CompanionClientTickEvent;
-import net.deadlydiamond98.familiar_friends.util.CompanionGuiDrawMethods;
-import net.deadlydiamond98.familiar_friends.util.TextFormatHelper;
+import net.deadlydiamond98.familiar_friends.init.client.CompanionKeybindings;
+import net.deadlydiamond98.familiar_friends.util.screen.CompanionGuiDrawMethods;
+import net.deadlydiamond98.familiar_friends.util.screen.TextFormatHelper;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
@@ -99,7 +99,7 @@ public class CompanionIconButton extends ButtonWidget {
                 tooltip.add(Text.translatable("gui.familiar_friends.unlocked").setStyle(Style.EMPTY.withColor(0x478e47)));
             }
 
-            String description = companion.getDescription(CompanionClientTickEvent.getKeybinding()).getString();
+            String description = companion.getDescription(CompanionKeybindings.getKeyLang()).getString();
 
             int descriptionColor = 0xffec74;
             while (description.length() > maxLen) {

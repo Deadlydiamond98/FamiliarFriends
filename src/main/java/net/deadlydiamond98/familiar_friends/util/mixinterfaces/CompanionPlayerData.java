@@ -1,6 +1,7 @@
-package net.deadlydiamond98.familiar_friends.util;
+package net.deadlydiamond98.familiar_friends.util.mixinterfaces;
 
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -18,6 +19,7 @@ public interface CompanionPlayerData {
     void unequipCompanion(PlayerCompanion companion);
     void doCompanionKeybind();
     PlayerCompanion getCompanion();
+    @Nullable PlayerCompanion getCurrentCompanion();
 
     int getCompanionCooldown();
     void setCompanionCooldown(int cooldown);

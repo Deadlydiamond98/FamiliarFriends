@@ -2,7 +2,7 @@ package net.deadlydiamond98.familiar_friends.common.entities.companions;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriendsConfig;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
-import net.deadlydiamond98.familiar_friends.common.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.init.CompanionEntityTypes;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
@@ -45,12 +45,12 @@ public class LemonCompanion extends PlayerCompanion {
                         boundingBox,
                         entity -> entity != player && entity.isAttackable()
                 ).forEach(entity -> {
-                    entity.damage(player.getDamageSources().magic(), 5.0f);
-                    entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, 100, 1));
+                    entity.damage(player.getDamageSources().magic(), (float) FamiliarFriendsConfig.Lemon.damage);
+                    entity.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOWNESS, FamiliarFriendsConfig.Lemon.slownessDuration, 1));
                 });
             }
 
-            this.setCooldownSeconds(15);
+            this.setCooldownSeconds(FamiliarFriendsConfig.Lemon.abilityCooldown);
         }
     }
 

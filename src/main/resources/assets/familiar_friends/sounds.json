@@ -11,11 +11,6 @@
       "familiar_friends:1up"
     ]
   },
-  "action_failed": {
-    "sounds": [
-      "familiar_friends:failed"
-    ]
-  },
   "smaaash": {
     "sounds": [
       "familiar_friends:smaaash"

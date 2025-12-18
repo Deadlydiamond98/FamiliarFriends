@@ -1,7 +1,7 @@
 package net.deadlydiamond98.familiar_friends.common.entities.companions.vanilla;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriendsConfig;
-import net.deadlydiamond98.familiar_friends.common.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.init.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -22,8 +22,8 @@ public class CaveSpiderCompanion extends PlayerCompanion {
 
     @Override
     public void onAttack(PlayerEntity player, LivingEntity target, float amount) {
-        if (player.getRandom().nextInt(10) == 5) {
-            target.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, 3, 0));
+        if (player.getRandom().nextFloat() < FamiliarFriendsConfig.CaveSpider.poisonChance) {
+            target.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, FamiliarFriendsConfig.CaveSpider.poisonDuration, 0));
         }
     }
 

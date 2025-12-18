@@ -2,7 +2,7 @@ package net.deadlydiamond98.familiar_friends.common.entities.companions;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriendsConfig;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
-import net.deadlydiamond98.familiar_friends.common.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.init.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.init.CompanionSounds;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -20,14 +20,14 @@ public class MrSaturnCompanion extends PlayerCompanion {
 
     @Override
     public void onAttack(PlayerEntity player, LivingEntity target, float amount) {
-        if (player.getRandom().nextInt(15) == 4) {
+        if (player.getRandom().nextFloat() < FamiliarFriendsConfig.MrSaturn.smaaashAttackChance) {
 
-            target.damage(target.getDamageSources().magic(), amount + 2);
+            target.damage(target.getDamageSources().magic(), (float) (amount + FamiliarFriendsConfig.MrSaturn.extraDamage));
 
             double x = player.getX() - target.getX();
             double y = player.getZ() - target.getZ();
 
-            target.takeKnockback(3, x, y);
+            target.takeKnockback(FamiliarFriendsConfig.MrSaturn.knockback, x, y);
             this.playSound(CompanionSounds.Smmaaash, 1.0f, 1.0f);
         }
     }

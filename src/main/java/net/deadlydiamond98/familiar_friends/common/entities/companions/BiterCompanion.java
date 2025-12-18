@@ -1,7 +1,7 @@
 package net.deadlydiamond98.familiar_friends.common.entities.companions;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriendsConfig;
-import net.deadlydiamond98.familiar_friends.common.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.init.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -20,7 +20,7 @@ public class BiterCompanion extends PlayerCompanion {
     @Override
     public void onAttack(PlayerEntity player, LivingEntity target, float amount) {
         if (target.getHealth() - amount <= 0) {
-            player.heal(1);
+            player.heal(FamiliarFriendsConfig.Vampire.healAmount);
         }
     }
 

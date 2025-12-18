@@ -2,7 +2,7 @@ package net.deadlydiamond98.familiar_friends;
 
 import net.deadlydiamond98.familiar_friends.init.CompanionBlocks;
 import net.deadlydiamond98.familiar_friends.common.commands.CompanionCommands;
-import net.deadlydiamond98.familiar_friends.common.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.init.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.events.common.CompanionEvents;
 import net.deadlydiamond98.familiar_friends.init.CompanionConfigs;
 import net.deadlydiamond98.familiar_friends.init.CompanionItems;
@@ -15,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class FamiliarFriends implements ModInitializer {
+	// TODO: A lot of Shitty Code needs to be cleaned up... but that's a problem for future me!
 
 	public static final String MOD_ID = "familiar_friends";
     public static final Logger LOGGER = LoggerFactory.getLogger("familiar_friends");
@@ -31,7 +32,7 @@ public class FamiliarFriends implements ModInitializer {
 		CompanionBlocks.registerBlocks();
 		CompanionEntityTypes.register();
 
-		CompanionEvents.registerEvents();
+		CompanionEvents.register();
 		CompanionCommands.register();
 
 		LOGGER.info(MOD_ID + " has loaded successfully");

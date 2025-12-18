@@ -1,7 +1,7 @@
 package net.deadlydiamond98.familiar_friends.common.entities.companions.vanilla;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriendsConfig;
-import net.deadlydiamond98.familiar_friends.common.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.init.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.damage.DamageSource;
@@ -21,17 +21,16 @@ public class CreeperCompanion extends PlayerCompanion {
 
     @Override
     public void onPlayerDeath(PlayerEntity player) {
-        player.lockCompanion(this.getType().getTranslationKey());
+        if (FamiliarFriendsConfig.Creeper.lockOnDeath) {
+            player.lockCompanion(this.getType().getTranslationKey());
+        }
         player.getWorld().createExplosion(player, player.getX(), player.getY(), player.getZ(),
                 4, World.ExplosionSourceType.NONE);
     }
 
     @Override
     public boolean onDamaged(DamageSource source, float amount, PlayerEntity player) {
-        if (source.isIn(DamageTypeTags.IS_EXPLOSION)) {
-            return true;
-        }
-        return false;
+        return source.isIn(DamageTypeTags.IS_EXPLOSION);
     }
 
     @Override

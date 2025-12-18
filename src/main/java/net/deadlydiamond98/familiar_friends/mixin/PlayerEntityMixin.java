@@ -1,9 +1,10 @@
 package net.deadlydiamond98.familiar_friends.mixin;
 
-import net.deadlydiamond98.familiar_friends.common.entities.CompanionRegistry;
+import net.deadlydiamond98.familiar_friends.FamiliarFriendsConfig;
+import net.deadlydiamond98.familiar_friends.util.CompanionRegistry;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.networking.s2c.SyncCompanionPlayerDataS2CPacket;
-import net.deadlydiamond98.familiar_friends.util.CompanionPlayerData;
+import net.deadlydiamond98.familiar_friends.util.mixinterfaces.CompanionPlayerData;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -65,9 +66,11 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
 
     @Inject(method = "tick", at = @At("HEAD"))
     public void tick(CallbackInfo ci) {
-        if (!familiar_friends$getPlayer().getWorld().isClient()) {
+        PlayerEntity player = familiar_friends$getPlayer();
+
+        if (!player.getWorld().isClient()) {
             if (this.companionCooldown > 0) {
-                this.companionCooldown--;
+                this.companionCooldown = Math.min(--this.companionCooldown, FamiliarFriendsConfig.Main.cooldownTime * 20);
             }
 
             syncCompanionData();
@@ -75,6 +78,10 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
 
             if (this.companionCooldown > 0) {
                 this.lastCompanionCooldown--;
+            }
+
+            if (this.currentCompanion != null) {
+                this.currentCompanion.doPassiveAction(player, this.currentCompanion.findNearestHostile(player));
             }
         }
     }
@@ -101,12 +108,11 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
                 this.familiar_friends$getPlayer().getWorld().spawnEntity(this.currentCompanion);
             }
 
-        }
-        else if (!this.hasCompanion && !isMyFriendDead()) {
-
+        } else if (!this.hasCompanion && !isMyFriendDead()) {
             if (this.currentCompanion != null) {
-                this.currentCompanion.setRemoved(Entity.RemovalReason.DISCARDED);
+                this.currentCompanion.discard();
             }
+
             this.currentCompanion = null;
 
         }
@@ -218,6 +224,11 @@ public abstract class PlayerEntityMixin implements CompanionPlayerData {
     @Override
     public PlayerCompanion getCompanion() {
         return CompanionRegistry.createCompanion(this.backUpCompanionKey, familiar_friends$getPlayer());
+    }
+
+    @Override
+    public @Nullable PlayerCompanion getCurrentCompanion() {
+        return this.currentCompanion;
     }
 
     @Override

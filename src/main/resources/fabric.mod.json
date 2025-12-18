@@ -9,8 +9,8 @@
         "cputnam-a11y"
 	],
 	"contact": {
-		"homepage": "https://legacy.curseforge.com/minecraft/mc-mods/billboarding-items",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"homepage": "https://modrinth.com/mod/familiar-friends/versions",
+		"sources": "https://github.com/Deadlydiamond98/FamiliarFriends"
 	},
 	"license": "Custom",
 	"icon": "assets/familiar_friends/icon.png",
@@ -37,7 +37,7 @@
 	},
 	"custom": {
 		"loom:injected_interfaces": {
-			"net/minecraft/class_1657": ["net/deadlydiamond98/familiar_friends/util/CompanionPlayerData"]
+			"net/minecraft/class_1657": ["net/deadlydiamond98/familiar_friends/util/mixinterfaces/CompanionPlayerData"]
 		}
 	}
 }

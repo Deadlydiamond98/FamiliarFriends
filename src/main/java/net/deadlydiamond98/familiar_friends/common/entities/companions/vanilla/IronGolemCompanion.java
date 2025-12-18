@@ -1,7 +1,7 @@
 package net.deadlydiamond98.familiar_friends.common.entities.companions.vanilla;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriendsConfig;
-import net.deadlydiamond98.familiar_friends.common.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.init.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -26,16 +26,16 @@ public class IronGolemCompanion extends PlayerCompanion {
     }
 
     @Override
-    protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
+    public void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
 
         if (this.getAttackTicksLeft() > 0) {
             this.setAttackTicksLeft(this.getAttackTicksLeft() - 1);
         }
 
         if (nearestHostile != null) {
-            if (this.age % 80 == 0) {
+            if (this.age % FamiliarFriendsConfig.IronGolem.attackCooldown == 0) {
                 this.setAttackTicksLeft(10);
-                nearestHostile.damage(nearestHostile.getDamageSources().playerAttack(player), 4.0f);
+                nearestHostile.damage(nearestHostile.getDamageSources().playerAttack(player), (float) FamiliarFriendsConfig.IronGolem.attackDamage);
                 nearestHostile.setVelocity(nearestHostile.getVelocity().multiply(1, 0, 1).add(0, 1, 0));
                 this.playSound(SoundEvents.ENTITY_IRON_GOLEM_ATTACK, 1.0F, 1.0F);
             }

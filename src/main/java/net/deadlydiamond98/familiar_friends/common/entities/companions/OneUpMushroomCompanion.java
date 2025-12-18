@@ -2,7 +2,7 @@ package net.deadlydiamond98.familiar_friends.common.entities.companions;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriendsConfig;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
-import net.deadlydiamond98.familiar_friends.common.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.init.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.init.CompanionSounds;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.player.PlayerEntity;

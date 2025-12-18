@@ -1,6 +1,7 @@
-package net.deadlydiamond98.familiar_friends.common.entities;
+package net.deadlydiamond98.familiar_friends.init;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
+import net.deadlydiamond98.familiar_friends.util.CompanionRegistry;
 import net.deadlydiamond98.familiar_friends.common.entities.companions.*;
 import net.deadlydiamond98.familiar_friends.common.entities.companions.vanilla.*;
 import net.deadlydiamond98.familiar_friends.common.entities.projectiles.CirnoProjectile;

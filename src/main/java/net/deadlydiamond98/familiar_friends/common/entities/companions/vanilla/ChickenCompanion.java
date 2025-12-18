@@ -1,7 +1,7 @@
 package net.deadlydiamond98.familiar_friends.common.entities.companions.vanilla;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriendsConfig;
-import net.deadlydiamond98.familiar_friends.common.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.init.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -22,9 +22,9 @@ public class ChickenCompanion extends PlayerCompanion {
     }
 
     @Override
-    protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
+    public void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
         if (player.isOnGround()) {
-            player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, 43, 0, true, false));
+            player.addStatusEffect(new StatusEffectInstance(StatusEffects.SLOW_FALLING, FamiliarFriendsConfig.Chicken.slowFallDuration, 0, true, false));
         }
     }
 

@@ -1,7 +1,7 @@
 package net.deadlydiamond98.familiar_friends.common.entities.companions.vanilla;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriendsConfig;
-import net.deadlydiamond98.familiar_friends.common.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.init.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
@@ -23,10 +23,10 @@ public class AllayCompanion extends PlayerCompanion {
     }
 
     @Override
-    protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
+    public void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
         World world = player.getWorld();
         Vec3d playerPos = player.getPos();
-        double radius = 4.0;
+        double radius = FamiliarFriendsConfig.Allay.itemPickupRange;
 
         List<ItemEntity> nearbyItems = world.getEntitiesByClass(ItemEntity.class,
                 player.getBoundingBox().expand(radius),

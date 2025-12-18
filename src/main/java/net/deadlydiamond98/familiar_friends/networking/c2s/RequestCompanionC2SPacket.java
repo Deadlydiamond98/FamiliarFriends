@@ -1,7 +1,7 @@
 package net.deadlydiamond98.familiar_friends.networking.c2s;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
-import net.deadlydiamond98.familiar_friends.common.entities.CompanionRegistry;
+import net.deadlydiamond98.familiar_friends.util.CompanionRegistry;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.networking.s2c.SyncCompanionDataS2CPacket;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;

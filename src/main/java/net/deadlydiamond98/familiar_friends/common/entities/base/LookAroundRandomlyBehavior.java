@@ -1,22 +1,19 @@
-package net.deadlydiamond98.familiar_friends.common.entities.abstractcompanionclasses.behaviors;
-
-import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
+package net.deadlydiamond98.familiar_friends.common.entities.base;
 
 import java.util.Random;
 
-public class LookAroundBehavior implements LookBehavior {
-    private final PlayerCompanion companion;
+public class LookAroundRandomlyBehavior {
+    private final MockLivingEntity companion;
     private final Random random;
     private int lookAroundTime;
     private double deltaX;
     private double deltaZ;
 
-    public LookAroundBehavior(PlayerCompanion companion) {
+    public LookAroundRandomlyBehavior(MockLivingEntity companion) {
         this.companion = companion;
         this.random = new Random();
     }
 
-    @Override
     public void start() {
         double d = 2 * Math.PI * this.random.nextDouble();
         this.deltaX = Math.cos(d);
@@ -24,7 +21,6 @@ public class LookAroundBehavior implements LookBehavior {
         this.lookAroundTime = 20 + this.random.nextInt(20);
     }
 
-    @Override
     public void tick() {
         if (this.lookAroundTime > 0) {
             --this.lookAroundTime;
@@ -36,7 +32,6 @@ public class LookAroundBehavior implements LookBehavior {
         }
     }
 
-    @Override
     public boolean isFinished() {
         return this.lookAroundTime <= 0;
     }

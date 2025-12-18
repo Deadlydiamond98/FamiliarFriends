@@ -2,7 +2,7 @@ package net.deadlydiamond98.familiar_friends.common.entities.companions;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriendsConfig;
 import net.deadlydiamond98.familiar_friends.init.CompanionBlocks;
-import net.deadlydiamond98.familiar_friends.common.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.init.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.common.entities.projectiles.CirnoProjectile;
 import net.deadlydiamond98.familiar_friends.init.CompanionSounds;
@@ -27,20 +27,21 @@ public class CirnoCompanion extends PlayerCompanion {
     }
 
     @Override
-    protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
+    public void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
+        if (FamiliarFriendsConfig.Cirno.enableFrostWalker) {
+            World world = player.getWorld();
+            BlockPos playerPos = player.getBlockPos();
 
-        World world = player.getWorld();
-        BlockPos playerPos = player.getBlockPos();
-
-        if (!world.getBlockState(playerPos.down()).isOf(Blocks.WATER) && !world.getBlockState(playerPos.down()).isAir()
-                && !player.isTouchingWater() && !world.getBlockState(playerPos).isOf(Blocks.WATER)) {
-            int radius = 3;
-            for (int x = -radius; x <= radius; x++) {
-                for (int z = -radius; z <= radius; z++) {
-                    BlockPos blockPos = playerPos.add(x, -1, z);
-                    BlockState blockState = world.getBlockState(blockPos);
-                    if (blockState.isOf(Blocks.WATER) && blockState.get(LEVEL) == 0) {
-                        world.setBlockState(blockPos, CompanionBlocks.Cirno_Ice.getDefaultState());
+            if (!world.getBlockState(playerPos.down()).isOf(Blocks.WATER) && !world.getBlockState(playerPos.down()).isAir()
+                    && !player.isTouchingWater() && !world.getBlockState(playerPos).isOf(Blocks.WATER)) {
+                int radius = 3;
+                for (int x = -radius; x <= radius; x++) {
+                    for (int z = -radius; z <= radius; z++) {
+                        BlockPos blockPos = playerPos.add(x, -1, z);
+                        BlockState blockState = world.getBlockState(blockPos);
+                        if (blockState.isOf(Blocks.WATER) && blockState.get(LEVEL) == 0) {
+                            world.setBlockState(blockPos, CompanionBlocks.Cirno_Ice.getDefaultState());
+                        }
                     }
                 }
             }
@@ -62,7 +63,7 @@ public class CirnoCompanion extends PlayerCompanion {
             spawnProjectile(player, projectile2Direction);
 
             this.playSound(CompanionSounds.Cirno_Shoot, 0.5f, 1.0f);
-            this.setCooldownSeconds(5);
+            this.setCooldownSeconds(FamiliarFriendsConfig.Cirno.projectileCooldown);
         }
     }
 

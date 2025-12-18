@@ -6,14 +6,14 @@ import net.deadlydiamond98.familiar_friends.FamiliarFriends;
 import net.deadlydiamond98.familiar_friends.client.screens.widgets.CompanionBookButton;
 import net.deadlydiamond98.familiar_friends.client.screens.widgets.CompanionHomeButton;
 import net.deadlydiamond98.familiar_friends.client.screens.widgets.CompanionIconButton;
-import net.deadlydiamond98.familiar_friends.common.entities.CompanionRegistry;
+import net.deadlydiamond98.familiar_friends.util.CompanionRegistry;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
-import net.deadlydiamond98.familiar_friends.events.client.CompanionClientTickEvent;
+import net.deadlydiamond98.familiar_friends.init.client.CompanionKeybindings;
 import net.deadlydiamond98.familiar_friends.networking.c2s.EquipCompanionC2SPacket;
 import net.deadlydiamond98.familiar_friends.networking.c2s.RequestCompanionC2SPacket;
 import net.deadlydiamond98.familiar_friends.networking.c2s.UnequipCompanionC2SPacket;
 import net.deadlydiamond98.familiar_friends.networking.c2s.UnlockCompanionC2SPacket;
-import net.deadlydiamond98.familiar_friends.util.CompanionGuiDrawMethods;
+import net.deadlydiamond98.familiar_friends.util.screen.CompanionGuiDrawMethods;
 import net.deadlydiamond98.familiar_friends.util.TimeUnitHelper;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.Drawable;
@@ -176,7 +176,7 @@ public class CompanionBookScreen extends Screen {
 
         CompanionGuiDrawMethods.drawResizeableCenteredText(textRenderer, context,
                 matrices, descriptionX, descriptionY, companion.getDescription(
-                        CompanionClientTickEvent.getKeybinding()),
+                        CompanionKeybindings.getKeyLang()),
                 0.75f, 0x766450, false); // Companion Description
     }
 

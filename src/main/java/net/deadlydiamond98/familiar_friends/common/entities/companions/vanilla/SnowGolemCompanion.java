@@ -1,7 +1,7 @@
 package net.deadlydiamond98.familiar_friends.common.entities.companions.vanilla;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriendsConfig;
-import net.deadlydiamond98.familiar_friends.common.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.init.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -24,12 +24,12 @@ public class SnowGolemCompanion extends PlayerCompanion {
     }
 
     @Override
-    protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
+    public void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
         if (nearestHostile == null || this.getWorld().isClient()) {
             return;
         }
 
-        if (this.age % 20 == 0) {
+        if (this.age % FamiliarFriendsConfig.SnowGolem.snowballFireCooldown == 0) {
             World world = this.getWorld();
 
             SnowballEntity snowball = new SnowballEntity(world, player);

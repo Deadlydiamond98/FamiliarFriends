@@ -1,41 +1,30 @@
 package net.deadlydiamond98.familiar_friends.common.entities;
 
-import net.deadlydiamond98.familiar_friends.common.entities.abstractcompanionclasses.MockMobEntity;
-import net.deadlydiamond98.familiar_friends.common.entities.abstractcompanionclasses.behaviors.LookAroundBehavior;
-import net.deadlydiamond98.familiar_friends.common.entities.abstractcompanionclasses.behaviors.LookBehavior;
+import net.deadlydiamond98.familiar_friends.common.entities.base.MockLivingEntity;
 import net.deadlydiamond98.familiar_friends.init.CompanionSounds;
-import net.deadlydiamond98.familiar_friends.util.CompanionPlayerData;
+import net.deadlydiamond98.familiar_friends.util.mixinterfaces.CompanionPlayerData;
 import net.deadlydiamond98.familiar_friends.util.TimeUnitHelper;
+import net.deadlydiamond98.koalalib.init.KoalaLibSounds;
 import net.minecraft.entity.*;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.Monster;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.Fluid;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Comparator;
 import java.util.List;
 
-public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
-
-    public static final float SPEED = 1.5f;
-    public static final float FOLLOW_DISTANCE = 5.0f;
-
-    private int idleTime;
-    private float orbitArc;
-    private Entity owner;
+public abstract class PlayerCompanion extends MockLivingEntity {
     private int cooldown;
-
     private int costClient;
     private boolean enabledClient;
     protected boolean bookRender;
-
-    private LookBehavior currentLookBehavior;
 
     public PlayerCompanion(EntityType<?> type, World world) {
         super(type, world);
@@ -44,15 +33,14 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
     public PlayerCompanion(EntityType<?> type, World world, PlayerEntity owner, boolean gui) {
         this(type, world);
 
+        this.setOwner(owner);
+        this.setPosition(owner.getPos());
+
         this.costClient = 0;
         this.enabledClient = false;
 
         this.cooldown = 0;
-        this.idleTime = 0;
-        this.orbitArc = 0.0f;
         this.noClip = true;
-        this.owner = owner;
-        this.setPosition(owner.getPos());
         this.bookRender = gui;
     }
 
@@ -61,16 +49,13 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
      * @param player The player the companion belongs to
      * @param nearestHostile The nearest hostile mob
      */
-    protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
+    public void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {}
 
-    }
     /**
      * Anything here will be run whenever the player presses the action key
      * @param player The player the companion belongs to
      */
-    public void doKeyEvent(PlayerEntity player) {
-
-    }
+    public void doKeyEvent(PlayerEntity player) {}
 
     /**
      * Anything here will be run whenever the player attacks a target
@@ -79,17 +64,13 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
      * @param target The target that is being attacked
      * @param amount The damage delt to attackers
      */
-    public void onAttack(PlayerEntity player, LivingEntity target, float amount) {
-
-    }
+    public void onAttack(PlayerEntity player, LivingEntity target, float amount) {}
 
     /**
      * Anything here will be run whenever right before the player is about to die
      * @param player The player the companion belongs to
      */
-    public void onPlayerDeath(PlayerEntity player) {
-
-    }
+    public void onPlayerDeath(PlayerEntity player) {}
 
     /**
      * Anything here will be run whenever the player takes damage
@@ -110,6 +91,17 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
     }
 
     /**
+     * Returns a Fluid Tag that specifies fluids that can be walked on, or null
+     */
+    public @Nullable TagKey<Fluid> walkableFluids() {
+        return null;
+    }
+
+    public boolean canWalkOnPowderSnow() {
+        return false;
+    }
+
+    /**
      * @param player The companion's player
      * @return Returns the Hostile Entity that is closest to the player
      */
@@ -124,8 +116,7 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
      * @return Returns the Living Entity that is closest to the player
      */
     public Entity findNearestEntity(PlayerEntity player) {
-        List<Entity> nearbyEntities = player.getWorld().getEntitiesByClass(Entity.class, player.getBoundingBox().expand(10),
-                entity -> entity.isAlive());
+        List<Entity> nearbyEntities = player.getWorld().getEntitiesByClass(Entity.class, player.getBoundingBox().expand(10), Entity::isAlive);
         return nearbyEntities.stream().min(Comparator.comparingDouble(entity -> entity.squaredDistanceTo(player))).orElse(null);
     }
 
@@ -176,7 +167,7 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
             return true;
         }
         if (currentValue <= threshold) {
-            player.getWorld().playSound(null, player.getBlockPos(), CompanionSounds.Action_Failed, SoundCategory.PLAYERS, 0.5f, 1.0f);
+            player.getWorld().playSound(null, player.getBlockPos(), KoalaLibSounds.CONSOLE_CRAFT_FAIL, SoundCategory.PLAYERS, 0.5f, 1.0f);
             player.sendMessage(translation, true);
         }
         return !(currentValue <= threshold);
@@ -227,137 +218,12 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
         this.cooldown = cooldown * 20 * 60;
     }
 
-    // Most of the stuff past here shouldn't be modified, it makes the companion follow the player
-    // and handles translation file stuff
-
     @Override
-    public void baseTick() {
-        if (!this.getWorld().isClient()) {
-            if (this.getOwner() != null && this.getOwner() instanceof PlayerEntity player) {
-                if (!player.isAlive() || player.getWorld() != this.getWorld()) {
-                    this.discard();
-                    return;
-                }
-            }
-            else {
-                this.discard();
-            }
-        }
-
+    public void tick() {
+        super.tick();
         if (this.cooldown > 0) {
             this.cooldown--;
         }
-
-        super.baseTick();
-    }
-
-    @Override
-    protected void tickMovement() {
-
-        lookBehavior();
-
-        if (this.getOwner() != null && this.getOwner() instanceof PlayerEntity player) {
-            this.moveAround(player);
-        }
-
-        this.move(MovementType.SELF, this.getVelocity());
-
-        super.tickMovement();
-    }
-
-    protected void lookBehavior() {
-        if (this.idleTime <= 500) {
-            if (this.currentLookBehavior == null || this.currentLookBehavior.isFinished()) {
-                this.currentLookBehavior = new LookAroundBehavior(this);
-                this.currentLookBehavior.start();
-            }
-
-            this.currentLookBehavior.tick();
-        }
-    }
-
-    private void moveAround(PlayerEntity player) {
-        double distanceToTarget = this.getPos().distanceTo(player.getPos());
-
-        if (distanceToTarget > FOLLOW_DISTANCE * 4) {
-            this.setPosition(player.getPos());
-        }
-        else if (distanceToTarget > FOLLOW_DISTANCE * 2.5) {
-            this.setVelocityTowards(player.getPos().add(0, 2, 0), SPEED * 2);
-            this.idleTime = 0;
-        } else if (distanceToTarget > FOLLOW_DISTANCE) {
-            this.setVelocityTowards(player.getPos().add(0, 2, 0), SPEED);
-            this.idleTime = 0;
-        } else {
-            this.handleIdleMovement(player);
-        }
-
-        doPassiveAction(player, findNearestHostile(player));
-    }
-
-    protected void handleIdleMovement(PlayerEntity player) {
-        this.idleTime++;
-        if (this.idleTime <= 500) {
-
-            Vec3d lookDirection = player.getRotationVec(1.0F).normalize();
-
-            double yawRad = Math.toRadians(player.getYaw());
-
-            double offsetFront = -0.6;
-            double offsetRight = -1;
-
-            double offsetX = offsetRight * MathHelper.cos((float) yawRad) - offsetFront * MathHelper.sin((float) yawRad);
-            double offsetZ = offsetRight * MathHelper.sin((float) yawRad) + offsetFront * MathHelper.cos((float) yawRad);
-
-            Vec3d shoulderPos = player.getPos().add(
-                    offsetX,
-                    player.getEyeHeight(player.getPose()) + 0.1,
-                    offsetZ).add(lookDirection);
-
-            if (this.getPos().subtract(shoulderPos).horizontalLength() > 0.5) {
-                this.setVelocityTowards(shoulderPos, SPEED * 0.1);
-                this.idleTime = 0;
-            }
-            else {
-                this.setVelocityTowards(shoulderPos, 0);
-            }
-        }
-        else {
-            this.circleAround(player, 2.5, 0.1);
-        }
-    }
-
-    public void circleAround(Entity entity, double radius, double speed) {
-        double angleVariance = 0.01;
-        double positionVariance = 0.01;
-
-        double angleIncrement = (0.5 * speed) + (Math.random() * angleVariance - angleVariance / 2);
-
-        this.orbitArc += angleIncrement;
-        if (this.orbitArc > 2 * Math.PI) {
-            this.orbitArc -= 2 * Math.PI;
-        }
-
-        double randomRadiusX = radius + (Math.random() * positionVariance - positionVariance / 2);
-        double randomRadiusZ = radius + (Math.random() * positionVariance - positionVariance / 2);
-
-        double targetX = entity.getX() + randomRadiusX * Math.cos(this.orbitArc);
-        double targetZ = entity.getZ() + randomRadiusZ * Math.sin(this.orbitArc);
-        double targetY = MathHelper.lerp(0.1, this.getY(), entity.getEyeY() - 0.75);
-        Vec3d targetPosition = new Vec3d(targetX, targetY, targetZ);
-
-        this.setVelocityTowards(targetPosition, speed);
-        this.getLookControl().lookAt(targetPosition.getX(), targetPosition.getY(), targetPosition.getZ());
-    }
-
-    public void setVelocityTowards(Vec3d targetPosition, double speed) {
-        Vec3d direction = targetPosition.subtract(this.getPos()).normalize();
-        Vec3d desiredVelocity = direction.multiply(speed);
-
-        Vec3d currentVelocity = this.getVelocity();
-        Vec3d interpolatedVelocity = currentVelocity.lerp(desiredVelocity, 0.1);
-
-        this.setVelocity(interpolatedVelocity);
     }
 
     public Text getDescription(String keybinding) {
@@ -365,8 +231,7 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
     }
 
     public Text getAuthor() {
-        return Text.translatable("gui.familiar_friends.author").append(
-                Text.translatable(this.getType().getTranslationKey() + ".author"));
+        return Text.translatable("gui.familiar_friends.author").append(Text.translatable(this.getType().getTranslationKey() + ".author"));
     }
 
     public Text getCostLang(int cost) {
@@ -392,16 +257,5 @@ public abstract class PlayerCompanion extends MockMobEntity implements Ownable {
 
     public int getCostClient() {
         return this.costClient;
-    }
-
-    @Nullable
-    @Override
-    public Entity getOwner() {
-        return this.owner;
-    }
-
-    @Override
-    protected void initDataTracker() {
-        super.initDataTracker();
     }
 }

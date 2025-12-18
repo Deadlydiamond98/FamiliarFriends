@@ -1,7 +1,7 @@
 package net.deadlydiamond98.familiar_friends.common.entities.companions.vanilla;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriendsConfig;
-import net.deadlydiamond98.familiar_friends.common.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.init.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -25,16 +25,15 @@ public class SkeletonCompanion extends PlayerCompanion {
     }
 
     @Override
-    protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
+    public void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
         if (nearestHostile == null || player.getWorld().isClient()) {
             return;
         }
 
-        if (this.age % 120 == 0) {
+        if (this.age % FamiliarFriendsConfig.Skeleton.arrowFireCooldown == 0) {
             World world = player.getWorld();
 
-            PersistentProjectileEntity arrow = ProjectileUtil.createArrowProjectile(
-                    player, Items.ARROW.getDefaultStack(), 4.0f);
+            PersistentProjectileEntity arrow = ProjectileUtil.createArrowProjectile(player, Items.ARROW.getDefaultStack(), 4.0f);
             arrow.pickupType = PersistentProjectileEntity.PickupPermission.DISALLOWED;
 
             double dX = nearestHostile.getX() - player.getX();

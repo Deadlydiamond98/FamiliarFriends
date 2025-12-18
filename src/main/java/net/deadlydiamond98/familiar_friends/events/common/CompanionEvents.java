@@ -14,7 +14,7 @@ import net.minecraft.util.ActionResult;
 
 public class CompanionEvents {
 
-    public static void registerEvents() {
+    public static void register() {
         ServerPlayerEvents.AFTER_RESPAWN.register(new OnPlayerDeathEvent());
         onAttackEvent();
     }

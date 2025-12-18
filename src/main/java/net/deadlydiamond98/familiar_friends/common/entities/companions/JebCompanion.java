@@ -2,7 +2,7 @@ package net.deadlydiamond98.familiar_friends.common.entities.companions;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriendsConfig;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
-import net.deadlydiamond98.familiar_friends.common.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.init.CompanionEntityTypes;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -28,7 +28,7 @@ public class JebCompanion extends PlayerCompanion {
         boolean noCooldown = hasNoCooldown(player);
 
         if (noCooldown) {
-            double range = 100.0;
+            double range = FamiliarFriendsConfig.Jeb.smiteDistance;
 
             Vec3d startPos = player.getCameraPosVec(1.0F);
             Vec3d lookVec = player.getRotationVec(1.0F);
@@ -51,7 +51,7 @@ public class JebCompanion extends PlayerCompanion {
                 if (lightning != null) {
                     lightning.refreshPositionAfterTeleport(Vec3d.ofCenter(againstBlockPos));
                     player.getWorld().spawnEntity(lightning);
-                    setCooldownSeconds(15);
+                    setCooldownSeconds(FamiliarFriendsConfig.Jeb.lightningCooldown);
                 }
             }
         }

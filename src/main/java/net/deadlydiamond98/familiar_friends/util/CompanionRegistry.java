@@ -1,6 +1,7 @@
-package net.deadlydiamond98.familiar_friends.common.entities;
+package net.deadlydiamond98.familiar_friends.util;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriends;
+import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;

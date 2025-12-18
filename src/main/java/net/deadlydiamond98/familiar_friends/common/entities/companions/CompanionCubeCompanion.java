@@ -2,11 +2,18 @@ package net.deadlydiamond98.familiar_friends.common.entities.companions;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriendsConfig;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
-import net.deadlydiamond98.familiar_friends.common.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.init.CompanionEntityTypes;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.FluidState;
+import net.minecraft.registry.tag.DamageTypeTags;
+import net.minecraft.registry.tag.FluidTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.world.World;
+import org.jetbrains.annotations.Nullable;
 
 public class CompanionCubeCompanion extends PlayerCompanion {
     public CompanionCubeCompanion(EntityType<?> type, World world) {
@@ -18,7 +25,13 @@ public class CompanionCubeCompanion extends PlayerCompanion {
     }
 
     @Override
-    protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
+    public boolean onDamaged(DamageSource source, float amount, PlayerEntity player) {
+        return FamiliarFriendsConfig.CompanionCube.grantFireImmunity && source.isIn(DamageTypeTags.IS_FIRE);
+    }
+
+    @Override
+    public @Nullable TagKey<Fluid> walkableFluids() {
+        return FluidTags.LAVA;
     }
 
     @Override

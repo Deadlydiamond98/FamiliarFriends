@@ -1,8 +1,8 @@
 package net.deadlydiamond98.familiar_friends.mixin;
 
+import com.llamalad7.mixinextras.injector.ModifyReturnValue;
+import com.llamalad7.mixinextras.sugar.Local;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
-import net.deadlydiamond98.familiar_friends.common.entities.companions.CompanionCubeCompanion;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
@@ -23,10 +23,6 @@ import java.util.Optional;
 public abstract class LivingEntityMixin {
 
     @Shadow private Optional<BlockPos> climbingPos;
-
-    @Shadow protected abstract boolean tryUseTotem(DamageSource source);
-
-    @Shadow public abstract void onAttacking(Entity target);
 
     @Unique
     public LivingEntity familiar_friends$getLiving() {
@@ -81,18 +77,18 @@ public abstract class LivingEntityMixin {
         }
     }
 
-    @Inject(method = "canWalkOnFluid", at = @At(value = "HEAD"), cancellable = true)
-    private void walkOnFluid(FluidState state, CallbackInfoReturnable<Boolean> cir) {
+    @ModifyReturnValue(method = "canWalkOnFluid", at = @At(value = "RETURN"))
+    private boolean familiar_friends$canWalkOnFluid(boolean original, @Local FluidState state) {
         if (this.familiar_friends$getLiving() instanceof PlayerEntity player) {
             if (player.getCompanion() != null) {
                 PlayerCompanion companion = player.getCompanion();
-                if (companion instanceof CompanionCubeCompanion) {
-                    if (!familiar_friends$getLiving().isSpectator()) {
-                        cir.setReturnValue(state.isIn(FluidTags.LAVA) && !player.isInLava());
+                if (!familiar_friends$getLiving().isSpectator()) {
+                    if (companion.walkableFluids() != null) {
+                        return state.isIn(companion.walkableFluids()) && !player.isInLava() && !player.isTouchingWater();
                     }
                 }
             }
         }
+        return original;
     }
-
 }

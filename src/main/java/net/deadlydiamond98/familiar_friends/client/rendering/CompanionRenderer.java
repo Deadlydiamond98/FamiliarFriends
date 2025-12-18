@@ -39,7 +39,7 @@ public abstract class CompanionRenderer<T extends PlayerCompanion, M extends Ent
         matrices.push();
 
         if (this.doBobbingAnimation() && !entity.isBookRender()) {
-            matrices.translate(0, Math.sin(entity.age * 0.1) * 0.1, 0);
+            matrices.translate(0, Math.sin((entity.age + tickDelta) * 0.1) * 0.1, 0);
         }
 
         matrices.push();
@@ -81,11 +81,9 @@ public abstract class CompanionRenderer<T extends PlayerCompanion, M extends Ent
         }
 
         if (!entity.isSpectator()) {
-            Iterator var25 = this.features.iterator();
 
-            while(var25.hasNext()) {
-                FeatureRenderer<T, M> featureRenderer = (FeatureRenderer)var25.next();
-                featureRenderer.render(matrices, vertexConsumerProvider, i, entity, limbSwingAmount, limbSwing, tickDelta, animationProgress, netHeadYaw, 0);
+            for (FeatureRenderer<T, M> feature : this.features) {
+                feature.render(matrices, vertexConsumerProvider, i, entity, limbSwingAmount, limbSwing, tickDelta, animationProgress, netHeadYaw, 0);
             }
         }
 
@@ -139,12 +137,15 @@ public abstract class CompanionRenderer<T extends PlayerCompanion, M extends Ent
             return showOutline ? RenderLayer.getOutline(identifier) : null;
         }
     }
+
     public int getOverlay(T entity, float whiteOverlayProgress) {
         return OverlayTexture.packUv(OverlayTexture.getU(whiteOverlayProgress), OverlayTexture.getV(false));
     }
+
     protected float getAnimationProgress(T entity, float tickDelta) {
         return (float)entity.age + tickDelta;
     }
+
     private float getHandSwingProgress(T entity, float tickDelta) {
         return entity.getHandSwingProgress(tickDelta);
     }

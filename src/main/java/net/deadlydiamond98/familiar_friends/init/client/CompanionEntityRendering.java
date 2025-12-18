@@ -7,13 +7,13 @@ import net.deadlydiamond98.familiar_friends.client.rendering.companions.player.H
 import net.deadlydiamond98.familiar_friends.client.rendering.companions.player.JebCompanionRenderer;
 import net.deadlydiamond98.familiar_friends.client.rendering.companions.vanilla.*;
 import net.deadlydiamond98.familiar_friends.client.rendering.projectiles.CirnoProjectileRenderer;
-import net.deadlydiamond98.familiar_friends.common.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.init.CompanionEntityTypes;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityModelLayerRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 
 public class CompanionEntityRendering {
 
-    public static void registerCompanionRenderers() {
+    public static void register() {
         registerEntityRenderers();
         registerModelLayers();
     }

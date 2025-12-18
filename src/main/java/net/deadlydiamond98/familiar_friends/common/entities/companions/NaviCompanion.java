@@ -1,9 +1,10 @@
 package net.deadlydiamond98.familiar_friends.common.entities.companions;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriendsConfig;
-import net.deadlydiamond98.familiar_friends.common.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.init.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.init.CompanionSounds;
+import net.deadlydiamond98.familiar_friends.init.CompanionTags;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.EntityType;
@@ -30,8 +31,8 @@ public class NaviCompanion extends PlayerCompanion {
     }
 
     @Override
-    protected void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
-        int radius = 20;
+    public void doPassiveAction(PlayerEntity player, LivingEntity nearestHostile) {
+        int radius = FamiliarFriendsConfig.Navi.senseRange;
 
         BlockPos closestBlockPos = null;
 
@@ -43,9 +44,7 @@ public class NaviCompanion extends PlayerCompanion {
                     BlockPos blockPos = new BlockPos((int) (player.getX() + x), (int) (player.getY() + y), (int) (player.getZ() + z));
                     Block block = world.getBlockState(blockPos).getBlock();
 
-                    if (block.getDefaultState().isOf(Blocks.ANCIENT_DEBRIS) ||
-                            block.getDefaultState().isOf(Blocks.DEEPSLATE_DIAMOND_ORE) ||
-                            block.getDefaultState().isOf(Blocks.DIAMOND_ORE)) {
+                    if (block.getDefaultState().isIn(CompanionTags.NAVI_RADAR)) {
                         if (closestBlockPos == null || getClosest(player, closestBlockPos, blockPos)) {
                             closestBlockPos = blockPos;
                         }

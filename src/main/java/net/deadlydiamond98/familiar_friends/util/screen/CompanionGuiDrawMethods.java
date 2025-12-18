@@ -1,4 +1,4 @@
-package net.deadlydiamond98.familiar_friends.util;
+package net.deadlydiamond98.familiar_friends.util.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;

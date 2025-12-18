@@ -1,4 +1,4 @@
-package net.deadlydiamond98.familiar_friends.util;
+package net.deadlydiamond98.familiar_friends.util.screen;
 
 public class TextFormatHelper {
 

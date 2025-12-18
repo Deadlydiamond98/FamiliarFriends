@@ -11,7 +11,6 @@ public class CompanionSounds {
     public static SoundEvent One_Up = registerSoundEvent("one_up");
     public static SoundEvent Smmaaash = registerSoundEvent("smaaash");
     public static SoundEvent Navi = registerSoundEvent("navi_attention");
-    public static SoundEvent Action_Failed = registerSoundEvent("action_failed");
     public static SoundEvent Do_It = registerSoundEvent("do_it");
     public static SoundEvent Power_Up = registerSoundEvent("power_up");
     public static SoundEvent Cirno_Shoot = registerSoundEvent("cirno_shoot");

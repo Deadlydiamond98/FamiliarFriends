@@ -1,4 +1,4 @@
-package net.deadlydiamond98.familiar_friends.common.entities.abstractcompanionclasses;
+package net.deadlydiamond98.familiar_friends.common.entities.base;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
@@ -9,7 +9,7 @@ import net.minecraft.util.math.Vec3d;
 import java.util.Optional;
 
 public class NonLivingLookControl implements Control {
-    protected final MockMobEntity entity;
+    protected final MockLivingEntity entity;
     protected float maxYawChange;
     protected float maxPitchChange;
     protected int lookAtTimer;
@@ -17,7 +17,7 @@ public class NonLivingLookControl implements Control {
     protected double y;
     protected double z;
 
-    public NonLivingLookControl(MockMobEntity entity) {
+    public NonLivingLookControl(MockLivingEntity entity) {
         this.entity = entity;
     }
 
@@ -48,7 +48,7 @@ public class NonLivingLookControl implements Control {
 
     public void tick() {
         if (this.shouldStayHorizontal()) {
-            this.entity.setPitch(0.0F);
+            this.entity.setPitch(0);
         }
 
         if (this.lookAtTimer > 0) {

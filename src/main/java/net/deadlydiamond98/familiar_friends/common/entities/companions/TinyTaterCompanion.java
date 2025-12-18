@@ -1,7 +1,7 @@
 package net.deadlydiamond98.familiar_friends.common.entities.companions;
 
 import net.deadlydiamond98.familiar_friends.FamiliarFriendsConfig;
-import net.deadlydiamond98.familiar_friends.common.entities.CompanionEntityTypes;
+import net.deadlydiamond98.familiar_friends.init.CompanionEntityTypes;
 import net.deadlydiamond98.familiar_friends.common.entities.PlayerCompanion;
 import net.deadlydiamond98.familiar_friends.init.CompanionSounds;
 import net.minecraft.entity.EntityType;
@@ -23,15 +23,14 @@ public class TinyTaterCompanion extends PlayerCompanion {
     @Override
     public void doKeyEvent(PlayerEntity player) {
         if (this.hasNoCooldown(player)) {
-            // Long cooldown due to spam-ability
             this.playSound(CompanionSounds.Do_It, 0.25f, 1.0f);
-            this.setCooldownSeconds(15);
+            this.setCooldownSeconds(FamiliarFriendsConfig.Tater.soundCooldown);
         }
     }
 
     @Override
     public void onAttack(PlayerEntity player, LivingEntity target, float amount) {
-        if (player.getRandom().nextInt(10) == 5) {
+        if (player.getRandom().nextFloat() < FamiliarFriendsConfig.Tater.hungerStealChance) {
             this.playSound(SoundEvents.ENTITY_GENERIC_EAT, 1.0f, 1.0f);
             player.getHungerManager().add((int) (amount), 1);
             if (target instanceof PlayerEntity targetPlayer) {
